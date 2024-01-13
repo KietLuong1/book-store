@@ -37597,12 +37597,11 @@ footer .footer-title {
   margin-bottom: 20px;
   position: relative;
   line-height: 1.2;
-  color: #ffffff;
 }
 
 footer .footer-top {
-  background-color: var(--secondary);
   padding: 70px 0px 30px;
+  background-color: var(--secondary);
 }
 
 footer .footer-top .widget {
