@@ -90,14 +90,10 @@
     --bs-body-bg: #ffffff;
 }
 
-details summary {
-    padding: 4px;
-    width: 200px;
-    cursor: pointer;
-    color: black;
+.filter-area .grid-area .nav .nav-item svg:active {
+    box-shadow: inset 0 0 0 2px var(--primary);
 }
 
-details summary:hover {
-    color: var(--primary);
+.filter-area .grid-area .nav .nav-item svg:focus {
+    box-shadow: inset 0 0 0 2px var(--primary);
 }
-
