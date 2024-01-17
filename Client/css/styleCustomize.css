@@ -101,3 +101,6 @@ details summary:hover {
     color: var(--primary);
 }
 
+footer .footer-title {
+    color: white;
+}
