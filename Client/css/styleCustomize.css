@@ -101,6 +101,22 @@ details summary:hover {
     color: var(--primary);
 }
 
-footer .footer-title {
-    color: white;
+.site-footer {
+    color: #fff;
+}
+
+.header-nav .nav>li>a.active {
+    color: var(--primary);
+}
+
+.filter-area .grid-area .nav .nav-item .nav-link svg path{
+    fill: #aaa;
+}
+
+.filter-area .grid-area .nav .nav-item .nav-link.active svg path{
+    fill: var(--secondary);
+}
+
+.filter-area .grid-area .nav .nav-item:hover .nav-link svg path{
+    fill: var(--secondary);
 }
