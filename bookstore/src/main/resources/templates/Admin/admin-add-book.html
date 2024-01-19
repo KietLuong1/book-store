@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
 
 <head>
    <meta charset="utf-8">
@@ -202,14 +202,14 @@
                         </div>
                      </div>
                      <div class="iq-card-body">
-                        <form action="https://templates.iqonic.design/booksto/html/admin-books.html">
+                        <form th:action="@{/save}" method="post">
                            <div class="form-group">
-                              <label>Book Name:</label>
-                              <input type="text" class="form-control">
+                              <label for="name">Book Name:</label>
+                              <input type="text" class="form-control" name="name">
                            </div>
                            <div class="form-group">
-                              <label>Book Category:</label>
-                              <select class="form-control" id="exampleFormControlSelect1">
+                              <label for="category">Book Category:</label>
+                              <select class="form-control" id="exampleFormControlSelect1" name="category">
                                  <option selected="" disabled="">Book Category</option>
                                  <option>General Books</option>
                                  <option>History Books</option>
@@ -224,8 +224,8 @@
                               </select>
                            </div>
                            <div class="form-group">
-                              <label>Book Author:</label>
-                              <select class="form-control" id="exampleFormControlSelect2">
+                              <label for="author">Book Author:</label>
+                              <select class="form-control" id="exampleFormControlSelect2" name="author">
                                  <option selected="" disabled="">Book Author</option>
                                  <option>Jhone Steben</option>
                                  <option>John Klok</option>
@@ -255,12 +255,12 @@
                               </div>
                            </div>
                            <div class="form-group">
-                              <label>Book Price:</label>
-                              <input type="text" class="form-control">
+                              <label for="price">Book Price:</label>
+                              <input type="text" class="form-control" name="price">
                            </div>
                            <div class="form-group">
-                              <label>Book Description:</label>
-                              <textarea class="form-control" rows="4"></textarea>
+                              <label for="description">Book Description:</label>
+                              <textarea class="form-control" rows="4" name="description"></textarea>
                            </div>
                            <button type="submit" class="btn btn-primary">Submit</button>
                            <button type="reset" class="btn btn-danger">Reset</button>

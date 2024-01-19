@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
 
 <head>
    <meta charset="utf-8">
@@ -29,7 +29,7 @@
       <!-- Sidebar  -->
       <div class="iq-sidebar">
          <div class="iq-sidebar-logo d-flex justify-content-between">
-            <a href="admin-dashboard.html" class="header-logo">
+            <a href="#" class="header-logo">
                <img src="images/logo.png" class="img-fluid rounded-normal" alt="">
             </a>
 
@@ -55,7 +55,7 @@
                         <li><a href="admin-dashboard.html"><i class="las la-house-damage"></i>Dashboard</a></li>
                         <li><a href="admin-category.html"><i class="ri-function-line"></i>Books Category</a></li>
                         <li><a href="admin-author.html"><i class="ri-book-line"></i>Author</a></li>
-                        <li class="active"><a href="admin-books.html"><i class="ri-file-pdf-line"></i>Books</a></li>
+                        <li class="active"><a href="adminBooks"><i class="ri-file-pdf-line"></i>Books</a></li>
                      </ul>
                   </li>
 
@@ -200,7 +200,7 @@
                            <h4 class="card-title">List Books</h4>
                         </div>
                         <div class="iq-card-header-toolbar d-flex align-items-center">
-                           <a href="admin-add-book.html" class="btn btn-primary">Add New book</a>
+                           <a href="addNewBook" class="btn btn-primary">Add New book</a>
                         </div>
                      </div>
                      <div class="iq-card-body">
@@ -211,7 +211,7 @@
                                     <th style="width: 3%;">No</th>
                                     <th style="width: 12%;">Book Image</th>
                                     <th style="width: 15%;">Book Name</th>
-                                    <th style="width: 15%;">Book Catrgory</th>
+                                    <th style="width: 15%;">Book Category</th>
                                     <th style="width: 15%;">Book Author</th>
                                     <th style="width: 18%;">Book Description</th>
                                     <th style="width: 7%;">Book Price</th>
@@ -219,11 +219,12 @@
                                     <th style="width: 15%;">Action</th>
                                  </tr>
                               </thead>
-                              <tbody>
 
+                              <tbody>
                                  <!-- using Thymeleaf -->
                                  <tr th:each="book :${book}">
-                                    <td>1</td>
+
+                                    <td th:text="${book.id}"></td>
                                     <td><img class="img-fluid rounded" src="images/browse-books/01.jpg" alt=""></td>
                                     <td th:text="${book.name}"></td>
                                     <td th:text="${book.catagory}"></td>
@@ -239,6 +240,7 @@
                                           <a class="bg-primary" data-toggle="tooltip" data-placement="top" title=""
                                              data-original-title="Edit" th:href="@{/editBook/{id}(id=${book.id})}"><i
                                                 class="ri-pencil-line"></i></a>
+                                                
                                           <a class="bg-primary" data-toggle="tooltip" data-placement="top" title=""
                                              data-original-title="Delete"
                                              th:href="@{/deleteBook/{id}(id=${book.id})}"><i
