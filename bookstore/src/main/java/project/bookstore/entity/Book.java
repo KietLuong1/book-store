@@ -1,61 +1,77 @@
-package project.bookstore.entity;
+// package project.bookstore.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
 
-@Entity
-public class Book {
+// @Entity
+// public class Book {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    private String author;
-    private String price;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private int id;
+//     private String name;
+//     private String catagory;
+//     private String author;
+//     private String description;
+//     private String price;
 
-    public Book(int id, String name, String author, String price) {
-        this.id = id;
-        this.name = name;
-        this.author = author;
-        this.price = price;
-    }
+//     public Book(int id, String name, String catagory, String author, String description, String price) {
+//         this.id = id;
+//         this.name = name;
+//         this.catagory = catagory;
+//         this.author = author;
+//         this.description = description;
+//         this.price = price;
+//     }
 
-    public Book() {
-        super();
-    }
+//     public int getId() {
+//         return id;
+//     }
 
-    public int getId() {
-        return id;
-    }
+//     public void setId(int id) {
+//         this.id = id;
+//     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+//     public String getName() {
+//         return name;
+//     }
 
-    public String getName() {
-        return name;
-    }
+//     public void setName(String name) {
+//         this.name = name;
+//     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+//     public String getCatagory() {
+//         return catagory;
+//     }
 
-    public String getAuthor() {
-        return author;
-    }
+//     public void setCatagory(String catagory) {
+//         this.catagory = catagory;
+//     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+//     public String getAuthor() {
+//         return author;
+//     }
 
-    public String getPrice() {
-        return price;
-    }
+//     public void setAuthor(String author) {
+//         this.author = author;
+//     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
+//     public String getDescription() {
+//         return description;
+//     }
 
-}
+//     public void setDescription(String description) {
+//         this.description = description;
+//     }
+
+//     public String getPrice() {
+//         return price;
+//     }
+
+//     public void setPrice(String price) {
+//         this.price = price;
+//     }
+
+// }
