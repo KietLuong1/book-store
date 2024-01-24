@@ -17,7 +17,7 @@ var Bookland = function () {
 		}
 	}
 
-	$(document).ready(function () {
+	var checkLocation = function () {
 		var currentType = location.pathname.split("/").slice(-1)[0].slice(0, 5);
 
 		if (currentType !== "books") {
@@ -27,7 +27,13 @@ var Bookland = function () {
 			// add active class to books nav link.
 			addActiveClass(".filter-area .grid-area .nav .nav-item .nav-link");
 		}
-	});
+	}
+
+	var connectToAdmin = function () {
+		$('#admin').on("click", function () {
+			$('#admin').attr('href', '../Admin/admin-dashboard.html');
+		});
+	};
 	/* JS FROM BOOKLAND*/
 	/* Search Bar ============ */
 	siteUrl = '';
@@ -618,6 +624,9 @@ var Bookland = function () {
 			handleHeaderMenuItem();
 			handleFinalCountDown();
 			cartButton();
+			// custom js
+			checkLocation();
+			connectToAdmin();
 		},
 
 		load: function () {
