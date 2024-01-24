@@ -37913,7 +37913,8 @@ footer.footer-dark .footer-category {
 }
 
 .footer-category .toggle-items ul li a:hover {
-  color: var(--secondary); }
+  color: var(--secondary);
+}
 
 @media only screen and (max-width: 1280px) {
   .footer-category .toggle-items ul li {
