@@ -29,11 +29,25 @@ var Bookland = function () {
 		}
 	}
 
+	/*Connect to admin*/
 	var connectToAdmin = function () {
 		$('#admin').on("click", function () {
 			$('#admin').attr('href', '../Admin/admin-dashboard.html');
 		});
 	};
+
+	/* Responsive Categories*/
+	var responsiveCategories = function () {
+		if ($(window).width() <= 992) {
+			$(".category-sub-menu").addClass("sub-menu");
+			$(".nav-categories").css("display", "none");
+		} else {
+			$(".category-sub-menu").removeClass("sub-menu");
+			$(".nav-categories").css("display", "block");
+		}
+		$()
+	}
+
 	/* JS FROM BOOKLAND*/
 	/* Search Bar ============ */
 	siteUrl = '';
@@ -552,8 +566,9 @@ var Bookland = function () {
 		}
 	}
 
+	// custom
 	var dzCategoryToggle = function () {
-		jQuery('.category-toggle .toggle-btn').on('click', function () {
+		jQuery('.toggle-btn').on('click', function () {
 			$(".toggle-items").slideToggle("slow");
 			jQuery(this).toggleClass('active');
 		});
@@ -627,6 +642,7 @@ var Bookland = function () {
 			// custom js
 			checkLocation();
 			connectToAdmin();
+			responsiveCategories();
 		},
 
 		load: function () {
