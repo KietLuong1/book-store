@@ -93,7 +93,7 @@
 details summary {
     padding: 4px;
     width: 200px;
-      cursor: pointer;
+    cursor: pointer;
     color: black;
 }
 
@@ -109,14 +109,52 @@ details summary:hover {
     color: var(--primary);
 }
 
-.filter-area .grid-area .nav .nav-item .nav-link svg path{
+
+.filter-area .grid-area .nav .nav-item .nav-link svg path {
     fill: #aaa;
 }
 
-.filter-area .grid-area .nav .nav-item .nav-link.active svg path{
+.filter-area .grid-area .nav .nav-item .nav-link.active svg path {
     fill: var(--secondary);
 }
 
-.filter-area .grid-area .nav .nav-item:hover .nav-link svg path{
+.filter-area .grid-area .nav .nav-item:hover .nav-link svg path {
     fill: var(--secondary);
+}
+
+
+.footer-category.nav-categories{
+    padding: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.footer-category .toggle-items{
+    margin-top: 0;
+    padding-top: 22px;
+}
+
+.header-nav .nav .sub-menu-down .mega-menu {
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.header-nav .nav .sub-menu-down .mega-menu>.sub-menu>a:after {
+    content: "\f078";
+    font-size: 9px;
+    margin-left: 5px;
+    margin-top: 0;
+    vertical-align: middle;
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+}
+
+.header-nav .nav .sub-menu-down:hover .mega-menu {
+    display: block;
+
 }
