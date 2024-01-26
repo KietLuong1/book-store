@@ -45,8 +45,17 @@ var Bookland = function () {
 			$(".category-sub-menu").removeClass("sub-menu");
 			$(".nav-categories").css("display", "block");
 		}
-		$()
 	}
+
+	jQuery(window).resize(() => {
+		if ($(window).width() <= 992) {
+			$(".category-sub-menu").addClass("sub-menu");
+			$(".nav-categories").css("display", "none");
+		} else {
+			$(".category-sub-menu").removeClass("sub-menu");
+			$(".nav-categories").css("display", "block");
+		}
+	});
 
 	/* JS FROM BOOKLAND*/
 	/* Search Bar ============ */
@@ -654,6 +663,8 @@ var Bookland = function () {
 			screenWidth = $(window).width();
 			dzTheme();
 			handleFinalCountDown();
+			// custom
+			responsiveCategories();
 		}
 	}
 
