@@ -158,3 +158,15 @@ details summary:hover {
     display: block;
 
 }
+
+.content-inner-1 {
+    padding-top: 10px;
+}
+
+.content-inner {
+    padding-top: 10px;
+}
+
+.product-img {
+    width: 100px;
+}
