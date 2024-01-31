@@ -17,10 +17,10 @@ public class BookController {
     // @Autowired
     // private BookService service;
 
-    @GetMapping("/")
-    public String home() {
-        return "admin-books";
-    }
+    // @GetMapping("/")
+    // public String home() {
+    //     return "Admin/admin-dashboard";
+    // }
 
     // @GetMapping("/addNewBook")
     // public String bookRegister() {
