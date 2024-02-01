@@ -1,18 +1,15 @@
 <!doctype html>
 <html lang="en" xmlns:th="https://www.thymeleaf.com">
 
-<head th:replace="Admin/admin-template.html :: header('Dashboard')">
-</head>
+<head th:replace="Admin/admin-template.html :: header('Dashboard')"></head>
 
 <body>
    <div class="wrapper">
       <!-- Sidebar  -->
-      <div class="iq-sidebar" th:insert="Admin/admin-template.html :: sidebar">
-      </div>
+      <div th:insert="Admin/admin-template.html :: sidebar"></div>
 
       <!-- Top Nav Bar -->
-      <div class="iq-top-navbar" th:insert="Admin/admin-template.html :: topNavbar">
-      </div>
+      <div th:insert="Admin/admin-template.html :: topNavbar"></div>
 
       <!-- Page Content  -->
       <div id="content-page" class="content-page">
@@ -260,8 +257,8 @@
    </div>
    <!-- Wrapper END -->
 
-   <div th:replace="Admin/admin-template.html :: footer">
-   </div>
+   <!-- Footer -->
+   <div th:replace="Admin/admin-template.html :: footer"></div>
 </body>
 
 </html>
