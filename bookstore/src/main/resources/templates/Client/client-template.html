@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.com">
 
-<head>
+<head th:fragment="head(title)">
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,8 +16,10 @@
 
 	<!-- FAVICONS ICON -->
 	<link rel="icon" type="image/x-icon" href="Client/images/favicon.png" />
+
 	<!-- PAGE TITLE HERE -->
-	<title>Bookland Store</title>
+	<title th:text="${title}"></title>
+
 	<!-- MOBILE SPECIFIC -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- STYLESHEETS -->
@@ -38,7 +40,7 @@
 <body>
 	<div class="page-wraper">
 		<!-- Header -->
-		<header class="site-header mo-left header style-1">
+		<header class="site-header mo-left header style-1" th:fragment="header">
 			<!-- Main Header -->
 			<div class="header-info-bar">
 				<div class="container clearfix">
@@ -125,8 +127,8 @@
 											<h6 class="text-secondary">Totle = $500</h6>
 										</li> -->
 										<li class="text-center d-flex">
-											<a href="shop-cart"
-												class="btn btn-sm btn-primary me-2 btnhover w-100">View Cart</a>
+											<a href="shop-cart" class="btn btn-sm btn-primary me-2 btnhover w-100">View
+												Cart</a>
 											<a href="shop-checkout"
 												class="btn btn-sm btn-outline-primary btnhover w-100">Checkout</a>
 										</li>
@@ -355,121 +357,126 @@
 		<!-- Header End -->
 
 		<!-- Footer -->
-		<footer class="site-footer footer-dark">
-			<!-- Footer Top -->
-			<div class="footer-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-3 col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
-							<div class="widget widget_about">
-								<div class="footer-logo logo-white">
-									<a href="/"><img src="Client/images/logo-white.png" alt=""></a>
+		<div th:fragment="footer">
+			
+			<footer class="site-footer footer-dark">
+				<!-- Footer Top -->
+				<div class="footer-top">
+					<div class="container">
+						<div class="row">
+							<div class="col-xl-3 col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
+								<div class="widget widget_about">
+									<div class="footer-logo logo-white">
+										<a href="/"><img src="Client/images/logo-white.png" alt=""></a>
+									</div>
+									<p class="text">Bookland is a Book Store Ecommerce Website</p>
+									<div class="dz-social-icon style-1">
+										<ul>
+											<li><a href="https://www.facebook.com" target="_blank"><i
+														class="fa-brands fa-facebook-f"></i></a></li>
+											<li><a href="https://www.youtube.com" target="_blank"><i
+														class="fa-brands fa-youtube"></i></a></li>
+											<li><a href="https://www.linkedin.com" target="_blank"><i
+														class="fa-brands fa-linkedin"></i></a></li>
+											<li><a href="https://www.instagram.com" target="_blank"><i
+														class="fa-brands fa-instagram"></i></a></li>
+										</ul>
+									</div>
 								</div>
-								<p class="text">Bookland is a Book Store Ecommerce Website</p>
-								<div class="dz-social-icon style-1">
+							</div>
+							<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4 wow fadeInUp" data-wow-delay="0.2s">
+								<div class="widget widget_services">
+									<h5 class="footer-title">Our Links</h5>
 									<ul>
-										<li><a href="https://www.facebook.com" target="_blank"><i
-													class="fa-brands fa-facebook-f"></i></a></li>
-										<li><a href="https://www.youtube.com" target="_blank"><i
-													class="fa-brands fa-youtube"></i></a></li>
-										<li><a href="https://www.linkedin.com" target="_blank"><i
-													class="fa-brands fa-linkedin"></i></a></li>
-										<li><a href="https://www.instagram.com" target="_blank"><i
-													class="fa-brands fa-instagram"></i></a></li>
+										<li><a href="about-us">About us</a></li>
+										<li><a href="contact-us">Contact us</a></li>
+										<li><a href="privacy-policy">Privacy Policy</a></li>
+										<li><a href="pricing">Pricing Table</a></li>
+										<li><a href="faq">FAQ</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-xl-2 col-lg-3 col-sm-4 col-4 wow fadeInUp" data-wow-delay="0.3s">
+								<div class="widget widget_services">
+									<h5 class="footer-title">Bookland ?</h5>
+									<ul>
+										<li><a href="index">Bookland</a></li>
+										<li><a href="services">Services</a></li>
+										<li><a href="books-detail">Book Details</a></li>
+										<li><a href="blog-detail">Blog Details</a></li>
+										<li><a href="books-grid-view">Shop</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4 wow fadeInUp" data-wow-delay="0.4s">
+								<div class="widget widget_services">
+									<h5 class="footer-title">Resources</h5>
+									<ul>
+										<li><a href="services">Download</a></li>
+										<li><a href="support">Help Center</a></li>
+										<li><a href="shop-cart">Shop Cart</a></li>
+										<li><a href="shop-login">Login</a></li>
+										<li><a href="about-us">Partner</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
+								<div class="widget widget_getintuch">
+									<h5 class="footer-title">Get in Touch With Us</h5>
+									<ul>
+										<li>
+											<i class="flaticon-placeholder"></i>
+											<span>832 Thompson Drive, San Fransisco CA 94107,US</span>
+										</li>
+										<li>
+											<i class="flaticon-phone"></i>
+											<span>+123 345123 556<br>
+												+123 345123 556</span>
+										</li>
+										<li>
+											<i class="flaticon-email"></i>
+											<span>support@bookland.id<br>
+												info@bookland.id</span>
+										</li>
 									</ul>
 								</div>
 							</div>
 						</div>
-						<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4 wow fadeInUp" data-wow-delay="0.2s">
-							<div class="widget widget_services">
-								<h5 class="footer-title">Our Links</h5>
-								<ul>
-									<li><a href="about-us">About us</a></li>
-									<li><a href="contact-us">Contact us</a></li>
-									<li><a href="privacy-policy">Privacy Policy</a></li>
-									<li><a href="pricing">Pricing Table</a></li>
-									<li><a href="faq">FAQ</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-xl-2 col-lg-3 col-sm-4 col-4 wow fadeInUp" data-wow-delay="0.3s">
-							<div class="widget widget_services">
-								<h5 class="footer-title">Bookland ?</h5>
-								<ul>
-									<li><a href="index">Bookland</a></li>
-									<li><a href="services">Services</a></li>
-									<li><a href="books-detail">Book Details</a></li>
-									<li><a href="blog-detail">Blog Details</a></li>
-									<li><a href="books-grid-view">Shop</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4 wow fadeInUp" data-wow-delay="0.4s">
-							<div class="widget widget_services">
-								<h5 class="footer-title">Resources</h5>
-								<ul>
-									<li><a href="services">Download</a></li>
-									<li><a href="support">Help Center</a></li>
-									<li><a href="shop-cart">Shop Cart</a></li>
-									<li><a href="shop-login">Login</a></li>
-									<li><a href="about-us">Partner</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
-							<div class="widget widget_getintuch">
-								<h5 class="footer-title">Get in Touch With Us</h5>
-								<ul>
-									<li>
-										<i class="flaticon-placeholder"></i>
-										<span>832 Thompson Drive, San Fransisco CA 94107,US</span>
-									</li>
-									<li>
-										<i class="flaticon-phone"></i>
-										<span>+123 345123 556<br>
-											+123 345123 556</span>
-									</li>
-									<li>
-										<i class="flaticon-email"></i>
-										<span>support@bookland.id<br>
-											info@bookland.id</span>
-									</li>
-								</ul>
+					</div>
+				</div>
+				<!-- Footer Top End -->
+
+				<!-- Footer Bottom -->
+				<div class="footer-bottom">
+					<div class="container">
+						<div class="row fb-inner">
+							<div class="col-lg-6 col-md-12 text-start">
+								<p class="copyright-text">Bookland Store - © 2022 All Rights Reserved</p>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<!-- Footer Top End -->
+				<!-- Footer Bottom End -->
 
-			<!-- Footer Bottom -->
-			<div class="footer-bottom">
-				<div class="container">
-					<div class="row fb-inner">
-						<div class="col-lg-6 col-md-12 text-start">
-							<p class="copyright-text">Bookland Store - © 2022 All Rights Reserved</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Footer Bottom End -->
+			</footer>
+			<!-- Footer End -->
 
-		</footer>
-		<!-- Footer End -->
+			<button class="scroltop" type="button"><i class="fas fa-arrow-up"></i></button>
 
-		<button class="scroltop" type="button"><i class="fas fa-arrow-up"></i></button>
+			<script src="Client/js/jquery.min.js"></script><!-- JQUERY MIN JS -->
+			<script src="Client/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script><!-- BOOTSTRAP MIN JS -->
+			<script src="Client/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+			<!-- BOOTSTRAP SELECT MIN JS -->
+			<script src="Client/vendor/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
+			<script src="Client/vendor/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
+			<script src="Client/vendor/wow/wow.min.js"></script><!-- WOW JS -->
+			<script src="Client/vendor/swiper/swiper-bundle.min.js"></script><!-- SWIPER JS -->
+			<script src="Client/js/dz.carousel.js"></script><!-- DZ CAROUSEL JS -->
+			<script src="Client/js/dz.ajax.js"></script><!-- AJAX -->
+			<script src="Client/js/custom.js"></script><!-- CUSTOM JS -->
+		</div>
+
 	</div>
-
-	<script src="Client/js/jquery.min.js"></script><!-- JQUERY MIN JS -->
-	<script src="Client/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script><!-- BOOTSTRAP MIN JS -->
-	<script src="Client/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script><!-- BOOTSTRAP SELECT MIN JS -->
-	<script src="Client/vendor/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
-	<script src="Client/vendor/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
-	<script src="Client/vendor/wow/wow.min.js"></script><!-- WOW JS -->
-	<script src="Client/vendor/swiper/swiper-bundle.min.js"></script><!-- SWIPER JS -->
-	<script src="Client/js/dz.carousel.js"></script><!-- DZ CAROUSEL JS -->
-	<script src="Client/js/dz.ajax.js"></script><!-- AJAX -->
-	<script src="Client/js/custom.js"></script><!-- CUSTOM JS -->
 
 </body>
 
