@@ -19,18 +19,18 @@ public class CategoryController {
     @Autowired
     CategoryService service;
 
-    @RequestMapping("/")
-    public String home() {
-        return "Admin/admin-dashboard";
-    }
+//    @RequestMapping("/")
+//    public String home() {
+//        return "Admin/admin-dashboard";
+//    }
 
-    @GetMapping("/admin-category")
-    public String showBookCategory(Model model) {
-        List<Category> listCategories = service.listAll();
-        model.addAttribute("listCategories", listCategories);
-
-        return "admin-category";
-    }
+//    @GetMapping("/admin-category")
+//    public String showBookCategory(Model model) {
+//        List<Category> listCategories = service.listAll();
+//        model.addAttribute("listCategories", listCategories);
+//
+//        return "admin-category";
+//    }
 
     @GetMapping("/new")
     public String showNewForm(Model model) {
@@ -47,7 +47,7 @@ public class CategoryController {
     }
 
     @GetMapping("/admin-category/edit/{id}")
-    public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
+    public String showEditForm(@PathVariable Integer id, Model model, RedirectAttributes ra) {
         try {
             Category category = service.get(id);
             model.addAttribute("category", category);
@@ -59,7 +59,7 @@ public class CategoryController {
     }
 
     @GetMapping("/admin-category/delete/{id}")
-    public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
+    public String deleteUser(@PathVariable Integer id, RedirectAttributes ra) {
         try {
             service.delete(id);
             ra.addFlashAttribute("message", "The category ID " + id + " has been deleted");
