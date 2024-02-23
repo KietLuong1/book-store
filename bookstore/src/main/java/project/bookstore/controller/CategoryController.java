@@ -19,34 +19,29 @@ public class CategoryController {
     @Autowired
     CategoryService service;
 
-//    @RequestMapping("/")
-//    public String home() {
-//        return "Admin/admin-dashboard";
-//    }
+    @GetMapping("Admin/admin-category")
+    public String showBookCategory(Model model) {
+        List<Category> listCategories = service.listAll();
+        model.addAttribute("listCategories", listCategories);
 
-//    @GetMapping("/admin-category")
-//    public String showBookCategory(Model model) {
-//        List<Category> listCategories = service.listAll();
-//        model.addAttribute("listCategories", listCategories);
-//
-//        return "admin-category";
-//    }
+        return "Admin/admin-category";
+    }
 
     @GetMapping("/new")
     public String showNewForm(Model model) {
         model.addAttribute("category", new Category());
         model.addAttribute("pageTitle", "Add New Category");
-        return "admin-add-category";
+        return "Admin/admin-add-category";
     }
 
-    @GetMapping("admin-category/save")
+    @GetMapping("/save")
     public String saveCategory(Category category, RedirectAttributes ra) {
         service.save(category);
         ra.addFlashAttribute("message", "The category has been saved successfully");
-        return "redirect:/admin-category";
+        return "redirect:/Admin/admin-category";
     }
 
-    @GetMapping("/admin-category/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Integer id, Model model, RedirectAttributes ra) {
         try {
             Category category = service.get(id);
@@ -55,10 +50,10 @@ public class CategoryController {
         } catch (CategoryNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
         }
-        return "redirect:/admin-category";
+        return "redirect:/Admin/admin-category";
     }
 
-    @GetMapping("/admin-category/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable Integer id, RedirectAttributes ra) {
         try {
             service.delete(id);
@@ -66,6 +61,6 @@ public class CategoryController {
         } catch (CategoryNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
         }
-        return "redirect:/admin-category";
+        return "redirect:/Admin/admin-category";
     }
 }
