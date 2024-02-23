@@ -66,7 +66,7 @@ public class AdminController {
         return "Admin/admin-add-book";
     }
 
-    @GetMapping("admin-add-category")
+    @GetMapping( "admin-add-category")
     public String addCategoryString() {
         return "Admin/admin-add-category";
     }
