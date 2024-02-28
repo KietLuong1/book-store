@@ -11,7 +11,7 @@ import project.bookstore.repository.CategoryRepository;
 
 @Service
 public class CategoryService {
-    @Autowired 
+    @Autowired
     private CategoryRepository categoryRepo;
 
     public List<Category> listAll() {
@@ -29,9 +29,10 @@ public class CategoryService {
         }
         throw new CategoryNotFoundException("Could not find any categories with ID " + id);
     }
+
     public void delete(Integer id) throws CategoryNotFoundException {
         Long count = categoryRepo.countById(id);
-        if (count == null || count ==0) {
+        if (count == null || count == 0) {
             throw new CategoryNotFoundException("Could not find any category with ID " + id);
         }
         categoryRepo.deleteById(id);
