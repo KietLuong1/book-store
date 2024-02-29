@@ -17,6 +17,5 @@ import project.bookstore.service.AuthorService;
 public class AuthorController {
     @Autowired
     private AuthorService service;
-
-
+  
 }
