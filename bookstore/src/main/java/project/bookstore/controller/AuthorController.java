@@ -29,10 +29,10 @@ public class AuthorController {
         return new ModelAndView("Admin/admin-author", "author", list);
     }
 
-    @PostMapping("/save")
+    @GetMapping("/save")
     public String addAuthor(@ModelAttribute Author author) {
         service.save(author);
-        return "redirect:/Admin/admin-books";
+        return "redirect:/Admin/admin-author";
     }
 
     // @GetMapping("/my_books")

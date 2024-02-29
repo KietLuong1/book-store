@@ -791,10 +791,10 @@ h336z" />
 d="M131 316l-100 -140h65h19l-3 -19l-17 -89l100 140h-65h-19l3 19zM160 384v0l-30 -160h96l-160 -224l30 160h-96z" />
     <glyph glyph-name="ion-ios-bolt" unicode="&#xf3e6;" horiz-adv-x="226" 
 d="M160 384v0l-30 -160h96l-160 -224l30 160h-96z" />
-    <glyph glyph-name="ion-ios-book-outline" unicode="&#xf3e7;" horiz-adv-x="384" 
+    <glyph glyph-name="ion-ios-book-outline" unicode="&#xf3e7;" horiz-adv-x="384"
 d="M284 384c55 0 100 -26 100 -79v-1v-4v-261v-17h-6h-11h-5c-17 30 -44 42 -78 42c-40 0 -74 -28 -82 -64h-20c-8 36 -42 64 -82 64c-34 0 -65 -16 -78 -42h-5h-11h-6v9v264v9v1c0 53 45 79 100 79c41 0 78 -14 92 -44c12 30 51 44 92 44zM184 37v254v13v2
 c-1 43 -39 62 -84 62c-44 0 -81 -19 -84 -61v-1v0v-262h1c19 26 48 36 83 36s66 -17 84 -43zM368 300v14v1c-3 42 -40 53 -84 53c-46 0 -84 -20 -84 -64v-1v-266c18 26 49 43 84 43s66 -10 84 -36v256z" />
-    <glyph glyph-name="ion-ios-book" unicode="&#xf3e8;" horiz-adv-x="384" 
+    <glyph glyph-name="ion-ios-book" unicode="&#xf3e8;" horiz-adv-x="384"
 d="M100 384c35 0 67 -10 84 -31v-353h-2c-8 36 -42 64 -82 64c-34 0 -65 -16 -78 -42h-5h-11h-6v9v264v9v1c0 53 45 79 100 79zM284 384c55 0 100 -26 100 -79v-1v-4v-261v-17h-6h-11h-5c-17 30 -44 42 -78 42c-40 0 -74 -28 -82 -64h-2v353c17 21 50 31 84 31z" />
     <glyph glyph-name="ion-ios-bookmarks-outline" unicode="&#xf3e9;" horiz-adv-x="418" 
 d="M385 384c19 0 33 -13 33 -32v-286c0 -19 -14 -34 -33 -34h-143s-25 -4 -25 -19v-13h-8h-8v13c0 15 -11 19 -25 19h-143c-19 0 -33 15 -33 34v286c0 19 14 32 33 32h150c10 0 20 -5 26 -12v0v0c6 7 16 12 26 12h150zM201 37v309c0 9 -12 22 -25 22h-143
