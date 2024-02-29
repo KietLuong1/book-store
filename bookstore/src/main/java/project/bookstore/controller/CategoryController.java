@@ -19,7 +19,7 @@ public class CategoryController {
     @Autowired
     CategoryService service;
 
-    @GetMapping("Admin/admin-category")
+    @GetMapping("/admin-category")
     public String showBookCategory(Model model) {
         List<Category> listCategories = service.listAll();
         model.addAttribute("listCategories", listCategories);
@@ -27,40 +27,42 @@ public class CategoryController {
         return "Admin/admin-category";
     }
 
-    @GetMapping("/new")
+    @GetMapping("/admin-add-category")
     public String showNewForm(Model model) {
         model.addAttribute("category", new Category());
-        model.addAttribute("pageTitle", "Add New Category");
+        model.addAttribute("pageTitle", "Add Category");
         return "Admin/admin-add-category";
     }
 
-    @GetMapping("/save")
+    @GetMapping("/admin-add-category/save")
     public String saveCategory(Category category, RedirectAttributes ra) {
         service.save(category);
         ra.addFlashAttribute("message", "The category has been saved successfully");
-        return "redirect:/Admin/admin-category";
+        return "redirect:/admin-category";
     }
 
-    @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable Integer id, Model model, RedirectAttributes ra) {
+    @GetMapping("/admin-category/edit/{id}")
+    public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
             Category category = service.get(id);
             model.addAttribute("category", category);
             model.addAttribute("pageTitle", "Edit Category (ID: " + id + ")");
+            return "Admin/admin-add-category";
         } catch (CategoryNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
+            return "redirect:/admin-category";
         }
-        return "redirect:/Admin/admin-category";
+
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Integer id, RedirectAttributes ra) {
+    @GetMapping("/admin-category/delete/{id}")
+    public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             service.delete(id);
             ra.addFlashAttribute("message", "The category ID " + id + " has been deleted");
         } catch (CategoryNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
         }
-        return "redirect:/Admin/admin-category";
+        return "redirect:/admin-category";
     }
 }
