@@ -23,7 +23,7 @@
                         </div>
                      </div>
                      <div class="iq-card-body">
-                        <form th:action="@{/admin-add-category/save}" method="post" th:object="${category}">
+                        <form th:action="@{/admin-add-category/save}" method="get" th:object="${category}">
                            <input th:field="*{id}" type="hidden">
                            <div class="form-group">
                               <label>Category Name:</label>
