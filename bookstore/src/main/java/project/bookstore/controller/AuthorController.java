@@ -15,51 +15,8 @@ import project.bookstore.service.AuthorService;
 
 @Controller
 public class AuthorController {
-
     @Autowired
     private AuthorService service;
 
-    @GetMapping("test")
-    public ModelAndView getAllBook() {
-        List<Author> list = service.getAllAuthor();
-        // ModelAndView modelAndView = new ModelAndView();
-        // modelAndView.setViewName("bookList");
-        // modelAndView.addObject("book", list);
-        // return modelAndView;
-        return new ModelAndView("Admin/admin-author", "author", list);
-    }
 
-    @PostMapping("/save")
-    public String addAuthor(@ModelAttribute Author author) {
-        service.save(author);
-        return "redirect:/Admin/admin-books";
-    }
-
-    // @GetMapping("/my_books")
-    // public String getMyBooks(Model model) {
-    //     List<MyBookList> bookList = myBookService.getAllMyBooks();
-    //     model.addAttribute("book", bookList);
-    //     return "myBooks";
-    // }
-
-    // @RequestMapping("/mylist/{id}")
-    // public String getMyList(@PathVariable("id") int id) {
-    //     Book book = service.getBookById(id);
-    //     MyBookList bookList = new MyBookList(book.getId(), book.getName(), book.getAuthor(), book.getPrice());
-    //     myBookService.saveMyBooks(bookList);
-    //     return "redirect:/my_books";
-    // }
-
-    // @RequestMapping("/editBook/{id}")
-	// public String editBook(@PathVariable("id") int id,Model model) {
-	// 	Book b=service.getBookById(id);
-	// 	model.addAttribute("book",b);
-	// 	return "bookEdit";
-	// }
-
-	// @RequestMapping("/deleteBook/{id}")
-	// public String deleteBook(@PathVariable("id")int id) {
-	// 	service.deleteById(id);
-	// 	return "redirect:/admin-books.html";
-	// }
 }

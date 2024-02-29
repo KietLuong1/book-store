@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.bookstore.entity.Category;
-import project.bookstore.service.CategoryNotFoundException;
+import project.bookstore.exception.CategoryNotFoundException;
 import project.bookstore.service.CategoryService;
 
 @Controller
@@ -34,7 +34,7 @@ public class CategoryController {
         return "Admin/admin-add-category";
     }
 
-    @GetMapping("/admin-add-category/save")
+    @PostMapping("/admin-add-category/save")
     public String saveCategory(Category category, RedirectAttributes ra) {
         service.save(category);
         ra.addFlashAttribute("message", "The category has been saved successfully");
@@ -47,12 +47,12 @@ public class CategoryController {
             Category category = service.get(id);
             model.addAttribute("category", category);
             model.addAttribute("pageTitle", "Edit Category (ID: " + id + ")");
+
             return "Admin/admin-add-category";
         } catch (CategoryNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
             return "redirect:/admin-category";
         }
-
     }
 
     @GetMapping("/admin-category/delete/{id}")

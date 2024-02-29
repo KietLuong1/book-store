@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.bookstore.entity.Category;
+import project.bookstore.exception.CategoryNotFoundException;
 import project.bookstore.repository.CategoryRepository;
 
 @Service
@@ -24,6 +25,7 @@ public class CategoryService {
 
     public Category get(Integer id) throws CategoryNotFoundException {
         Optional<Category> result = categoryRepo.findById(id);
+
         if (result.isPresent()) {
             return result.get();
         }
