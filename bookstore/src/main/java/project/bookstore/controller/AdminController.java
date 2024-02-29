@@ -11,10 +11,10 @@ public class AdminController {
         return "Admin/admin-dashboard";
     }
 
-    @GetMapping("admin-category")
-    public String getCategory() {
-        return "Admin/admin-category";
-    }
+//    @GetMapping("admin-category")
+//    public String getCategory() {
+//        return "Admin/admin-category";
+//    }
 
     @GetMapping("admin-author")
     public String getAuthor() {
@@ -64,11 +64,6 @@ public class AdminController {
     @GetMapping("admin-add-book")
     public String addBook() {
         return "Admin/admin-add-book";
-    }
-
-    @GetMapping( "admin-add-category")
-    public String addCategoryString() {
-        return "Admin/admin-add-category";
     }
 
 }
