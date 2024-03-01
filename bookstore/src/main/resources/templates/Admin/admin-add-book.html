@@ -25,8 +25,8 @@
                         </div>
                      </div>
                      <div class="iq-card-body">                       
-                        <form th:action="@{/admin-add-book/save}" method="get" th:object="${book}">
-                           <input th:field="*{book_id}" type="hidden">
+                        <form th:action="@{/admin-add-book/save}" method="post" th:object="${book}">
+                           <input type="hidden" th:field="*{book_id}">
                            <div class="form-group">
                               <label>Book Name:</label>
                               <input type="text" class="form-control" th:field="*{name}">
@@ -41,25 +41,28 @@
                            </div>
                            <div class="form-group">
                               <label>Book Description:</label>
-                              <textarea class="form-control" rows="4" th:field="*{description}"></textarea>
+                              <textarea class="form-control" rows="3" th:field="*{description}"></textarea>
                            </div>
                            <div class="form-group">
                               <label>Book Price:</label>
                               <input type="text" class="form-control" th:field="*{price}">
                            </div>
                            <div class="form-group">
-                              <label>Book Language:</label>
-                              <input type="text" class="form-control" th:field="*{language}">
+                              <label>Book Quantity:</label>
+                              <input type="text" class="form-control" th:field="*{quantity}">
                            </div>
                            <div class="form-group">
-                              <label>Number of Pages:</label>
-                              <input type="text" class="form-control" th:field="*{numPages}">
+                              <label>Book Language:</label>
+                              <input type="text" class="form-control" th:field="*{language}">
                            </div>
                            <div class="form-group">
                               <label>Book Publication Date:</label>
                               <input type="text" class="form-control" th:field="*{publicationDate}">
                            </div>
-<!--                           <input th:field="*{publisher_id}" type="hidden">-->
+                           <div class="form-group">
+                              <label>Number of Pages:</label>
+                              <input type="text" class="form-control" th:field="*{numPages}">
+                           </div>
                            <button type="submit" class="btn btn-primary">Submit</button>
                            <button type="reset" class="btn btn-danger">Reset</button>
                         </form>
