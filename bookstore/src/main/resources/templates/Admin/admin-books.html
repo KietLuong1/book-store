@@ -31,14 +31,15 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 3%;">No</th>
-                                        <th style="width: 15%;">Book Name</th>
+                                        <th style="width: 15%;">Name</th>
                                         <th style="width: 15%;">Category</th>
                                         <th style="width: 15%;">Author</th>
                                         <th style="width: 18%;">Description</th>
                                         <th style="width: 7%;">Price</th>
+                                        <th style="width: 7%;">Quantity</th>
                                         <th style="width: 12%;">Language</th>
-                                        <th style="width: 12%;">Number of Pages</th>
                                         <th style="width: 12%;">Publication Date</th>
+                                        <th style="width: 12%;">Number of Pages</th>
                                         <th style="width: 15%;">Action</th>
                                     </tr>
                                     </thead>
@@ -51,9 +52,10 @@
                                             <td th:text="${book.author}"></td>
                                             <td th:text="${book.description}"></td>
                                             <td th:text="${book.price}"></td>
+                                            <td th:text="${book.quantity}"></td>
                                             <td th:text="${book.language}"></td>
-                                            <td th:text="${book.numPages}"></td>
                                             <td th:text="${book.publicationDate}"></td>
+                                            <td th:text="${book.numPages}"></td>
                                             <td>
                                                 <div class="flex align-items-center list-user-action">
                                                     <a class="bg-primary" data-toggle="tooltip" data-placement="top"
