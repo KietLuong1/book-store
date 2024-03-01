@@ -13,6 +13,9 @@ public class Publisher {
     @Column(nullable = false, length = 255)
     private String publisher_name;
 
+    @Column(nullable = false, length = 255)
+    private String description;
+
     public int getPublisherId() {
         return publisher_id;
     }
@@ -23,5 +26,13 @@ public class Publisher {
 
     public void setPublisherName(String publisher_name) {
         this.publisher_name = publisher_name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
