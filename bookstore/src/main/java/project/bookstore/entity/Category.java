@@ -8,7 +8,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column()
-    private int id;
+    private int category_id;
 
     @Column(nullable = false, length = 255, unique = true)
     private String name;
@@ -17,10 +17,10 @@ public class Category {
     private String description;
 
     public int getId() {
-        return id;
+        return category_id;
     }
     public void setId(Integer id) {
-        this.id = id;
+        this.category_id = id;
     }
     public String getName() {
         return name;

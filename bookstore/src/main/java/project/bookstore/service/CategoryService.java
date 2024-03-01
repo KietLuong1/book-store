@@ -39,18 +39,4 @@ public class CategoryService {
         }
         categoryRepo.deleteById(id);
     }
-
-    public boolean exists(Integer id) {
-        return categoryRepo.existsById(id);
-    }
-
-    public void update(Category updatedCategory) throws CategoryNotFoundException {
-        Integer categoryId = updatedCategory.getId();
-
-        if (!categoryRepo.existsById(categoryId)) {
-            throw new CategoryNotFoundException("Category with ID " + categoryId + " does not exist");
-        }
-
-        categoryRepo.save(updatedCategory);
-    }
 }

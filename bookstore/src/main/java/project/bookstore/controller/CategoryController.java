@@ -47,6 +47,7 @@ public class CategoryController {
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
             Category category = service.get(id);
+            category.setId(id);
             model.addAttribute("category", category);
             model.addAttribute("pageTitle", "Edit Category (ID: " + id + ")");
             return "Admin/admin-add-category";
@@ -55,21 +56,6 @@ public class CategoryController {
             ra.addFlashAttribute("message", e.getMessage());
             return "redirect:/admin-category";
         }
-    }
-    @PostMapping("/admin-category/edit/{id}")
-    public String updateCategory(@PathVariable("id") Integer id, @ModelAttribute("category") Category updatedCategory, RedirectAttributes ra) {
-        try {
-            if (!service.exists(id)) {
-                ra.addFlashAttribute("message", "Category with ID " + id + " does not exist");
-                return "redirect:/admin-category";
-            }
-            updatedCategory.setId(id);
-            service.update(updatedCategory);
-            ra.addFlashAttribute("message", "Category updated successfully");
-        } catch (CategoryNotFoundException e) {
-            ra.addFlashAttribute("message", e.getMessage());
-        }
-        return "redirect:/admin-category";
     }
 
     @GetMapping("/admin-category/delete/{id}")
