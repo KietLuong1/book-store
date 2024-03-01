@@ -21,10 +21,10 @@ public class AdminController {
 //        return "Admin/admin-author";
 //    }
 
-    @GetMapping("admin-books")
-    public String getBooks() {
-        return "Admin/admin-books";
-    }
+//    @GetMapping("admin-books")
+//    public String getBooks() {
+//        return "Admin/admin-books";
+//    }
 
     @GetMapping("profile")
     public String getProfile() {
@@ -61,9 +61,9 @@ public class AdminController {
 //        return "Admin/admin-add-author";
 //    }
 
-    @GetMapping("admin-add-book")
-    public String addBook() {
-        return "Admin/admin-add-book";
-    }
+//    @GetMapping("admin-add-book")
+//    public String addBook() {
+//        return "Admin/admin-add-book";
+//    }
 
 }
