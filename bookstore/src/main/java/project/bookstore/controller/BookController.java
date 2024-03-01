@@ -25,7 +25,7 @@ public class BookController {
         return "Admin/admin-books";
     }
 
-    @GetMapping("/admin-add-book/save")
+    @PostMapping("/admin-add-book/save")
     public String addBook(Book book) {
         service.save(book);
         return "redirect:/admin-books";

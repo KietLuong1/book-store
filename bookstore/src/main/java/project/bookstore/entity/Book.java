@@ -25,16 +25,16 @@ public class Book {
     private String price;
 
     @Column(nullable = false, length = 255)
-    private String language;
+    private String quantity;
 
     @Column(nullable = false, length = 255)
-    private String num_pages;
+    private String language;
 
     @Column(nullable = false, length = 255)
     private String publication_date;
 
     @Column(nullable = false, length = 255)
-    private String publisher_id;
+    private String num_pages;
 
     public int getBook_id() {
         return book_id;
@@ -80,20 +80,20 @@ public class Book {
         this.price = price;
     }
 
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
     public String getLanguage() {
         return language;
     }
 
     public void setLanguage(String language) {
         this.language = language;
-    }
-
-    public String getNumPages() {
-        return num_pages;
-    }
-
-    public void setNumPages(String num_pages) {
-        this.num_pages = num_pages;
     }
 
     public String getPublicationDate() {
@@ -104,8 +104,12 @@ public class Book {
         this.publication_date = publication_date;
     }
 
-    public String getPublisher_id() {
-        return publisher_id;
+    public String getNumPages() {
+        return num_pages;
+    }
+
+    public void setNumPages(String num_pages) {
+        this.num_pages = num_pages;
     }
 
 }
