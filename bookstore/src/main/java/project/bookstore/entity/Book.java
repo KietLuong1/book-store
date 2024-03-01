@@ -1,14 +1,12 @@
 package project.bookstore.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
     private int id;
     private String name;
     private String catagory;
@@ -16,14 +14,6 @@ public class Book {
     private String description;
     private String price;
 
-    public Book(int id, String name, String catagory, String author, String description, String price) {
-        this.id = id;
-        this.name = name;
-        this.catagory = catagory;
-        this.author = author;
-        this.description = description;
-        this.price = price;
-    }
 
     public int getId() {
         return id;

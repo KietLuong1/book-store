@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.bookstore.entity.Author;
-import project.bookstore.entity.Category;
 import project.bookstore.exception.AuthorNotFoundException;
 import project.bookstore.exception.CategoryNotFoundException;
 import project.bookstore.repository.AuthorRepository;
@@ -16,18 +15,18 @@ import project.bookstore.repository.AuthorRepository;
 public class AuthorService {
 
     @Autowired
-    private AuthorRepository authorReposiory;
+    private AuthorRepository authorRepository;
 
     public void save(Author author) {
-        authorReposiory.save(author);
+        authorRepository.save(author);
     }
 
     public List<Author> listAll() {
-        return (List<Author>) authorReposiory.findAll();
+        return (List<Author>) authorRepository.findAll();
     }
 
     public Author get(Integer id) throws AuthorNotFoundException {
-        Optional<Author> result = authorReposiory.findById(id);
+        Optional<Author> result = authorRepository.findById(id);
 
         if (result.isPresent()) {
             return result.get();
@@ -37,11 +36,11 @@ public class AuthorService {
     }
 
     public void delete(Integer id) throws CategoryNotFoundException {
-        Long count = authorReposiory.countById(id);
+        Long count = authorRepository.countById(id);
         if (count == null || count == 0) {
             throw new CategoryNotFoundException("Could not find any category with ID " + id);
         }
-        authorReposiory.deleteById(id);
+        authorRepository.deleteById(id);
     }
 
 }
