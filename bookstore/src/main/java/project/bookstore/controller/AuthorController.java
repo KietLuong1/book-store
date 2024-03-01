@@ -50,7 +50,7 @@ public class AuthorController {
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
             Author author = service.get(id);
-            model.addAttribute("category", author);
+            model.addAttribute("author", author);
             model.addAttribute("pageTitle", "Edit Author (ID: " + id + ")");
 
             return "Admin/admin-add-author";
