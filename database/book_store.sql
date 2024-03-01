@@ -51,9 +51,10 @@ DROP TABLE IF EXISTS `author`;
 CREATE TABLE `author` (
   `author_id` int NOT NULL,
   `author_name` varchar(255) NOT NULL,
-  `dob` date NOT NULL,
+  `dob` datetime(6) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
   PRIMARY KEY (`author_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -64,6 +65,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
+INSERT INTO `author` VALUES (1,'ndt','2012-12-12 00:00:00.000000','vn','dddd','ndt');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,22 +78,17 @@ DROP TABLE IF EXISTS `book`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `book` (
   `book_id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `quantity` varchar(255) NOT NULL,
   `language` varchar(255) NOT NULL,
-  `num_pages` bigint NOT NULL,
-  `publication_date` date DEFAULT NULL,
-  `quantity` int DEFAULT NULL,
-  `publisher_id` int DEFAULT NULL,
-  `author_id` int DEFAULT NULL,
-  `category_id` int DEFAULT NULL,
-  PRIMARY KEY (`book_id`),
-  KEY `fk_book_pub` (`publisher_id`),
-  KEY `fk_book_author_idx` (`author_id`),
-  KEY `fk_book_type_idx` (`category_id`),
-  CONSTRAINT `fk_book_author` FOREIGN KEY (`author_id`) REFERENCES `author` (`author_id`),
-  CONSTRAINT `fk_book_pub` FOREIGN KEY (`publisher_id`) REFERENCES `publisher` (`publisher_id`),
-  CONSTRAINT `fk_book_type` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `publication_date` varchar(255) NOT NULL,
+  `num_pages` varchar(255) NOT NULL,
+  PRIMARY KEY (`book_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,6 +97,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` VALUES (3,'Nguyễn Đức Trọng','Trọng','Trọng 2','ddddd','2000','12','Viet Nam','24/2/2024','3421'),(12,'Nguyễn Đức Trọng','Trọng','Trọng ','ddddd','3333','31','Viet Nam','24/2/2024','1');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,8 +112,10 @@ CREATE TABLE `category` (
   `category_id` int NOT NULL AUTO_INCREMENT,
   `type_name` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `UK_46ccwnsi9409t36lurvtyljak` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,6 +124,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (1,'ndt','ddddd','ndt');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,6 +235,7 @@ CREATE TABLE `publisher` (
   `publisher_id` int NOT NULL,
   `publisher_name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
+  `des` varchar(255) NOT NULL,
   PRIMARY KEY (`publisher_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -244,6 +246,7 @@ CREATE TABLE `publisher` (
 
 LOCK TABLES `publisher` WRITE;
 /*!40000 ALTER TABLE `publisher` DISABLE KEYS */;
+INSERT INTO `publisher` VALUES (1,'ndt','ddddd','dddddd');
 /*!40000 ALTER TABLE `publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -280,4 +283,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-29 23:46:05
+-- Dump completed on 2024-03-01 11:12:51
