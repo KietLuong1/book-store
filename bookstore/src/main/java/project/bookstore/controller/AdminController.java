@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AdminController {
-
-    @GetMapping("admin-dashboard")
+    
+    @GetMapping("/admin-dashboard")
     public String getDashboard() {
         return "Admin/admin-dashboard";
     }
@@ -16,10 +16,10 @@ public class AdminController {
 //        return "Admin/admin-category";
 //    }
 
-    @GetMapping("admin-author")
-    public String getAuthor() {
-        return "Admin/admin-author";
-    }
+//    @GetMapping("admin-author")
+//    public String getAuthor() {
+//        return "Admin/admin-author";
+//    }
 
 //    @GetMapping("admin-books")
 //    public String getBooks() {
@@ -56,10 +56,10 @@ public class AdminController {
         return "Admin/privacy-setting";
     }
 
-    @GetMapping("admin-add-author")
-    public String addAuthor() {
-        return "Admin/admin-add-author";
-    }
+//    @GetMapping("admin-add-author")
+//    public String addAuthor() {
+//        return "Admin/admin-add-author";
+//    }
 
 //    @GetMapping("admin-add-book")
 //    public String addBook() {

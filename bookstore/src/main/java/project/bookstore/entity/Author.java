@@ -1,7 +1,9 @@
 package project.bookstore.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -9,11 +11,14 @@ import java.util.Date;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "author_id")
     private Integer id;
     @Column(nullable = false)
     private String name;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate dob;
+    private String country;
     private String description;
-    private Date dob;
 
     public Integer getId() {
         return id;
@@ -35,11 +40,19 @@ public class Author {
         this.description = description;
     }
 
-    public Date getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

@@ -9,5 +9,5 @@ import project.bookstore.entity.Author;
 @Repository
 public interface AuthorRepository extends CrudRepository<Author, Integer> {
 
-    Long countById(Integer id);
+   public Long countById(Integer id);
 }
