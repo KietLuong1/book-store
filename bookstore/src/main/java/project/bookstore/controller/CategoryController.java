@@ -1,11 +1,13 @@
 package project.bookstore.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -47,12 +49,27 @@ public class CategoryController {
             Category category = service.get(id);
             model.addAttribute("category", category);
             model.addAttribute("pageTitle", "Edit Category (ID: " + id + ")");
-
             return "Admin/admin-add-category";
+
         } catch (CategoryNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
             return "redirect:/admin-category";
         }
+    }
+    @PostMapping("/admin-category/edit/{id}")
+    public String updateCategory(@PathVariable("id") Integer id, @ModelAttribute("category") Category updatedCategory, RedirectAttributes ra) {
+        try {
+            if (!service.exists(id)) {
+                ra.addFlashAttribute("message", "Category with ID " + id + " does not exist");
+                return "redirect:/admin-category";
+            }
+            updatedCategory.setId(id);
+            service.update(updatedCategory);
+            ra.addFlashAttribute("message", "Category updated successfully");
+        } catch (CategoryNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin-category";
     }
 
     @GetMapping("/admin-category/delete/{id}")
