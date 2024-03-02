@@ -19,7 +19,9 @@ public class Category {
     public int getId() {
         return id;
     }
-
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
@@ -35,9 +37,4 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Category [id=" + id + ", name=" + name + ", description=" + description + "]";
-//    }
 }
