@@ -49,14 +49,13 @@ DROP TABLE IF EXISTS `author`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `author` (
-  `author_id` int NOT NULL,
-  `author_name` varchar(255) NOT NULL,
-  `dob` datetime(6) DEFAULT NULL,
+  `author_id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `dob` date DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
   PRIMARY KEY (`author_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +64,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (1,'ndt','2012-12-12 00:00:00.000000','vn','dddd','ndt');
+INSERT INTO `author` VALUES (2,'Sầu Riêng','2024-03-13','VN','as'),(3,'Dưa Hấu','2024-03-02','CCCCCCCC','aaaaaaaaa');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +87,7 @@ CREATE TABLE `book` (
   `publication_date` varchar(255) NOT NULL,
   `num_pages` varchar(255) NOT NULL,
   PRIMARY KEY (`book_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +96,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (3,'Nguyễn Đức Trọng','Trọng','Trọng 2','ddddd','2000','12','Viet Nam','24/2/2024','3421'),(12,'Nguyễn Đức Trọng','Trọng','Trọng ','ddddd','3333','31','Viet Nam','24/2/2024','1');
+INSERT INTO `book` VALUES (14,'Dưa Hấu','Nguyễn Đức Trọng','Đức Trọng','vvvvv','1000','5','bbbb','24/2/2024','587'),(16,'Sầu Riêng','Trọng','Trọng 3','gggg','1000','7','my','24/2/2025','67');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,12 +109,10 @@ DROP TABLE IF EXISTS `category`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
   `category_id` int NOT NULL AUTO_INCREMENT,
-  `type_name` varchar(255) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`category_id`),
-  UNIQUE KEY `UK_46ccwnsi9409t36lurvtyljak` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +121,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'ndt','ddddd','ndt');
+INSERT INTO `category` VALUES (1,'dddddvvvv','ddddd'),(2,'Dưa Hấu','aaaaa');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,7 +232,6 @@ CREATE TABLE `publisher` (
   `publisher_id` int NOT NULL,
   `publisher_name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `des` varchar(255) NOT NULL,
   PRIMARY KEY (`publisher_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -246,7 +242,7 @@ CREATE TABLE `publisher` (
 
 LOCK TABLES `publisher` WRITE;
 /*!40000 ALTER TABLE `publisher` DISABLE KEYS */;
-INSERT INTO `publisher` VALUES (1,'ndt','ddddd','dddddd');
+INSERT INTO `publisher` VALUES (1,'ndt','ddddd');
 /*!40000 ALTER TABLE `publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,4 +279,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-01 11:12:51
+-- Dump completed on 2024-03-02 10:38:07
