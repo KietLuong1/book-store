@@ -35,6 +35,15 @@ public class Book {
 
     @Column(nullable = false, length = 255)
     private String num_pages;
+    @Column(length = 45, nullable = true)
+    private String book_imgae;
+
+    public String getBook_imgae() {
+        return book_imgae;
+    }
+    public void setBook_imgae(String book_imgae) {
+        this.book_imgae = book_imgae;
+    }
 
     public int getBook_id() {
         return book_id;
