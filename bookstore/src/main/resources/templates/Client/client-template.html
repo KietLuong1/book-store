@@ -210,7 +210,7 @@
                 <div class="header-search-nav">
                     <form class="header-item-search">
                         <div class="input-group search-input">
-                            <select class="default-select">
+                            <div class="dropdown bootstrap-select default-select"><select class="default-select">
                                 <option>Category</option>
                                 <option>Photography</option>
                                 <option>Arts</option>
@@ -226,6 +226,21 @@
                                 <option>Classics</option>
                                 <option>Education</option>
                             </select>
+                                <button type="button" tabindex="-1" class="btn dropdown-toggle btn-light"
+                                        data-bs-toggle="dropdown" role="combobox" aria-owns="bs-select-1"
+                                        aria-haspopup="listbox" aria-expanded="false" title="Category">
+                                    <div class="filter-option">
+                                        <div class="filter-option-inner">
+                                            <div class="filter-option-inner-inner">Category</div>
+                                        </div>
+                                    </div>
+                                </button>
+                                <div class="dropdown-menu ">
+                                    <div class="inner show" role="listbox" id="bs-select-1" tabindex="-1">
+                                        <ul class="dropdown-menu inner show" role="presentation"></ul>
+                                    </div>
+                                </div>
+                            </div>
                             <input type="text" class="form-control" aria-label="Text input with dropdown button"
                                    placeholder="Search Books Here">
                             <button class="btn" type="button"><i class="flaticon-loupe"></i></button>

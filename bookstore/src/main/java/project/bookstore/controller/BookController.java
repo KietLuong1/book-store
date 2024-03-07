@@ -1,12 +1,21 @@
 package project.bookstore.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Book;
 import project.bookstore.service.BookService;
@@ -27,6 +36,23 @@ public class BookController {
 
     @PostMapping("/admin-add-book/save")
     public String addBook(Book book) {
+//        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//        book.setBook_imgae(fileName);
+//        Book savedBoook = service.save(book);
+//
+//        String uploadDir = "./Admin/images/" + savedBoook.getBook_id();
+//
+//        Path uploadPath = Paths.get(uploadDir);
+//
+//        if (!Files.exists(uploadPath)) {
+//            Files.createDirectories(uploadPath);
+//        }
+//        try (InputStream inputStream = multipartFile.getInputStream()) {
+//            Path filePath = uploadPath.resolve(fileName);
+//            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+//        } catch (IOException e) {
+//            throw new IOException("Could not save uploaded file: " + fileName);
+//        }
         service.save(book);
         return "redirect:/admin-books";
     }
