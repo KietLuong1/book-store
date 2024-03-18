@@ -1,9 +1,3 @@
-/*
-Template: Booksto - Responsive Bootstrap 4 Admin Dashboard Template
-Author: iqonicthemes.in
-Design and Developed by: iqonicthemes.in
-NOTE: This file contains the styling for responsive Template.
-*/
 
 /*----------------------------------------------
 Index Of Script
@@ -38,27 +32,33 @@ Index Of Script
 ------------------------------------------------
 Index Of Script
 ----------------------------------------------*/
-// $(document).ready(function () {
-//     $('#fileImage'.change(function () {
-//         showImageThumbnail(this);
-//     }));
-// });
-//
-// function showImageThumbnail(fileInput) {
-//     let file = fileInput.files[0];
-//     let reader = new FileReader();
-//
-//     reader.onload = function (e) {
-//         $('#thumbnail').attr('src'.e.target.result);
-//     };
-//
-//     reader.readAsDataURL(file);
-// }
+
+function showImageThumbnail(fileInput) {
+    let file = fileInput.files[0];
+    let reader = new FileReader();
+
+    reader.onload = function (e) {
+        $('#thumbnail').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(file);
+}
+
+// Custom Function
+
 
 (function (jQuery) {
     "use strict";
 
     jQuery(document).ready(function () {
+
+        /*---------------------------------------------------------------------
+            Custom
+            -----------------------------------------------------------------------*/
+        $('#fileImage').change(function () {
+            showImageThumbnail(this);
+        })
+
         /*---------------------------------------------------------------------
             Tooltip
             -----------------------------------------------------------------------*/
@@ -184,7 +184,7 @@ Index Of Script
                         .slideDown("slow");
                 }
             }
-        );
+            );
 
         /*---------------------------------------------------------------------
             Page Loader
@@ -299,7 +299,7 @@ Index Of Script
             Scrollbar1.init(
                 document.querySelector("#right-sidebar-scrollbar"),
                 options
-            );
+                );
         }
 
         /*---------------------------------------------------------------------
@@ -377,72 +377,72 @@ Index Of Script
             var slick_index = $(".slick-active.slick-center").data("slick-index");
 
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                (slick_index - 1) +
-                '"]'
-            ).addClass("temp");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            (slick_index - 1) +
+            '"]'
+                ).addClass("temp");
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                (slick_index - 2) +
-                '"]'
-            ).addClass("temp-1");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            (slick_index - 2) +
+            '"]'
+                ).addClass("temp-1");
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                (slick_index - 3) +
-                '"]'
-            ).addClass("temp-2");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            (slick_index - 3) +
+            '"]'
+                ).addClass("temp-2");
 
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                parseInt(slick_index + 1) +
-                '"]'
-            ).addClass("temp-next");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            parseInt(slick_index + 1) +
+            '"]'
+                ).addClass("temp-next");
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                parseInt(slick_index + 2) +
-                '"]'
-            ).addClass("temp-next-1");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            parseInt(slick_index + 2) +
+            '"]'
+                ).addClass("temp-next-1");
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                parseInt(slick_index + 3) +
-                '"]'
-            ).addClass("temp-next-2");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            parseInt(slick_index + 3) +
+            '"]'
+                ).addClass("temp-next-2");
         });
 
         $("#newrealease-slider").on("beforeChange", function () {
             var slick_index = $(".slick-active.slick-center").data("slick-index");
 
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                (slick_index - 1) +
-                '"]'
-            ).removeClass("temp");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            (slick_index - 1) +
+            '"]'
+                ).removeClass("temp");
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                (slick_index - 2) +
-                '"]'
-            ).removeClass("temp-1");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            (slick_index - 2) +
+            '"]'
+                ).removeClass("temp-1");
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                (slick_index - 3) +
-                '"]'
-            ).removeClass("temp-2");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            (slick_index - 3) +
+            '"]'
+                ).removeClass("temp-2");
 
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                parseInt(slick_index + 1) +
-                '"]'
-            ).removeClass("temp-next");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            parseInt(slick_index + 1) +
+            '"]'
+                ).removeClass("temp-next");
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                parseInt(slick_index + 2) +
-                '"]'
-            ).removeClass("temp-next-1");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            parseInt(slick_index + 2) +
+            '"]'
+                ).removeClass("temp-next-1");
             $(
-                '#newrealease-slider .slick-active[data-slick-index="' +
-                parseInt(slick_index + 3) +
-                '"]'
-            ).removeClass("temp-next-2");
+            '#newrealease-slider .slick-active[data-slick-index="' +
+            parseInt(slick_index + 3) +
+            '"]'
+                ).removeClass("temp-next-2");
         });
 
         $("#favorites-slider").slick({
@@ -667,11 +667,11 @@ Index Of Script
                             form.classList.add("was-validated");
                         },
                         false
-                    );
+                        );
                 });
             },
             false
-        );
+            );
 
         /*---------------------------------------------------------------------
             Sidebar Widget

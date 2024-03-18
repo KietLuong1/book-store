@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head th:fragment="header(title)">
@@ -26,7 +26,7 @@
       <!-- Sidebar  -->
       <div th:fragment="sidebar" class="iq-sidebar">
          <div class="iq-sidebar-logo d-flex justify-content-between">
-            <a href="admin-dashboard" class="header-logo">
+            <a href="/admin-dashboard" class="header-logo">
                <img src="/Admin/images/logo.png" class="img-fluid rounded-normal" alt="">
             </a>
 
@@ -48,11 +48,11 @@
                            class="las la-home iq-arrow-left"></i><span>Admin</span><i
                            class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                      <ul id="admin" class="iq-submenu collapse show" data-parent="#iq-sidebar-toggle">
-                        <li class="active"><a href="admin-dashboard"><i class="las la-house-damage"></i>Dashboard</a>
+                        <li class="active"><a href="/admin-dashboard"><i class="las la-house-damage"></i>Dashboard</a>
                         </li>
-                        <li><a th:href="@{'/admin-category'}"><i class="ri-function-line"></i>Books Category</a></li>
-                        <li><a th:href="@{'/admin-author'}"><i class="ri-book-line"></i>Author</a></li>
-                        <li><a th:href="@{'/admin-books'}"><i class="ri-file-pdf-line"></i>Books</a></li>
+                        <li><a href="/admin-category"><i class="ri-function-line"></i>Books Category</a></li>
+                        <li><a href="/admin-author"><i class="ri-book-line"></i>Author</a></li>
+                        <li><a href="/admin-books"><i class="ri-file-pdf-line"></i>Books</a></li>
                      </ul>
                   </li>
 
@@ -62,10 +62,10 @@
                            class="las la-user-tie iq-arrow-left"></i><span>User</span><i
                            class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                      <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li><a href="profile"><i class="las la-id-card-alt"></i>User Profile</a></li>
-                        <li><a href="profile-edit"><i class="las la-edit"></i>User Edit</a></li>
-                        <li><a href="add-user"><i class="las la-plus-circle"></i>User Add</a></li>
-                        <li><a href="user-list"><i class="las la-th-list"></i>User List</a></li>
+                        <li><a href="/profile"><i class="las la-id-card-alt"></i>User Profile</a></li>
+                        <li><a href="/profile-edit"><i class="las la-edit"></i>User Edit</a></li>
+                        <li><a href="/add-user"><i class="las la-plus-circle"></i>User Add</a></li>
+                        <li><a href="/user-list"><i class="las la-th-list"></i>User List</a></li>
                      </ul>
                   </li>
                </ul>
@@ -83,7 +83,7 @@
                      <div class="main-circle"><i class="las la-bars"></i></div>
                   </div>
                   <div class="iq-navbar-logo d-flex justify-content-between">
-                     <a href="admin-dashboard" class="header-logo">
+                     <a href="/admin-dashboard" class="header-logo">
                         <img src="/Admin/images/logo.png" class="img-fluid rounded-normal" alt="">
                      </a>
                   </div>
@@ -168,7 +168,7 @@
                                     </div>
                                  </a>
                                  <div class="d-inline-block w-100 text-center p-3">
-                                    <a class="bg-primary iq-sign-btn" href="sign-in" role="button">Log out<i
+                                    <a class="bg-primary iq-sign-btn" href="/sign-in" role="button">Log out<i
                                           class="ri-login-box-line ml-2"></i></a>
                                  </div>
                               </div>
@@ -193,7 +193,7 @@
                <div class="col-lg-6"></div>
                <div class="col-lg-6 text-right">Copyright <span id="copyright">
                      <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
-                  </span> <a href="admin-dashboard">Bookland Store</a> All Rights Reserved
+                  </span> <a href="/admin-dashboard">Bookland Store</a> All Rights Reserved
                </div>
             </div>
          </div>
@@ -201,58 +201,58 @@
 
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="Admin/js/jquery.min.js"></script>
-      <script src="Admin/js/popper.min.js"></script>
-      <script src="Admin/js/bootstrap.min.js"></script>
+      <script src="/Admin/js/jquery.min.js"></script>
+      <script src="/Admin/js/popper.min.js"></script>
+      <script src="/Admin/js/bootstrap.min.js"></script>
       <!-- Appear JavaScript -->
-      <script src="Admin/js/jquery.appear.js"></script>
+      <script src="/Admin/js/jquery.appear.js"></script>
       <!-- Countdown JavaScript -->
-      <script src="Admin/js/countdown.min.js"></script>
+      <script src="/Admin/js/countdown.min.js"></script>
       <!-- Counterup JavaScript -->
-      <script src="Admin/js/waypoints.min.js"></script>
-      <script src="Admin/js/jquery.counterup.min.js"></script>
+      <script src="/Admin/js/waypoints.min.js"></script>
+      <script src="/Admin/js/jquery.counterup.min.js"></script>
       <!-- Wow JavaScript -->
-      <script src="Admin/js/wow.min.js"></script>
+      <script src="/Admin/js/wow.min.js"></script>
       <!-- Apexcharts JavaScript -->
-      <script src="Admin/js/apexcharts.js"></script>
+      <script src="/Admin/js/apexcharts.js"></script>
       <!-- Slick JavaScript -->
-      <script src="Admin/js/slick.min.js"></script>
+      <script src="/Admin/js/slick.min.js"></script>
       <!-- Select2 JavaScript -->
-      <script src="Admin/js/select2.min.js"></script>
+      <script src="/Admin/js/select2.min.js"></script>
       <!-- Owl Carousel JavaScript -->
-      <script src="Admin/js/owl.carousel.min.js"></script>
+      <script src="/Admin/js/owl.carousel.min.js"></script>
       <!-- Magnific Popup JavaScript -->
-      <script src="Admin/js/jquery.magnific-popup.min.js"></script>
+      <script src="/Admin/js/jquery.magnific-popup.min.js"></script>
       <!-- Smooth Scrollbar JavaScript -->
-      <script src="Admin/js/smooth-scrollbar.js"></script>
+      <script src="/Admin/js/smooth-scrollbar.js"></script>
       <!-- lottie JavaScript -->
-      <script src="Admin/js/lottie.js"></script>
+      <script src="/Admin/js/lottie.js"></script>
       <!-- am core JavaScript -->
-      <script src="Admin/js/core.js"></script>
+      <script src="/Admin/js/core.js"></script>
       <!-- am charts JavaScript -->
-      <script src="Admin/js/charts.js"></script>
+      <script src="/Admin/js/charts.js"></script>
       <!-- am animated JavaScript -->
-      <script src="Admin/js/animated.js"></script>
+      <script src="/Admin/js/animated.js"></script>
       <!-- am kelly JavaScript -->
-      <script src="Admin/js/kelly.js"></script>
+      <script src="/Admin/js/kelly.js"></script>
       <!-- am maps JavaScript -->
-      <script src="Admin/js/maps.js"></script>
+      <script src="/Admin/js/maps.js"></script>
       <!-- am worldLow JavaScript -->
-      <script src="Admin/js/worldLow.js"></script>
+      <script src="/Admin/js/worldLow.js"></script>
       <!-- Raphael-min JavaScript -->
-      <script src="Admin/js/raphael-min.js"></script>
+      <script src="/Admin/js/raphael-min.js"></script>
       <!-- Morris JavaScript -->
-      <script src="Admin/js/morris.js"></script>
+      <script src="/Admin/js/morris.js"></script>
       <!-- Morris min JavaScript -->
-      <script src="Admin/js/morris.min.js"></script>
+      <script src="/Admin/js/morris.min.js"></script>
       <!-- Flatpicker Js -->
-      <script src="Admin/js/flatpickr.js"></script>
+      <script src="/Admin/js/flatpickr.js"></script>
       <!-- Style Customizer -->
-      <script src="Admin/js/style-customizer.js"></script>
+      <script src="/Admin/js/style-customizer.js"></script>
       <!-- Chart Custom JavaScript -->
-      <script src="Admin/js/chart-custom.js"></script>
+      <script src="/Admin/js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
-      <script src="Admin/js/custom.js"></script>
+      <script src="/Admin/js/custom.js"></script>
 
    </div>
 
