@@ -17,8 +17,8 @@ public class AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
 
-    public void save(Author author) {
-        authorRepository.save(author);
+    public Author save(Author author) {
+        return authorRepository.save(author);
     }
 
     public List<Author> listAll() {
