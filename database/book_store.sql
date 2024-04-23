@@ -55,7 +55,7 @@ CREATE TABLE `author` (
   `country` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`author_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (2,'Sầu Riêng','2024-03-13','VN','as'),(3,'Dưa Hấu','2024-03-02','CCCCCCCC','aaaaaaaaa');
+INSERT INTO `author` VALUES (1,'Đức Trọng','2002-01-01','Việt Nam','Quê Quán: Bình Dương\r\n'),(2,'Anh Kiệt','2002-02-02','Việt Nam','Quê Quán: Bình Dương'),(3,'Hương Duyên','2002-03-03','Việt Nam','Quê Quán: Bình Dương'),(4,'Văn A','2003-06-30','Việt Nam','New Author'),(5,'Peter','1985-07-02','USA','History Author'),(6,'Tom','1975-06-09','Italy','Author From Italy'),(7,'Ben','1995-06-09','Thai Lan','Young Author From Thai Lan');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,8 +86,9 @@ CREATE TABLE `book` (
   `language` varchar(255) NOT NULL,
   `publication_date` varchar(255) NOT NULL,
   `num_pages` varchar(255) NOT NULL,
+  `book_imgae` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`book_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +97,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (14,'Dưa Hấu','Nguyễn Đức Trọng','Đức Trọng','vvvvv','1000','5','bbbb','24/2/2024','587'),(16,'Sầu Riêng','Trọng','Trọng 3','gggg','1000','7','my','24/2/2025','67');
+INSERT INTO `book` VALUES (1,'Book 1','Architecture','Đức Trọng','Architecture Book','50000','60','English','24/2/2023','189',NULL),(2,'Book 2','Biography','Anh Kiệt','Biography Book','250000','20','English','24/2/2022','325',NULL),(3,'Book 3','Business & Economics','Hương Duyên','Business & Economics Book','400000','35','English','24/2/2021','565',NULL),(4,'Book 4','Business & Economics','Tom','Biography Book','765000','29','English','24/7/2020','634',NULL),(5,'Book 5','Business & Economics','Ben','Business & Economics Book','900000','35','English','24/2/2021','234',NULL),(6,'Book 6','Business & Economics','Peter','Architecture Book','500000','57','English','24/9/2015','543',NULL),(7,'Book 7','Business & Economics','Văn A','Business & Economics Book','245000','73','English','04/5/2008','657',NULL),(8,'Book 8','Business & Economics','Tom','Biography Book','875000','86','English','07/2/2014','234',NULL);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +113,7 @@ CREATE TABLE `category` (
   `name` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +122,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'dddddvvvv','ddddd'),(2,'Dưa Hấu','aaaaa');
+INSERT INTO `category` VALUES (1,'Architecture','Architecture'),(2,'Art','Art'),(3,'Action','Action'),(4,'Biography','Biography'),(5,'Body, Mind & Spirit','Body, Mind & Spirit'),(6,'Business & Economics','Business & Economics'),(7,'Children Fiction','Children Fiction'),(8,'Children Non-Fiction','Children Non-Fiction'),(9,'Comics & Graphics','Comics & Graphics'),(10,'Cooking','Cooking'),(11,'Crafts & Hobbies','Crafts & Hobbies'),(12,'Design','Design'),(13,'Drama','Drama'),(14,'Education','Education'),(15,'Family & Relationships','Family & Relationships'),(16,'Fiction','Fiction'),(17,'Foreign Language','Foreign Language'),(18,'Games','Games'),(19,'History','History'),(20,'House & Home','House & Home');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-02 10:38:07
+-- Dump completed on 2024-04-23  9:53:51
