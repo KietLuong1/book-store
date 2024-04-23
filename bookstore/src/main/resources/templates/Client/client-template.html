@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:ul="https://www.thymeleaf.org">
 
 <head th:fragment="head(title)">
     <!-- Meta -->
@@ -332,37 +332,10 @@
                 <div class="category-toggle">
                     <div class="toggle-items row book-grid-row">
                         <div class="footer-col-book">
-                            <ul>
-                                <li><a href="books-grid-view">Architecture</a></li>
-                                <li><a href="books-grid-view">Art</a></li>
-                                <li><a href="books-grid-view">Action</a></li>
-                                <li><a href="books-grid-view">Biography</a></li>
-                                <li><a href="books-grid-view">Body, Mind & Spirit</a></li>
-                                <li><a href="books-grid-view">Business & Economics</a></li>
-                                <li><a href="books-grid-view">Children Fiction</a></li>
-                                <li><a href="books-grid-view">Children Non-Fiction</a></li>
-                                <li><a href="books-grid-view">Comics & Graphics</a></li>
-                                <li><a href="books-grid-view">Cooking</a></li>
-                                <li><a href="books-grid-view">Crafts & Hobbies</a></li>
-                                <li><a href="books-grid-view">Design</a></li>
-                                <li><a href="books-grid-view">Drama</a></li>
-                                <li><a href="books-grid-view">Education</a></li>
-                                <li><a href="books-grid-view">Family & Relationships</a></li>
-                                <li><a href="books-grid-view">Fiction</a></li>
-                                <li><a href="books-grid-view">Foreign Language</a></li>
-                                <li><a href="books-grid-view">Games</a></li>
-                                <li><a href="books-grid-view">Gardening</a></li>
-                                <li><a href="books-grid-view">Health & Fitness</a></li>
-                                <li><a href="books-grid-view">History</a></li>
-                                <li><a href="books-grid-view">House & Home</a></li>
-                                <li><a href="books-grid-view">Humor</a></li>
-                                <li><a href="books-grid-view">Literary Collections</a></li>
-                                <li><a href="books-grid-view">Mathematics</a></li>
-                                <li><a href="books-grid-view">Medical</a></li>
-                                <li><a href="books-grid-view">Nature</a></li>
-                                <li><a href="books-grid-view">Performing Arts</a></li>
-                                <li><a href="books-grid-view">Pets</a></li>
-                                <li><a href="books-grid-view">Show others</a></li>
+                            <ul href="client-template">
+                                <li th:each="category: ${listCategoriesName}">
+                                    <a href="books-grid-view" th:text="${category.name}"></a>
+                                </li>
                             </ul>
                         </div>
                     </div>

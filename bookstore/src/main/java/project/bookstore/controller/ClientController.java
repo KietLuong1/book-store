@@ -1,13 +1,24 @@
 package project.bookstore.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import project.bookstore.entity.Category;
+import project.bookstore.service.CategoryService;
+
+import java.util.List;
 
 @Controller
 public class ClientController {
+    @Autowired
+    CategoryService service;
 
     @GetMapping("")
-    public String home() {
+    public String home(Model model) {
+        // Get All Catagories Name from DB to Homepage
+        List<Category> listCategoriesName = service.listAll();
+        model.addAttribute("listCategoriesName", listCategoriesName);
         return "Client/index";
     }
 
@@ -35,6 +46,7 @@ public class ClientController {
     public String getBooksGridView() {
         return "Client/books-grid-view";
     }
+
     @GetMapping("books-grid-view-sidebar")
     public String getBooksGridViewSidebar() {
         return "Client/books-grid-view-sidebar";
