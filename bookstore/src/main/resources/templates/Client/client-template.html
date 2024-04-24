@@ -151,7 +151,7 @@
                                         <span>info@gmail.com</span>
                                     </div>
                                     <div class="dropdown-body">
-                                        <a href="my-profile"
+                                        <a href="/my-profile"
                                            class="dropdown-item d-flex justify-content-between align-items-center ai-icon">
                                             <div>
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="20px"
@@ -163,7 +163,7 @@
                                                 <span class="ms-2">Profile</span>
                                             </div>
                                         </a>
-                                        <a href="shop-cart"
+                                        <a href="/shop-cart"
                                            class="dropdown-item d-flex justify-content-between align-items-center ai-icon">
                                             <div>
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="20px"
@@ -175,7 +175,7 @@
                                                 <span class="ms-2">My Order</span>
                                             </div>
                                         </a>
-                                        <a href="wishlist"
+                                        <a href="/wishlist"
                                            class="dropdown-item d-flex justify-content-between align-items-center ai-icon">
                                             <div>
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="20px"
@@ -187,7 +187,7 @@
                                                 <span class="ms-2">Wishlist</span>
                                             </div>
                                         </a>
-                                        <a href="order-history"
+                                        <a href="/order-history"
                                            class="dropdown-item d-flex justify-content-between align-items-center ai-icon">
                                             <div>
                                                 <img th:src="@{/Client/images/history.png}" alt="" height="20px"
@@ -302,13 +302,12 @@
                                     <li><a href="books-grid-view">Drama</a></li>
                                     <li><a href="books-grid-view">Education</a></li>
                                     <li><a href="books-grid-view">Show more...</a></li>
-
                                 </ul>
                             </li>
-                            <li><a href="blog-list-sidebar"><span>Blog</span></a>
-                            </li>
-                            <li><a href="about-us"><span>About Us</span></a></li>
-                            <li><a href="contact-us"><span>Contact Us</span></a></li>
+                            <li><a href="/books-list"><span>Books</span></a>
+                            <li><a href="/blog-list-sidebar"><span>Blog</span></a></li>
+                            <li><a href="/about-us"><span>About Us</span></a></li>
+                            <li><a href="/contact-us"><span>Contact Us</span></a></li>
                         </ul>
                         <div class="dz-social-icon">
                             <ul>
@@ -334,7 +333,7 @@
                         <div class="footer-col-book">
                             <ul href="client-template">
                                 <li th:each="category: ${listCategoriesName}">
-                                    <a href="books-grid-view" th:text="${category.name}"></a>
+                                    <a href="/books-list" th:text="${category.name}"></a>
                                 </li>
                             </ul>
                         </div>
@@ -392,7 +391,7 @@
                                 <ul>
                                     <li><a href="index">Bookland</a></li>
                                     <li><a href="services">Services</a></li>
-                                    <li><a href="books-detail">Book Details</a></li>
+                                    <li><a href="books-list">Book Details</a></li>
                                     <li><a href="blog-detail">Blog Details</a></li>
                                     <li><a href="books-grid-view">Shop</a></li>
                                 </ul>

@@ -30,8 +30,35 @@ public class BookController {
     public String getAllBook(Model model) {
         List<Book> listBooks = service.getAllBook();
         model.addAttribute("listBooks", listBooks);
-
         return "Admin/admin-books";
+    }
+
+    @RequestMapping("/books-detail/{id}")
+    public String getBookDetail(@PathVariable("id") Integer id, Model model) {
+        Book book = service.getBookById(id);
+        model.addAttribute("book", book);
+        return "Client/books-detail";
+    }
+
+    @RequestMapping("/admin-books/edit/{id}")
+    public String editBook(@PathVariable("id") Integer id, Model model) {
+        Book book = service.getBookById(id);
+        model.addAttribute("book", book);
+        model.addAttribute("pageTitle", "Edit Book (ID: " + id + ")");
+        return "Admin/admin-add-book";
+    }
+
+    @RequestMapping("/admin-books/delete/{id}")
+    public String deleteBook(@PathVariable("id") Integer id) {
+        service.deleteById(id);
+        return "redirect:/admin-books";
+    }
+
+    @GetMapping("/admin-add-book")
+    public String showNewTitle(Model model) {
+        model.addAttribute("book", new Book());
+        model.addAttribute("pageTitle", "Add New Book");
+        return "Admin/admin-add-book";
     }
 
     @PostMapping("/admin-add-book/save")
@@ -55,27 +82,6 @@ public class BookController {
 //        }
         service.save(book);
         return "redirect:/admin-books";
-    }
-
-    @RequestMapping("/admin-books/edit/{id}")
-    public String editBook(@PathVariable("id") Integer id, Model model) {
-        Book book = service.getBookById(id);
-        model.addAttribute("book", book);
-        model.addAttribute("pageTitle", "Edit Book (ID: " + id + ")");
-        return "Admin/admin-add-book";
-    }
-
-    @RequestMapping("/admin-books/delete/{id}")
-    public String deleteBook(@PathVariable("id") Integer id) {
-        service.deleteById(id);
-        return "redirect:/admin-books";
-    }
-
-    @GetMapping("/admin-add-book")
-    public String showNewTitle(Model model) {
-        model.addAttribute("book", new Book());
-        model.addAttribute("pageTitle", "Add New Book");
-        return "Admin/admin-add-book";
     }
 
 }
