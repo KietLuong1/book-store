@@ -12,26 +12,26 @@ import project.bookstore.service.CategoryService;
 import java.util.List;
 
 @Controller
-public class ClientController {
+public class HomeController {
     @Autowired
     CategoryService categoryService;
     @Autowired
     BookService bookService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public String home(Model model) {
-        // Get All Catagories Name from DB to Homepage
+<<<<<<< HEAD:bookstore/src/main/java/project/bookstore/controller/HomeController.java
+        // Get All Categories Name from DB to Homepage
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
-
         // Get All Book from DB to Homepage, Book Grid, Book List
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
 
+>>>>>>> main:bookstore/src/main/java/project/bookstore/controller/ClientController.java
         return "Client/index";
     }
 
-    @GetMapping("/about-us")
     public String getAboutUs(Model model) {
         // Get All Catagories Name
         List<Category> listCategoriesName = categoryService.listAll();
@@ -142,9 +142,6 @@ public class ClientController {
         // Get All Catagories Name
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/error-404";
-    }
 
     @GetMapping("/faq")
     public String getFAQ(Model model) {

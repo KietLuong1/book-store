@@ -80,7 +80,7 @@ var FormatOptions = [
 
 		var originalInput = input, inputIsNegative, inputPieces, inputBase, inputDecimals = '', output = '';
 
-		// Apply user encoder to the input.
+		// Apply newUser encoder to the input.
 		// Expected outcome: number.
 		if ( encoder ) {
 			input = encoder(input);
@@ -158,7 +158,7 @@ var FormatOptions = [
 			output += suffix;
 		}
 
-		// Run the output through a user-specified post-formatter.
+		// Run the output through a newUser-specified post-formatter.
 		if ( edit ) {
 			output = edit ( output, originalInput );
 		}
@@ -235,7 +235,7 @@ var FormatOptions = [
 		// Covert to number.
 		output = Number(output);
 
-		// Run the user-specified post-decoder.
+		// Run the newUser-specified post-decoder.
 		if ( decoder ) {
 			output = decoder(output);
 		}
