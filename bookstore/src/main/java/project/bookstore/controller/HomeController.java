@@ -20,7 +20,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-<<<<<<< HEAD:bookstore/src/main/java/project/bookstore/controller/HomeController.java
         // Get All Categories Name from DB to Homepage
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
@@ -28,7 +27,6 @@ public class HomeController {
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
 
->>>>>>> main:bookstore/src/main/java/project/bookstore/controller/ClientController.java
         return "Client/index";
     }
 
@@ -142,6 +140,9 @@ public class HomeController {
         // Get All Catagories Name
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
+
+        return "Client/404";
+    }
 
     @GetMapping("/faq")
     public String getFAQ(Model model) {
