@@ -13,7 +13,6 @@ import project.bookstore.repository.AuthorRepository;
 
 @Service
 public class AuthorService {
-
     @Autowired
     private AuthorRepository authorRepository;
 
@@ -37,6 +36,7 @@ public class AuthorService {
 
     public void delete(Integer id) throws CategoryNotFoundException {
         Long count = authorRepository.countById(id);
+        
         if (count == null || count == 0) {
             throw new CategoryNotFoundException("Could not find any category with ID " + id);
         }

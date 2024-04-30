@@ -10,15 +10,16 @@ import project.bookstore.service.CategoryService;
 import java.util.List;
 
 @Controller
-public class ClientController {
+public class HomeController {
     @Autowired
-    CategoryService service;
+    private CategoryService categoryService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public String home(Model model) {
-        // Get All Catagories Name from DB to Homepage
-        List<Category> listCategoriesName = service.listAll();
+        // Get All Categories Name from DB to Homepage
+        List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
+
         return "Client/index";
     }
 
@@ -62,32 +63,27 @@ public class ClientController {
         return "Client/books-list-view-sidebar";
     }
 
-    @GetMapping("coming-soon")
+    @GetMapping("/coming-soon")
     public String getComingSoon() {
         return "Client/coming-soon";
     }
 
-    @GetMapping("contact-us")
+    @GetMapping("/contact")
     public String getContactUs() {
         return "Client/contact-us";
     }
 
-    @GetMapping("404")
+    @GetMapping("/404")
     public String get404() {
         return "Client/error-404";
     }
 
-    @GetMapping("faq")
+    @GetMapping("/faq")
     public String getFAQ() {
         return "Client/faq";
     }
 
-    @GetMapping("my-profile")
-    public String getMyProfile() {
-        return "Client/my-profile";
-    }
-
-    @GetMapping("order-history")
+    @GetMapping("/order-history")
     public String getOrderHistory() {
         return "Client/order-history";
     }
@@ -97,47 +93,37 @@ public class ClientController {
         return "Client/pricing";
     }
 
-    @GetMapping("privacy-policy")
+    @GetMapping("/policy")
     public String getPrivacyPolicy() {
         return "Client/privacy-policy";
     }
 
-    @GetMapping("services")
+    @GetMapping("/services")
     public String getServices() {
         return "Client/services";
     }
 
-    @GetMapping("shop-cart")
+    @GetMapping("/cart")
     public String getShopCart() {
         return "Client/shop-cart";
     }
 
-    @GetMapping("shop-checkout")
+    @GetMapping("/checkout")
     public String getShopCheckout() {
         return "Client/shop-checkout";
     }
 
-    @GetMapping("shop-login")
-    public String getShopLogin() {
-        return "Client/shop-login";
-    }
-
-    @GetMapping("shop-registration")
-    public String getShopRegistration() {
-        return "Client/shop-registration";
-    }
-
-    @GetMapping("support")
+    @GetMapping("/support")
     public String getSupport() {
         return "Client/support";
     }
 
-    @GetMapping("under-construction")
+    @GetMapping("/under-construction")
     public String getUnderConstruction() {
         return "Client/under-construction";
     }
 
-    @GetMapping("wishlist")
+    @GetMapping("/wishlist")
     public String getWishlist() {
         return "Client/wishlist";
     }
