@@ -38,10 +38,5 @@ public class User {
     private Status status;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    @JsonManagedReference
     private Address address;
-
-    public String getFullName(){
-        return firstName + " " + lastName;
-    }
 }

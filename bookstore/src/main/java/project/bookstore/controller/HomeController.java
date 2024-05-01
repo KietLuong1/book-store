@@ -141,7 +141,7 @@ public class HomeController {
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
-        return "Client/404";
+        return "/Client/error-404";
     }
 
     @GetMapping("/faq")

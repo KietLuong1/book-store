@@ -1,5 +1,6 @@
 package project.bookstore.controller;
 
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -7,7 +8,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import project.bookstore.entity.Address;
 import project.bookstore.entity.user.CustomUserDetails;
@@ -50,18 +50,16 @@ public class UserController {
     @GetMapping("/profile")
     public String getMyProfile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
         User user = userDetails.getUser();
+        System.out.println(user.toString());
         model.addAttribute("user",user);
 
-        return "Client/my-profile";
+        return "/Client/my-profile";
     }
 
-    @PostMapping("/profile/save/{id}")
-    public String showEditForm(@PathVariable("id") Long id, Model model) {
-        User user = userService.getUserById(id);
-        System.out.println(user.toString());
-        model.addAttribute("user", user);
-
-        userService.save(user);
+    @PostMapping("/profile/update")
+    public String updateUser(Model model, User user, @AuthenticationPrincipal CustomUserDetails loggeduser) {
+        model.addAttribute("user" , loggeduser);
+        loggeduser.setUser(user);
 
         return "redirect:/profile";
     }
