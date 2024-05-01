@@ -34,6 +34,5 @@ public class Address {
     private String description;
 
     @OneToOne(mappedBy = "address")
-    @JsonBackReference
     private User user;
 }
