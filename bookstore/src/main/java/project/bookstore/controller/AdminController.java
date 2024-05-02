@@ -11,7 +11,7 @@ public class AdminController {
         return "Admin/admin-dashboard";
     }
 
-    @GetMapping("profile")
+    @GetMapping("/admin-profile")
     public String getProfile() {
         return "Admin/profile";
     }

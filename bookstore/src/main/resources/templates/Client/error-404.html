@@ -8,15 +8,13 @@
 		<div class="error-inner text-center">
 			<div class="dz_error" data-text="404">404</div>
 			<h2 class="error-head">We are sorry. But the page you are looking for cannot be found.</h2>
-			<a href="index" class="btn btn-primary btn-border btnhover white-border">BACK TO HOMEPAGE</a>
+			<a th:href="@{/}" class="btn btn-primary btn-border btnhover white-border">BACK TO HOMEPAGE</a>
 		</div>
 	</div>
 </div>
 
-<!-- JAVASCRIPT FILES ========================================= -->
-<script src="js/jquery.min.js"></script><!-- JQUERY MIN JS -->
-<script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script><!-- BOOTSTRAP MIN JS -->
-<script src="js/custom.js"></script><!-- CUSTOM JS -->
+<!-- Footer -->
+<div th:insert="Client/client-template.html :: footer"></div>
 
 </body>
 </html>

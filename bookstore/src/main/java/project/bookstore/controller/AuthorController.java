@@ -50,7 +50,7 @@ public class AuthorController {
 
         Author savedAuthor = service.save(author);
 
-        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path currentPath = Paths.get(System.getProperty("newUser.dir"));
         Path staticPath = Paths.get("src/main/resources/static/Admin");
         System.out.println(staticPath);
         System.out.println(currentPath);

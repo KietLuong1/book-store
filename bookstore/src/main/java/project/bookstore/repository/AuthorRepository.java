@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import project.bookstore.entity.Author;
 
 @Repository
-public interface AuthorRepository extends CrudRepository<Author, Integer> {
+public interface AuthorRepository extends JpaRepository<Author, Integer> {
 
    public Long countById(Integer id);
 }

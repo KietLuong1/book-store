@@ -1,305 +1,191 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
-<!-- Mirrored from bookland.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Jan 2024 01:28:09 GMT -->
-
-<head th:replace="Client/client-template.html :: head('Bookland Store')"></head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      lang="en">
+<head th:replace="Client/client-template.html :: head('Profile')"></head>
 
 <body>
-	<div class="page-wraper">
-		<!-- Header -->
-		<header th:insert="Client/client-template.html :: header"></header>
-		<!-- Header End -->
-		<!-- Content -->
-		<div class="page-content bg-white">
-			<!-- contact area -->
-			<div class="content-block">
-				<!-- Browse Jobs -->
-				<section class="content-inner bg-white">
-					<div class="container">
-						<div class="row">
-							<div class="col-xl-3 col-lg-4 m-b30">
-								<div class="sticky-top">
-									<div class="shop-account">
-										<div class="account-detail text-center">
-											<div class="my-image">
-												<a href="javascript:void(0);">
-													<img alt="" src="Client/images/profile3.jpg">
-												</a>
-											</div>
-											<div class="account-title">
-												<div class="">
-													<h4 class="m-b5"><a href="javascript:void(0);">David Matin</a></h4>
-													<p class="m-b0"><a href="javascript:void(0);">Web developer</a></p>
-												</div>
-											</div>
-										</div>
-										<ul class="account-list">
-											<li>
-												<a href="my-profile.html" class="active"><i class="far fa-user"
-														aria-hidden="true"></i>
-													<span>Profile</span></a>
-											</li>
-											<li>
-												<a href="shop-cart.html"><i class="flaticon-shopping-cart-1"></i>
-													<span>My Cart</span></a>
-											</li>
-											<li>
-												<a href="wishlist.html"><i class="far fa-heart" aria-hidden="true"></i>
-													<span>Wishlist</span></a>
-											</li>
-											<li>
-												<a href="books-grid-view.html"><i class="fa fa-briefcase"
-														aria-hidden="true"></i>
-													<span>Shop</span></a>
-											</li>
-											<!-- <li>
-												<a href="services.html"><i class="far fa-bell" aria-hidden="true"></i>
-													<span>Services</span></a>
-											</li> -->
-											<li>
-												<a href="support.html"><i class="far fa-id-card"
-														aria-hidden="true"></i>
-													<span>Support</span></a>
-											</li>
-											<li>
-												<a href="privacy-policy.html"><i class="fa fa-key"
-														aria-hidden="true"></i>
-													<span>Privacy Policy</span></a>
-											</li>
-											<li>
-												<a href="shop-login.html"><i class="fas fa-sign-out-alt"
-														aria-hidden="true"></i>
-													<span>Log Out</span></a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-9 col-lg-8 m-b30">
-								<div class="shop-bx shop-profile">
-									<div class="shop-bx-title clearfix">
-										<h5 class="text-uppercase">Basic Information</h5>
-									</div>
-									<form>
-										<div class="row m-b30">
-											<div class="col-lg-6 col-md-6">
-												<div class="mb-3">
-													<label for="formcontrolinput1" class="form-label">Your Name:</label>
-													<input type="text" class="form-control" id="formcontrolinput1"
-														placeholder="Alexander Weir">
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6">
-												<div class="mb-3">
-													<label for="formcontrolinput2" class="form-label">Professional
-														title:</label>
-													<input type="text" class="form-control" id="formcontrolinput2"
-														placeholder="Web Designer">
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6">
-												<div class="mb-3">
-													<label for="formcontrolinput3" class="form-label">Languages:</label>
-													<input type="text" class="form-control" id="formcontrolinput3"
-														placeholder="">
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6">
-												<div class="mb-3">
-													<label for="formcontrolinput4" class="form-label">Age:</label>
-													<input type="text" class="form-control" id="formcontrolinput4"
-														placeholder="Age">
-												</div>
-											</div>
-											<div class="col-lg-12 col-md-12">
+<div class="page-wraper">
+    <!-- Header -->
+    <header th:insert="Client/client-template.html :: header"></header>
+    <!-- Header End -->
+    <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- contact area -->
+        <div class="content-block">
+            <!-- Browse Jobs -->
+            <section class="content-inner bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-4 m-b30">
+                            <div class="sticky-top">
+                                <div class="shop-account">
+                                    <div class="account-detail text-center">
+                                        <div class="my-image">
+                                            <a href="javascript:void(0);">
+                                                <img alt="" src="Client/images/profile3.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="account-title">
+                                            <div class="">
+                                                <h4 class="m-b5"><a href="javascript:void(0);" sec:authentication="principal.fullName"></a></h4>
+                                                <p class="m-b0"><a href="javascript:void(0);" sec:authentication="principal.username"
+                                                ></a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="account-list">
+                                        <li>
+                                            <a href="my-profile.html" class="active"><i class="far fa-user"
+                                                                                        aria-hidden="true"></i>
+                                                <span>Profile</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-cart.html"><i class="flaticon-shopping-cart-1"></i>
+                                                <span>My Cart</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="wishlist.html"><i class="far fa-heart" aria-hidden="true"></i>
+                                                <span>Wishlist</span></a>
+                                        </li>
+                                        <!--											?????????????-->
+                                        <!--											<li>-->
+                                        <!--												<a href="books-grid-view.html"><i class="fa fa-briefcase"-->
+                                        <!--														aria-hidden="true"></i>-->
+                                        <!--													<span>Shop</span></a>-->
+                                        <!--											</li>-->
+                                        <!--&lt;!&ndash;											???????????&ndash;&gt;-->
+                                        <!--											<li>-->
+                                        <!--												<a href="support.html"><i class="far fa-id-card"-->
+                                        <!--														aria-hidden="true"></i>-->
+                                        <!--													<span>Support</span></a>-->
+                                        <!--											</li>-->
+                                        <!--&lt;!&ndash;											????????????&ndash;&gt;-->
+                                        <!--											<li>-->
+                                        <!--												<a href="privacy-policy.html"><i class="fa fa-key"-->
+                                        <!--														aria-hidden="true"></i>-->
+                                        <!--													<span>Privacy Policy</span></a>-->
+                                        <!--											</li>-->
+                                        <li>
+                                            <a th:href="@{/logout}"><i class="fas fa-sign-out-alt"
+                                                                       aria-hidden="true"></i>
+                                                <span>Log Out</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 m-b30">
+                            <div class="shop-bx shop-profile">
+                                <div class="shop-bx-title clearfix">
+                                    <h5 class="text-uppercase">Basic Information</h5>
+                                </div>
+                                <form th:action="@{'/profile/update'}" th:object="${user}" method="post">
+                                    <input type="hidden" name="id" th:field="*{id}">
+                                    <input type="hidden" name="email" th:field="*{email}">
+                                    <input type="hidden" name="email" th:field="*{password}">
+                                    <input type="hidden" name="email" th:field="*{address.id}">
+                                    <div class="row m-b30">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="full-name" class="form-label">Your First Name:</label>
+                                                <input type="text" class="form-control" id="full-name"
+                                                       th:placeholder="${user.firstName}" th:field="*{firstName}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="job" class="form-label">Last Name:</label>
+                                                <input type="text" class="form-control" id="job"
+                                                       th:placeholder="${user.lastName}" th:field="*{lastName}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="occupation" class="form-label">Occupation:</label>
+                                                <input type="text" class="form-control" id="occupation"
+                                                       th:placeholder="${user.occupation}" th:field="*{occupation}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="age" class="form-label">Age:</label>
+                                                <input type="number" inputmode="numeric" class="form-control" id="age"
+                                                       th:placeholder="${user.age}" th:field="*{age}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="mb-3">
+                                                <label for="description"
+                                                       class="form-label">Short Description:</label>
+                                                <textarea class="form-control" id="description" rows="5" maxlength="255"
+                                                          th:placeholder="${#strings.isEmpty(user.description)}?'Nothing here': user.description"
+                                                          th:field="*{description}">
+													</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shop-bx-title clearfix">
+                                        <h5 class="text-uppercase">Contact Information</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="phone" class="form-label">Contact Number:</label>
+                                                <input type="text" class="form-control" id="phone"
+                                                       th:placeholder="${user.phone}" th:field="*{phone}" maxlength="10">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="country" class="form-label">Country:</label>
+                                                <input type="text" class="form-control" id="country"
+                                                       th:placeholder="${user.address.country}" th:field="*{address.country}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="ward" class="form-label">Ward:</label>
+                                                <input type="text" class="form-control" id="ward"
+                                                       th:placeholder="${user.address.ward}" th:field="*{address.ward}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="province" class="form-label">Province:</label>
+                                                <input type="text" class="form-control" id="province"
+                                                       th:placeholder="${user.address.province}" th:field="*{address.province}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="city" class="form-label">City:</label>
+                                                <input type="text" class="form-control" id="city"
+                                                       th:placeholder="${user.address.city}" th:field="*{address.city}">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-4">
+                                                <label for="full-address" class="form-label">Full
+                                                    Address:</label>
+                                                <input type="text" class="form-control" id="full-address"
+                                                       th:placeholder="${user.address.description}" th:field="*{address.description}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btnhover">Save Setting</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Browse Jobs END -->
+        </div>
+    </div>
+</div>
+<!-- Content END-->
 
-												<div class="mb-3">
-													<label for="exampleFormControlTextarea"
-														class="form-label">Description:</label>
-													<textarea class="form-control" id="exampleFormControlTextarea"
-														rows="5"></textarea>
-												</div>
-											</div>
-										</div>
-										<div class="shop-bx-title clearfix">
-											<h5 class="text-uppercase">Contact Information</h5>
-										</div>
-										<div class="row">
-											<div class="col-lg-6 col-md-6">
-												<div class="mb-3">
-													<label for="formcontrolinput5" class="form-label">Contact
-														Number:</label>
-													<input type="text" class="form-control" id="formcontrolinput5"
-														placeholder="+1 123 456 7890">
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6">
-												<div class="mb-3">
-													<label for="formcontrolinput6" class="form-label">Email
-														Address:</label>
-													<input type="text" class="form-control" id="formcontrolinput6"
-														placeholder="info@example.com">
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6">
-												<div class="mb-3">
-													<label for="formcontrolinput7" class="form-label">Country:</label>
-													<input type="text" class="form-control" id="formcontrolinput7"
-														placeholder="Country Name">
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6">
-												<div class="mb-3">
-													<label for="formcontrolinput8" class="form-label">Postcode:</label>
-													<input type="text" class="form-control" id="formcontrolinput8"
-														placeholder="112233">
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6">
-												<div class="mb-3">
-													<label for="formcontrolinput9" class="form-label">City:</label>
-													<input type="text" class="form-control" id="formcontrolinput9"
-														placeholder="City Name">
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6">
-												<div class="mb-4">
-													<label for="formcontrolinput10" class="form-label">Full
-														Address:</label>
-													<input type="text" class="form-control" id="formcontrolinput10"
-														placeholder="New york City">
-												</div>
-											</div>
-										</div>
-										<button class="btn btn-primary btnhover">Save Setting</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<!-- Browse Jobs END -->
-			</div>
-		</div>
-		<!-- Content END-->
-
-		<!-- Footer -->
-		<footer class="site-footer style-1">
-			<!-- Footer Top -->
-			<div class="footer-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-3 col-lg-12">
-							<div class="widget widget_about">
-								<div class="footer-logo logo-white">
-									<a href="index.html"><img src="images/logo-white.png" alt=""></a>
-								</div>
-								<p class="text">Bookland is a Book Store Ecommerce Website
-								</p>
-								<div class="dz-social-icon style-1">
-									<ul>
-										<li><a href="https://www.facebook.com" target="_blank"><i
-													class="fa-brands fa-facebook-f"></i></a></li>
-										<li><a href="https://www.youtube.com"
-												target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
-										<li><a href="https://www.linkedin.com"
-												target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
-										<li><a href="https://www.instagram.com" target="_blank"><i
-													class="fa-brands fa-instagram"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4">
-							<div class="widget widget_services">
-								<h5 class="footer-title">Our Links</h5>
-								<ul>
-									<li><a href="about-us.html">About us</a></li>
-									<li><a href="contact-us.html">Contact us</a></li>
-									<li><a href="privacy-policy.html">Privacy Policy</a></li>
-									<li><a href="pricing.html">Pricing Table</a></li>
-									<li><a href="faq.html">FAQ</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-xl-2 col-lg-3 col-sm-4 col-4">
-							<div class="widget widget_services">
-								<h5 class="footer-title">Bookland ?</h5>
-								<ul>
-									<li><a href="index.html">Bookland</a></li>
-									<li><a href="services.html">Services</a></li>
-									<li><a href="books-detail.html">Book Details</a></li>
-									<li><a href="blog-detail.html">Blog Details</a></li>
-									<li><a href="books-grid-view.html">Shop</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4">
-							<div class="widget widget_services">
-								<h5 class="footer-title">Resources</h5>
-								<ul>
-									<li><a href="services.html">Download</a></li>
-									<li><a href="support.html">Help Center</a></li>
-									<li><a href="shop-cart.html">Shop Cart</a></li>
-									<li><a href="shop-login.html">Login</a></li>
-									<li><a href="about-us.html">Partner</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-							<div class="widget widget_getintuch">
-								<h5 class="footer-title">Get in Touch With Us</h5>
-								<ul>
-									<li>
-										<i class="flaticon-placeholder"></i>
-										<span>832 Thompson Drive, San Fransisco CA 94107,US</span>
-									</li>
-									<li>
-										<i class="flaticon-phone"></i>
-										<span>+123 345123 556<br>
-											+123 345123 556</span>
-									</li>
-									<li>
-										<i class="flaticon-email"></i>
-										<span>support@bookland.id<br>
-											info@bookland.id</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Footer Top End -->
-
-			<!-- Footer Bottom -->
-			<div class="footer-bottom">
-				<div class="container">
-					<div class="row fb-inner">
-						<div class="col-lg-6 col-md-12 text-start">
-							<p class="copyright-text">Bookland Store - © 2022 All Rights Reserved
-							</p>
-						</div>
-
-					</div>
-				</div>
-			</div>
-			<!-- Footer Bottom End -->
-
-		</footer>
-		<!-- Footer End -->
-
-		<button class="scroltop" type="button"><i class="fas fa-arrow-up"></i></button>
-	</div>
-
-	<!-- JAVASCRIPT FILES ========================================= -->
-	<script src="js/jquery.min.js"></script><!-- JQUERY MIN JS -->
-	<script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script><!-- BOOTSTRAP MIN JS -->
-	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script><!-- BOOTSTRAP SELECT MIN JS -->
-	<script src="js/custom.js"></script><!-- CUSTOM JS -->
-
+<!-- Footer -->
+<div th:insert="Client/client-template.html :: footer"></div>
 </body>
-
-<!-- Mirrored from bookland.dexignzone.com/xhtml/my-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Jan 2024 01:28:51 GMT -->
-
 </html>
