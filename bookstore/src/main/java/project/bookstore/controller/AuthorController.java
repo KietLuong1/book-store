@@ -97,7 +97,7 @@ public class AuthorController {
         try {
             service.delete(id);
             ra.addFlashAttribute("message", "The author ID " + id + " has been deleted");
-        } catch (CategoryNotFoundException e) {
+        } catch (AuthorNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/admin-author";

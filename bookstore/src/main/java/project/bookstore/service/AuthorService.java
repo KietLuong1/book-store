@@ -32,13 +32,13 @@ public class AuthorService {
             return result.get();
         }
 
-        throw new AuthorNotFoundException("Could not find any categories with ID " + id);
+        throw new AuthorNotFoundException("Could not find any author with ID " + id);
     }
 
-    public void delete(Integer id) throws CategoryNotFoundException {
+    public void delete(Integer id) throws AuthorNotFoundException {
         Long count = authorRepository.countById(id);
         if (count == null || count == 0) {
-            throw new CategoryNotFoundException("Could not find any category with ID " + id);
+            throw new AuthorNotFoundException("Could not find any author with ID " + id);
         }
         authorRepository.deleteById(id);
     }
