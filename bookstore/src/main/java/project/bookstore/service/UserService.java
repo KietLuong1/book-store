@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import project.bookstore.entity.user.User;
 import project.bookstore.entity.user.CustomUserDetails;
-import project.bookstore.repository.UserRepository;
+import project.bookstore.repository.user.UserRepository;
 
 import java.util.Optional;
 
@@ -19,11 +18,8 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email);
-
-        if (user == null){
-            throw new UsernameNotFoundException("User not found!");
-        }
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Email not found!"));
 
         return new CustomUserDetails(user);
     }
@@ -36,5 +32,9 @@ public class UserService implements UserDetailsService {
 
     public void save(User user){
         userRepository.save(user);
+    }
+
+    public void updatePassword(String password, String email){
+        userRepository.updatePassword(password, email);
     }
 }

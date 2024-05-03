@@ -1,4 +1,4 @@
-package project.bookstore.controller;
+package project.bookstore.controller.user;
 
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,9 +57,9 @@ public class UserController {
     }
 
     @PostMapping("/profile/update")
-    public String updateUser(Model model, User user, @AuthenticationPrincipal CustomUserDetails loggeduser) {
-        model.addAttribute("user" , loggeduser);
-        loggeduser.setUser(user);
+    public String updateUser(Model model, User user, @AuthenticationPrincipal CustomUserDetails loggedUser) {
+        model.addAttribute("user" , loggedUser);
+        loggedUser.setUser(user);
 
         return "redirect:/profile";
     }
