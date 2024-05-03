@@ -22,21 +22,34 @@ public class User {
 
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
     @Column(unique = true, nullable = false)
     private String email;
+
     @Column(nullable = false)
     private String password;
+
     @Column(unique = true, length = 50)
     private String phone;
+
     @Column(length = 50)
     private String occupation;
+
     private int age;
+
     private String description;
+
     @Column(length = 50)
+    @Enumerated(EnumType.STRING)
     private Status status;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
+
+    @OneToOne(mappedBy = "user")
+    private ForgotPassword forgotPassword;
 }

@@ -17,6 +17,15 @@ var Bookland = function () {
 		}
 	}
 
+	// check Password Match
+	function checkPasswordMatch(fieldConfirmPassword) {
+		if (fieldConfirmPassword.value != $("#reset-password").val()) {
+			fieldConfirmPassword.setCustomValidity("Passwords do not match!");
+		} else {
+			fieldConfirmPassword.setCustomValidity("");
+		}
+	}
+
 	var checkLocation = function () {
 		var currentType = location.pathname.split("/").slice(-1)[0].slice(0, 5);
 
