@@ -35,16 +35,16 @@
                                     </div>
                                     <ul class="account-list">
                                         <li>
-                                            <a href="my-profile.html" class="active"><i class="far fa-user"
+                                            <a th:href="@{'/my-profile'}" class="active"><i class="far fa-user"
                                                                                         aria-hidden="true"></i>
                                                 <span>Profile</span></a>
                                         </li>
                                         <li>
-                                            <a href="shop-cart.html"><i class="flaticon-shopping-cart-1"></i>
-                                                <span>My Cart</span></a>
+                                            <a th:href="@{'/order-history'}"><i class="flaticon-shopping-cart-1"></i>
+                                                <span>Order History</span></a>
                                         </li>
                                         <li>
-                                            <a href="wishlist.html"><i class="far fa-heart" aria-hidden="true"></i>
+                                            <a th:href="@{'/wishlist'}"><i class="far fa-heart" aria-hidden="true"></i>
                                                 <span>Wishlist</span></a>
                                         </li>
                                         <!--											?????????????-->
@@ -66,9 +66,8 @@
                                         <!--													<span>Privacy Policy</span></a>-->
                                         <!--											</li>-->
                                         <li>
-                                            <a th:href="@{/logout}"><i class="fas fa-sign-out-alt"
-                                                                       aria-hidden="true"></i>
-                                                <span>Log Out</span></a>
+                                            <a th:href="@{/reset-password.html}"><i class="fa-solid fa-lock-open"></i>
+                                                <span>Forgot password</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -87,28 +86,28 @@
                                     <div class="row m-b30">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
-                                                <label for="full-name" class="form-label">Your First Name:</label>
+                                                <label for="full-name" class="form-label">First Name</label>
                                                 <input type="text" class="form-control" id="full-name"
                                                        th:placeholder="${user.firstName}" th:field="*{firstName}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
-                                                <label for="job" class="form-label">Last Name:</label>
+                                                <label for="job" class="form-label">Last Name</label>
                                                 <input type="text" class="form-control" id="job"
                                                        th:placeholder="${user.lastName}" th:field="*{lastName}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
-                                                <label for="occupation" class="form-label">Occupation:</label>
+                                                <label for="occupation" class="form-label">Occupation</label>
                                                 <input type="text" class="form-control" id="occupation"
                                                        th:placeholder="${user.occupation}" th:field="*{occupation}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
-                                                <label for="age" class="form-label">Age:</label>
+                                                <label for="age" class="form-label">Age</label>
                                                 <input type="number" inputmode="numeric" class="form-control" id="age"
                                                        th:placeholder="${user.age}" th:field="*{age}">
                                             </div>
@@ -116,7 +115,7 @@
                                         <div class="col-lg-12 col-md-12">
                                             <div class="mb-3">
                                                 <label for="description"
-                                                       class="form-label">Short Description:</label>
+                                                       class="form-label">Short Description</label>
                                                 <textarea class="form-control" id="description" rows="5" maxlength="255"
                                                           th:placeholder="${#strings.isEmpty(user.description)}?'Nothing here': user.description"
                                                           th:field="*{description}">
@@ -130,43 +129,43 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
-                                                <label for="phone" class="form-label">Contact Number:</label>
+                                                <label for="phone" class="form-label">Contact Number</label>
                                                 <input type="text" class="form-control" id="phone"
                                                        th:placeholder="${user.phone}" th:field="*{phone}" maxlength="10">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
-                                                <label for="country" class="form-label">Country:</label>
+                                                <label for="country" class="form-label">Country</label>
                                                 <input type="text" class="form-control" id="country"
                                                        th:placeholder="${user.address.country}" th:field="*{address.country}">
                                             </div>
                                         </div>
+<!--                                        <div class="col-lg-6 col-md-6">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label for="ward" class="form-label">Ward:</label>-->
+<!--                                                <input type="text" class="form-control" id="ward"-->
+<!--                                                       th:placeholder="${user.address.ward}" th:field="*{address.ward}">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
-                                                <label for="ward" class="form-label">Ward:</label>
-                                                <input type="text" class="form-control" id="ward"
-                                                       th:placeholder="${user.address.ward}" th:field="*{address.ward}">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="mb-3">
-                                                <label for="province" class="form-label">Province:</label>
+                                                <label for="province" class="form-label">Province</label>
                                                 <input type="text" class="form-control" id="province"
                                                        th:placeholder="${user.address.province}" th:field="*{address.province}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
-                                                <label for="city" class="form-label">City:</label>
+                                                <label for="city" class="form-label">City</label>
                                                 <input type="text" class="form-control" id="city"
                                                        th:placeholder="${user.address.city}" th:field="*{address.city}">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6">
+                                        <div class="col-lg-12 col-md-6">
                                             <div class="mb-4">
                                                 <label for="full-address" class="form-label">Full
-                                                    Address:</label>
+                                                    Address</label>
                                                 <input type="text" class="form-control" id="full-address"
                                                        th:placeholder="${user.address.description}" th:field="*{address.description}">
                                             </div>
