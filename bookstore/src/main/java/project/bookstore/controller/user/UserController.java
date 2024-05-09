@@ -60,7 +60,7 @@ public class UserController {
     public String updateUser(Model model, User user, @AuthenticationPrincipal CustomUserDetails loggedUser) {
         model.addAttribute("user" , loggedUser);
         loggedUser.setUser(user);
-
+        userService.save(user);
         return "redirect:/profile";
     }
 }
