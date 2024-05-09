@@ -283,7 +283,7 @@
                                 <div class="book-footer">
                                     <div class="price">
                                         <span class="price-num" th:text="${book.price}"></span>
-                                        <del>$70.00</del>
+                                        <del th:text="${book.salePrice}"></del>
                                     </div>
                                     <a href="shop-cart" class="btn btn-secondary box-btn btnhover btnhover2"><i
                                             class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>

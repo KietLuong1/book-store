@@ -22,6 +22,9 @@ public class Book {
     private String description;
 
     @Column(nullable = false, length = 255)
+    private String salePrice;
+
+    @Column(nullable = false, length = 255)
     private String price;
 
     @Column(nullable = false, length = 255)
@@ -85,6 +88,13 @@ public class Book {
         this.description = description;
     }
 
+    public String getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(String salePrice) {
+        this.salePrice = salePrice;
+    }
     public String getPrice() {
         return price;
     }

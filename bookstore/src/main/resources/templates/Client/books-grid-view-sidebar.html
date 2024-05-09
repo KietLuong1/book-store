@@ -809,7 +809,7 @@
                                         <div class="book-footer">
                                             <div class="price">
                                                 <span class="price-num" th:text="${book.price}"></span>
-                                                <del>$12.0</del>
+                                                <del th:text="${book.salePrice}"></del>
                                             </div>
                                             <a href="shop-cart"
                                                class="btn btn-secondary box-btn btnhover btnhover2"><i
