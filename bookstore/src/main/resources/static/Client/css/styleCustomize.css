@@ -105,7 +105,7 @@ details summary:hover {
     color: #fff;
 }
 
-.header-nav .nav>li>a.active {
+.header-nav .nav > li > a.active {
     color: var(--primary);
 }
 
@@ -123,13 +123,13 @@ details summary:hover {
 }
 
 
-.footer-category.nav-categories{
+.footer-category.nav-categories {
     padding: 0;
     position: absolute;
     width: 100%;
 }
 
-.footer-category .toggle-items{
+.footer-category .toggle-items {
     margin-top: 0;
     padding-top: 22px;
 }
@@ -144,7 +144,7 @@ details summary:hover {
     z-index: 10;
 }
 
-.header-nav .nav .sub-menu-down .mega-menu>.sub-menu>a:after {
+.header-nav .nav .sub-menu-down .mega-menu > .sub-menu > a:after {
     content: "\f078";
     font-size: 9px;
     margin-left: 5px;
@@ -169,4 +169,22 @@ details summary:hover {
 
 .product-img {
     width: 100px;
+}
+
+.checkout-space {
+    height: 45px;
+}
+
+.changePadding {
+    padding-bottom: 30px;
+}
+
+.checkOutLabel {
+    margin-bottom: 8px;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.checkoutHelp {
+    color: var(--secondary) !important;
 }
