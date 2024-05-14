@@ -171,6 +171,7 @@ details summary:hover {
     width: 100px;
 }
 
+<<<<<<< Updated upstream
 .checkout-space {
     height: 45px;
 }
@@ -188,3 +189,9 @@ details summary:hover {
 .checkoutHelp {
     color: var(--secondary) !important;
 }
+=======
+.dz-shop-card.style-1 .dz-content .book-footer {
+    margin-bottom: 35px;
+}
+
+>>>>>>> Stashed changes
