@@ -13,7 +13,7 @@ public class AdminController {
 
     @GetMapping("/admin-profile")
     public String getProfile() {
-        return "Admin/profile";
+        return "Admin/admin-profile";
     }
 
     @GetMapping("profile-edit")
