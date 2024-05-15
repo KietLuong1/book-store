@@ -1,12 +1,8 @@
 package project.bookstore.entity.user;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 import project.bookstore.entity.Address;
-import project.bookstore.enums.Status;
 
 @Entity
 @AllArgsConstructor
@@ -42,14 +38,12 @@ public class User {
 
     private String description;
 
-    @Column(length = 50)
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    private boolean status = true;
+
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
-
-    @OneToOne(mappedBy = "user")
-    private ForgotPassword forgotPassword;
 }
