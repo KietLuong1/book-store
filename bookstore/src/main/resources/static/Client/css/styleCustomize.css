@@ -105,7 +105,7 @@ details summary:hover {
     color: #fff;
 }
 
-.header-nav .nav>li>a.active {
+.header-nav .nav > li > a.active {
     color: var(--primary);
 }
 
@@ -123,13 +123,13 @@ details summary:hover {
 }
 
 
-.footer-category.nav-categories{
+.footer-category.nav-categories {
     padding: 0;
     position: absolute;
     width: 100%;
 }
 
-.footer-category .toggle-items{
+.footer-category .toggle-items {
     margin-top: 0;
     padding-top: 22px;
 }
@@ -144,7 +144,7 @@ details summary:hover {
     z-index: 10;
 }
 
-.header-nav .nav .sub-menu-down .mega-menu>.sub-menu>a:after {
+.header-nav .nav .sub-menu-down .mega-menu > .sub-menu > a:after {
     content: "\f078";
     font-size: 9px;
     margin-left: 5px;
@@ -169,4 +169,109 @@ details summary:hover {
 
 .product-img {
     width: 100px;
+}
+
+.checkout-space {
+    height: 45px;
+}
+
+.changePadding {
+    padding-bottom: 30px;
+}
+
+.checkOutLabel {
+    margin-bottom: 8px;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.checkoutHelp {
+    color: var(--secondary) !important;
+}
+.dz-shop-card.style-1 .dz-content .book-footer {
+    margin-bottom: 35px;
+}
+
+.alert {
+    background: #ddffdd;
+    padding: 20px 40px;
+    min-width: 420px;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    border-radius: 4px;
+    border-left: 8px solid #04AA6D;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.alert.showAlert {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.alert.show{
+    animation: show_slide 1s ease forwards;
+}
+
+@keyframes show_slide {
+    0% {
+        transform: translateX(100%);
+    }
+    40% {
+        transform: translateX(-10%);
+    }
+    80% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
+.alert.hide{
+    animation: hide_slide 1s ease forwards;
+}
+
+@keyframes hide_slide {
+    0% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(0%);
+    }
+    80% {
+        transform: translateX(-10%);
+    }
+    100% {
+        transform: translateX(500px);
+    }
+}
+
+.alert .msg {
+    padding: 0 20px;
+    font-size: 18px;
+    color: #ce8500;
+}
+
+.alert .close-btn {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffd080;
+    padding: 20px 18px;
+    cursor: pointer;
+}
+
+.alert .close-btn:hover {
+    background: #ffc766;
+}
+
+.alert .close-btn .fas {
+    color: #ce8500;
+    font-size: 22px;
+    line-height: 40px;
 }

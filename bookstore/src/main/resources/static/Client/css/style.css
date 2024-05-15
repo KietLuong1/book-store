@@ -2249,7 +2249,7 @@ progress {
   }
 }
 
-@media (max-width: 1439.98) {
+@media (max-width: 1439.98px) {
   .table-responsive-xxl {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -32579,6 +32579,7 @@ pre {
   -webkit-transition: all 0.2s;
   -ms-transition: all 0.2s;
   transition: all 0.2s;
+  /*margin-bottom: 50px;*/
 }
 
 .dz-shop-card.style-1 .dz-content .book-footer .rate p {

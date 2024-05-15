@@ -8,7 +8,6 @@
     <!-- Header -->
     <header th:insert="Client/client-template.html :: header"></header>
     <!-- Header End -->
-
     <div class="page-content bg-white">
         <!--Swiper Banner Start -->
         <div class="main-slider style-1 slider-white">
@@ -327,8 +326,9 @@
                                     </h4>
                                     <a th:href="@{'/books-detail/' + ${book.book_id}}"><span class="price"
                                                                                              th:text="${book.price}"></span></a>
-                                    <a href="shop-cart" class="btn btn-secondary btnhover btnhover2"><i
-                                            class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
+                                    <button class="btn btn-secondary btnhover btnhover2"><i
+                                            class="flaticon-shopping-cart-1 m-r10"></i> Add to cart
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -372,7 +372,7 @@
                                         <div class="price">
                                             <a th:href="@{'/books-detail/' + ${book.book_id}}"><span class="price-num"
                                                                                                      th:text="${book.price}">$9.5</span></a>
-                                            <del>$12.0</del>
+                                            <del th:text="${book.salePrice}"></del>
                                         </div>
                                     </div>
                                 </div>
@@ -418,7 +418,7 @@
                                         <div class="price">
                                             <a th:href="@{'/books-detail/' + ${book.book_id}}"><span class="price-num"
                                                                                                      th:text="${book.price}"></span></a>
-                                            <del>$15.0</del>
+                                            <del th:text="${book.salePrice}"></del>
                                         </div>
                                     </div>
                                 </div>
@@ -635,7 +635,7 @@
                                                 class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
                                         <a class="price-details" th:text="${book.price}"
                                            th:href="@{'/books-detail/' + ${book.book_id}}">
-                                            <del>$25</del>
+                                            <del th:text="${book.salePrice}"></del>
                                         </a>
                                     </div>
                                 </div>
@@ -940,7 +940,10 @@
     <div th:insert="Client/client-template.html :: footer"></div>
 
 </div>
+<script type="text/javascript">
 
+
+</script>
 </body>
 
 </html>

@@ -273,7 +273,7 @@
                                     </div>
                                     <div class="price">
                                         <span class="price-num text-primary" th:text="${book.price}"></span>
-                                        <del>$70.00</del>
+                                        <del th:text="${book.salePrice}"></del>
                                     </div>
                                 </div>
 
@@ -324,17 +324,26 @@
                 </div>
                 <div class="row page mt-0">
                     <div class="col-md-6">
-                        <p class="page-text">Showing 12 from 50 data</p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search Page Here"
+                                   aria-label="Search Page Here" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">Search</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-6 mb-3">
                         <nav aria-label="Blog Pagination">
-                            <ul class="pagination style-1 p-t20">
+                            <ul class="pagination style-1">
                                 <li class="page-item"><a class="page-link prev" href="javascript:void(0);">Prev</a>
                                 </li>
                                 <li class="page-item"><a class="page-link active" href="javascript:void(0);">1</a>
                                 </li>
                                 <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
                                 <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">...</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">20</a></li>
                                 <li class="page-item"><a class="page-link next" href="javascript:void(0);">Next</a>
                                 </li>
                             </ul>

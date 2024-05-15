@@ -588,26 +588,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="category">
-                                <div class="filter-category">
-                                    <a data-bs-toggle="collapse" href="#collapseExample" role="button"
-                                       aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="fas fa-list me-2"></i>
-                                        Categories
-                                    </a>
-                                </div>
-                                <div class="form-group">
-                                    <i class="fas fa-sort-amount-down me-2 text-secondary"></i>
-                                    <select class="default-select">
-                                        <option>Newest</option>
-                                        <option>1 Day</option>
-                                        <option>1 Week</option>
-                                        <option>3 Weeks</option>
-                                        <option>1 Month</option>
-                                        <option>3 Months</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                         <div class="acod-content collapse " id="collapseExample">
                             <div class="widget widget_services style-2">
@@ -779,9 +759,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row book-grid-row">
+                        <div class="row book-grid-row align-items-stretch">
                             <div class="col-book style-2" th:each="book: ${listBooks}">
-                                <div class="dz-shop-card style-1">
+                                <div class="dz-shop-card style-1 h-100">
                                     <div class="dz-media">
                                         <a href="books-detail"><img src="Client/images/books/grid/book14.jpg"
                                                                     alt="book"></a>
@@ -809,7 +789,7 @@
                                         <div class="book-footer">
                                             <div class="price">
                                                 <span class="price-num" th:text="${book.price}"></span>
-                                                <del>$12.0</del>
+                                                <del th:text="${book.salePrice}"></del>
                                             </div>
                                             <a href="shop-cart"
                                                class="btn btn-secondary box-btn btnhover btnhover2"><i
@@ -820,12 +800,18 @@
                             </div>
                         </div>
                         <div class="row page mt-0">
-                            <div class="col-md-6">
-                                <p class="page-text">Showing 12 from 50 data</p>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search Page Here"
+                                           aria-label="Search Page Here" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button">Search</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7 mb-3">
                                 <nav aria-label="Blog Pagination">
-                                    <ul class="pagination style-1 p-t20">
+                                    <ul class="pagination style-1">
                                         <li class="page-item"><a class="page-link prev"
                                                                  href="javascript:void(0);">Prev</a></li>
                                         <li class="page-item"><a class="page-link active"
@@ -834,6 +820,8 @@
                                         </li>
                                         <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a>
                                         </li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">...</a></li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">20</a></li>
                                         <li class="page-item"><a class="page-link next"
                                                                  href="javascript:void(0);">Next</a></li>
                                     </ul>

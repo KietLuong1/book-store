@@ -255,9 +255,9 @@
                     </div>
                 </div>
 
-                <div class="row book-grid-row">
+                <div class="row book-grid-row d-flex align-items-stretch ">
                     <div class="col-book style-1" th:each="book: ${listBooks}">
-                        <div class="dz-shop-card style-1">
+                        <div class="dz-shop-card style-1 h-100">
                             <div class="dz-media">
                                 <a href="books-detail"><img src="Client/images/books/grid/book16.jpg" alt="book"></a>
                             </div>
@@ -283,7 +283,7 @@
                                 <div class="book-footer">
                                     <div class="price">
                                         <span class="price-num" th:text="${book.price}"></span>
-                                        <del>$70.00</del>
+                                        <del th:text="${book.salePrice}"></del>
                                     </div>
                                     <a href="shop-cart" class="btn btn-secondary box-btn btnhover btnhover2"><i
                                             class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
@@ -294,17 +294,25 @@
                 </div>
                 <div class="row page mt-0">
                     <div class="col-md-6">
-                        <p class="page-text">Showing 12 from 50 data</p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search Page Here"
+                                   aria-label="Search Page Here" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">Search</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-3">
                         <nav aria-label="Blog Pagination">
-                            <ul class="pagination style-1 p-t20">
+                            <ul class="pagination style-1 ">
                                 <li class="page-item"><a class="page-link prev" href="javascript:void(0);">Prev</a>
                                 </li>
                                 <li class="page-item"><a class="page-link active" href="javascript:void(0);">1</a>
                                 </li>
                                 <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
                                 <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">...</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">20</a></li>
                                 <li class="page-item"><a class="page-link next" href="javascript:void(0);">Next</a>
                                 </li>
                             </ul>
