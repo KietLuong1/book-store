@@ -35,13 +35,16 @@
     <!-- GOOGLE FONTS-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
+
 <div class="page-wraper">
     <!-- Header -->
     <header class="site-header mo-left header style-1" th:fragment="header">
         <!-- Main Header -->
+
         <div class="header-info-bar">
             <div class="container clearfix">
                 <!-- Website Logo -->
@@ -324,6 +327,12 @@
         <!-- Main Header -->
         <div class="sticky-header main-bar-wraper navbar-expand-lg">
             <div class="main-bar clearfix">
+                <div class="alert hide">
+                    <span class="msg">The product has been added</span>
+                    <div class="close-btn">
+                        <span class="fas fa-times"></span>
+                    </div>
+                </div>
                 <div class="container clearfix">
                     <!-- Website Logo -->
                     <div class="logo-header logo-dark">

@@ -17,7 +17,21 @@ var Bookland = function () {
 		}
 	}
 
-	// check Password Match
+	/* Toast Notification*/
+	$(document).ready(function () {
+		$('.btn').click(function () {
+			$('.alert').removeClass("hide").addClass("show showAlert");
+			setTimeout(function () {
+				$('.alert').addClass("hide").removeClass("show");
+			}, 4000);
+		});
+
+		$('close-btn').click(function () {
+			$('.alert').addClass("hide").removeClass("show");
+		});
+	})
+
+	/* check Password Match */
 	function checkPasswordMatch(fieldConfirmPassword) {
 		if (fieldConfirmPassword.value != $("#reset-password").val()) {
 			fieldConfirmPassword.setCustomValidity("Passwords do not match!");
