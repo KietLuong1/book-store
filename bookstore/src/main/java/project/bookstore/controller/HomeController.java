@@ -1,6 +1,11 @@
 package project.bookstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +31,13 @@ public class HomeController {
         // Get All Book from DB to Homepage, Book Grid, Book List
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
+
+        //notification if user log in or not
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
+            model.addAttribute("message", "Log in successfully");
+        }
 
         return "Client/index";
     }

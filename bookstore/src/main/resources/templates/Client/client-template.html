@@ -224,11 +224,6 @@
                         </ul>
                     </div>
                 </div>
-                <!--                <ul href="client-template">-->
-                <!--                    <li th:each="category: ${listCategoriesName}">-->
-                <!--                        <a href="/books-list" th:text="${category.name}"></a>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
                 <!-- header search nav -->
                 <div class="header-search-nav">
                     <form class="header-item-search">
@@ -327,8 +322,16 @@
         <!-- Main Header -->
         <div class="sticky-header main-bar-wraper navbar-expand-lg">
             <div class="main-bar clearfix">
-                <div class="alert hide">
-                    <span class="msg">The product has been added</span>
+                <div th:if="${message}" class="alert hide">
+                    <i class="fa-solid fa-check"></i>
+                    <span class="msg">[[${message}]]</span>
+                    <div class="close-btn">
+                        <span class="fas fa-times"></span>
+                    </div>
+                </div>
+                <div th:if="${error}" class="alert hide error">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span class="msg">[[${error}]]</span>
                     <div class="close-btn">
                         <span class="fas fa-times"></span>
                     </div>

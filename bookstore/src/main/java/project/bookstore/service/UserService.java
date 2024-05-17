@@ -33,6 +33,12 @@ public class UserService implements UserDetailsService {
        return user.orElse(null);
     }
 
+    public User getUserByEmail(String email){
+       Optional<User> user = userRepository.findByEmail(email);
+
+       return user.orElse(null);
+    }
+
     public void save(User user){
         userRepository.save(user);
     }

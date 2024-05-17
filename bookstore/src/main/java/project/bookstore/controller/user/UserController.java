@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Address;
 import project.bookstore.entity.Category;
 import project.bookstore.entity.user.CustomUserDetails;
@@ -36,8 +37,7 @@ public class UserController {
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return "/Client/shop-login";
         }
-
-        return "Client/index";
+        return "redirect:/";
     }
 
     @GetMapping("/register")
@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @PostMapping("/process_register")
-    public String processRegister(User user){
+    public String processRegister(User user, RedirectAttributes ra) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode(user.getPassword());
         Address address = new Address();
@@ -56,7 +56,13 @@ public class UserController {
         address.setCountry(LocaleContextHolder.getLocale().getCountry());
         user.setAddress(address);
 
+        if (userService.getUserByEmail(user.getEmail()) != null) {
+            ra.addFlashAttribute("error", "User has been registered");
+
+            return "redirect:/register";
+        }
         userService.save(user);
+        ra.addFlashAttribute("message", "Sign up successfully");
 
         return "redirect:/client-login";
     }
@@ -64,7 +70,7 @@ public class UserController {
     @GetMapping("/profile")
     public String getMyProfile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
         User user = userDetails.getUser();
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
 
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
@@ -73,10 +79,13 @@ public class UserController {
     }
 
     @PostMapping("/profile/update")
-    public String updateUser(Model model, User user, @AuthenticationPrincipal CustomUserDetails loggedUser) {
-        model.addAttribute("user" , loggedUser);
+    public String updateUser(Model model, RedirectAttributes ra, User user, @AuthenticationPrincipal CustomUserDetails loggedUser) {
+        model.addAttribute("user", loggedUser);
         loggedUser.setUser(user);
         userService.save(user);
+
+        ra.addAttribute("message", "Update information successfully");
+
         return "redirect:/profile";
     }
 
