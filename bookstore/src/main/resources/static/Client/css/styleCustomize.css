@@ -271,7 +271,15 @@ details summary:hover {
 }
 
 .alert .close-btn .fas {
-    color: #ce8500;
     font-size: 22px;
     line-height: 40px;
+}
+
+.field-icon {
+    float: right;
+    margin-right: 20px;
+    margin-top: -30px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
 }
