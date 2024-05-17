@@ -40,7 +40,9 @@ public class WebSecurityConfig {
 
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/profile").authenticated().anyRequest().permitAll())
+                        auth.requestMatchers("/profile", "/order-history", "/shop-checkout"
+                                        , "/shop-cart", "/wishlist").authenticated()
+                                .anyRequest().permitAll())
                 .formLogin(login ->
                         login.loginPage("/client-login").loginProcessingUrl("/login").defaultSuccessUrl("/").permitAll())
                 .logout(logout ->

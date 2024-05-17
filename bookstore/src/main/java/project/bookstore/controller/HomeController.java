@@ -30,6 +30,7 @@ public class HomeController {
         return "Client/index";
     }
 
+    @GetMapping("/about-us")
     public String getAboutUs(Model model) {
         // Get All Catagories Name
         List<Category> listCategoriesName = categoryService.listAll();
@@ -153,24 +154,6 @@ public class HomeController {
         return "Client/faq";
     }
 
-    @GetMapping("/my-profile")
-    public String getMyProfile(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/my-profile";
-    }
-
-    @GetMapping("/order-history")
-    public String getOrderHistory(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/order-history";
-    }
-
     @GetMapping("/pricing")
     public String getPricing(Model model) {
         // Get All Catagories Name
@@ -198,29 +181,6 @@ public class HomeController {
         return "Client/services";
     }
 
-    @GetMapping("/shop-cart")
-    public String getShopCart(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/shop-cart";
-    }
-
-    @GetMapping("/shop-checkout")
-    public String getShopCheckout(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/shop-checkout";
-    }
-
-    @GetMapping("/shop-login")
-    public String getShopLogin() {
-        return "Client/shop-login";
-    }
-
     @GetMapping("/shop-registration")
     public String getShopRegistration() {
         return "Client/shop-registration";
@@ -228,7 +188,6 @@ public class HomeController {
 
     @GetMapping("/support")
     public String getSupport(Model model) {
-        // Get All Catagories Name
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
@@ -238,15 +197,6 @@ public class HomeController {
     @GetMapping("/under-construction")
     public String getUnderConstruction() {
         return "Client/under-construction";
-    }
-
-    @GetMapping("/wishlist")
-    public String getWishlist(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/wishlist";
     }
 
 }

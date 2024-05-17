@@ -1,7 +1,7 @@
 /**
-/**
-Core script to handle the entire theme and core functions
-**/
+ /**
+ Core script to handle the entire theme and core functions
+ **/
 var Bookland = function () {
 	/* CUSTOM JS */
 	/* Add the "active" class.*/
@@ -709,40 +709,40 @@ var Bookland = function () {
 
 /* Document.ready Start */
 jQuery(document).ready(function () {
-	'use strict';
+    'use strict';
 
-	Bookland.init();
+    Bookland.init();
 
-	$('a[data-bs-toggle="tab"]').click(function () {
-		// todo remove snippet on bootstrap v4
-		$('a[data-bs-toggle="tab"]').click(function () {
-			$($(this).attr('href')).show().addClass('show active').siblings().hide();
-		})
-	});
+    $('a[data-bs-toggle="tab"]').click(function () {
+        // todo remove snippet on bootstrap v4
+        $('a[data-bs-toggle="tab"]').click(function () {
+            $($(this).attr('href')).show().addClass('show active').siblings().hide();
+        })
+    });
 
-	jQuery('.navicon').on('click', function () {
-		$(this).toggleClass('open');
-	});
+    jQuery('.navicon').on('click', function () {
+        $(this).toggleClass('open');
+    });
 
 });
 /* Document.ready END */
 
 /* Window Load START */
 jQuery(window).on('load', function () {
-	'use strict';
+    'use strict';
 
-	Bookland.load();
+    Bookland.load();
 
-	setTimeout(function () {
-		jQuery('#loading-area').remove();
-	}, 2000);
+    setTimeout(function () {
+        jQuery('#loading-area').remove();
+    }, 2000);
 
 });
 /*  Window Load END */
 
 /* Window Resize START */
 jQuery(window).on('resize', function () {
-	'use strict';
-	Bookland.resize();
+    'use strict';
+    Bookland.resize();
 });
 /*  Window Resize END */

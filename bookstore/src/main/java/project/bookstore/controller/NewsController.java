@@ -21,7 +21,6 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Objects;
 import org.jsoup.Jsoup;
-import org.jsoup.safety.Whitelist;
 
 @Controller
 public class NewsController {
