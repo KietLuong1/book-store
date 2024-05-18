@@ -24,13 +24,11 @@ public class Address {
     @Column(name = "address_id")
     private int id;
     @Column(length = 50)
-    private String ward;
-    @Column(length = 50)
     private String province;
     @Column(length = 50)
-    private String city;
+    private String district;
     @Column(length = 50)
-    private String country;
+    private String ward ;
     private String description;
 
     @OneToOne(mappedBy = "address")

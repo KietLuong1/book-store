@@ -48,7 +48,8 @@ public class WebSecurityConfig {
                 .logout(logout ->
                         logout.logoutSuccessUrl("/").permitAll().deleteCookies("JSESSIONID"))
                 .rememberMe(rememberMe ->
-                        rememberMe.key("uniqueAndSecret").userDetailsService(userDetailsService()).tokenValiditySeconds(86400));
+                        rememberMe.alwaysRemember(true).key("uniqueAndSecret")
+                                .userDetailsService(userDetailsService()).tokenValiditySeconds(86400));
 
         return http.build();
     }
