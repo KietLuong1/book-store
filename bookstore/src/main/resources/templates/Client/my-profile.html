@@ -27,8 +27,10 @@
                                         </div>
                                         <div class="account-title">
                                             <div class="">
-                                                <h4 class="m-b5"><a href="javascript:void(0);" sec:authentication="principal.fullName"></a></h4>
-                                                <p class="m-b0"><a href="javascript:void(0);" sec:authentication="principal.username"
+                                                <h4 class="m-b5"><a href="javascript:void(0);"
+                                                                    sec:authentication="principal.fullName"></a></h4>
+                                                <p class="m-b0"><a href="javascript:void(0);"
+                                                                   sec:authentication="principal.username"
                                                 ></a></p>
                                             </div>
                                         </div>
@@ -36,7 +38,7 @@
                                     <ul class="account-list">
                                         <li>
                                             <a th:href="@{'/my-profile'}" class="active"><i class="far fa-user"
-                                                                                        aria-hidden="true"></i>
+                                                                                            aria-hidden="true"></i>
                                                 <span>Profile</span></a>
                                         </li>
                                         <li>
@@ -47,27 +49,10 @@
                                             <a th:href="@{'/wishlist'}"><i class="far fa-heart" aria-hidden="true"></i>
                                                 <span>Wishlist</span></a>
                                         </li>
-                                        <!--											?????????????-->
-                                        <!--											<li>-->
-                                        <!--												<a href="books-grid-view.html"><i class="fa fa-briefcase"-->
-                                        <!--														aria-hidden="true"></i>-->
-                                        <!--													<span>Shop</span></a>-->
-                                        <!--											</li>-->
-                                        <!--&lt;!&ndash;											???????????&ndash;&gt;-->
-                                        <!--											<li>-->
-                                        <!--												<a href="support.html"><i class="far fa-id-card"-->
-                                        <!--														aria-hidden="true"></i>-->
-                                        <!--													<span>Support</span></a>-->
-                                        <!--											</li>-->
-                                        <!--&lt;!&ndash;											????????????&ndash;&gt;-->
-                                        <!--											<li>-->
-                                        <!--												<a href="privacy-policy.html"><i class="fa fa-key"-->
-                                        <!--														aria-hidden="true"></i>-->
-                                        <!--													<span>Privacy Policy</span></a>-->
-                                        <!--											</li>-->
                                         <li>
-                                            <a th:href="@{/reset-password.html}"><i class="fa-solid fa-lock-open"></i>
-                                                <span>Forgot password</span></a>
+                                            <a class="change-password">
+                                                <i class="fa-solid fa-lock-open"></i>
+                                                <span>Change password</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -108,8 +93,9 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
                                                 <label for="age" class="form-label">Age</label>
-                                                <input type="number" inputmode="numeric" class="form-control" id="age"
-                                                       th:placeholder="${user.age}" th:field="*{age}">
+                                                <input type="text" class="form-control" id="age"
+                                                       th:placeholder="${user.age == 0}?'':${user.age}"
+                                                       th:field="*{age}">
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12">
@@ -131,43 +117,53 @@
                                             <div class="mb-3">
                                                 <label for="phone" class="form-label">Contact Number</label>
                                                 <input type="text" class="form-control" id="phone"
-                                                       th:placeholder="${user.phone}" th:field="*{phone}" maxlength="10">
+                                                       th:placeholder="${user.phone}" th:field="*{phone}"
+                                                       maxlength="10">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="mb-3">
-                                                <label for="country" class="form-label">Country</label>
-                                                <input type="text" class="form-control" id="country"
-                                                       th:placeholder="${user.address.country}" th:field="*{address.country}">
-                                            </div>
-                                        </div>
-<!--                                        <div class="col-lg-6 col-md-6">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label for="ward" class="form-label">Ward:</label>-->
-<!--                                                <input type="text" class="form-control" id="ward"-->
-<!--                                                       th:placeholder="${user.address.ward}" th:field="*{address.ward}">-->
-<!--                                            </div>-->
-<!--                                        </div>-->
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
                                                 <label for="province" class="form-label">Province</label>
-                                                <input type="text" class="form-control" id="province"
-                                                       th:placeholder="${user.address.province}" th:field="*{address.province}">
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="title province-text" th:text="${#strings.substring(user.address.province,2)}"></h6>
+                                                    <select class="form-select" id="province" name="province"
+                                                            th:field="*{address.province}">
+                                                        <option selected value="0">Select</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
-                                                <label for="city" class="form-label">City</label>
-                                                <input type="text" class="form-control" id="city"
-                                                       th:placeholder="${user.address.city}" th:field="*{address.city}">
+                                                <label for="district" class="form-label">District</label>
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="title district-text" th:text="${#strings.substring(user.address.district,3)}"></h6>
+                                                    <select class="form-select" id="district" name="district"
+                                                            th:field="*{address.district}">
+                                                        <option selected value="0">Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="ward" class="form-label">Ward</label>
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="title ward-text" th:text="${user.address.ward}"></h6>
+                                                    <select class="form-select" id="ward" name="ward"
+                                                            th:field="*{address.ward}">
+                                                        <option selected value="0">Select</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-6">
                                             <div class="mb-4">
-                                                <label for="full-address" class="form-label">Full
-                                                    Address</label>
+                                                <label for="full-address" class="form-label">Address description</label>
                                                 <input type="text" class="form-control" id="full-address"
-                                                       th:placeholder="${user.address.description}" th:field="*{address.description}">
+                                                       th:placeholder="${#strings.isEmpty(user.address.description)}
+                                                       ?'Example: No.X, Apartment Y, Street Z...':${user.address.description}"
+                                                       th:field="*{address.description}">
                                             </div>
                                         </div>
                                     </div>

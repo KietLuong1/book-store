@@ -1,6 +1,5 @@
 package project.bookstore.controller.user;
 
-import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -21,6 +20,7 @@ import project.bookstore.service.CategoryService;
 import project.bookstore.service.UserService;
 
 import java.util.List;
+
 
 @Controller
 public class UserController {
@@ -53,7 +53,6 @@ public class UserController {
         Address address = new Address();
 
         user.setPassword(encodedPassword);
-        address.setCountry(LocaleContextHolder.getLocale().getCountry());
         user.setAddress(address);
 
         if (userService.getUserByEmail(user.getEmail()) != null) {
@@ -69,6 +68,8 @@ public class UserController {
 
     @GetMapping("/profile")
     public String getMyProfile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
+
+
         User user = userDetails.getUser();
         model.addAttribute("user", user);
 
@@ -84,7 +85,7 @@ public class UserController {
         loggedUser.setUser(user);
         userService.save(user);
 
-        ra.addAttribute("message", "Update information successfully");
+        ra.addFlashAttribute("message", "Update information successfully");
 
         return "redirect:/profile";
     }

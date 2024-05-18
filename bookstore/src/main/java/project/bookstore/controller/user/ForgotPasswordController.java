@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.service.UserService;
 import project.bookstore.utils.Utility;
@@ -27,9 +30,11 @@ public class ForgotPasswordController {
     private UserService userService;
 
     @PostMapping("/forget-password")
-    public String processForgotPassword(HttpServletRequest request, Model model) {
-        String email = request.getParameter("forgotEmail");
+    public String processForgotPassword(@AuthenticationPrincipal CustomUserDetails userDetails,
+                                        HttpServletRequest request, RedirectAttributes ra) {
         String token = RandomStringUtils.randomAlphanumeric(5, 20);
+        String currentURI = request.getRequestURI();
+        String email = (currentURI.equals("/profile"))?userDetails.getUsername():request.getParameter("forgotEmail");
 
         try {
             userService.updateResetPasswordToken(token, email);
@@ -37,56 +42,65 @@ public class ForgotPasswordController {
             String resetPasswordLink = Utility.getSiteURL(request) + "/reset-password?token=" + token;
             sendMail(email, resetPasswordLink);
         } catch (UnsupportedEncodingException | MessagingException e) {
-            model.addAttribute("error", "Error while sending email");
+            ra.addAttribute("error", "Error while sending email");
+        }
+        ra.addFlashAttribute("message","We have send you an email. Please check it");
+
+        if (currentURI.equals("/profile")){
+            return "redirect:/profile";
         }
 
-        return "redirect:/client-login";
+        return "redirect:/";
     }
 
     @GetMapping("/reset-password")
-    public String showForgetPasswordForm(@Param(value = "token") String token, Model model) {
+    public String showForgetPasswordForm(@Param(value = "token") String token, RedirectAttributes ra, Model model) {
         User user = userService.getUserByResetPasswordToken(token);
         model.addAttribute("token", token);
+        model.addAttribute("title", "Change Your Password");
 
         if (user == null){
-            model.addAttribute("message", "Invalid Token");
-            return "redirect:/client-login";
+            ra.addFlashAttribute("error", "Invalid Token");
         }
 
         return "Client/reset-password";
     }
 
     @PostMapping("/reset-password")
-    public String processForgetPassword(HttpServletRequest request, Model model) {
+    public String processForgetPassword(HttpServletRequest request, RedirectAttributes ra) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");
 
         User user = userService.getUserByResetPasswordToken(token);
-        model.addAttribute("title", "Reset Your Password");
 
         if (user == null){
-            model.addAttribute("message", "Invalid Token");
+            ra.addFlashAttribute("error", "Invalid Token");
         }else {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             String newPassword = encoder.encode(password);
 
+            System.out.println(password);
             userService.updatePassword(newPassword, user.getEmail());
 
-            model.addAttribute("message","Change password successfully");
+            ra.addFlashAttribute("message","Change password successfully");
         }
 
-        return "/Client/shop-login";
+        if (request.getRequestURI().equals("/profile")){
+            return "redirect:/profile";
+        }
+
+        return "redirect:/client-login";
     }
 
     public void sendMail(String receiver, String link) throws MessagingException, UnsupportedEncodingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
-
         String subject = "[Bookland] Reset Your Password";
         String content = "<p>Hello,</p>"
                 + "<br>"
                 + "<p>You have requested to reset your password.</p>"
+                + "<p>Please accept the email and</p>"
                 + "<p>Click the link below to change your password:</p>"
                 + "<p><a href=\"" + link + "\" target=\""+"_blank"+"\">Change my password</a></p>"
                 + "<br>"

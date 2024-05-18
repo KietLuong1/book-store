@@ -195,7 +195,7 @@ details summary:hover {
 .alert {
     background: #D3EDDA;
     padding: 20px 40px;
-    min-width: 420px;
+    min-width: 20%;
     position: absolute;
     right: 0;
     top: 5px;
@@ -251,7 +251,7 @@ details summary:hover {
         transform: translateX(-10%);
     }
     100% {
-        transform: translateX(500px);
+        transform: translateX(550px);
     }
 }
 
@@ -298,4 +298,8 @@ details summary:hover {
     position: relative;
     z-index: 1;
     cursor: pointer;
+}
+
+.form-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+    width: 50%;
 }
