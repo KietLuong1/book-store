@@ -1,11 +1,8 @@
 package project.bookstore.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 import project.bookstore.entity.Book;
+import project.bookstore.entity.Cart;
 
-@Repository
-public interface BookRepository extends JpaRepository<Book, Integer> {
-
+public interface CartRepository extends JpaRepository<Book, Integer> {
 }

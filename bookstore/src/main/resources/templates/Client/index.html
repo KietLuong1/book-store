@@ -327,7 +327,8 @@
                                     </h4>
                                     <a th:href="@{'/books-detail/' + ${book.book_id}}"><span class="price"
                                                                                              th:text="${book.price}"></span></a>
-                                    <a href="shop-cart" class="btn btn-secondary btnhover btnhover2"><i
+                                    <a class="btn btn-secondary btnhover btnhover2"
+                                       th:href="@{'/shop-cart/save/' + ${book.book_id}}"><i
                                             class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
                                 </div>
                             </div>
