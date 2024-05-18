@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Category;
 import project.bookstore.service.BookService;
+import project.bookstore.service.CartService;
 import project.bookstore.service.CategoryService;
 
 import java.util.List;
@@ -20,17 +21,26 @@ import java.util.List;
 public class HomeController {
     @Autowired
     CategoryService categoryService;
+
     @Autowired
     BookService bookService;
+
+    @Autowired
+    CartService cartService;
 
     @GetMapping("/")
     public String home(Model model) {
         // Get All Categories Name from DB to Homepage
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
+
         // Get All Book from DB to Homepage, Book Grid, Book List
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
+
+        // Get Number of Cart Items
+        Integer numberOfCartItems = cartService.getNumberOfItems();
+        model.addAttribute("numberOfCartItems", numberOfCartItems);
 
         //notification if user log in or not
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -191,6 +201,20 @@ public class HomeController {
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/services";
+    }
+
+    @GetMapping("/shop-checkout")
+    public String getShopCheckout(Model model) {
+        // Get All Catagories Name
+        List<Category> listCategoriesName = categoryService.listAll();
+        model.addAttribute("listCategoriesName", listCategoriesName);
+
+        return "Client/shop-checkout";
+    }
+
+    @GetMapping("/shop-login")
+    public String getShopLogin() {
+        return "Client/shop-login";
     }
 
     @GetMapping("/shop-registration")
