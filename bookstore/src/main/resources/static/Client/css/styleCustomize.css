@@ -303,3 +303,4 @@ details summary:hover {
 .form-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
     width: 50%;
 }
+

@@ -106,14 +106,14 @@ public class UserController {
         return "Client/shop-checkout";
     }
 
-    @GetMapping("/shop-cart")
-    public String getShopCart(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/shop-cart";
-    }
+//    @GetMapping("/shop-cart")
+//    public String getShopCart(Model model) {
+//        // Get All Catagories Name
+//        List<Category> listCategoriesName = categoryService.listAll();
+//        model.addAttribute("listCategoriesName", listCategoriesName);
+//
+//        return "Client/shop-cart";
+//    }
 
     @GetMapping("/wishlist")
     public String getWishlist(Model model) {

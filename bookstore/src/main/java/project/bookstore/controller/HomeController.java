@@ -203,14 +203,14 @@ public class HomeController {
         return "Client/services";
     }
 
-    @GetMapping("/shop-checkout")
-    public String getShopCheckout(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/shop-checkout";
-    }
+//    @GetMapping("/shop-checkout")
+//    public String getShopCheckout(Model model) {
+//        // Get All Catagories Name
+//        List<Category> listCategoriesName = categoryService.listAll();
+//        model.addAttribute("listCategoriesName", listCategoriesName);
+//
+//        return "Client/shop-checkout";
+//    }
 
     @GetMapping("/shop-login")
     public String getShopLogin() {
