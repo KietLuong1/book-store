@@ -1,114 +1,117 @@
 package project.bookstore.controller.user;
 
-import jakarta.servlet.http.HttpSession;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.http.HttpServletRequest;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import project.bookstore.dto.MailBody;
 import project.bookstore.entity.user.CustomUserDetails;
-import project.bookstore.entity.user.ForgotPassword;
 import project.bookstore.entity.user.User;
-import project.bookstore.exception.UserNotFoundException;
-import project.bookstore.repository.user.ForgotRepository;
-import project.bookstore.service.EmailService;
 import project.bookstore.service.UserService;
-import project.bookstore.utils.ChangePassword;
+import project.bookstore.utils.Utility;
 
-import java.time.Instant;
-import java.util.Date;
-import java.util.Objects;
-import java.util.Random;
+import java.io.UnsupportedEncodingException;
 
 @Controller
 public class ForgotPasswordController {
-
     @Autowired
-    UserService userService;
+    private JavaMailSender mailSender;
     @Autowired
-    EmailService emailService;
-    @Autowired
-    ForgotRepository forgotRepository;
+    private UserService userService;
 
-
-    //    Send email for verification
     @PostMapping("/forget-password")
-    public String verifyEmail(@RequestParam("forgotEmail") String email, HttpSession session
-                              ) throws UserNotFoundException {
-        CustomUserDetails userDetails = (CustomUserDetails) userService.loadUserByUsername(email);
+    public String processForgotPassword(@AuthenticationPrincipal CustomUserDetails userDetails,
+                                        HttpServletRequest request, RedirectAttributes ra) {
+        String token = RandomStringUtils.randomAlphanumeric(5, 20);
+        String currentURI = request.getRequestURI();
+        String email = (currentURI.equals("/profile"))?userDetails.getUsername():request.getParameter("forgotEmail");
 
-        if (userDetails == null){
-            throw new UserNotFoundException("Invalid email!");
+        try {
+            userService.updateResetPasswordToken(token, email);
+
+            String resetPasswordLink = Utility.getSiteURL(request) + "/reset-password?token=" + token;
+            sendMail(email, resetPasswordLink);
+        } catch (UnsupportedEncodingException | MessagingException e) {
+            ra.addAttribute("error", "Error while sending email");
         }
-        User user = userDetails.getUser();
-        int otp = generateOTP();
-        session.setAttribute("forgotEmail", email);
+        ra.addFlashAttribute("message","We have send you an email. Please check it");
 
-        MailBody mailBody = MailBody.builder()
-                .to(email)
-                .text("This is the OTP for your Forgot Password: " + otp)
-                .subject("[Bookland] OTP for Forgot Password")
-                .build();
+        if (currentURI.equals("/profile")){
+            return "redirect:/profile";
+        }
 
-        ForgotPassword forgotPassword = ForgotPassword.builder()
-                .otp(otp)
-                .expirationTime(new Date(System.currentTimeMillis() + 70 * 1000))
-                .user(user)
-                .build();
-
-        emailService.sendSimpleMessage(mailBody);
-        forgotRepository.save(forgotPassword);
-
-        return "Client/submit-otp";
+        return "redirect:/";
     }
 
-//    verify OTP code which send to user's email
-    @PostMapping("forget-password/{email}")
-    public String verifyOTP(RedirectAttributes ra, @RequestParam("otp") Integer otp, @PathVariable String email) throws UserNotFoundException {
-        CustomUserDetails userDetails = (CustomUserDetails) userService.loadUserByUsername(email);
+    @GetMapping("/reset-password")
+    public String showForgetPasswordForm(@Param(value = "token") String token, RedirectAttributes ra, Model model) {
+        User user = userService.getUserByResetPasswordToken(token);
+        model.addAttribute("token", token);
+        model.addAttribute("title", "Change Your Password");
 
-        if (userDetails == null){
-            throw new UserNotFoundException("Invalid email!");
+        if (user == null){
+            ra.addFlashAttribute("error", "Invalid Token");
         }
-        User user = userDetails.getUser();
-
-        ForgotPassword forgotPassword = forgotRepository.findByOTPAndUser(otp, user)
-                .orElseThrow(() -> new RuntimeException("Invalid OTP for email: "+ email));
-
-        if(forgotPassword.getExpirationTime().before(Date.from(Instant.now()))){
-            forgotRepository.deleteById(forgotPassword.getId());
-            ra.addFlashAttribute("verifiedMessage","OTP has expired!");
-
-            return "Client/change-password";
-        }
-        ra.addFlashAttribute("verifiedMessage","OTP verified!");
 
         return "Client/reset-password";
     }
 
-//    change password
-    @PostMapping("/change-password/{email}")
-    public String changePassword(@RequestBody ChangePassword changePassword,
-                                 @PathVariable String email,
-                                 RedirectAttributes ra){
-        if (!Objects.equals(changePassword.password(), changePassword.repeatPassword())){
-            ra.addFlashAttribute("passwordMessage", "Please enter password again!");
+    @PostMapping("/reset-password")
+    public String processForgetPassword(HttpServletRequest request, RedirectAttributes ra) {
+        String token = request.getParameter("token");
+        String password = request.getParameter("password");
+
+        User user = userService.getUserByResetPasswordToken(token);
+
+        if (user == null){
+            ra.addFlashAttribute("error", "Invalid Token");
+        }else {
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String newPassword = encoder.encode(password);
+
+            System.out.println(password);
+            userService.updatePassword(newPassword, user.getEmail());
+
+            ra.addFlashAttribute("message","Change password successfully");
         }
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodedPassword = encoder.encode(changePassword.password());
+        if (request.getRequestURI().equals("/profile")){
+            return "redirect:/profile";
+        }
 
-        userService.updatePassword(encodedPassword, email);
-
-        return "redirect:/login";
+        return "redirect:/client-login";
     }
 
-    private Integer generateOTP() {
-        Random random = new Random();
-        return random.nextInt(100_000, 999_999);
+    public void sendMail(String receiver, String link) throws MessagingException, UnsupportedEncodingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        String subject = "[Bookland] Reset Your Password";
+        String content = "<p>Hello,</p>"
+                + "<br>"
+                + "<p>You have requested to reset your password.</p>"
+                + "<p>Please accept the email and</p>"
+                + "<p>Click the link below to change your password:</p>"
+                + "<p><a href=\"" + link + "\" target=\""+"_blank"+"\">Change my password</a></p>"
+                + "<br>"
+                + "<p>Ignore this email if you do remember your password, "
+                + "or you have not made the request.</p>";
+
+        helper.setFrom("contact@bookland.com", "Bookland Support");
+        helper.setTo(receiver);
+        helper.setSubject(subject);
+        helper.setText(content, true);
+
+        mailSender.send(message);
     }
 }

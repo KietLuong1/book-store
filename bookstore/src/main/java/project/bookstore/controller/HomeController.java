@@ -1,6 +1,11 @@
 package project.bookstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,9 +42,17 @@ public class HomeController {
         Integer numberOfCartItems = cartService.getNumberOfItems();
         model.addAttribute("numberOfCartItems", numberOfCartItems);
 
+        //notification if user log in or not
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
+            model.addAttribute("message", "Log in successfully");
+        }
+
         return "Client/index";
     }
 
+    @GetMapping("/about-us")
     public String getAboutUs(Model model) {
         // Get All Catagories Name
         List<Category> listCategoriesName = categoryService.listAll();
@@ -163,24 +176,6 @@ public class HomeController {
         return "Client/faq";
     }
 
-    @GetMapping("/my-profile")
-    public String getMyProfile(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/my-profile";
-    }
-
-    @GetMapping("/order-history")
-    public String getOrderHistory(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/order-history";
-    }
-
     @GetMapping("/pricing")
     public String getPricing(Model model) {
         // Get All Catagories Name
@@ -229,7 +224,6 @@ public class HomeController {
 
     @GetMapping("/support")
     public String getSupport(Model model) {
-        // Get All Catagories Name
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
@@ -239,15 +233,6 @@ public class HomeController {
     @GetMapping("/under-construction")
     public String getUnderConstruction() {
         return "Client/under-construction";
-    }
-
-    @GetMapping("/wishlist")
-    public String getWishlist(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/wishlist";
     }
 
 }

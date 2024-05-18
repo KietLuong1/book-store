@@ -35,13 +35,16 @@
     <!-- GOOGLE FONTS-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
+
 <div class="page-wraper">
     <!-- Header -->
     <header class="site-header mo-left header style-1" th:fragment="header">
         <!-- Main Header -->
+
         <div class="header-info-bar">
             <div class="container clearfix">
                 <!-- Website Logo -->
@@ -287,6 +290,20 @@
         <!-- Main Header -->
         <div class="sticky-header main-bar-wraper navbar-expand-lg">
             <div class="main-bar clearfix">
+                <div th:if="${message}" class="alert hide">
+                    <i class="fa-solid fa-check"></i>
+                    <span class="msg">[[${message}]]</span>
+                    <div class="close-btn">
+                        <span class="fas fa-times"></span>
+                    </div>
+                </div>
+                <div th:if="${error}" class="alert hide error">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span class="msg">[[${error}]]</span>
+                    <div class="close-btn">
+                        <span class="fas fa-times"></span>
+                    </div>
+                </div>
                 <div class="container clearfix">
                     <!-- Website Logo -->
                     <div class="logo-header logo-dark">

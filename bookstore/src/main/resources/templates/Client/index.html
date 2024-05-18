@@ -8,7 +8,6 @@
     <!-- Header -->
     <header th:insert="Client/client-template.html :: header"></header>
     <!-- Header End -->
-
     <div class="page-content bg-white">
         <!--Swiper Banner Start -->
         <div class="main-slider style-1 slider-white">
@@ -330,6 +329,7 @@
                                     <a class="btn btn-secondary btnhover btnhover2"
                                        th:href="@{'/shop-cart/save/' + ${book.book_id}}"><i
                                             class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
+
                                 </div>
                             </div>
                         </div>
@@ -941,7 +941,10 @@
     <div th:insert="Client/client-template.html :: footer"></div>
 
 </div>
+<script type="text/javascript">
 
+
+</script>
 </body>
 
 </html>

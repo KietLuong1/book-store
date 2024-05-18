@@ -40,13 +40,16 @@ public class WebSecurityConfig {
 
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/profile").authenticated().anyRequest().permitAll())
+                        auth.requestMatchers("/profile", "/order-history", "/shop-checkout"
+                                        , "/shop-cart", "/wishlist").authenticated()
+                                .anyRequest().permitAll())
                 .formLogin(login ->
                         login.loginPage("/client-login").loginProcessingUrl("/login").defaultSuccessUrl("/").permitAll())
                 .logout(logout ->
                         logout.logoutSuccessUrl("/").permitAll().deleteCookies("JSESSIONID"))
                 .rememberMe(rememberMe ->
-                        rememberMe.key("uniqueAndSecret").userDetailsService(userDetailsService()).tokenValiditySeconds(86400));
+                        rememberMe.alwaysRemember(true).key("uniqueAndSecret")
+                                .userDetailsService(userDetailsService()).tokenValiditySeconds(86400));
 
         return http.build();
     }

@@ -1,4 +1,4 @@
-package project.bookstore.repository.user;
+package project.bookstore.repository;
 
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,8 +13,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select  u from  User u where u.email =?1")
     Optional<User> findByEmail(String email);
 
+    @Query("select  u from  User u where u.resetPasswordToken = ?1")
+    Optional<User> findByResetPasswordToken(String token);
+
     @Transactional
     @Modifying
-    @Query("update User u set  u.password =?2 where u.email =?1")
-    void updatePassword(String email, String password);
+    @Query("update User u set  u.password =?1, u.resetPasswordToken = null where u.email =?2")
+    void updatePassword(String password, String email);
 }
