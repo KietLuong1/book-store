@@ -304,3 +304,11 @@ details summary:hover {
     width: 50%;
 }
 
+hmtl, body {
+    height: 100%;
+}
+
+body {
+    place-items: center;
+}
+
