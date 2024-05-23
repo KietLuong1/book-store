@@ -576,7 +576,7 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/books-grid-view-sidebar">
+                                            <a class="nav-link active" href="/books-grid-view-sidebar">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -763,17 +763,17 @@
                             <div class="col-book style-2" th:each="book: ${listBooks}">
                                 <div class="dz-shop-card style-1 h-100">
                                     <div class="dz-media">
-                                        <a href="books-detail"><img src="Client/images/books/grid/book14.jpg"
+                                        <a th:href="@{'/books-detail/' + ${book.book_id}}"><img src="Client/images/books/grid/book14.jpg"
                                                                     alt="book"></a>
                                     </div>
                                     <div class="bookmark-btn style-2">
                                         <input class="form-check-input" type="checkbox" id="flexCheckDefault1">
-                                        <label class="form-check-label" for="flexCheckDefault1">
-                                            <i class="flaticon-heart"></i>
-                                        </label>
+<!--                                        <label class="form-check-label" for="flexCheckDefault1">-->
+<!--                                            <i class="flaticon-heart"></i>-->
+<!--                                        </label>-->
                                     </div>
                                     <div class="dz-content">
-                                        <h5 class="title"><a th:text="${book.name}"
+                                        <h5 class="title shortTitle"><a th:text="${book.name}"
                                                              th:href="@{'/books-detail/' + ${book.book_id}}"></a></h5>
                                         <ul class="dz-tags">
                                             <li><a th:text="${book.category}"></a></li>
@@ -791,7 +791,7 @@
                                                 <span class="price-num" th:text="${book.price}"></span>
                                                 <del th:text="${book.salePrice}"></del>
                                             </div>
-                                            <a href="shop-cart"
+                                            <a th:href="@{'/shop-cart/save/' + ${book.book_id}}"
                                                class="btn btn-secondary box-btn btnhover btnhover2"><i
                                                     class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
                                         </div>

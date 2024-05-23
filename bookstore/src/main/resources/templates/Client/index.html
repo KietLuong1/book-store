@@ -321,7 +321,7 @@
                                             src="Client/images/books/grid/book5.jpg" alt="book"></a>
                                 </div>
                                 <div class="dz-content">
-                                    <h4 class="title"><a
+                                    <h4 class="title shortTitle"><a
                                             th:text="${book.name}" th:href="@{'/books-detail/' + ${book.book_id}}"></a>
                                     </h4>
                                     <a th:href="@{'/books-detail/' + ${book.book_id}}"><span class="price"
@@ -359,7 +359,7 @@
                                             src="Client/images/books/grid/book3.jpg" alt="book"></a>
                                 </div>
                                 <div class="dz-content">
-                                    <h5 class="title"><a th:text="${book.name}"
+                                    <h5 class="title shortTitle"><a th:text="${book.name}"
                                                          th:href="@{'/books-detail/' + ${book.book_id}}"></a></h5>
                                     <ul class="dz-tags">
                                         <li><a href="books-grid-view" th:text="${book.category}"
@@ -405,7 +405,7 @@
                                             src="Client/images/books/grid/book11.jpg" alt="book"></a>
                                 </div>
                                 <div class="dz-content">
-                                    <h5 class="title"><a th:text="${book.name}"
+                                    <h5 class="title shortTitle"><a th:text="${book.name}"
                                                          th:href="@{'/books-detail/' + ${book.book_id}}"></a></h5>
                                     <ul class="dz-tags">
                                         <li><a th:text="${book.category}"
@@ -622,7 +622,7 @@
                                             src="Client/images/blog/blog5.jpg" alt="/"></a>
                                 </div>
                                 <div class="dz-info">
-                                    <h4 class="dz-title"><a th:text="${book.name}"
+                                    <h4 class="dz-title shortTitle"><a th:text="${book.name}"
                                                             th:href="@{'/books-detail/' + ${book.book_id}}"></a></h4>
                                     <div class="dz-meta">
                                         <ul class="dz-tags">
@@ -630,7 +630,7 @@
                                                    th:href="@{'/books-detail/' + ${book.book_id}}"></a></li>
                                         </ul>
                                     </div>
-                                    <p th:text="${book.description}"></p>
+                                    <p class="shortDescription" th:text="${book.description}"></p>
                                     <div class="bookcard-footer">
                                         <a href="shop-cart" class="btn btn-primary m-t15 btnhover btnhover2"><i
                                                 class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
