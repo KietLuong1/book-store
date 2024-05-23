@@ -12,7 +12,6 @@ import java.util.Collections;
 
 @Getter
 @Setter
-@ToString
 public class CustomUserDetails implements UserDetails {
     private User user;
 

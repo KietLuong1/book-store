@@ -68,15 +68,13 @@ public class UserController {
 
     @GetMapping("/profile")
     public String getMyProfile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
-
-
         User user = userDetails.getUser();
         model.addAttribute("user", user);
 
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
-        return "/Client/my-profile";
+        return "Client/my-profile";
     }
 
     @PostMapping("/profile/update")
@@ -115,11 +113,11 @@ public class UserController {
 //        return "Client/shop-cart";
 //    }
 
-    @GetMapping("/wishlist")
-    public String getWishlist(Model model) {
-        List<Category> listCategoriesName = categoryService.listAll();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/wishlist";
-    }
+//    @GetMapping("/wishlist")
+//    public String getWishlist(Model model) {
+//        List<Category> listCategoriesName = categoryService.listAll();
+//        model.addAttribute("listCategoriesName", listCategoriesName);
+//
+//        return "Client/wishlist";
+//    }
 }

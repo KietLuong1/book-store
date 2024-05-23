@@ -30,7 +30,7 @@ public class Address {
     @Column(length = 50)
     private String ward ;
     private String description;
-
+    
     @OneToOne(mappedBy = "address")
     private User user;
 }
