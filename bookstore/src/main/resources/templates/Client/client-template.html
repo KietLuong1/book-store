@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/Client/icons/themify/themify-icons.css}">
     <link rel="stylesheet" type="text/css"
           th:href="@{/Client/vendor/bootstrap-select/dist/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" href="/Client/css/dataTables.bootstrap5.min.css">
     <!-- GOOGLE FONTS-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -421,7 +422,8 @@
         <!-- Footer End -->
 
         <button class="scroltop" type="button"><i class="fas fa-arrow-up"></i></button>
-
+        <script src="/Client/js/jquery.dataTables.min.js"></script>
+        <script src="/Client/js/dataTables.bootstrap5.min.js"></script>
         <script th:src="@{/Client/js/jquery.min.js}"></script><!-- JQUERY MIN JS -->
         <script th:src="@{/Client/vendor/bootstrap/dist/js/bootstrap.bundle.min.js}"></script><!-- BOOTSTRAP MIN JS -->
         <script th:src="@{/Client/vendor/bootstrap-select/dist/js/bootstrap-select.min.js}"></script>
