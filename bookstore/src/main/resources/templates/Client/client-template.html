@@ -26,7 +26,6 @@
     <!-- STYLESHEETS -->
     <link rel="stylesheet" type="text/css" th:href="@{/Client/css/style.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/Client/css/styleCustomize.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/Client/css/styleCustomize2.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/Client/icons/fontawesome/css/all.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/Client/vendor/swiper/swiper-bundle.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/Client/vendor/animate/animate.css}">
@@ -69,31 +68,6 @@
                                         <span class="badge" th:text="${numberOfCartItems}"></span>
                                     </button>
                                 </a>
-
-                                <!--                                <ul class="dropdown-menu cart-list">-->
-                                <!--                                    <li class="cart-item">-->
-                                <!--                                        <div class="media">-->
-                                <!--                                            <div class="media-left">-->
-                                <!--                                                <a href="books-detail">-->
-                                <!--                                                    <img alt="" class="media-object"-->
-                                <!--                                                         th:src="@{/Client/images/books/small/pic1.jpg}">-->
-                                <!--                                                </a>-->
-                                <!--                                            </div>-->
-                                <!--                                            <div class="media-body">-->
-                                <!--                                                <h6 class="dz-title"><a href="books-detail"-->
-                                <!--                                                                        class="media-heading">Real Life</a></h6>-->
-                                <!--                                                <span class="dz-price">$28.00</span>-->
-                                <!--                                                <span class="item-close">&times;</span>-->
-                                <!--                                            </div>-->
-                                <!--                                        </div>-->
-                                <!--                                    </li>-->
-                                <!--                                    <li class="text-center d-flex">-->
-                                <!--                                        <a th:href="@{/shop-cart}" class="btn btn-sm btn-primary me-2 btnhover w-100">View-->
-                                <!--                                            Cart</a>-->
-                                <!--                                        <a th:href="@{/shop-checkout}"-->
-                                <!--                                           class="btn btn-sm btn-outline-primary btnhover w-100">Checkout</a>-->
-                                <!--                                    </li>-->
-                                <!--                                </ul>-->
                             </li>
                             <li class="nav-item dropdown profile-dropdown ms-4">
                                 <a class="nav-link" href="javascript:void(0);" role="button"
@@ -196,10 +170,10 @@
                             </select>
                                 <button type="button" tabindex="-1" class="btn dropdown-toggle btn-light"
                                         data-bs-toggle="dropdown" role="combobox" aria-owns="bs-select-1"
-                                        aria-haspopup="listbox" aria-expanded="false" title="Category">
+                                        aria-haspopup="listbox" aria-expanded="false" title="Select One">
                                     <div class="filter-option">
                                         <div class="filter-option-inner">
-                                            <div class="filter-option-inner-inner">Category</div>
+                                            <div class="filter-option-inner-inner">Select One</div>
                                         </div>
                                     </div>
                                 </button>
@@ -210,50 +184,16 @@
                                          style="max-height: 340px; overflow-y: auto; min-height: 96px;">
                                         <ul class="dropdown-menu inner show" role="presentation"
                                             style="margin-top: 0px; margin-bottom: 0px;">
-                                            <li class="selected active"><a role="option"
-                                                                           class="dropdown-item active selected"
-                                                                           id="bs-select-1-0" tabindex="0"
-                                                                           aria-setsize="14" aria-posinset="1"
-                                                                           aria-selected="true"><span class="text">Category</span></a>
+<!--                                            <li class="selected active"><a role="option"-->
+<!--                                                                           class="dropdown-item active selected"-->
+<!--                                                                           id="bs-select-1-0" tabindex="0"-->
+<!--                                                                           aria-setsize="14" aria-posinset="1"-->
+<!--                                                                           aria-selected="true"><span class="text">Choose Your Catagory</span></a>-->
+<!--                                            </li>-->
+                                            <li th:each="category: ${listCategoriesName}">
+                                                <a role="option" class="dropdown-item" id="bs-select-1-1" tabindex="0"
+                                                   aria-setsize="14" aria-posinset="2" href="/books-list" th:text="${category.name}"></a>
                                             </li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-1" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="2"><span
-                                                    class="text">Photography </span></a></li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-2" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="3"><span
-                                                    class="text">Arts</span></a></li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-3" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="4"><span
-                                                    class="text">Adventure</span></a></li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-4" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="5"><span class="text">Action</span></a>
-                                            </li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-5" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="6"><span
-                                                    class="text">Games</span></a></li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-6" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="7"><span class="text">Movies</span></a>
-                                            </li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-7" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="8"><span class="text">Comics</span></a>
-                                            </li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-8" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="9"><span
-                                                    class="text">Biographies</span></a></li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-9" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="10"><span class="text">Children’s Books</span></a>
-                                            </li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-10" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="11"><span
-                                                    class="text">Historical</span></a></li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-11" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="12"><span
-                                                    class="text">Contemporary</span></a></li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-12" tabindex="0"
-                                                   aria-setsize="14" aria-posinset="13"><span
-                                                    class="text">Classics</span></a></li>
-                                            <li><a role="option" class="dropdown-item" id="bs-select-1-13" tabindex="0"><span
-                                                    class="text">Education</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -267,7 +207,6 @@
             </div>
         </div>
         <!-- Main Header End -->
-
         <!-- Main Header -->
         <div class="sticky-header main-bar-wraper navbar-expand-lg">
             <div class="main-bar clearfix">

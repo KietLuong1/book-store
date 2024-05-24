@@ -188,6 +188,7 @@ details summary:hover {
 .checkoutHelp {
     color: var(--secondary) !important;
 }
+
 .dz-shop-card.style-1 .dz-content .book-footer {
     margin-bottom: 35px;
 }
@@ -207,7 +208,7 @@ details summary:hover {
     z-index: 100;
 }
 
-.alert i{
+.alert i {
     color: var(--bs-success);
     font-size: x-large;
 }
@@ -217,7 +218,7 @@ details summary:hover {
     pointer-events: auto;
 }
 
-.alert.show{
+.alert.show {
     animation: show_slide 1s ease forwards;
 }
 
@@ -236,7 +237,7 @@ details summary:hover {
     }
 }
 
-.alert.hide{
+.alert.hide {
     animation: hide_slide 1s ease forwards;
 }
 
@@ -282,12 +283,12 @@ details summary:hover {
     line-height: 40px;
 }
 
-.error{
+.error {
     border-left: 8px solid var(--bs-danger);
     background: #F1D1CB;
 }
 
-.error i, .error .msg, .error i, .error .close-btn .fas{
+.error i, .error .msg, .error i, .error .close-btn .fas {
     color: var(--bs-danger);
 }
 
@@ -300,7 +301,7 @@ details summary:hover {
     cursor: pointer;
 }
 
-.form-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+.form-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
     width: 50%;
 }
 
@@ -311,3 +312,38 @@ body {
     overflow-x: hidden;
 }
 
+/**/
+
+/* book title in homepage and books list, book grid*/
+.shortTitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* book description in homepage*/
+.shortDescription {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* book description in book list*/
+.shortBookListDescription {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* book detail description*/
+.shortBookListDescription {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
