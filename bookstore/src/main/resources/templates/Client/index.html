@@ -632,7 +632,7 @@
                                     </div>
                                     <p class="shortDescription" th:text="${book.description}"></p>
                                     <div class="bookcard-footer">
-                                        <a href="shop-cart" class="btn btn-primary m-t15 btnhover btnhover2"><i
+                                        <a th:href="@{'/shop-cart/save/' + ${book.book_id}}" class="btn btn-primary m-t15 btnhover btnhover2"><i
                                                 class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
                                         <a class="price-details" th:text="${book.price}"
                                            th:href="@{'/books-detail/' + ${book.book_id}}">
