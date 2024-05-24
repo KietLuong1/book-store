@@ -1,8 +1,16 @@
 package project.bookstore.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "publisher")
 public class Publisher {
 
@@ -13,26 +21,7 @@ public class Publisher {
     @Column(nullable = false, length = 255)
     private String publisher_name;
 
-    @Column(nullable = false, length = 255)
-    private String description;
-
-    public int getPublisherId() {
-        return publisher_id;
-    }
-
-    public String getPublisherName() {
-        return publisher_name;
-    }
-
-    public void setPublisherName(String publisher_name) {
-        this.publisher_name = publisher_name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    private String country;
+    private String publisher_address;
+    private String publisher_email;
 }
