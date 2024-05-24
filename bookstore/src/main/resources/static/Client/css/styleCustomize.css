@@ -251,7 +251,7 @@ details summary:hover {
         transform: translateX(-10%);
     }
     100% {
-        transform: translateX(550px);
+        transform: translateX(100%);
     }
 }
 
@@ -304,11 +304,10 @@ details summary:hover {
     width: 50%;
 }
 
-hmtl, body {
-    height: 100%;
-}
 
 body {
+    width: 100%;
     place-items: center;
+    overflow-x: hidden;
 }
 
