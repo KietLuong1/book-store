@@ -1,6 +1,9 @@
 package project.bookstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Cart;
 import project.bookstore.entity.Category;
-import project.bookstore.service.BookService;
-import project.bookstore.service.CartService;
-import project.bookstore.service.CategoryService;
+import project.bookstore.entity.Order;
+import project.bookstore.entity.user.CustomUserDetails;
+import project.bookstore.entity.user.User;
+import project.bookstore.service.*;
 
+import javax.xml.crypto.Data;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -29,6 +36,7 @@ public class CartController {
 
     @Autowired
     private BookService bookService;
+
 
     @GetMapping("/shop-cart")
     public String getAllCartItems(Model model) {
@@ -62,6 +70,5 @@ public class CartController {
         cartService.deleteItemsById(id);
         return "redirect:/shop-cart";
     }
-
 
 }
