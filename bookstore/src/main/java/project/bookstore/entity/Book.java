@@ -22,10 +22,10 @@ public class Book {
     private String description;
 
     @Column(nullable = false, length = 255)
-    private String salePrice;
+    private float salePrice;
 
     @Column(nullable = false, length = 255)
-    private String price;
+    private float price;
 
     @Column(nullable = false, length = 255)
     private String quantity;
@@ -88,18 +88,19 @@ public class Book {
         this.description = description;
     }
 
-    public String getSalePrice() {
+    public float getSalePrice() {
         return salePrice;
     }
 
-    public void setSalePrice(String salePrice) {
+    public void setSalePrice(float salePrice) {
         this.salePrice = salePrice;
     }
-    public String getPrice() {
+
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
