@@ -3,6 +3,9 @@ package project.bookstore.entity.user;
 import jakarta.persistence.*;
 import lombok.*;
 import project.bookstore.entity.Address;
+import project.bookstore.entity.Order;
+
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -49,4 +52,8 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Order> orders;
+
 }

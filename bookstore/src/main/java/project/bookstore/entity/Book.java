@@ -29,11 +29,12 @@ public class Book {
     @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false)
-    private String salePrice;
 
     @Column(nullable = false, length = 255)
-    private String price;
+    private float salePrice;
+
+    @Column(nullable = false, length = 255)
+    private float price;
 
     @Column(nullable = false)
     private String quantity;
