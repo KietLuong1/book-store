@@ -26,13 +26,11 @@
                                             </a>
                                         </div>
                                         <div class="account-title">
-                                            <div class="">
-                                                <h4 class="m-b5"><a href="javascript:void(0);"
-                                                                    sec:authentication="principal.fullName"></a></h4>
-                                                <p class="m-b0"><a href="javascript:void(0);"
-                                                                   sec:authentication="principal.username"
-                                                ></a></p>
-                                            </div>
+                                            <h4 class="m-b5"><a href="javascript:void(0);"
+                                                                sec:authentication="principal.fullName"></a></h4>
+                                            <p class="m-b0"><a href="javascript:void(0);"
+                                                               sec:authentication="principal.username"
+                                            ></a></p>
                                         </div>
                                     </div>
                                     <ul class="account-list">
@@ -94,7 +92,6 @@
                                             <div class="mb-3">
                                                 <label for="age" class="form-label">Age</label>
                                                 <input type="text" class="form-control" id="age"
-                                                       th:placeholder="${user.age == 0}?'':${user.age}"
                                                        th:field="*{age}">
                                             </div>
                                         </div>
@@ -103,7 +100,7 @@
                                                 <label for="description"
                                                        class="form-label">Short Description</label>
                                                 <textarea class="form-control" id="description" rows="5" maxlength="255"
-                                                          th:placeholder="${#strings.isEmpty(user.description)}?'Nothing here': user.description"
+                                                          th:placeholder="${#strings.isEmpty(user.description)}?'Nothing here': ${user.description}"
                                                           th:field="*{description}">
 													</textarea>
                                             </div>
@@ -124,23 +121,24 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
                                                 <label for="province" class="form-label">Province</label>
-                                                <div class="d-flex justify-content-between">
-                                                    <h6 class="title province-text" th:text="${#strings.substring(user.address.province,2)}"></h6>
-                                                    <select class="form-select" id="province" name="province"
-                                                            th:field="*{address.province}">
-                                                        <option selected value="0">Select</option>
-                                                    </select>
-                                                </div>
+                                                <select class="form-select" id="province" name="province"
+                                                        th:field="*{address.province}">
+                                                    <option selected hidden th:value="${user.address.province}"
+                                                            th:text="${#strings.isEmpty(user.address.province)}
+                                                                ?'Select':${#strings.substring(user.address.province,2)}"></option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
                                                 <label for="district" class="form-label">District</label>
                                                 <div class="d-flex justify-content-between">
-                                                    <h6 class="title district-text" th:text="${#strings.substring(user.address.district,3)}"></h6>
                                                     <select class="form-select" id="district" name="district"
                                                             th:field="*{address.district}">
-                                                        <option selected value="0">Select</option>
+                                                        <option selected hidden th:value="${user.address.district}"
+                                                                th:text="${#strings.isEmpty(user.address.district)}
+                                                           ?'Select':${#strings.substring(user.address.district,3)}">
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -149,10 +147,12 @@
                                             <div class="mb-3">
                                                 <label for="ward" class="form-label">Ward</label>
                                                 <div class="d-flex justify-content-between">
-                                                    <h6 class="title ward-text" th:text="${user.address.ward}"></h6>
                                                     <select class="form-select" id="ward" name="ward"
                                                             th:field="*{address.ward}">
-                                                        <option selected value="0">Select</option>
+                                                        <option selected hidden th:value="${user.address.ward}"
+                                                                th:text="${#strings.isEmpty(user.address.ward)}
+                                                           ?'Select':${user.address.ward}">
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>

@@ -94,6 +94,9 @@ function contactForm()
 	
 }
 
+var showMessage = function (){
+
+}
 
 jQuery(document).ready(function() {
     'use strict';

@@ -301,10 +301,10 @@ details summary:hover {
     cursor: pointer;
 }
 
-.form-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-    width: 50%;
-}
 
+html, body {
+    height: 100%;
+}
 
 body {
     width: 100%;
