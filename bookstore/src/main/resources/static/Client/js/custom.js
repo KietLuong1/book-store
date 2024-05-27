@@ -699,7 +699,14 @@ var Bookland = function () {
         })
 
     }
-
+    /*---------------------------------------------------------------------
+             Datatables
+          -----------------------------------------------------------------------*/
+     var loadData =  () => {
+         if (jQuery('.data-tables').length) {
+             return new DataTable('.data-tables');
+         }
+     }
     /* Mini Cart Function*/
     var handleHeaderMenuItem = function () {
         $(".menu-item").on('click', function () {
@@ -744,6 +751,7 @@ var Bookland = function () {
             showPassword();
             checkPassword();
             locationAPI();
+            loadData();
         },
 
         load: function () {
@@ -801,3 +809,4 @@ jQuery(window).on('resize', function () {
     Bookland.resize();
 });
 /*  Window Resize END */
+
