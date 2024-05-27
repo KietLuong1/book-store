@@ -2,6 +2,7 @@
  /**
  Core script to handle the entire theme and core functions
  **/
+
 var Bookland = function () {
     /* CUSTOM JS */
 
@@ -101,6 +102,44 @@ var Bookland = function () {
                 });
             }
         });
+    }
+
+    // update profile image using cloudinary
+    var myWidget = () => {
+        // const securityContextString = sessionStorage.getItem('SPRING_SECURITY_CONTEXT');
+        // if (securityContextString) {
+        //     const securityContext = JSON.parse(securityContextString);
+        //     const authentication = securityContext.authentication;
+        //     const userDetails = authentication.principal;
+        //     var userId = userDetails.user.id;
+        // }
+        //
+        // window.cloudinary.createUploadWidget({
+        //         cloudName: 'dggujnlln',
+        //         apiKey: '235581846542298',
+        //         folder: `/Client/${userId}`
+        //     }, (error, result) => {
+        //         if (!error && result && result.event === "success") {
+        //             var url = result.info.secure_url;
+        //
+        //             $.ajax({
+        //                 url: `http://localhost:8080/profile/update-avatar/${url}`,
+        //                 type: 'POST',
+        //                 success : function (){
+        //                     document.querySelector(".avatar")
+        //                         .setAttribute("src", url);
+        //                     $(".alert.success .msg").html("Update your avatar successfully")
+        //                 }
+        //             })
+        //         }else {
+        //             $(".alert.error .msg").html(error)
+        //         }
+        //         toastNotification();
+        //     }
+        // )
+        // document.querySelector(".my-image").addEventListener("click", function(){
+        //     myWidget.open();
+        // }, false);
     }
 
     var checkLocation = function () {
@@ -702,11 +741,11 @@ var Bookland = function () {
     /*---------------------------------------------------------------------
              Datatables
           -----------------------------------------------------------------------*/
-     var loadData =  () => {
-         if (jQuery('.data-tables').length) {
-             return new DataTable('.data-tables');
-         }
-     }
+    var loadData = () => {
+        if (jQuery('.data-tables').length) {
+            return new DataTable('.data-tables');
+        }
+    }
     /* Mini Cart Function*/
     var handleHeaderMenuItem = function () {
         $(".menu-item").on('click', function () {
@@ -752,6 +791,7 @@ var Bookland = function () {
             checkPassword();
             locationAPI();
             loadData();
+            myWidget();
         },
 
         load: function () {

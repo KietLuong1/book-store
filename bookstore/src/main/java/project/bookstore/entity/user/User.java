@@ -40,6 +40,9 @@ public class User {
 
     private boolean status = true;
 
+    @Column(name = "image_URL")
+    private String avatarURL;
+
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
 

@@ -26,15 +26,7 @@ public class Author {
     private LocalDate dob;
     private String country;
     private String description;
-    @Column(length = 255, name = "profile_image")
-    private String profileImage;
+    @Column(name = "profile_image_url")
+    private String profileImageURL;
 
-    @Transient
-    public String getProfileImagePath() {
-        if (profileImage == null || id == null) {
-            return null;
-        }
-
-        return "/Admin/images/author-images/" + id + "/" + profileImage;
-    }
 }

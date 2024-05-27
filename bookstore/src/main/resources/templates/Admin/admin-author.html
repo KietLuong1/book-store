@@ -45,7 +45,7 @@
                                     <tr th:each="author :${authors}">
                                         <td th:text="${author.id}"></td>
                                         <td>
-                                            <img th:src="@{${author.getProfileImagePath()}}" class="img-fluid avatar-50 rounded"
+                                            <img th:src="${author.profileImageURL}" class="img-fluid avatar-50 rounded"
                                                  alt="author-profile">
                                         </td>
                                         <td th:text="${author.name}"></td>
