@@ -113,11 +113,4 @@ public class UserController {
 //        return "Client/shop-cart";
 //    }
 
-//    @GetMapping("/wishlist")
-//    public String getWishlist(Model model) {
-//        List<Category> listCategoriesName = categoryService.listAll();
-//        model.addAttribute("listCategoriesName", listCategoriesName);
-//
-//        return "Client/wishlist";
-//    }
 }

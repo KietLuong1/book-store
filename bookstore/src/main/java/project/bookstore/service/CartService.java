@@ -2,9 +2,15 @@ package project.bookstore.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import project.bookstore.entity.Book;
+import project.bookstore.entity.Cart;
+import project.bookstore.entity.user.User;
+import project.bookstore.repository.BookRepository;
 import project.bookstore.repository.CartRepository;
+import project.bookstore.repository.UserRepository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -12,6 +18,37 @@ public class CartService {
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public List<Cart> findByUser(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        return cartRepository.findByUser(user);
+    }
+
+    public void addBookToCart(int bookId, Long userId) {
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+
+        Cart cart = new Cart();
+        cart.setBook(book);
+        cart.setUser(user);
+        cart.setTotal_item(1); // Default quantity for simplicity
+
+        cartRepository.save(cart);
+    }
+
+    public void removeProductFromCart(int cartId, Long userId) {
+        Cart cart = cartRepository.findById(cartId).orElseThrow(() -> new RuntimeException("Cart not found"));
+        if (cart.getUser().getId().equals(userId)) {
+            cartRepository.deleteById(cartId);
+        }
+    }
+
+    //
     private HashMap<Integer, Integer> carts = new HashMap<>();
 
     public void addNewItems(int book_id) {

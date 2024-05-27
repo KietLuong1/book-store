@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `book_store` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `book_store`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: book_store
+-- Host: localhost    Database: book_store
 -- ------------------------------------------------------
 -- Server version	8.0.34
 
@@ -34,7 +32,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`address_id`),
   UNIQUE KEY `UK_s673mhnxcvjr5oevend5biles` (`user_customer_id`),
   CONSTRAINT `FKh2j8eo9wbeawdub7xhaom5j06` FOREIGN KEY (`user_customer_id`) REFERENCES `customers` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +41,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,NULL,NULL,NULL,NULL,NULL),(4,NULL,'',NULL,NULL,NULL),(5,NULL,'',NULL,NULL,NULL),(6,NULL,'',NULL,NULL,NULL),(7,'','','Tổ 8, Phú Thọ, Phú Chánh, thị xã Tân Uyên, Bình Dương',NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,NULL,NULL,NULL),(13,'0','0','Tổ 8, khu phố Phú Thọ,',NULL,'0');
+INSERT INTO `address` VALUES (1,NULL,NULL,NULL,NULL,NULL),(4,NULL,'',NULL,NULL,NULL),(5,NULL,'',NULL,NULL,NULL),(6,NULL,'',NULL,NULL,NULL),(7,'','','Tổ 8, Phú Thọ, Phú Chánh, thị xã Tân Uyên, Bình Dương',NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,NULL,NULL,NULL),(13,'0','0','Tổ 8, khu phố Phú Thọ,',NULL,'0'),(14,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,6 +108,31 @@ INSERT INTO `book` VALUES (1,'Apprentice to the Villain','Romance ','Hannah Nico
 UNLOCK TABLES;
 
 --
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cart` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `book_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `total_item` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart`
+--
+
+LOCK TABLES `cart` WRITE;
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `category`
 --
 
@@ -132,6 +155,35 @@ LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 INSERT INTO `category` VALUES (1,'Architecture','Architecture'),(2,'Art','Art'),(3,'Action','Action'),(4,'Biography','Biography'),(5,'Body, Mind & Spirit','Body, Mind & Spirit'),(6,'Business & Economics','Business & Economics'),(7,'Children Fiction','Children Fiction'),(8,'Children Non-Fiction','Children Non-Fiction'),(9,'Comics & Graphics','Comics & Graphics'),(10,'Cooking','Cooking'),(11,'Crafts & Hobbies','Crafts & Hobbies'),(12,'Design','Design'),(13,'Drama','Drama'),(14,'Education','Education'),(15,'Family & Relationships','Family & Relationships'),(16,'Fiction','Fiction'),(17,'Foreign Language','Foreign Language'),(18,'Games','Games'),(19,'History','History'),(20,'House & Home','House & Home');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer_address`
+--
+
+DROP TABLE IF EXISTS `customer_address`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `customer_address` (
+  `order_id` int NOT NULL AUTO_INCREMENT,
+  `address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `note` varchar(255) NOT NULL,
+  `province` varchar(255) NOT NULL,
+  `ward` varchar(255) NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer_address`
+--
+
+LOCK TABLES `customer_address` WRITE;
+/*!40000 ALTER TABLE `customer_address` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer_address` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -159,7 +211,7 @@ CREATE TABLE `customers` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_customer_address_idx` (`address_id`),
   CONSTRAINT `fk_customer_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,8 +220,36 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (8,'Duyen','Van','test1@gmail.com','123','$2a$10$qC1MM7F22RtlavgPUNFrleCMngR2uO7g7yc/UDQUMC02uJr4eMRzW',6,22,'','',NULL,_binary '\0'),(9,'Trong','Nguyen','123123@gmail.com','123123123','$2a$10$QD3sn0YL8DJpOgxyci8XKuxJdgqJg1hk7gBaMHu45XLONKgtUinom',7,22,'hehehehe','Giao su',NULL,_binary '\0'),(15,'Kiet','Luong','kietluong.071002@gmail.com','3134567687','$2a$10$dJBTEzUqoTJXF4bFOcP6FumHGRF/RChCDLgbuWGyUb.85JpiuThKW',13,23,'','student','6nCmhW',_binary '');
+INSERT INTO `customers` VALUES (8,'Duyen','Van','test1@gmail.com','123','$2a$10$qC1MM7F22RtlavgPUNFrleCMngR2uO7g7yc/UDQUMC02uJr4eMRzW',6,22,'','',NULL,_binary '\0'),(9,'Trong','Nguyen','123123@gmail.com','123123123','$2a$10$QD3sn0YL8DJpOgxyci8XKuxJdgqJg1hk7gBaMHu45XLONKgtUinom',7,22,'hehehehe','Giao su',NULL,_binary '\0'),(15,'Kiet','Luong','kietluong.071002@gmail.com','3134567687','$2a$10$dJBTEzUqoTJXF4bFOcP6FumHGRF/RChCDLgbuWGyUb.85JpiuThKW',13,23,'','student','6nCmhW',_binary ''),(16,'Văn Thị ','Hương Duyên','huongduyenvan3012@gmail.com',NULL,'$2a$10$pGbd6AQkl1zOpT6aRikAQeyQUt8ugrxfkDBCeHq6DbVEKJRyswMxm',14,0,NULL,NULL,NULL,_binary '');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forgot_password`
+--
+
+DROP TABLE IF EXISTS `forgot_password`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `forgot_password` (
+  `forgot_id` int NOT NULL AUTO_INCREMENT,
+  `expiration_time` datetime(6) NOT NULL,
+  `otp` int NOT NULL,
+  `user_customer_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`forgot_id`),
+  UNIQUE KEY `UK_6xjowsfx44x0ri90kq6pn5ivd` (`user_customer_id`),
+  CONSTRAINT `FKk19sao72oor2t3kv12hwuhcvd` FOREIGN KEY (`user_customer_id`) REFERENCES `customers` (`customer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `forgot_password`
+--
+
+LOCK TABLES `forgot_password` WRITE;
+/*!40000 ALTER TABLE `forgot_password` DISABLE KEYS */;
+INSERT INTO `forgot_password` VALUES (1,'2024-05-03 13:23:54.685000',576192,7);
+/*!40000 ALTER TABLE `forgot_password` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -264,11 +344,13 @@ DROP TABLE IF EXISTS `publisher`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `publisher` (
-  `publisher_id` int NOT NULL,
-  `publisher_name` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
+  `publisher_id` int NOT NULL AUTO_INCREMENT,
+  `country` varchar(255) DEFAULT NULL,
+  `publisher_address` varchar(255) DEFAULT NULL,
+  `publisher_email` varchar(255) DEFAULT NULL,
+  `publisher_name` varchar(255) NOT NULL,
   PRIMARY KEY (`publisher_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,7 +359,7 @@ CREATE TABLE `publisher` (
 
 LOCK TABLES `publisher` WRITE;
 /*!40000 ALTER TABLE `publisher` DISABLE KEYS */;
-INSERT INTO `publisher` VALUES (1,'ndt','ddddd');
+INSERT INTO `publisher` VALUES (1,'Vietnam','Tp.Ho Chi Minh','abc@gmail.com','Nha Nam'),(3,'Vietnam','Ha Noi','info@nxbkimdong.com.vn','Kim Dong');
 /*!40000 ALTER TABLE `publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,4 +396,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-18 15:34:24
+-- Dump completed on 2024-05-24 11:28:01

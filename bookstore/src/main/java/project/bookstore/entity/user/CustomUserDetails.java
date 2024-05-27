@@ -2,7 +2,6 @@ package project.bookstore.entity.user;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -56,5 +55,9 @@ public class CustomUserDetails implements UserDetails {
 
     public String getFullName(){
         return user.getFirstName()+" " + user.getLastName();
+    }
+
+    public Long getUserId(){
+        return user.getId();
     }
 }
