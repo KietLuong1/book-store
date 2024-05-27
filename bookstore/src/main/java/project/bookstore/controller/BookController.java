@@ -1,48 +1,50 @@
 package project.bookstore.controller;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.JpaSort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Book;
+import project.bookstore.entity.user.CustomUserDetails;
+import project.bookstore.entity.user.User;
 import project.bookstore.service.BookService;
+import project.bookstore.service.UserService;
 
 @Controller
 public class BookController {
 
     @Autowired
-    private BookService service;
+    private BookService bookService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/admin-books")
     public String getAllBook(Model model) {
-        List<Book> listBooks = service.getAllBook();
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = userDetails.getUserId();
+
+        List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
+        model.addAttribute("userId", userId);
         return "Admin/admin-books";
     }
 
     @RequestMapping("/books-detail/{id}")
     public String getBookDetail(@PathVariable("id") Integer id, Model model) {
-        Book book = service.getBookById(id);
+        Book book = bookService.getBookById(id);
         model.addAttribute("book", book);
         return "Client/books-detail";
     }
 
     @RequestMapping("/admin-books/edit/{id}")
     public String editBook(@PathVariable("id") Integer id, Model model) {
-        Book book = service.getBookById(id);
+        Book book = bookService.getBookById(id);
         model.addAttribute("book", book);
         model.addAttribute("pageTitle", "Edit Book (ID: " + id + ")");
         return "Admin/admin-add-book";
@@ -50,7 +52,7 @@ public class BookController {
 
     @RequestMapping("/admin-books/delete/{id}")
     public String deleteBook(@PathVariable("id") Integer id) {
-        service.deleteById(id);
+        bookService.deleteById(id);
         return "redirect:/admin-books";
     }
 
@@ -80,7 +82,7 @@ public class BookController {
 //        } catch (IOException e) {
 //            throw new IOException("Could not save uploaded file: " + fileName);
 //        }
-        service.save(book);
+        bookService.save(book);
         return "redirect:/admin-books";
     }
 

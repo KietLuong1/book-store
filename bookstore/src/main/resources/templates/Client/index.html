@@ -327,8 +327,18 @@
                                     <a th:href="@{'/books-detail/' + ${book.book_id}}"><span class="price"
                                                                                              th:text="${book.price}"></span></a>
                                     <a class="btn btn-secondary btnhover btnhover2"
-                                       th:href="@{'/shop-cart/save/' + ${book.book_id}}"><i
+                                       th:href="@{/shop-cart/save/{bookId}/{userId}(bookId=${book.book_id}, userId=${userId})}"><i
                                             class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
+
+<!--                                    <form th:action="@{/shop-cart/save/{bookId}/{userId}(bookId=${book.book_id}, userId=${userId})}" method="post">-->
+<!--                                        <button type="submit">Add to Cart</button>-->
+<!--                                    </form>-->
+
+                                    <!--                                    <form th:action="@{'/shop-cart/save'}" method="post">-->
+                                    <!--                                        <input type="hidden" name="bookId" th:value="${book.book_id}" />-->
+                                    <!--                                        <input type="hidden" name="userId" th:value="${userId}" />-->
+                                    <!--                                        <button type="submit">Add to Cart</button>-->
+                                    <!--                                    </form>-->
 
                                 </div>
                             </div>
@@ -360,7 +370,8 @@
                                 </div>
                                 <div class="dz-content">
                                     <h5 class="title shortTitle"><a th:text="${book.name}"
-                                                         th:href="@{'/books-detail/' + ${book.book_id}}"></a></h5>
+                                                                    th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                    </h5>
                                     <ul class="dz-tags">
                                         <li><a href="books-grid-view" th:text="${book.category}"
                                                th:href="@{'/books-detail/' + ${book.book_id}}"></a></li>
@@ -406,7 +417,8 @@
                                 </div>
                                 <div class="dz-content">
                                     <h5 class="title shortTitle"><a th:text="${book.name}"
-                                                         th:href="@{'/books-detail/' + ${book.book_id}}"></a></h5>
+                                                                    th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                    </h5>
                                     <ul class="dz-tags">
                                         <li><a th:text="${book.category}"
                                                th:href="@{'/books-detail/' + ${book.book_id}}"></a></li>
@@ -623,7 +635,8 @@
                                 </div>
                                 <div class="dz-info">
                                     <h4 class="dz-title shortTitle"><a th:text="${book.name}"
-                                                            th:href="@{'/books-detail/' + ${book.book_id}}"></a></h4>
+                                                                       th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                    </h4>
                                     <div class="dz-meta">
                                         <ul class="dz-tags">
                                             <li><a th:text="${book.category}"
@@ -632,7 +645,8 @@
                                     </div>
                                     <p class="shortDescription" th:text="${book.description}"></p>
                                     <div class="bookcard-footer">
-                                        <a th:href="@{'/shop-cart/save/' + ${book.book_id}}" class="btn btn-primary m-t15 btnhover btnhover2"><i
+                                        <a th:href="@{'/shop-cart/save/' + ${book.book_id}}"
+                                           class="btn btn-primary m-t15 btnhover btnhover2"><i
                                                 class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
                                         <a class="price-details" th:text="${book.price}"
                                            th:href="@{'/books-detail/' + ${book.book_id}}">
