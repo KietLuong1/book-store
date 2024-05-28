@@ -16,7 +16,7 @@
                     <div class="col">
                         <div class="dz-box">
                             <div class="dz-media">
-                                <img src="Client/images/books/book16.png" alt="book">
+<!--                                <img src="Client/images/books/book16.png" alt="book">-->
                             </div>
                             <div class="dz-content">
                                 <div class="dz-header">
@@ -52,7 +52,7 @@
                                         <ul class="book-info">
                                             <li>
                                                 <div class="writer-info">
-                                                    <img src="Client/images/profile2.jpg" alt="book">
+                                                    <img src="/Client/images/profile2.jpg" alt="book">
                                                     <div>
                                                         <span>Writen by</span>
                                                         <p th:text="${book.author}"></p>
@@ -60,7 +60,7 @@
                                                 </div>
                                             </li>
                                             <li><span>Date Published</span>
-                                                <p th:text="${book.publicationDate}"></p></li>
+                                                <p th:text="${book.publication_date}"></p></li>
                                         </ul>
                                     </div>
                                     <p class="text-1 shortBookListDescription" th:text="${book.description}"></p>
@@ -117,7 +117,7 @@
                                         </tr>
                                         <tr>
                                             <th>Date Published</th>
-                                            <td th:text="${book.publicationDate}"></td>
+                                            <td th:text="${book.publication_date}"></td>
                                         </tr>
                                         <tr>
                                             <th>Publisher</th>
@@ -125,7 +125,7 @@
                                         </tr>
                                         <tr>
                                             <th>Pages</th>
-                                            <td th:text="${book.numPages}"></td>
+                                            <td th:text="${book.num_pages}"></td>
                                         </tr>
                                         <tr>
                                             <th>Quantity</th>
@@ -157,7 +157,7 @@
                                         <div class="dz-shop-card style-5">
                                             <div class="dz-media">
                                                 <a th:href="@{'/books-detail/' + ${book.book_id}}"><img
-                                                        src="Client/images/books/grid/book15.jpg" alt=""></a>
+                                                        src="/Client/images/books/grid/book15.jpg" alt=""></a>
                                             </div>
                                             <div class="dz-content">
                                                 <h5 class="subtitle" th:text="${book.name}"></h5>
@@ -188,11 +188,11 @@
                 <!--Client Swiper -->
                 <div class="swiper client-swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="Client/images/client/client1.svg" alt="client"></div>
-                        <div class="swiper-slide"><img src="Client/images/client/client2.svg" alt="client"></div>
-                        <div class="swiper-slide"><img src="Client/images/client/client3.svg" alt="client"></div>
-                        <div class="swiper-slide"><img src="Client/images/client/client4.svg" alt="client"></div>
-                        <div class="swiper-slide"><img src="Client/images/client/client5.svg" alt="client"></div>
+                        <div class="swiper-slide"><img src="/Client/images/client/client1.svg" alt="client"></div>
+                        <div class="swiper-slide"><img src="/Client/images/client/client2.svg" alt="client"></div>
+                        <div class="swiper-slide"><img src="/Client/images/client/client3.svg" alt="client"></div>
+                        <div class="swiper-slide"><img src="/Client/images/client/client4.svg" alt="client"></div>
+                        <div class="swiper-slide"><img src="/Client/images/client/client5.svg" alt="client"></div>
                     </div>
                 </div>
             </div>
@@ -254,7 +254,7 @@
 
         <!-- Newsletter -->
         <section class="py-5 newsletter-wrapper"
-                 style="background-image: url('static/Client/images/background/bg1.jpg'); background-size: cover;">
+                 style="background-image: url('/Client/images/background/bg1.jpg'); background-size: cover;">
             <div class="container">
                 <div class="subscride-inner">
                     <div

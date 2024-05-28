@@ -21,19 +21,19 @@
 											class="flaticon-close"></i></a>
 								</div>
 								<div class="accordion accordion-filter" id="accordionExample">
-									<div class="accordion-item">
-										<button class="accordion-button" id="headingFive" type="button"
-											data-bs-toggle="collapse" data-bs-target="#collapseFive"
-											aria-expanded="false" aria-controls="collapseFive">
-											Price Range
-										</button>
-										<div id="collapseFive" class="accordion-collapse collapse accordion-body show"
-											aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-											<div class="range-slider style-1">
-												<div id="slider-tooltips"></div>
-											</div>
-										</div>
-									</div>
+<!--									<div class="accordion-item">-->
+<!--										<button class="accordion-button" id="headingFive" type="button"-->
+<!--											data-bs-toggle="collapse" data-bs-target="#collapseFive"-->
+<!--											aria-expanded="false" aria-controls="collapseFive">-->
+<!--											Price Range-->
+<!--										</button>-->
+<!--										<div id="collapseFive" class="accordion-collapse collapse accordion-body show"-->
+<!--											aria-labelledby="headingFive" data-bs-parent="#accordionExample">-->
+<!--											<div class="range-slider style-1">-->
+<!--												<div id="slider-tooltips"></div>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
 									<div class="accordion-item">
 										<button class="accordion-button" id="headingOne" type="button"
 											data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
@@ -808,7 +808,7 @@
 											<div class="rate">
 												<ul class="book-info">
 													<span>Writen by<li class="shortTitle" th:text="${book.author}"></li></span>
-													<span>Date Published<li class="shortTitle" th:text="${book.publicationDate}"></li></span>
+													<span>Date Published<li class="shortTitle" th:text="${book.publication_date}"></li></span>
 												</ul>
 												<div class="d-flex">
 													<a th:href="@{'/shop-cart/save/' + ${book.book_id}}" class="btn btn-secondary btnhover btnhover2"><i
@@ -932,7 +932,7 @@
 
 			<!-- Newsletter -->
 			<section class="py-5 newsletter-wrapper"
-				style="background-image: url('static/Client/images/background/bg1.jpg'); background-size: cover;">
+				style="background-image: url('/Client/images/background/bg1.jpg'); background-size: cover;">
 				<div class="container">
 					<div class="subscride-inner">
 						<div

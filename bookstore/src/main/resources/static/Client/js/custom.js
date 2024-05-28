@@ -5,6 +5,15 @@
 
 var Bookland = function () {
     /* CUSTOM JS */
+    $(document).ready(function () {
+        $("#buttonAddToCart").on("click", function (evt) {
+            addToCart();
+        });
+    });
+
+    function addToCart() {
+        quantity = $("#")
+    }
 
     /* Add the "active" class.*/
     function addActiveClass(path) {
