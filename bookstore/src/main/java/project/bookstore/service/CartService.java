@@ -24,21 +24,40 @@ public class CartService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<Cart> findByUser(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        return cartRepository.findByUser(user);
-    }
+//    public List<Cart> findByUser(Long userId) {
+//        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+//        return cartRepository.findByUser(user);
+//    }
 
-    public void addBookToCart(int bookId, Long userId) {
-        Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
-        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+    public Integer addBookToCart(Integer bookId, Integer quantity, User user) {
+        Integer updateQuantity = quantity;
+//        Book book = new Book(bookId);
+//
+//        Cart cart = cartRepository.findByUserandBook(user, book);
+//
+//        if (cart != null) {
+//            updateQuantity = cart.getQuantity() + quantity;
+//        } else {
+//            cart = new Cart();
+//            cart.setUser(user);
+//            cart.setBook(book);
+//        }
+//
+//        cart.setQuantity(updateQuantity);
+//
+//        cartRepository.save(cart);
 
-        Cart cart = new Cart();
-        cart.setBook(book);
-        cart.setUser(user);
-        cart.setTotal_item(1); // Default quantity for simplicity
+        return updateQuantity;
 
-        cartRepository.save(cart);
+//        Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
+//        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+//
+//        Cart cart = new Cart();
+//        cart.setBook(book);
+//        cart.setUser(user);
+//        cart.setQuantity(1); // Default quantity for simplicity
+
+//        cartRepository.save(cart);
     }
 
     public void removeProductFromCart(int cartId, Long userId) {

@@ -17,6 +17,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
 
+//    public Book(int book_id) {
+//        this.book_id = book_id;
+//    }
+
     @Column(nullable = false, length = 255)
     private String name;
 
@@ -28,7 +32,6 @@ public class Book {
 
     @Column(nullable = false)
     private String description;
-
 
     @Column(nullable = false, length = 255)
     private float salePrice;
@@ -45,8 +48,10 @@ public class Book {
     @Column(nullable = false, length = 255)
     private String publication_date;
 
+    @Column(nullable = false)
     private int num_pages;
 
+    @Column(nullable = false)
     private String book_image;
 
 }

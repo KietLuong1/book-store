@@ -19,17 +19,12 @@ public class Cart {
     private int id;
 
     @ManyToOne
-    private Book book;
-
-    @ManyToOne
+    @JoinColumn(name = "customer_id")
     private User user;
 
-//    @Column(nullable = false)
-//    private int customer_id;
-//
-//    @Column(nullable = false)
-//    private int book_id;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
-    @Column(nullable = false)
-    private int total_item;
+    private int quantity;
 }

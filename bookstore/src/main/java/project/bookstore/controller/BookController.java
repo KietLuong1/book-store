@@ -26,12 +26,12 @@ public class BookController {
 
     @GetMapping("/admin-books")
     public String getAllBook(Model model) {
-        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Long userId = userDetails.getUserId();
+//        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Long userId = userDetails.getUserId();
 
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
-        model.addAttribute("userId", userId);
+//        model.addAttribute("userId", userId);
         return "Admin/admin-books";
     }
 
