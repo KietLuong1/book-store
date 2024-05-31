@@ -16,7 +16,7 @@
                     <div class="col">
                         <div class="dz-box">
                             <div class="dz-media">
-<!--                                <img src="Client/images/books/book16.png" alt="book">-->
+                                <!--                                <img src="Client/images/books/book16.png" alt="book">-->
                             </div>
                             <div class="dz-content">
                                 <div class="dz-header">
@@ -72,12 +72,14 @@
                                         <div class="product-num">
                                             <div class="quantity btn-quantity style-1 me-3">
                                                 <input id="demo_vertical2" type="text" value="1"
+                                                       th:id="'quantity' + ${book.book_id}" onkeydown="return false;"
                                                        name="demo_vertical2"/>
                                             </div>
-                                            <a th:href="@{'/shop-cart/save/' + ${book.book_id}}"
-                                               class="btn btn-primary btnhover btnhover2"><i
-                                                    class="flaticon-shopping-cart-1"></i> <span>Add to
-														cart</span></a>
+                                            <a
+                                                    class="btn btn-primary btnhover btnhover2" id="buttonAddToCart">
+                                                <i class="flaticon-shopping-cart-1"></i>
+                                                <span>Add to cart</span>
+                                            </a>
                                             <div class="bookmark-btn style-1 d-none d-sm-block">
                                                 <input class="form-check-input" type="checkbox"
                                                        id="flexCheckDefault1">
@@ -168,9 +170,10 @@
                                                     <span class="price-num" th:text="${book.price}"></span>
                                                     <del th:text="${book.salePrice}"></del>
                                                 </div>
-                                                <a th:href="@{'/shop-cart/save/' + ${book.book_id}}"
-                                                   class="btn btn-outline-primary btn-sm btnhover btnhover2"><i
-                                                        class="flaticon-shopping-cart-1 me-2"></i> Add to cart</a>
+<!--                                                <a class="btn btn-outline-primary btn-sm btnhover btnhover2">-->
+<!--                                                    <i class="flaticon-shopping-cart-1 me-2"></i>-->
+<!--                                                    Add to cart-->
+<!--                                                </a>-->
                                             </div>
                                         </div>
                                     </div>
@@ -295,5 +298,13 @@
     <div th:insert="Client/client-template.html :: footer"></div>
     <!-- Footer End -->
 </div>
+
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    bookId = "[[${book.book_id}]]"
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
+</script>
+
 </body>
 </html>

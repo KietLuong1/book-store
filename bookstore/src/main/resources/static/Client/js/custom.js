@@ -5,6 +5,8 @@
 
 var Bookland = function () {
     /* CUSTOM JS */
+
+
     $(document).ready(function () {
         $("#buttonAddToCart").on("click", function (evt) {
             addToCart();
@@ -12,7 +14,19 @@ var Bookland = function () {
     });
 
     function addToCart() {
-        quantity = $("#")
+        quantity = $("#quantity" + bookId).val();
+        url = contextPath + "shop-cart/add/" + bookId + "/" + quantity;
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            beforeSend: function (xhr){
+                xhr.setRequestHeader(csrfHeaderName, csrfValue);
+            }
+        }).done(function (response){
+            // toastNotification();
+            alert(quantity + " item(s) of this book were added to your shopping cart");
+        });
     }
 
     /* Add the "active" class.*/

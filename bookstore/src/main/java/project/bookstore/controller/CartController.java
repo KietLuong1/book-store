@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RestController;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.exception.UserNotFoundException;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-@Controller
+@RestController
 public class CartController {
 
     @Autowired
@@ -43,7 +44,7 @@ public class CartController {
         // Get All Catagories Name
         List<Category> listCategoriesName = categoryService.listAll();
         model.addAttribute("listCategoriesName", listCategoriesName);
-//        // Get All Cart Items
+        // Get All Cart Items
         Set<Integer> listBooksId = cartService.getAllCartItems();
         List<Book> listCartItems = new ArrayList<>();
         for (int i : listBooksId) {
@@ -57,45 +58,30 @@ public class CartController {
     @GetMapping("/shop-cart/{userId}")
     public String showCart(@PathVariable Long userId, Model model) {
 //        model.addAttribute("cart", cartService.findByUser(userId));
-        model.addAttribute("userId", userId);
+//        model.addAttribute("userId", userId);
         return "Client/shop-cart";
     }
 
-    //    @RequestMapping("/shop-cart/save/{id}")
-//    public String addNewItems(@PathVariable("id") Integer book_id, Model model) {
-
     @PostMapping("/shop-cart/add/{bookId}/{quantity}")
-    public String addBookToCart(@PathVariable("bookId") Integer bookId, @PathVariable("quantity") Integer quantity, HttpServletRequest request) {
-
+    public String addBookToCart(@PathVariable("bookId") Integer bookId, @PathVariable("quantity") Integer quantity, @AuthenticationPrincipal CustomUserDetails userDetails) {
         try {
-            User user = getAuthenticatedUser(request);
-            Integer updateQuantity = cartService.addBookToCart(bookId, quantity, user);
+            User user = getAuthenticatedUser(userDetails);
+            Integer updatedQuantity = cartService.addBookToCart(bookId, quantity, user);
 
-            return updateQuantity + "item(s) of this book were added to your shopping cart";
+            return updatedQuantity + "item(s) of this book were added to your shopping cart";
         } catch (UserNotFoundException ex) {
             return "You must login to add this book to cart.";
         }
-
-//        return "redirect:/shop-cart/";
     }
 
-    private User getAuthenticatedUser(HttpServletRequest request) throws UserNotFoundException {
-        CustomUserDetails customUserDetails = null;
-
-        String email = customUserDetails.getUser().getEmail();
+    private User getAuthenticatedUser(@AuthenticationPrincipal CustomUserDetails userDetails) throws UserNotFoundException {
+        String email = userDetails.getUsername();
 
         if (email == null) {
             throw new UserNotFoundException("No authenticated user");
         }
-
         return userService.getUserByEmail(email);
     }
-
-//    @PostMapping("/shop-cart/save/{bookId}/{userId}")
-//    public String addToCart(@PathVariable("bookId") Integer bookId, @PathVariable("userId") Long userId) {
-//        cartService.addBookToCart(bookId, userId);
-//        return "redirect:/shop-cart" + userId;
-//    }
 
 //    @PostMapping("/shop-cart/delete")
 //    public String removeFromCart(@RequestParam int cartId, @RequestParam Long userId) {
@@ -103,7 +89,6 @@ public class CartController {
 //        return "redirect:/shop-cart" + userId;
 //    }
 
-    //
 //    @GetMapping("/shop-cart")
 //    public String getAllCartItems(Model model) {
 //        // Get All Catagories Name
@@ -120,17 +105,7 @@ public class CartController {
 //
 //        return "Client/shop-cart";
 //    }
-//
-//    @RequestMapping("/shop-cart/save/{id}")
-//    public String addNewItems(@PathVariable("id") Integer book_id, Model model) {
-//        cartService.addNewItems(book_id);
-//
-//        Integer bookQuantity = cartService.getQuantityOfItem(book_id);
-//        model.addAttribute("bookQuantity", bookQuantity);
-//
-//        return "redirect:/shop-cart";
-//    }
-//
+
 //    @RequestMapping("/shop-cart/delete/{id}")
 //    public String deleteCartItem(@PathVariable("id") Integer id) {
 //        cartService.deleteItemsById(id);

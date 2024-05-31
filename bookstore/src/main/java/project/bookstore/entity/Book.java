@@ -17,9 +17,9 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
 
-//    public Book(int book_id) {
-//        this.book_id = book_id;
-//    }
+    public Book(int book_id) {
+        this.book_id = book_id;
+    }
 
     @Column(nullable = false, length = 255)
     private String name;
