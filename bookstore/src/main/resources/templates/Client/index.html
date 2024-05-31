@@ -317,29 +317,20 @@
                         <div class="swiper-slide" th:each="book: ${listBooks}">
                             <div class="books-card style-1 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="dz-media">
-                                    <a th:href="@{'/books-detail/' + ${book.book_id}}"><img
-                                            src="Client/images/books/grid/book5.jpg" alt="book"></a>
+                                    <a th:href="@{'/books-detail/' + ${book.book_id}}">
+                                        <img src="Client/images/books/grid/book5.jpg" alt="book">
+                                    </a>
                                 </div>
                                 <div class="dz-content">
-                                    <h4 class="title shortTitle"><a
-                                            th:text="${book.name}" th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                    <h4 class="title shortTitle">
+                                        <a th:text="${book.name}" th:href="@{'/books-detail/' + ${book.book_id}}"></a>
                                     </h4>
-                                    <a th:href="@{'/books-detail/' + ${book.book_id}}"><span class="price"
-                                                                                             th:text="${book.price}"></span></a>
-                                    <a class="btn btn-secondary btnhover btnhover2" id="buttonAddToCart" >
+                                    <a th:href="@{'/books-detail/' + ${book.book_id}}">
+                                        <span class="price" th:text="${book.price}">$ </span>
+                                    </a>
+                                    <a class="btn btn-secondary btnhover btnhover2" id="buttonAddToCart">
                                         <i class="flaticon-shopping-cart-1 m-r10"></i> Add to cart
                                     </a>
-
-                                    <!--                                    <form th:action="@{/shop-cart/save/{bookId}/{userId}(bookId=${book.book_id}, userId=${userId})}" method="post">-->
-                                    <!--                                        <button type="submit">Add to Cart</button>-->
-                                    <!--                                    </form>-->
-
-                                    <!--                                    <form th:action="@{'/shop-cart/save'}" method="post">-->
-                                    <!--                                        <input type="hidden" name="bookId" th:value="${book.book_id}" />-->
-                                    <!--                                        <input type="hidden" name="userId" th:value="${userId}" />-->
-                                    <!--                                        <button type="submit">Add to Cart</button>-->
-                                    <!--                                    </form>-->
-
                                 </div>
                             </div>
                         </div>
@@ -645,9 +636,10 @@
                                     </div>
                                     <p class="shortDescription" th:text="${book.description}"></p>
                                     <div class="bookcard-footer">
-                                        <a th:href="@{'/shop-cart/save/' + ${book.book_id}}"
-                                           class="btn btn-primary m-t15 btnhover btnhover2"><i
-                                                class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
+                                        <a class="btn btn-primary m-t15 btnhover btnhover2">
+                                            <i class="flaticon-shopping-cart-1 m-r10"></i>
+                                            Add to cart
+                                        </a>
                                         <a class="price-details" th:text="${book.price}"
                                            th:href="@{'/books-detail/' + ${book.book_id}}">
                                             <del th:text="${book.salePrice}"></del>
@@ -738,7 +730,8 @@
                             </div>
                             <div class="icon-content">
                                 <h4 class="title">Best Bookstore</h4>
-                                <p class="shortMissionDescription">Our commitment goes beyond providing a mere marketplace; we are dedicated to
+                                <p class="shortMissionDescription">Our commitment goes beyond providing a mere
+                                    marketplace; we are dedicated to
                                     creating an immersive haven for bibliophiles </p>
                                 <a href="about-us">Learn More <i class="fa-solid fa-angles-right"></i></a>
                             </div>
@@ -751,7 +744,8 @@
                             </div>
                             <div class="icon-content">
                                 <h4 class="title">Trusted Seller</h4>
-                                <p class="shortMissionDescription">Our commitment as a trusted seller extends beyond delivering books; it
+                                <p class="shortMissionDescription">Our commitment as a trusted seller extends beyond
+                                    delivering books; it
                                     includes building a relationship founded on loyalty and satisfaction
                                 </p>
                                 <a href="about-us">Learn More <i class="fa-solid fa-angles-right"></i></a>
@@ -765,7 +759,8 @@
                             </div>
                             <div class="icon-content">
                                 <h4 class="title">Expand Store</h4>
-                                <p class="shortMissionDescription">We are dedicated to expanding your literary universe, to offer you a diverse and
+                                <p class="shortMissionDescription">We are dedicated to expanding your literary universe,
+                                    to offer you a diverse and
                                     enriching shopping experience</p>
                                 <a href="about-us">Learn More <i class="fa-solid fa-angles-right"></i></a>
                             </div>
@@ -956,8 +951,10 @@
 
 </div>
 <script type="text/javascript">
-
-
+    contextPath = "[[@{/}]]";
+    bookId = "[[${book.book_id}]]"
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
 </script>
 </body>
 

@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import project.bookstore.service.UserService;
 
 @Configuration
@@ -38,7 +39,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authenticationProvider(authenticationProvider());
 
-        http.csrf(AbstractHttpConfigurer::disable)
+//        http.csrf(AbstractHttpConfigurer::disable)
+        http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/profile", "/order-history", "/shop-checkout"
                                         , "/shop-cart", "/wishlist").authenticated()

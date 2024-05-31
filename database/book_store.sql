@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: book_store
+-- Host: 127.0.0.1    Database: book_store
 -- ------------------------------------------------------
 -- Server version	8.0.34
 
@@ -32,7 +32,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`address_id`),
   UNIQUE KEY `UK_s673mhnxcvjr5oevend5biles` (`user_customer_id`),
   CONSTRAINT `FKh2j8eo9wbeawdub7xhaom5j06` FOREIGN KEY (`user_customer_id`) REFERENCES `customers` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,NULL,NULL,NULL,NULL,NULL),(4,NULL,'',NULL,NULL,NULL),(5,NULL,'',NULL,NULL,NULL),(6,NULL,'',NULL,NULL,NULL),(7,'','','Tổ 8, Phú Thọ, Phú Chánh, thị xã Tân Uyên, Bình Dương',NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,NULL,NULL,NULL),(13,'0','0','Tổ 8, khu phố Phú Thọ,',NULL,'0'),(14,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `address` VALUES (1,NULL,NULL,NULL,NULL,NULL),(4,NULL,'',NULL,NULL,NULL),(5,NULL,'',NULL,NULL,NULL),(6,NULL,'',NULL,NULL,NULL),(7,'','','Tổ 8, Phú Thọ, Phú Chánh, thị xã Tân Uyên, Bình Dương',NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,NULL,NULL,NULL),(13,'0','0','Tổ 8, khu phố Phú Thọ,',NULL,'0'),(14,NULL,NULL,NULL,NULL,NULL),(15,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,8 +59,9 @@ CREATE TABLE `author` (
   `country` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `profile_image` varchar(255) DEFAULT NULL,
+  `profile_image_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`author_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +70,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (1,'Đức Trọng','2002-01-01','Việt Nam','Quê Quán: Bình Dương\r\n',NULL),(2,'Anh Kiệt','2002-02-02','Việt Nam','Quê Quán: Bình Dương',NULL),(3,'Hương Duyên','2002-03-03','Việt Nam','Quê Quán: Bình Dương',NULL),(4,'Văn A','2003-06-30','Việt Nam','New Author',NULL),(5,'Peter','1985-07-02','USA','History Author',NULL),(6,'Tom','1975-06-09','Italy','Author From Italy',NULL),(7,'Ben','1995-06-09','Thai Lan','Young Author From Thai Lan',NULL);
+INSERT INTO `author` VALUES (1,'Đức Trọng','2002-01-01','Việt Nam','Quê Quán: Bình Dương\r\n',NULL,NULL),(2,'Anh Kiệt','2002-02-02','Việt Nam','Quê Quán: Bình Dương',NULL,NULL),(3,'Hương Duyên','2002-03-03','Việt Nam','Quê Quán: Bình Dương',NULL,NULL),(4,'Văn A','2003-06-30','Việt Nam','New Author',NULL,NULL),(5,'Peter','1985-07-02','USA','History Author',NULL,NULL),(6,'Tom','1975-06-09','Italy','Author From Italy',NULL,NULL),(7,'Ben','1995-06-09','Thai Lan','Young Author From Thai Lan',NULL,NULL),(10,'TRỢ GIẢNG THỬ NGHIỆM 1','2024-04-29','VN','',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1716858888/Admin/authors/10/72557f3f-1d88-4f31-ac25-505504a00340.png');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,13 +87,13 @@ CREATE TABLE `book` (
   `category` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `price` varchar(255) NOT NULL,
+  `price` float NOT NULL,
   `quantity` varchar(255) NOT NULL,
   `language` varchar(255) NOT NULL,
   `publication_date` varchar(255) NOT NULL,
-  `num_pages` varchar(255) NOT NULL,
-  `book_imgae` varchar(45) DEFAULT NULL,
-  `sale_price` varchar(255) NOT NULL,
+  `num_pages` int NOT NULL,
+  `sale_price` float NOT NULL,
+  `book_image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`book_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -103,7 +104,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (1,'Apprentice to the Villain','Romance ','Hannah Nicole Maehrer ','LIMITED FIRST PRINT RUN―featuring spray-painted edges, while supplies last in the US and Canada only.','$15.99','210','English','August 6, 2023','352',NULL,''),(2,'Theory of Macroeconomic Hysteresis','Econometrics & Statistics','Isaak D Mayergoyz','This book deals with the mathematical theory of macroeconomic hysteresis, which is the theory of aggregation of microeconomic hysteresis. Microeconomic sunk cost hysteresis is usually represented by relatively simple hysteresis loops with no discrete memo','$88.00','560','English','June 20, 2022','200',NULL,''),(3,'The Trading Game: A Confession','Banks & Banking','Gary Stevenson ','#1 SUNDAY TIMES BESTSELLER • A “vivid” (Financial Times) rags-to-riches memoir that takes readers inside the high-stakes drama and hubris of the trading floor, a “darkly funny” (Guardian) tale of Citibank’s one-time most profitable trader, and why he gave','$19.99','320','English','March 5, 2023','352',NULL,''),(4,'Debugging','Computer & Technology','David J. Agans','The 9 Indispensable Rules for Finding Even the Most Elusive Software and Hardware Problems. When the pressure is on to resolve an elusive software or hardware glitch, what’s needed is a cool head courtesy of a set of rules guaranteed to work on any system','$12.99','130','English','September 23, 2002','202',NULL,''),(5,'JavaScript from Beginner to Professional','Computer & Technology',' Laurence Lars Svekis ','Learn JavaScript quickly by building fun, interactive, and dynamic web apps, games, and pages. Start your journey towards becoming a JavaScript developer with the help of more than 100 fun exercises and projects','$37.99','650','English','December 15, 2021','546 ',NULL,''),(6,'Why We Swim','Exercise & Fitness','Bonnie Tsui ','“A fascinating and beautifully written love letter to water. I was enchanted by this book.\" —Rebecca Skloot, bestselling author of The Immortal Life of Henrietta Lacks','$11.29','432','English','April 13, 2021','288',NULL,''),(7,'The Inheritance Games','Children\'s Books','Jennifer Lynn Barnes ','Don\'t miss this New York Times bestselling \"impossible to put down\" (Buzzfeed) novel with deadly stakes, thrilling twists, and juicy secrets—perfect for fans of One of Us is Lying and Knives Out.','$10.99','73','English','September 1, 2020','385',NULL,''),(8,'Lost Landmarks of Orange County','History',' Chris Epting','Since forming in 1889, Orange County, California has become famous all over the world for being home to such popular attractions as Disneyland, Knott’s Berry Farm, and some of the most beautiful beaches in the world. But there are also many other places t','$18.19','86','English','April 16, 2020','234',NULL,''),(9,'Introduction to Linear Algebra','Science & Math',' Gilbert Strang','Linear algebra now rivals or surpasses calculus in importance for people working in quantitative fields of all kinds: engineers, scientists, economists and business people. Gilbert Strang has taught linear algebra at MIT for more than 50 years and the cou','$83.13','35','English','April 30, 2023','440',NULL,''),(10,'Silent Spring','Environment & Nature',' Rachel Carson ','“Rachel Carson is a pivotal figure of the twentieth century…people who thought one way before her essential 1962 book Silent Spring thought another way after it.”—Margaret Atwood','$13.49','56','English','February 1, 2022','400',NULL,''),(11,'The Lost Art of Finding Our Way','Environment & Nature',' John Edward Huth ','Long before GPS, Google Earth, and global transit, humans traveled vast distances using only environmental clues and simple instruments. John Huth asks what is lost when modern technology substitutes for our innate capacity to find our way. Encyclopedic i','$22.16','220','English','November 16, 2015','544',NULL,''),(12,'Who Was Leonardo da Vinci? ','Technology',' Roberta Edwards ','Leonardo da Vinci was a gifted painter, talented musician, and dedicated scientist and inventor, designing flying machines, submarines, and even helicopters.  Yet he had a hard time finishing things, a problem anyone can relate to.  Only thirteen painting','$4.79','20','English','September 8, 2005','112',NULL,'');
+INSERT INTO `book` VALUES (1,'Apprentice to the Villain','Romance ','Hannah Nicole Maehrer ','LIMITED FIRST PRINT RUN―featuring spray-painted edges, while supplies last in the US and Canada only.',15.99,'210','English','August 6, 2023',352,10.99,NULL),(2,'Theory of Macroeconomic Hysteresis','Econometrics & Statistics','Isaak D Mayergoyz','This book deals with the mathematical theory of macroeconomic hysteresis, which is the theory of aggregation of microeconomic hysteresis. Microeconomic sunk cost hysteresis is usually represented by relatively simple hysteresis loops with no discrete memo',88,'560','English','June 20, 2022',200,70,NULL),(3,'The Trading Game: A Confession','Banks & Banking','Gary Stevenson ','#1 SUNDAY TIMES BESTSELLER • A “vivid” (Financial Times) rags-to-riches memoir that takes readers inside the high-stakes drama and hubris of the trading floor, a “darkly funny” (Guardian) tale of Citibank’s one-time most profitable trader, and why he gave',19.99,'320','English','March 5, 2023',352,15.99,NULL),(4,'Debugging','Computer & Technology','David J. Agans','The 9 Indispensable Rules for Finding Even the Most Elusive Software and Hardware Problems. When the pressure is on to resolve an elusive software or hardware glitch, what’s needed is a cool head courtesy of a set of rules guaranteed to work on any system',12.99,'130','English','September 23, 2002',202,8.99,NULL),(5,'JavaScript from Beginner to Professional','Computer & Technology',' Laurence Lars Svekis ','Learn JavaScript quickly by building fun, interactive, and dynamic web apps, games, and pages. Start your journey towards becoming a JavaScript developer with the help of more than 100 fun exercises and projects',37.99,'650','English','December 15, 2021',546,30.99,NULL),(6,'Why We Swim','Exercise & Fitness','Bonnie Tsui ','“A fascinating and beautifully written love letter to water. I was enchanted by this book.\" —Rebecca Skloot, bestselling author of The Immortal Life of Henrietta Lacks',11.29,'432','English','April 13, 2021',288,8.99,NULL),(7,'The Inheritance Games','Children\'s Books','Jennifer Lynn Barnes ','Don\'t miss this New York Times bestselling \"impossible to put down\" (Buzzfeed) novel with deadly stakes, thrilling twists, and juicy secrets—perfect for fans of One of Us is Lying and Knives Out.',10.99,'73','English','September 1, 2020',385,5.99,NULL),(8,'Lost Landmarks of Orange County','History',' Chris Epting','Since forming in 1889, Orange County, California has become famous all over the world for being home to such popular attractions as Disneyland, Knott’s Berry Farm, and some of the most beautiful beaches in the world. But there are also many other places t',18.19,'86','English','April 16, 2020',234,15.99,NULL),(9,'Introduction to Linear Algebra','Science & Math',' Gilbert Strang','Linear algebra now rivals or surpasses calculus in importance for people working in quantitative fields of all kinds: engineers, scientists, economists and business people. Gilbert Strang has taught linear algebra at MIT for more than 50 years and the cou',83.13,'35','English','April 30, 2023',440,76.99,NULL),(10,'Silent Spring','Environment & Nature',' Rachel Carson ','“Rachel Carson is a pivotal figure of the twentieth century…people who thought one way before her essential 1962 book Silent Spring thought another way after it.”—Margaret Atwood',13.49,'56','English','February 1, 2022',400,10.79,NULL),(11,'The Lost Art of Finding Our Way','Environment & Nature',' John Edward Huth ','Long before GPS, Google Earth, and global transit, humans traveled vast distances using only environmental clues and simple instruments. John Huth asks what is lost when modern technology substitutes for our innate capacity to find our way. Encyclopedic i',22.16,'220','English','November 16, 2015',544,18.99,NULL),(12,'Who Was Leonardo da Vinci? ','Technology',' Roberta Edwards ','Leonardo da Vinci was a gifted painter, talented musician, and dedicated scientist and inventor, designing flying machines, submarines, and even helicopters.  Yet he had a hard time finishing things, a problem anyone can relate to.  Only thirteen painting',4.79,'20','English','September 8, 2005',112,2.99,NULL);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,10 +117,14 @@ DROP TABLE IF EXISTS `cart`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `book_id` int NOT NULL,
-  `customer_id` int NOT NULL,
-  `total_item` int NOT NULL,
-  PRIMARY KEY (`id`)
+  `customer_id` bigint DEFAULT NULL,
+  `book_id` int DEFAULT NULL,
+  `quantity` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKioh3c0mo0al2kswtnk5r09y7f` (`customer_id`),
+  KEY `FK5n0sq8ulj6ykdnrh4dnk0vfmw` (`book_id`),
+  CONSTRAINT `FK5n0sq8ulj6ykdnrh4dnk0vfmw` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
+  CONSTRAINT `FKioh3c0mo0al2kswtnk5r09y7f` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -155,6 +160,35 @@ LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 INSERT INTO `category` VALUES (1,'Architecture','Architecture'),(2,'Art','Art'),(3,'Action','Action'),(4,'Biography','Biography'),(5,'Body, Mind & Spirit','Body, Mind & Spirit'),(6,'Business & Economics','Business & Economics'),(7,'Children Fiction','Children Fiction'),(8,'Children Non-Fiction','Children Non-Fiction'),(9,'Comics & Graphics','Comics & Graphics'),(10,'Cooking','Cooking'),(11,'Crafts & Hobbies','Crafts & Hobbies'),(12,'Design','Design'),(13,'Drama','Drama'),(14,'Education','Education'),(15,'Family & Relationships','Family & Relationships'),(16,'Fiction','Fiction'),(17,'Foreign Language','Foreign Language'),(18,'Games','Games'),(19,'History','History'),(20,'House & Home','House & Home');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `checkout`
+--
+
+DROP TABLE IF EXISTS `checkout`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `checkout` (
+  `checkout_id` int NOT NULL AUTO_INCREMENT,
+  `address` varchar(255) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `shipping_cost_total` float NOT NULL,
+  `subtotal` float NOT NULL,
+  `total` float NOT NULL,
+  PRIMARY KEY (`checkout_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `checkout`
+--
+
+LOCK TABLES `checkout` WRITE;
+/*!40000 ALTER TABLE `checkout` DISABLE KEYS */;
+/*!40000 ALTER TABLE `checkout` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -206,12 +240,13 @@ CREATE TABLE `customers` (
   `occupation` varchar(50) DEFAULT NULL,
   `reset_password_token` varchar(255) DEFAULT NULL,
   `status` bit(1) NOT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`customer_id`),
   UNIQUE KEY `phone_number_UNIQUE` (`phone`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_customer_address_idx` (`address_id`),
   CONSTRAINT `fk_customer_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +255,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (8,'Duyen','Van','test1@gmail.com','123','$2a$10$qC1MM7F22RtlavgPUNFrleCMngR2uO7g7yc/UDQUMC02uJr4eMRzW',6,22,'','',NULL,_binary '\0'),(9,'Trong','Nguyen','123123@gmail.com','123123123','$2a$10$QD3sn0YL8DJpOgxyci8XKuxJdgqJg1hk7gBaMHu45XLONKgtUinom',7,22,'hehehehe','Giao su',NULL,_binary '\0'),(15,'Kiet','Luong','kietluong.071002@gmail.com','3134567687','$2a$10$dJBTEzUqoTJXF4bFOcP6FumHGRF/RChCDLgbuWGyUb.85JpiuThKW',13,23,'','student','6nCmhW',_binary ''),(16,'Văn Thị ','Hương Duyên','huongduyenvan3012@gmail.com',NULL,'$2a$10$pGbd6AQkl1zOpT6aRikAQeyQUt8ugrxfkDBCeHq6DbVEKJRyswMxm',14,0,NULL,NULL,NULL,_binary '');
+INSERT INTO `customers` VALUES (8,'Duyen','Van','test1@gmail.com','123','$2a$10$qC1MM7F22RtlavgPUNFrleCMngR2uO7g7yc/UDQUMC02uJr4eMRzW',6,22,'','',NULL,_binary '\0',NULL),(9,'Trong','Nguyen','123123@gmail.com','123123123','$2a$10$QD3sn0YL8DJpOgxyci8XKuxJdgqJg1hk7gBaMHu45XLONKgtUinom',7,22,'hehehehe','Giao su',NULL,_binary '\0',NULL),(15,'Kiet','Luong','kietluong.071002@gmail.com','3134567687','$2a$10$dJBTEzUqoTJXF4bFOcP6FumHGRF/RChCDLgbuWGyUb.85JpiuThKW',13,23,'','student','6nCmhW',_binary '',NULL),(16,'Văn Thị ','Hương Duyên','huongduyenvan3012@gmail.com',NULL,'$2a$10$pGbd6AQkl1zOpT6aRikAQeyQUt8ugrxfkDBCeHq6DbVEKJRyswMxm',14,0,NULL,NULL,NULL,_binary '',NULL),(17,'Nguyễn Đức','Trọng','trong.nguyen.cit20@eiu.edu.vn',NULL,'$2a$10$/jh5kFH9p3zO3H30uTwKYuW.0uWx92/ay7e5brmIDUp8SIXP3CQpO',15,0,NULL,NULL,NULL,_binary '',NULL);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,7 +302,7 @@ CREATE TABLE `news` (
   `publication` date NOT NULL,
   `title` varchar(255) NOT NULL,
   PRIMARY KEY (`news_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,6 +311,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
+INSERT INTO `news` VALUES (1,'Duc Trong','<div>Newwwww</div>','','2024-05-24','New 1');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,6 +344,39 @@ LOCK TABLES `order_details` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `order_items`
+--
+
+DROP TABLE IF EXISTS `order_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order_items` (
+  `order_items_id` int NOT NULL AUTO_INCREMENT,
+  `product_cost` float NOT NULL,
+  `quantity` int DEFAULT NULL,
+  `shipping_cost` float NOT NULL,
+  `subtotal` float NOT NULL,
+  `unit_price` float NOT NULL,
+  `book_id` int DEFAULT NULL,
+  `orders_id` int DEFAULT NULL,
+  PRIMARY KEY (`order_items_id`),
+  KEY `FKqscqcme08spiyt2guyqdj72eh` (`book_id`),
+  KEY `FKqmxbj1e77sls50umaww7pkpnx` (`orders_id`),
+  CONSTRAINT `FKqmxbj1e77sls50umaww7pkpnx` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`orders_id`),
+  CONSTRAINT `FKqscqcme08spiyt2guyqdj72eh` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_items`
+--
+
+LOCK TABLES `order_items` WRITE;
+/*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `orders`
 --
 
@@ -316,14 +385,25 @@ DROP TABLE IF EXISTS `orders`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
   `orders_id` int NOT NULL AUTO_INCREMENT,
-  `order_date` datetime NOT NULL,
-  `customer_id` int DEFAULT NULL,
+  `order_date` date DEFAULT NULL,
+  `customer_id` bigint NOT NULL,
   `shipping_method_id` int DEFAULT NULL,
   `dest_address_id` int DEFAULT NULL,
+  `address` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `order_status` enum('CANCELLED','DELIVERED','NEW','PACKAGED','PAID','PICKED','PROCESSING','REFUNDED','RETURNED','SHIPPING') DEFAULT NULL,
+  `payment_method` enum('COD','CREDIT_CARD') DEFAULT NULL,
+  `product_cost` float NOT NULL,
+  `shipping_cost` float NOT NULL,
+  `subtotal` float NOT NULL,
+  `total` float NOT NULL,
   PRIMARY KEY (`orders_id`),
   KEY `fk_order_ship` (`shipping_method_id`),
   KEY `fk_order_addr` (`dest_address_id`),
-  CONSTRAINT `fk_order_ship` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_method` (`method_id`)
+  KEY `FKpxtb8awmi0dk6smoh2vp1litg` (`customer_id`),
+  CONSTRAINT `fk_order_ship` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_method` (`method_id`),
+  CONSTRAINT `FKpxtb8awmi0dk6smoh2vp1litg` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -396,4 +476,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-24 11:28:01
+-- Dump completed on 2024-05-28  9:24:20
