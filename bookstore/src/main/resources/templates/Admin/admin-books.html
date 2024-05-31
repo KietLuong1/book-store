@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:replace="Admin/admin-template.html :: header('Books')">
 </head>
 
@@ -32,14 +34,13 @@
                                     <tr>
                                         <th style="width: 3%;">No</th>
                                         <th style="width: 15%;">Name</th>
+                                        <th style="width: 15%;">Image</th>
                                         <th style="width: 15%;">Category</th>
                                         <th style="width: 15%;">Author</th>
-                                        <th style="width: 18%;">Description</th>
                                         <th style="width: 7%;">Price</th>
                                         <th style="width: 7%;">Quantity</th>
                                         <th style="width: 12%;">Language</th>
                                         <th style="width: 12%;">Publication Date</th>
-                                        <th style="width: 12%;">Number of Pages</th>
                                         <th style="width: 15%;">Action</th>
                                     </tr>
                                     </thead>
@@ -48,14 +49,20 @@
                                         <tr>
                                             <td th:text="${book.book_id}"></td>
                                             <td th:text="${book.name}"></td>
-                                            <td th:text="${book.category}"></td>
-                                            <td th:text="${book.author}"></td>
-                                            <td th:text="${book.description}"></td>
+                                            <td>
+                                                <img class="img-fluid" alt="bookImage" th:src="${book.book_image}"/>
+                                            </td>
+                                            <td>
+                                                <th:block th:each="category: ${book.categories}">
+                                                    <span class="badge bg-primary" th:text="${category.name}"></span>
+                                                </th:block>
+
+                                            </td>
+                                            <td th:text="${book.author.name}"></td>
                                             <td th:text="${book.price}"></td>
                                             <td th:text="${book.quantity}"></td>
                                             <td th:text="${book.language}"></td>
-                                            <td th:text="${book.publicationDate}"></td>
-                                            <td th:text="${book.numPages}"></td>
+                                            <td th:text="${book.publication_date}"></td>
                                             <td>
                                                 <div class="flex align-items-center list-user-action">
                                                     <a class="bg-primary" data-toggle="tooltip" data-placement="top"

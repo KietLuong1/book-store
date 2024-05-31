@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -24,4 +26,7 @@ public class Publisher {
     private String country;
     private String publisher_address;
     private String publisher_email;
+
+    @OneToMany(mappedBy = "publisher")
+    private Set<Book> books;
 }

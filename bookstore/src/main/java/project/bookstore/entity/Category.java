@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "category")
 @Getter
@@ -23,4 +25,7 @@ public class Category {
 
     @Column(nullable = false, length = 255)
     private String description;
+
+    @ManyToMany(mappedBy = "categories")
+    private Set<Book> books;
 }

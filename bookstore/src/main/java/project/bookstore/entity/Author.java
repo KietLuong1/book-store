@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -28,5 +29,8 @@ public class Author {
     private String description;
     @Column(name = "profile_image_url")
     private String profileImageURL;
+
+    @OneToMany(mappedBy = "author")
+    private Set<Book> book;
 
 }
