@@ -14,8 +14,8 @@ public class BookService {
     @Autowired
     private BookRepository bookReposiory;
 
-    public void save(Book book) {
-        bookReposiory.save(book);
+    public Book save(Book book) {
+        return bookReposiory.save(book);
     }
 
     public List<Book> getAllBook() {

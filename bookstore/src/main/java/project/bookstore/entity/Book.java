@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "book")
 @AllArgsConstructor
@@ -24,12 +26,6 @@ public class Book {
     @Column(nullable = false, length = 255)
     private String name;
 
-    @Column(nullable = false, length = 255)
-    private String category;
-
-    @Column(nullable = false, length = 255)
-    private String author;
-
     @Column(nullable = false)
     private String description;
 
@@ -40,7 +36,7 @@ public class Book {
     private float price;
 
     @Column(nullable = false)
-    private String quantity;
+    private int quantity;
 
     @Column(nullable = false)
     private String language;
@@ -51,7 +47,21 @@ public class Book {
     @Column(nullable = false)
     private int num_pages;
 
-    @Column(nullable = false)
     private String book_image;
 
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "author_id")
+    private Author author;
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_category",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categories;
+
+    @ManyToOne
+    @JoinColumn(name = "publisher_id", referencedColumnName = "publisher_id")
+    private Publisher publisher;
 }

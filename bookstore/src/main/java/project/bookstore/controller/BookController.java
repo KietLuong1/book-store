@@ -1,5 +1,6 @@
 package project.bookstore.controller;
 
+import java.io.IOException;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import project.bookstore.entity.Author;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.service.BookService;
+import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.UserService;
 
 @Controller
@@ -23,6 +28,9 @@ public class BookController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CloudinaryService cloudinaryService;
 
     @GetMapping("/admin-books")
     public String getAllBook(Model model) {
@@ -64,25 +72,13 @@ public class BookController {
     }
 
     @PostMapping("/admin-add-book/save")
-    public String addBook(Book book) {
-//        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-//        book.setBook_imgae(fileName);
-//        Book savedBoook = service.save(book);
-//
-//        String uploadDir = "./Admin/images/" + savedBoook.getBook_id();
-//
-//        Path uploadPath = Paths.get(uploadDir);
-//
-//        if (!Files.exists(uploadPath)) {
-//            Files.createDirectories(uploadPath);
-//        }
-//        try (InputStream inputStream = multipartFile.getInputStream()) {
-//            Path filePath = uploadPath.resolve(fileName);
-//            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException e) {
-//            throw new IOException("Could not save uploaded file: " + fileName);
-//        }
-        bookService.save(book);
+    public String saveAuthor(@ModelAttribute(name = "book") Book book,
+                             @RequestParam("bookImage") MultipartFile multipartFile) throws IOException {
+        Book savedBook = bookService.save(book);
+
+        savedBook.setBook_image(cloudinaryService.uploadFile(multipartFile, "Admin/books/" + savedBook.getBook_id()));
+        bookService.save(savedBook);
+
         return "redirect:/admin-books";
     }
 
