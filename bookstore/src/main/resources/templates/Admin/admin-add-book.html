@@ -30,38 +30,70 @@
                                     <label>Book Name:</label>
                                     <input type="text" class="form-control" th:field="*{name}">
                                 </div>
-<!--                                <div class="form-group">-->
-<!--                                    <label>Book Category:</label>-->
-<!--                                    <input type="text" class="form-control" th:field="*{categories}">-->
-<!--                                </div>-->
+
                                 <div class="form-group">
-                                    <label>Book Author:</label>
-                                    <input type="text" class="form-control" th:field="*{author}">
+                                    <label>Book Category:</label>
+                                    <div th:each="category: ${categories}">
+                                        <input name="categories" type="checkbox" th:field="${book.categories}" th:value="${category.id}"
+                                              />
+                                        <label  th:text="${category.name}"></label>
+                                    </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="publisher">Publisher:</label>
+                                    <a th:href="@{'/admin-add-publisher'}" class="btn btn-primary">Add New Publisher</a>
+                                    <select th:field="*{publisher}" id="publisher" name="publisher"
+                                            class="form-control">
+                                        <th:block th:each="publisher : ${publishers}">
+                                            <option th:value="${publisher.publisher_id}"
+                                                    th:text="${publisher.publisher_name}"></option>
+                                        </th:block>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="author">Book Author:</label>
+                                    <a th:href="@{'/admin-add-author'}" class="btn btn-primary">Add New Author</a>
+                                    <select th:field="*{author}" id="author" name="author" class="form-control">
+                                        <th:block th:each=" author : ${authors}">
+                                            <option th:value="${author.id}" th:text="${author.name}"></option>
+                                        </th:block>
+
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label>Book Description:</label>
-                                    <textarea class="form-control" rows="3" th:field="*{description}" id="description"></textarea>
+                                    <textarea class="form-control" rows="3" th:field="*{description}"
+                                              id="description"></textarea>
                                 </div>
+
                                 <div class="form-group">
                                     <label>Book Price:</label>
                                     <input type="text" class="form-control" th:field="*{price}">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Book Quantity:</label>
                                     <input type="text" class="form-control" th:field="*{quantity}">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Book Language:</label>
                                     <input type="text" class="form-control" th:field="*{language}">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Book Publication Date:</label>
-                                    <input type="text" class="form-control" th:field="*{publication_date}">
+                                    <input type="date" class="form-control" th:field="*{publication_date}">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Number of Pages:</label>
                                     <input type="text" class="form-control" th:field="*{num_pages}">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Book Image:</label>
                                     <div class="custom-file">
@@ -71,6 +103,7 @@
                                     </div>
                                     <img class="img-fluid avatar-100 rounded mt-3" id="thumbnail" alt="Preview">
                                 </div>
+
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-danger">Reset</button>
                             </form>

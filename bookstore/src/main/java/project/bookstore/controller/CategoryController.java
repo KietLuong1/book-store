@@ -23,7 +23,7 @@ public class CategoryController {
 
     @GetMapping("/admin-category")
     public String showBookCategory(Model model) {
-        List<Category> listCategories = service.listAll();
+        List<Category> listCategories = service.getAllCategories();
         model.addAttribute("listCategories", listCategories);
 
         return "Admin/admin-category";

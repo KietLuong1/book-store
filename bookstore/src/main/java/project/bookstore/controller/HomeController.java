@@ -31,7 +31,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         // Get All Categories Name from DB to Homepage
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         // Get All Book from DB to Homepage, Book Grid, Book List
@@ -55,7 +55,7 @@ public class HomeController {
     @GetMapping("/about-us")
     public String getAboutUs(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/about-us";
@@ -64,7 +64,7 @@ public class HomeController {
     @GetMapping("/blog-detail")
     public String getBlogDetail(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/blog-detail";
@@ -73,7 +73,7 @@ public class HomeController {
     @GetMapping("/blog-list-sidebar")
     public String getBlogListSidebar(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/blog-list-sidebar";
@@ -82,7 +82,7 @@ public class HomeController {
     @GetMapping("/books-detail")
     public String getBooksDetail(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/books-detail";
@@ -95,7 +95,7 @@ public class HomeController {
         model.addAttribute("listBooks", listBooks);
 
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/books-grid-view";
@@ -108,7 +108,7 @@ public class HomeController {
         model.addAttribute("listBooks", listBooks);
 
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/books-grid-view-sidebar";
@@ -121,7 +121,7 @@ public class HomeController {
         model.addAttribute("listBooks", listBooks);
 
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/books-list";
@@ -134,7 +134,7 @@ public class HomeController {
         model.addAttribute("listBooks", listBooks);
 
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/books-list-view-sidebar";
@@ -143,7 +143,7 @@ public class HomeController {
     @GetMapping("/coming-soon")
     public String getComingSoon(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/coming-soon";
@@ -152,7 +152,7 @@ public class HomeController {
     @GetMapping("/contact-us")
     public String getContactUs(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/contact-us";
@@ -161,7 +161,7 @@ public class HomeController {
     @GetMapping("/404")
     public String get404(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "/Client/error-404";
@@ -170,7 +170,7 @@ public class HomeController {
     @GetMapping("/faq")
     public String getFAQ(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/faq";
@@ -179,7 +179,7 @@ public class HomeController {
     @GetMapping("/pricing")
     public String getPricing(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/pricing";
@@ -188,7 +188,7 @@ public class HomeController {
     @GetMapping("/privacy-policy")
     public String getPrivacyPolicy(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/privacy-policy";
@@ -197,7 +197,7 @@ public class HomeController {
     @GetMapping("/services")
     public String getServices(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/services";
@@ -224,7 +224,7 @@ public class HomeController {
 
     @GetMapping("/support")
     public String getSupport(Model model) {
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/support";
