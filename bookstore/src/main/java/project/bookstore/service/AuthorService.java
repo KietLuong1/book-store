@@ -21,7 +21,9 @@ public class AuthorService {
     }
 
     public List<Author> listAll() {
-        return  authorRepository.findAll();
+
+        return authorRepository.findAll();
+
     }
 
     public Author get(Integer id) throws AuthorNotFoundException {

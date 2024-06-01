@@ -26,13 +26,5 @@ public class CloudinaryService {
                 .get("url")
                 .toString();
     }
-
-    public void createFolder (String path){
-        try {
-            cloudinary.api().createFolder(path, ObjectUtils.emptyMap());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
 
