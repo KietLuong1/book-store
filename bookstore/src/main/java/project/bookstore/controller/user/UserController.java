@@ -71,7 +71,7 @@ public class UserController {
         User user = userDetails.getUser();
         model.addAttribute("user", user);
 
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/my-profile";
@@ -90,7 +90,7 @@ public class UserController {
 
     @GetMapping("/order-history")
     public String getOrderHistory(Model model) {
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/order-history";
@@ -98,7 +98,7 @@ public class UserController {
 
     @GetMapping("/shop-checkout")
     public String getShopCheckout(Model model) {
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
         return "Client/shop-checkout";

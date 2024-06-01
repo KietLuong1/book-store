@@ -6,13 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.bookstore.entity.Book;
+import project.bookstore.entity.Category;
 import project.bookstore.repository.BookRepository;
+import project.bookstore.repository.CategoryRepository;
 
 @Service
 public class BookService {
 
     @Autowired
     private BookRepository bookReposiory;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     public Book save(Book book) {
         return bookReposiory.save(book);
@@ -29,4 +34,5 @@ public class BookService {
     public void deleteById(int id) {
         bookReposiory.deleteById(id);
     }
+
 }

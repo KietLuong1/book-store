@@ -42,7 +42,7 @@ public class CartController {
     @GetMapping("/shop-cart")
     public String getAllCartItems(Model model) {
         // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.listAll();
+        List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
         // Get All Cart Items
         Set<Integer> listBooksId = cartService.getAllCartItems();
