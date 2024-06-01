@@ -16,7 +16,7 @@
                     <div class="col">
                         <div class="dz-box">
                             <div class="dz-media">
-                                <!--                                <img src="Client/images/books/book16.png" alt="book">-->
+                                <img th:src="${book.book_image}" alt="book">
                             </div>
                             <div class="dz-content">
                                 <div class="dz-header">
@@ -52,10 +52,10 @@
                                         <ul class="book-info">
                                             <li>
                                                 <div class="writer-info">
-                                                    <img src="/Client/images/profile2.jpg" alt="book">
+                                                    <img th:src="${book.author.profileImageURL}" alt="book">
                                                     <div>
                                                         <span>Writen by</span>
-                                                        <p th:text="${book.author}"></p>
+                                                        <p th:text="${book.author.name}"></p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -111,7 +111,7 @@
                                         </tr>
                                         <tr>
                                             <th>Author</th>
-                                            <td th:text="${book.author}"></td>
+                                            <td th:text="${book.author.name}"></td>
                                         </tr>
                                         <tr>
                                             <th>Language</th>
@@ -123,7 +123,7 @@
                                         </tr>
                                         <tr>
                                             <th>Publisher</th>
-                                            <td>T nghĩ là nên thêm 1 cột Publisher dô DB của Book</td>
+                                            <td th:text="${book.publisher.publisher_name}"></td>
                                         </tr>
                                         <tr>
                                             <th>Pages</th>
@@ -136,13 +136,10 @@
                                         <tr class="tags">
                                             <th>Tags</th>
                                             <td>
-                                                <a href="javascript:void(0);" class="badge"
-                                                   th:text="${book.category}"></a>
-                                                <a href="javascript:void(0);" class="badge">Advanture</a>
-                                                <a href="javascript:void(0);" class="badge">Survival</a>
-                                                <a href="javascript:void(0);" class="badge">Biography</a>
-                                                <a href="javascript:void(0);" class="badge">Trending2022</a>
-                                                <a href="javascript:void(0);" class="badge">Bestseller</a>
+                                                <th:block th:each="category: ${book.categories}">
+                                                    <a class="badge" href="books-grid-view" th:text="${category.name}"
+                                                       th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                                </th:block>
                                             </td>
                                         </tr>
                                     </table>
@@ -170,10 +167,10 @@
                                                     <span class="price-num" th:text="${book.price}"></span>
                                                     <del th:text="${book.salePrice}"></del>
                                                 </div>
-<!--                                                <a class="btn btn-outline-primary btn-sm btnhover btnhover2">-->
-<!--                                                    <i class="flaticon-shopping-cart-1 me-2"></i>-->
-<!--                                                    Add to cart-->
-<!--                                                </a>-->
+                                                <a class="btn btn-outline-primary btn-sm btnhover btnhover2 add-cart">
+                                                    <i class="flaticon-shopping-cart-1 me-2"></i>
+                                                    Add to cart
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -298,13 +295,6 @@
     <div th:insert="Client/client-template.html :: footer"></div>
     <!-- Footer End -->
 </div>
-
-<script type="text/javascript">
-    contextPath = "[[@{/}]]";
-    bookId = "[[${book.book_id}]]"
-    var csrfHeaderName = "[[${_csrf.headerName}]]";
-    var csrfValue = "[[${_csrf.token}]]";
-</script>
 
 </body>
 </html>

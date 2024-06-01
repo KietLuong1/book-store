@@ -364,8 +364,12 @@
                                                                     th:href="@{'/books-detail/' + ${book.book_id}}"></a>
                                     </h5>
                                     <ul class="dz-tags">
-                                        <li><a href="books-grid-view" th:text="${book.category}"
-                                               th:href="@{'/books-detail/' + ${book.book_id}}"></a></li>
+                                        <li>
+                                            <th:block th:each="category: ${book.categories}">
+                                                <a href="books-grid-view" th:text="${category.name}"
+                                                   th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                            </th:block>
+                                        </li>
                                     </ul>
                                     <div class="book-footer">
                                         <div class="rate">
@@ -411,8 +415,12 @@
                                                                     th:href="@{'/books-detail/' + ${book.book_id}}"></a>
                                     </h5>
                                     <ul class="dz-tags">
-                                        <li><a th:text="${book.category}"
-                                               th:href="@{'/books-detail/' + ${book.book_id}}"></a></li>
+                                        <li>
+                                            <th:block th:each="category: ${book.categories}">
+                                                <a href="books-grid-view" th:text="${category.name}"
+                                                   th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                            </th:block>
+                                        </li>
                                     </ul>
                                     <div class="book-footer">
                                         <div class="rate">
@@ -630,8 +638,12 @@
                                     </h4>
                                     <div class="dz-meta">
                                         <ul class="dz-tags">
-                                            <li><a th:text="${book.category}"
-                                                   th:href="@{'/books-detail/' + ${book.book_id}}"></a></li>
+                                            <li>
+                                                <th:block th:each="category: ${book.categories}">
+                                                    <a href="books-grid-view" th:text="${category.name}"
+                                                       th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                                </th:block>
+                                            </li>
                                         </ul>
                                     </div>
                                     <p class="shortDescription" th:text="${book.description}"></p>
@@ -951,8 +963,7 @@
 
 </div>
 <script type="text/javascript">
-    contextPath = "[[@{/}]]";
-    bookId = "[[${book.book_id}]]"
+
     var csrfHeaderName = "[[${_csrf.headerName}]]";
     var csrfValue = "[[${_csrf.token}]]";
 </script>
