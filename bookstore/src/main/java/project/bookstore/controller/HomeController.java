@@ -38,10 +38,6 @@ public class HomeController {
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
 
-        // Get Number of Cart Items
-        Integer numberOfCartItems = cartService.getNumberOfItems();
-        model.addAttribute("numberOfCartItems", numberOfCartItems);
-
         //notification if user log in or not
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 

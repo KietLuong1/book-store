@@ -259,7 +259,9 @@
                     <div class="col-md-12 col-sm-12" th:each="book: ${listBooks}">
                         <div class="dz-shop-card style-2">
                             <div class="dz-media">
-                                <a th:href="@{'/books-detail/' + ${book.book_id}}"><img src="Client/images/books/grid/book12.jpg" alt="book"></a>
+                                <a th:href="@{'/books-detail/' + ${book.book_id}}">
+                                    <img th:src="${book.book_image}" alt="book">
+                                </a>
                             </div>
                             <div class="dz-content">
                                 <div class="dz-header">
@@ -267,21 +269,20 @@
                                         <ul class="dz-tags">
                                             <li><a th:text="${book.category}"></a></li>
                                         </ul>
-                                        <h4 class="title mb-0 shortTitle"><a th:text="${book.name}"
-                                                                             th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                        <h4 class="title mb-0 shortTitle">
+                                            <a th:text="${book.name}" th:href="@{'/books-detail/' + ${book.book_id}}"></a>
                                         </h4>
                                     </div>
                                     <div class="price">
-                                        <span class="price-num text-primary" th:text="${book.price}"></span>
-                                        <span th:text="${book.salePrice}"> <del></del></span>
+                                        <span class="price-num text-primary" th:text="${book.salePrice}"></span>
+                                        <del th:text="'$ ' + ${book.price}"></del>
                                     </div>
                                 </div>
 
                                 <div class="dz-body">
                                     <div class="dz-rating-box">
                                         <div>
-                                            <p class="dz-para shortBookListDescription"
-                                               th:text="${book.description}"></p>
+                                            <p class="dz-para shortBookListDescription" th:text="${book.description}"></p>
                                             <div>
                                                 <a href="pricing" class="badge">Get 20% Discount for today</a>
                                                 <a href="pricing" class="badge">50% OFF Discount</a>
@@ -306,12 +307,12 @@
                                             <span>Date Published<li th:text="${book.publication_date}"></li></span>
                                         </ul>
                                         <div class="d-flex">
-                                            <a th:href="@{'/shop-cart/save/' + ${book.book_id}}"
-                                               class="btn btn-secondary btnhover btnhover2"><i
-                                                    class="flaticon-shopping-cart-1 m-r10"></i> Add to cart</a>
+                                            <a class="btn btn-secondary btnhover btnhover2" id="buttonAddToCart">
+                                                <i class="flaticon-shopping-cart-1 m-r10"></i>
+                                                Add to cart
+                                            </a>
                                             <div class="bookmark-btn style-1">
-                                                <input class="form-check-input" type="checkbox"
-                                                       id="flexCheckDefault1">
+                                                <input class="form-check-input" type="checkbox" id="flexCheckDefault1">
                                                 <!--                                                <label class="form-check-label" for="flexCheckDefault1">-->
                                                 <!--                                                    <i class="flaticon-heart"></i>-->
                                                 <!--                                                </label>-->
@@ -471,5 +472,11 @@
     <!-- Footer End -->
 
 </div>
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    bookId = "[[${book.book_id}]]"
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
+</script>
 </body>
 </html>

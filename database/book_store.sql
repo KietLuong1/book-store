@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: book_store
+-- Host: localhost    Database: book_store
 -- ------------------------------------------------------
 -- Server version	8.0.34
 
@@ -32,7 +32,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`address_id`),
   UNIQUE KEY `UK_s673mhnxcvjr5oevend5biles` (`user_customer_id`),
   CONSTRAINT `FKh2j8eo9wbeawdub7xhaom5j06` FOREIGN KEY (`user_customer_id`) REFERENCES `customers` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,NULL,NULL,NULL,NULL,NULL),(4,NULL,'',NULL,NULL,NULL),(5,NULL,'',NULL,NULL,NULL),(6,NULL,'',NULL,NULL,NULL),(7,'','','Tổ 8, Phú Thọ, Phú Chánh, thị xã Tân Uyên, Bình Dương',NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,NULL,NULL,NULL),(13,'0','0','Tổ 8, khu phố Phú Thọ,',NULL,'0'),(14,NULL,NULL,NULL,NULL,NULL),(15,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `address` VALUES (1,NULL,NULL,NULL,NULL,NULL),(4,NULL,'',NULL,NULL,NULL),(5,NULL,'',NULL,NULL,NULL),(6,NULL,'',NULL,NULL,NULL),(7,'','','Tổ 8, Phú Thọ, Phú Chánh, thị xã Tân Uyên, Bình Dương',NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,NULL,NULL,NULL),(13,'0','0','Tổ 8, khu phố Phú Thọ,',NULL,'0'),(14,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +61,7 @@ CREATE TABLE `author` (
   `profile_image` varchar(255) DEFAULT NULL,
   `profile_image_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`author_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (1,'Đức Trọng','2002-01-01','Việt Nam','Quê Quán: Bình Dương\r\n',NULL,NULL),(2,'Anh Kiệt','2002-02-02','Việt Nam','Quê Quán: Bình Dương',NULL,NULL),(3,'Hương Duyên','2002-03-03','Việt Nam','Quê Quán: Bình Dương',NULL,NULL),(4,'Văn A','2003-06-30','Việt Nam','New Author',NULL,NULL),(5,'Peter','1985-07-02','USA','History Author',NULL,NULL),(6,'Tom','1975-06-09','Italy','Author From Italy',NULL,NULL),(7,'Ben','1995-06-09','Thai Lan','Young Author From Thai Lan',NULL,NULL),(10,'TRỢ GIẢNG THỬ NGHIỆM 1','2024-04-29','VN','',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1716858888/Admin/authors/10/72557f3f-1d88-4f31-ac25-505504a00340.png');
+INSERT INTO `author` VALUES (1,'Đức Trọng',NULL,'Việt Nam','Quê Quán: Bình Dương\r\n',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717167738/Admin/authors/1/c4f5328b-5bb5-49df-97ca-a19bc2bc31de.jpg'),(2,'Anh Kiệt','2024-05-31','Việt Nam','Quê Quán: Bình Dương',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717167830/Admin/authors/2/5da45590-79d9-4f38-a4b2-902e6bf83e5f.jpg'),(3,'Hương Duyên','2024-05-23','Việt Nam','Quê Quán: Bình Dương',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169300/Admin/authors/3/f9adbb6b-39a9-42ab-80a1-5ad6e2899f52.jpg'),(4,'Văn A',NULL,'Việt Nam','New Author',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169326/Admin/authors/4/24690ecd-3bc6-482c-a888-33fb47e551a6.jpg'),(5,'Peter','2024-05-30','USA','History Author',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169344/Admin/authors/5/03e2b563-3fd8-4bf3-b619-bded490e529b.jpg'),(6,'Tom','2024-06-01','Italy','Author From Italy',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169364/Admin/authors/6/75bef289-f61c-4eb2-b721-010b7d95e3ba.jpg'),(7,'Ben','2024-05-03','Thai Lan','Young Author From Thai Lan',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169383/Admin/authors/7/2f062e90-64ec-418f-929c-9f0d528645ab.jpg');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,18 +84,22 @@ DROP TABLE IF EXISTS `book`;
 CREATE TABLE `book` (
   `book_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `category` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `price` float NOT NULL,
-  `quantity` varchar(255) NOT NULL,
+  `quantity` int NOT NULL,
   `language` varchar(255) NOT NULL,
   `publication_date` varchar(255) NOT NULL,
   `num_pages` int NOT NULL,
   `sale_price` float NOT NULL,
   `book_image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`book_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `author_id` int DEFAULT NULL,
+  `publisher_id` int DEFAULT NULL,
+  PRIMARY KEY (`book_id`),
+  KEY `FKklnrv3weler2ftkweewlky958` (`author_id`),
+  KEY `FKgtvt7p649s4x80y6f4842pnfq` (`publisher_id`),
+  CONSTRAINT `FKgtvt7p649s4x80y6f4842pnfq` FOREIGN KEY (`publisher_id`) REFERENCES `publisher` (`publisher_id`),
+  CONSTRAINT `FKklnrv3weler2ftkweewlky958` FOREIGN KEY (`author_id`) REFERENCES `author` (`author_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,8 +108,35 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (1,'Apprentice to the Villain','Romance ','Hannah Nicole Maehrer ','LIMITED FIRST PRINT RUN―featuring spray-painted edges, while supplies last in the US and Canada only.',15.99,'210','English','August 6, 2023',352,10.99,NULL),(2,'Theory of Macroeconomic Hysteresis','Econometrics & Statistics','Isaak D Mayergoyz','This book deals with the mathematical theory of macroeconomic hysteresis, which is the theory of aggregation of microeconomic hysteresis. Microeconomic sunk cost hysteresis is usually represented by relatively simple hysteresis loops with no discrete memo',88,'560','English','June 20, 2022',200,70,NULL),(3,'The Trading Game: A Confession','Banks & Banking','Gary Stevenson ','#1 SUNDAY TIMES BESTSELLER • A “vivid” (Financial Times) rags-to-riches memoir that takes readers inside the high-stakes drama and hubris of the trading floor, a “darkly funny” (Guardian) tale of Citibank’s one-time most profitable trader, and why he gave',19.99,'320','English','March 5, 2023',352,15.99,NULL),(4,'Debugging','Computer & Technology','David J. Agans','The 9 Indispensable Rules for Finding Even the Most Elusive Software and Hardware Problems. When the pressure is on to resolve an elusive software or hardware glitch, what’s needed is a cool head courtesy of a set of rules guaranteed to work on any system',12.99,'130','English','September 23, 2002',202,8.99,NULL),(5,'JavaScript from Beginner to Professional','Computer & Technology',' Laurence Lars Svekis ','Learn JavaScript quickly by building fun, interactive, and dynamic web apps, games, and pages. Start your journey towards becoming a JavaScript developer with the help of more than 100 fun exercises and projects',37.99,'650','English','December 15, 2021',546,30.99,NULL),(6,'Why We Swim','Exercise & Fitness','Bonnie Tsui ','“A fascinating and beautifully written love letter to water. I was enchanted by this book.\" —Rebecca Skloot, bestselling author of The Immortal Life of Henrietta Lacks',11.29,'432','English','April 13, 2021',288,8.99,NULL),(7,'The Inheritance Games','Children\'s Books','Jennifer Lynn Barnes ','Don\'t miss this New York Times bestselling \"impossible to put down\" (Buzzfeed) novel with deadly stakes, thrilling twists, and juicy secrets—perfect for fans of One of Us is Lying and Knives Out.',10.99,'73','English','September 1, 2020',385,5.99,NULL),(8,'Lost Landmarks of Orange County','History',' Chris Epting','Since forming in 1889, Orange County, California has become famous all over the world for being home to such popular attractions as Disneyland, Knott’s Berry Farm, and some of the most beautiful beaches in the world. But there are also many other places t',18.19,'86','English','April 16, 2020',234,15.99,NULL),(9,'Introduction to Linear Algebra','Science & Math',' Gilbert Strang','Linear algebra now rivals or surpasses calculus in importance for people working in quantitative fields of all kinds: engineers, scientists, economists and business people. Gilbert Strang has taught linear algebra at MIT for more than 50 years and the cou',83.13,'35','English','April 30, 2023',440,76.99,NULL),(10,'Silent Spring','Environment & Nature',' Rachel Carson ','“Rachel Carson is a pivotal figure of the twentieth century…people who thought one way before her essential 1962 book Silent Spring thought another way after it.”—Margaret Atwood',13.49,'56','English','February 1, 2022',400,10.79,NULL),(11,'The Lost Art of Finding Our Way','Environment & Nature',' John Edward Huth ','Long before GPS, Google Earth, and global transit, humans traveled vast distances using only environmental clues and simple instruments. John Huth asks what is lost when modern technology substitutes for our innate capacity to find our way. Encyclopedic i',22.16,'220','English','November 16, 2015',544,18.99,NULL),(12,'Who Was Leonardo da Vinci? ','Technology',' Roberta Edwards ','Leonardo da Vinci was a gifted painter, talented musician, and dedicated scientist and inventor, designing flying machines, submarines, and even helicopters.  Yet he had a hard time finishing things, a problem anyone can relate to.  Only thirteen painting',4.79,'20','English','September 8, 2005',112,2.99,NULL);
+INSERT INTO `book` VALUES (1,'Apprentice to the Villain','LIMITED FIRST PRINT RUN―featuring spray-painted edges, while supplies last in the US and Canada only.',15.99,210,'English','August 6, 2023',352,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717168991/Admin/books/1/825fe814-3934-49c1-8176-ca7c18a575a8.jpg',1,NULL),(2,'Theory of Macroeconomic Hysteresis','This book deals with the mathematical theory of macroeconomic hysteresis, which is the theory of aggregation of microeconomic hysteresis. Microeconomic sunk cost hysteresis is usually represented by relatively simple hysteresis loops with no discrete memo',88,560,'English','June 20, 2022',200,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169035/Admin/books/2/97284a8e-772e-4efa-857a-f386075f1b8b.jpg',2,NULL),(3,'The Trading Game: A Confession','#1 SUNDAY TIMES BESTSELLER • A “vivid” (Financial Times) rags-to-riches memoir that takes readers inside the high-stakes drama and hubris of the trading floor, a “darkly funny” (Guardian) tale of Citibank’s one-time most profitable trader, and why he gave',19.99,320,'English','March 5, 2023',352,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169052/Admin/books/3/702a68fd-edfa-4f75-beab-77652a598611.jpg',3,NULL),(4,'Debugging','The 9 Indispensable Rules for Finding Even the Most Elusive Software and Hardware Problems. When the pressure is on to resolve an elusive software or hardware glitch, what’s needed is a cool head courtesy of a set of rules guaranteed to work on any system',12.99,130,'English','September 23, 2002',202,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169071/Admin/books/4/87cf07fc-8a9a-47f8-9fa3-6dc4ddf35c46.png',4,NULL),(5,'JavaScript from Beginner to Professional','Learn JavaScript quickly by building fun, interactive, and dynamic web apps, games, and pages. Start your journey towards becoming a JavaScript developer with the help of more than 100 fun exercises and projects',37.99,650,'English','December 15, 2021',546,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169096/Admin/books/5/84c4c777-261f-461e-9ac8-9c5381e3b674.png',5,NULL),(6,'Why We Swim','“A fascinating and beautifully written love letter to water. I was enchanted by this book.\" —Rebecca Skloot, bestselling author of The Immortal Life of Henrietta Lacks',11.29,432,'English','April 13, 2021',288,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169115/Admin/books/6/39af9500-9b55-47a2-913c-59effebdf53d.png',6,NULL),(7,'The Inheritance Games','Don\'t miss this New York Times bestselling \"impossible to put down\" (Buzzfeed) novel with deadly stakes, thrilling twists, and juicy secrets—perfect for fans of One of Us is Lying and Knives Out.',10.99,73,'English','September 1, 2020',385,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169129/Admin/books/7/6e2aab40-3de9-4e79-9cb7-7463ba436a61.jpg',7,NULL),(8,'Lost Landmarks of Orange County','Since forming in 1889, Orange County, California has become famous all over the world for being home to such popular attractions as Disneyland, Knott’s Berry Farm, and some of the most beautiful beaches in the world. But there are also many other places t',18.19,86,'English','April 16, 2020',234,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169142/Admin/books/8/5df7c24e-70be-4356-a719-bf3b3d96c6f9.jpg',1,NULL),(9,'Introduction to Linear Algebra','Linear algebra now rivals or surpasses calculus in importance for people working in quantitative fields of all kinds: engineers, scientists, economists and business people. Gilbert Strang has taught linear algebra at MIT for more than 50 years and the cou',83.13,35,'English','April 30, 2023',440,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169156/Admin/books/9/d162245d-0201-4323-b1ce-7cb87951c784.jpg',2,NULL),(10,'Silent Spring','“Rachel Carson is a pivotal figure of the twentieth century…people who thought one way before her essential 1962 book Silent Spring thought another way after it.”—Margaret Atwood',13.49,56,'English','February 1, 2022',400,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169178/Admin/books/10/e72f0b5a-eb80-4ceb-9b27-e6e6abedc1a4.jpg',3,NULL),(11,'The Lost Art of Finding Our Way','Long before GPS, Google Earth, and global transit, humans traveled vast distances using only environmental clues and simple instruments. John Huth asks what is lost when modern technology substitutes for our innate capacity to find our way. Encyclopedic i',22.16,220,'English','November 16, 2015',544,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169211/Admin/books/11/659ee99c-f12b-46ce-86d5-28ddbfa9335f.png',4,NULL),(12,'Who Was Leonardo da Vinci? ','Leonardo da Vinci was a gifted painter, talented musician, and dedicated scientist and inventor, designing flying machines, submarines, and even helicopters.  Yet he had a hard time finishing things, a problem anyone can relate to.  Only thirteen painting',4.79,20,'English','September 8, 2005',112,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169231/Admin/books/12/8793933e-4780-4b93-9a58-1f1332bcc36a.jpg',5,NULL),(13,'Harry Potter and the Sorcerer’s Stone','<div><span style=\"color: rgb(32, 33, 34); font-family: sans-serif; font-size: 14px; font-style: italic;\">This article is about the book.</span></div>',20,100,'English','2024-06-12',500,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717214616/Admin/books/13/701c0290-7bb0-4ede-b15b-60767717b25d.jpg',6,3);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_category`
+--
+
+DROP TABLE IF EXISTS `book_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `book_category` (
+  `book_id` int NOT NULL,
+  `category_id` int NOT NULL,
+  PRIMARY KEY (`book_id`,`category_id`),
+  KEY `FKam8llderp40mvbbwceqpu6l2s` (`category_id`),
+  CONSTRAINT `FKam8llderp40mvbbwceqpu6l2s` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
+  CONSTRAINT `FKnyegcbpvce2mnmg26h0i856fd` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_category`
+--
+
+LOCK TABLES `book_category` WRITE;
+/*!40000 ALTER TABLE `book_category` DISABLE KEYS */;
+INSERT INTO `book_category` VALUES (13,2),(13,7);
+/*!40000 ALTER TABLE `book_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -117,12 +148,13 @@ DROP TABLE IF EXISTS `cart`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `customer_id` bigint DEFAULT NULL,
+  `total_item` int NOT NULL,
   `book_id` int DEFAULT NULL,
+  `customer_id` bigint DEFAULT NULL,
   `quantity` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `FKioh3c0mo0al2kswtnk5r09y7f` (`customer_id`),
   KEY `FK5n0sq8ulj6ykdnrh4dnk0vfmw` (`book_id`),
+  KEY `FKioh3c0mo0al2kswtnk5r09y7f` (`customer_id`),
   CONSTRAINT `FK5n0sq8ulj6ykdnrh4dnk0vfmw` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
   CONSTRAINT `FKioh3c0mo0al2kswtnk5r09y7f` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -246,7 +278,7 @@ CREATE TABLE `customers` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_customer_address_idx` (`address_id`),
   CONSTRAINT `fk_customer_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +287,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (8,'Duyen','Van','test1@gmail.com','123','$2a$10$qC1MM7F22RtlavgPUNFrleCMngR2uO7g7yc/UDQUMC02uJr4eMRzW',6,22,'','',NULL,_binary '\0',NULL),(9,'Trong','Nguyen','123123@gmail.com','123123123','$2a$10$QD3sn0YL8DJpOgxyci8XKuxJdgqJg1hk7gBaMHu45XLONKgtUinom',7,22,'hehehehe','Giao su',NULL,_binary '\0',NULL),(15,'Kiet','Luong','kietluong.071002@gmail.com','3134567687','$2a$10$dJBTEzUqoTJXF4bFOcP6FumHGRF/RChCDLgbuWGyUb.85JpiuThKW',13,23,'','student','6nCmhW',_binary '',NULL),(16,'Văn Thị ','Hương Duyên','huongduyenvan3012@gmail.com',NULL,'$2a$10$pGbd6AQkl1zOpT6aRikAQeyQUt8ugrxfkDBCeHq6DbVEKJRyswMxm',14,0,NULL,NULL,NULL,_binary '',NULL),(17,'Nguyễn Đức','Trọng','trong.nguyen.cit20@eiu.edu.vn',NULL,'$2a$10$/jh5kFH9p3zO3H30uTwKYuW.0uWx92/ay7e5brmIDUp8SIXP3CQpO',15,0,NULL,NULL,NULL,_binary '',NULL);
+INSERT INTO `customers` VALUES (8,'Duyen','Van','test1@gmail.com','123','$2a$10$qC1MM7F22RtlavgPUNFrleCMngR2uO7g7yc/UDQUMC02uJr4eMRzW',6,22,'','',NULL,_binary '\0',NULL),(9,'Trong','Nguyen','123123@gmail.com','123123123','$2a$10$QD3sn0YL8DJpOgxyci8XKuxJdgqJg1hk7gBaMHu45XLONKgtUinom',7,22,'hehehehe','Giao su',NULL,_binary '\0',NULL),(15,'Kiet','Luong','kietluong.071002@gmail.com','3134567687','$2a$10$dJBTEzUqoTJXF4bFOcP6FumHGRF/RChCDLgbuWGyUb.85JpiuThKW',13,23,'','student','6nCmhW',_binary '',NULL),(16,'Văn Thị ','Hương Duyên','huongduyenvan3012@gmail.com',NULL,'$2a$10$pGbd6AQkl1zOpT6aRikAQeyQUt8ugrxfkDBCeHq6DbVEKJRyswMxm',14,0,NULL,NULL,NULL,_binary '',NULL);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,7 +334,7 @@ CREATE TABLE `news` (
   `publication` date NOT NULL,
   `title` varchar(255) NOT NULL,
   PRIMARY KEY (`news_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -311,36 +343,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (1,'Duc Trong','<div>Newwwww</div>','','2024-05-24','New 1');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `order_details`
---
-
-DROP TABLE IF EXISTS `order_details`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order_details` (
-  `details_id` int NOT NULL AUTO_INCREMENT,
-  `orders_id` int NOT NULL,
-  `book_id` int DEFAULT NULL,
-  `total_price` bigint DEFAULT NULL,
-  PRIMARY KEY (`details_id`),
-  KEY `fk_order_update_idx` (`orders_id`),
-  KEY `fk_details_book_idx` (`book_id`),
-  CONSTRAINT `fk_details_order` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`orders_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order_details`
---
-
-LOCK TABLES `order_details` WRITE;
-/*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
-/*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -356,15 +359,15 @@ CREATE TABLE `order_items` (
   `quantity` int DEFAULT NULL,
   `shipping_cost` float NOT NULL,
   `subtotal` float NOT NULL,
-  `unit_price` float NOT NULL,
+  `unit_price` double DEFAULT NULL,
   `book_id` int DEFAULT NULL,
   `orders_id` int DEFAULT NULL,
   PRIMARY KEY (`order_items_id`),
-  KEY `FKqscqcme08spiyt2guyqdj72eh` (`book_id`),
   KEY `FKqmxbj1e77sls50umaww7pkpnx` (`orders_id`),
+  KEY `FKqscqcme08spiyt2guyqdj72eh` (`book_id`),
   CONSTRAINT `FKqmxbj1e77sls50umaww7pkpnx` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`orders_id`),
   CONSTRAINT `FKqscqcme08spiyt2guyqdj72eh` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -373,6 +376,7 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
+INSERT INTO `order_items` VALUES (1,10.99,1,10,15.99,15.99,1,2);
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,26 +389,21 @@ DROP TABLE IF EXISTS `orders`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
   `orders_id` int NOT NULL AUTO_INCREMENT,
-  `order_date` date DEFAULT NULL,
-  `customer_id` bigint NOT NULL,
-  `shipping_method_id` int DEFAULT NULL,
-  `dest_address_id` int DEFAULT NULL,
   `address` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `order_status` enum('CANCELLED','DELIVERED','NEW','PACKAGED','PAID','PICKED','PROCESSING','REFUNDED','RETURNED','SHIPPING') DEFAULT NULL,
+  `order_date` date DEFAULT NULL,
   `payment_method` enum('COD','CREDIT_CARD') DEFAULT NULL,
   `product_cost` float NOT NULL,
   `shipping_cost` float NOT NULL,
   `subtotal` float NOT NULL,
   `total` float NOT NULL,
+  `customer_id` bigint NOT NULL,
   PRIMARY KEY (`orders_id`),
-  KEY `fk_order_ship` (`shipping_method_id`),
-  KEY `fk_order_addr` (`dest_address_id`),
   KEY `FKpxtb8awmi0dk6smoh2vp1litg` (`customer_id`),
-  CONSTRAINT `fk_order_ship` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_method` (`method_id`),
   CONSTRAINT `FKpxtb8awmi0dk6smoh2vp1litg` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -413,6 +412,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (2,'project.bookstore.entity.Address@31d327b6','Duyen','Van','NEW','2024-05-26','CREDIT_CARD',10.99,10,25.99,15.99,8);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -476,4 +476,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-28  9:24:20
+-- Dump completed on 2024-06-01 11:11:05

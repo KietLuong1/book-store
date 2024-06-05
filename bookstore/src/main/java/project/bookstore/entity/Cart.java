@@ -27,4 +27,9 @@ public class Cart {
     private Book book;
 
     private int quantity;
+
+    @Transient
+    public float getSubtotal(){
+        return book.getSalePrice() * quantity;
+    }
 }
