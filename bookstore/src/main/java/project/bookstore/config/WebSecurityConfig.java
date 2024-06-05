@@ -51,7 +51,7 @@ public class WebSecurityConfig {
 //        http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 http.authorizeHttpRequests(auth ->
                         auth.requestMatchers("/profile", "/order-history", "/shop-checkout"
-                                        , "/shop-cart", "/wishlist").authenticated()
+                                        , "/shop-cart/**", "/wishlist").authenticated()
                                 .anyRequest().permitAll())
                 .formLogin(login ->
                         login.loginPage("/client-login").usernameParameter("email").loginProcessingUrl("/login").defaultSuccessUrl("/").permitAll())

@@ -11,6 +11,17 @@ var Bookland = function () {
         $("#buttonAddToCart").on("click", function (evt) {
             addToCart();
         });
+        // $("#indexAddToCart").submit(function (evt) {
+        //     indexAddToCart();
+        // });
+        $(".ti-minus").on("click", function (evt){
+           evt.preventDefault();
+           decreaseQuantity($(this));
+        });
+        $(".ti-plus").on("click", function (evt){
+            evt.preventDefault();
+            increaseQuantity($(this));
+        });
     });
 
     function addToCart() {
@@ -20,13 +31,96 @@ var Bookland = function () {
         $.ajax({
             type: "POST",
             url: url,
-            beforeSend: function (xhr){
+            beforeSend: function (xhr) {
                 xhr.setRequestHeader(csrfHeaderName, csrfValue);
             }
-        }).done(function (response){
-            // toastNotification();
-            alert(quantity + " item(s) of this book were added to your shopping cart");
+        }).done(function () {
+            $(".msg").html("Add Successfully")
+            toastNotification();
+        }).fail(function () {
+            $(".alert.error .msg").html("You must login to add this book to cart")
+            toastNotification();
         });
+    }
+
+    // function indexAddToCart() {
+    //
+    //     var form = $(this);
+    //     url = form.attr('action');
+    //
+    //     $.ajax({
+    //         type: "POST",
+    //         url: url,
+    //         data: form.serialize(),
+    //         // beforeSend: function (xhr){
+    //         //     xhr.setRequestHeader(csrfHeaderName, csrfValue);
+    //         // }
+    //     }).done(function (response) {
+    //         // toastNotification();
+    //         alert(quantity + " item(s) of this book were added to your shopping cart");
+    //     }).fail(function () {
+    //         alert("You must login to add this book to cart");
+    //     });
+    // }
+
+    //
+    function decreaseQuantity(link) {
+        bookId = link.attr("pid");
+        quantityInput = $("#quantity" + bookId);
+        newQuantity = parent(quantityInput.val()) - 1;
+
+        if (newQuantity > 0) {
+            quantityInput.val(newQuantity);
+            updateQuantity(bookId, newQuantity);
+        } else {
+            alert("Minimum quantity is 1");
+        }
+    }
+
+    function increaseQuantity(link) {
+        bookId = link.attr("pid");
+        quantityInput = $("#quantity" + bookId);
+        newQuantity = parent(quantityInput.val()) + 1;
+
+        if (newQuantity <= 20) {
+            quantityInput.val(newQuantity);
+            updateQuantity(bookId, newQuantity);
+        } else {
+            alert("Maximum quantity is 20");
+        }
+    }
+
+    function updateQuantity(bookId, quantity){
+        url = contextPath + "shop-cart/update/" + bookId + "/" + quantity;
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(csrfHeaderName, csrfValue);
+            }
+        }).done(function (updatedSubtotal) {
+            updateSubtotal(updatedSubtotal, bookId);
+            updateTotal()
+        }).fail(function () {
+            alert("Error while updating book to shopping cart.");
+        });
+    }
+
+    function updateSubtotal(updatedSubtotal, bookId){
+        formattedSubtotal = $.number(updatedSubtotal, 2);
+        $("#subtotal" + bookId).text(formattedSubtotal);
+    }
+
+    function updateTotal(){
+        total = 0.0;
+
+        $(".subtotal").each(function (index, element){
+           total += parseFloat(element.innerHTML.replaceAll(",", ""));
+        });
+
+        formattedTotal = $.number(total, 2);
+        $("#total").text(formattedTotal);
     }
 
     /* Add the "active" class.*/
@@ -809,7 +903,6 @@ var Bookland = function () {
             checkLocation();
             connectToAdmin();
             responsiveCategories();
-            toastNotification();
             showPassword();
             checkPassword();
             locationAPI();

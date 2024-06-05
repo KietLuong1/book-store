@@ -66,8 +66,8 @@
                                     <p class="text-1 shortBookListDescription" th:text="${book.description}"></p>
                                     <div class="book-footer">
                                         <div class="price">
-                                            <h5 th:text="${book.price}"></h5>
-                                            <p class="p-lr10" th:text="${book.salePrice}"></p>
+                                            <h5 th:text="'$ ' + ${book.salePrice}"></h5>
+                                            <p class="p-lr10" th:text="'$ ' + ${book.price}"></p>
                                         </div>
                                         <div class="product-num">
                                             <div class="quantity btn-quantity style-1 me-3">
@@ -75,8 +75,7 @@
                                                        th:id="'quantity' + ${book.book_id}" onkeydown="return false;"
                                                        name="demo_vertical2"/>
                                             </div>
-                                            <a
-                                                    class="btn btn-primary btnhover btnhover2" id="buttonAddToCart">
+                                            <a class="btn btn-primary btnhover btnhover2" id="buttonAddToCart">
                                                 <i class="flaticon-shopping-cart-1"></i>
                                                 <span>Add to cart</span>
                                             </a>
@@ -99,8 +98,9 @@
                     <div class="col-xl-8">
                         <div class="product-description tabs-site-button">
                             <ul class="nav nav-tabs">
-                                <li><a data-bs-toggle="tab" href="#graphic-design-1" class="active">Details
-                                    Product</a></li>
+                                <li>
+                                    <a data-bs-toggle="tab" href="#graphic-design-1" class="active">Details Product</a>
+                                </li>
                             </ul>
                             <div class="tab-content">
                                 <div id="graphic-design-1" class="tab-pane show active">
@@ -156,7 +156,7 @@
                                         <div class="dz-shop-card style-5">
                                             <div class="dz-media">
                                                 <a th:href="@{'/books-detail/' + ${book.book_id}}"><img
-                                                        src="/Client/images/books/grid/book15.jpg" alt=""></a>
+                                                        th:src="${book.book_image}" alt=""></a>
                                             </div>
                                             <div class="dz-content">
                                                 <h5 class="subtitle" th:text="${book.name}"></h5>
@@ -164,8 +164,8 @@
                                                     <li><a th:text="${book.category}"></a></li>
                                                 </ul>
                                                 <div class="price">
-                                                    <span class="price-num" th:text="${book.price}"></span>
-                                                    <del th:text="${book.salePrice}"></del>
+                                                    <span class="price-num" th:text="'$ ' + ${book.salePrice}"></span>
+                                                    <del th:text="'$ ' + ${book.price}"></del>
                                                 </div>
                                                 <a class="btn btn-outline-primary btn-sm btnhover btnhover2 add-cart">
                                                     <i class="flaticon-shopping-cart-1 me-2"></i>
@@ -295,6 +295,11 @@
     <div th:insert="Client/client-template.html :: footer"></div>
     <!-- Footer End -->
 </div>
-
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    bookId = "[[${book.book_id}]]"
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
+</script>
 </body>
 </html>
