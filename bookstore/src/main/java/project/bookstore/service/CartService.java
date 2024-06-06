@@ -52,4 +52,13 @@ public class CartService {
         float subTotal = book.getSalePrice() * quantity;
         return subTotal;
     }
+
+    public void removeBook(Integer bookId, User user) {
+        cartRepository.deleteByUserAndBook(user.getId(), bookId);
+    }
+
+    public int getTotalNumberOfItems(User user) {
+        List<Cart> carts = listCart(user);
+        return carts.stream().mapToInt(Cart::getQuantity).sum();
+    }
 }

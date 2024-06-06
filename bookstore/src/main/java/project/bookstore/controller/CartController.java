@@ -27,9 +27,6 @@ public class CartController {
     private CategoryService categoryService;
 
     @Autowired
-    private BookService bookService;
-
-    @Autowired
     private UserService userService;
 
     @GetMapping("/shop-cart")
