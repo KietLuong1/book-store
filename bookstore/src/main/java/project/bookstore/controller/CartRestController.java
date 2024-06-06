@@ -4,16 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.exception.UserNotFoundException;
 import project.bookstore.service.BookService;
 import project.bookstore.service.CartService;
 import project.bookstore.service.CategoryService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import project.bookstore.entity.Category;
 import project.bookstore.service.UserService;
 
@@ -60,5 +57,28 @@ public class CartRestController {
             return "You must login to change quantity of books.";
         }
     }
+
+    @DeleteMapping("/shop-cart/remove/{bookId}")
+    public String removeBook(@PathVariable("bookId") Integer booId, @AuthenticationPrincipal CustomUserDetails userDetails){
+        try {
+            User user = getAuthenticatedUser(userDetails);
+            cartService.removeBook(booId, user);
+
+            return "The book has been removed from your shopping cart.";
+        } catch (UserNotFoundException ex) {
+            return "You must login to remove book.";
+        }
+    }
+
+    @GetMapping("/shop-cart/total-items")
+    public int getTotalNumberOfItems(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        try {
+            User user = getAuthenticatedUser(userDetails);
+            return cartService.getTotalNumberOfItems(user);
+        } catch (UserNotFoundException ex) {
+            return 0;
+        }
+    }
+
 
 }

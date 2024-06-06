@@ -10,10 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import project.bookstore.entity.Book;
+import project.bookstore.entity.Cart;
 import project.bookstore.entity.Category;
+import project.bookstore.entity.user.CustomUserDetails;
+import project.bookstore.entity.user.User;
 import project.bookstore.service.BookService;
 import project.bookstore.service.CartService;
 import project.bookstore.service.CategoryService;
+import project.bookstore.service.UserService;
 
 import java.util.List;
 
@@ -28,8 +32,11 @@ public class HomeController {
     @Autowired
     CartService cartService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
         // Get All Categories Name from DB to Homepage
         List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
@@ -45,7 +52,16 @@ public class HomeController {
             model.addAttribute("message", "Log in successfully");
         }
 
+        // Get Shopping Cart Total Number Of Items
+        int numberOfCartItems = cartService.getTotalNumberOfItems(getAuthenticatedUser(userDetails));
+        model.addAttribute("numberOfCartItems", numberOfCartItems);
+
         return "Client/index";
+    }
+
+    private User getAuthenticatedUser(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        String email = userDetails.getUsername();
+        return userService.getUserByEmail(email);
     }
 
     @GetMapping("/about-us")

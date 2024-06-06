@@ -6,7 +6,6 @@
 var Bookland = function () {
     /* CUSTOM JS */
 
-
     $(document).ready(function () {
         $("#buttonAddToCart").on("click", function (evt) {
             addToCart();
@@ -14,14 +13,19 @@ var Bookland = function () {
         // $("#indexAddToCart").submit(function (evt) {
         //     indexAddToCart();
         // });
-        $(".ti-minus").on("click", function (evt){
-           evt.preventDefault();
-           decreaseQuantity($(this));
+        $(".minus").on("click", function (evt) {
+            evt.preventDefault();
+            decreaseQuantity($(this));
         });
-        $(".ti-plus").on("click", function (evt){
+        $(".plus").on("click", function (evt) {
             evt.preventDefault();
             increaseQuantity($(this));
         });
+        $(".removeBook").on("click", function (evt) {
+            evt.preventDefault();
+            removeBook($(this));
+        });
+        updateNumberOfCartItems();
     });
 
     function addToCart() {
@@ -35,39 +39,40 @@ var Bookland = function () {
                 xhr.setRequestHeader(csrfHeaderName, csrfValue);
             }
         }).done(function () {
+            updateNumberOfCartItems();
             $(".msg").html("Add Successfully")
             toastNotification();
         }).fail(function () {
-            $(".alert.error .msg").html("You must login to add this book to cart")
+            $(".alert.error .msg").html("You must login before adding")
             toastNotification();
         });
     }
 
-    // function indexAddToCart() {
-    //
-    //     var form = $(this);
-    //     url = form.attr('action');
-    //
-    //     $.ajax({
-    //         type: "POST",
-    //         url: url,
-    //         data: form.serialize(),
-    //         // beforeSend: function (xhr){
-    //         //     xhr.setRequestHeader(csrfHeaderName, csrfValue);
-    //         // }
-    //     }).done(function (response) {
-    //         // toastNotification();
-    //         alert(quantity + " item(s) of this book were added to your shopping cart");
-    //     }).fail(function () {
-    //         alert("You must login to add this book to cart");
-    //     });
-    // }
+    function indexAddToCart() {
 
-    //
+        var form = $(this);
+        url = form.attr('action');
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(),
+            // beforeSend: function (xhr){
+            //     xhr.setRequestHeader(csrfHeaderName, csrfValue);
+            // }
+        }).done(function (response) {
+            // toastNotification();
+            alert(quantity + " item(s) of this book were added to your shopping cart");
+        }).fail(function () {
+            alert("You must login to add this book to cart");
+        });
+    }
+
     function decreaseQuantity(link) {
         bookId = link.attr("pid");
         quantityInput = $("#quantity" + bookId);
-        newQuantity = parent(quantityInput.val()) - 1;
+        // newQuantity = parent(quantityInput.val()) - 1;
+        newQuantity = parseInt(quantityInput.val()) - 1;
 
         if (newQuantity > 0) {
             quantityInput.val(newQuantity);
@@ -80,7 +85,9 @@ var Bookland = function () {
     function increaseQuantity(link) {
         bookId = link.attr("pid");
         quantityInput = $("#quantity" + bookId);
-        newQuantity = parent(quantityInput.val()) + 1;
+        // newQuantity = parent(quantityInput.val()) + 1;
+        newQuantity = parseInt(quantityInput.val()) + 1;
+
 
         if (newQuantity <= 20) {
             quantityInput.val(newQuantity);
@@ -90,7 +97,7 @@ var Bookland = function () {
         }
     }
 
-    function updateQuantity(bookId, quantity){
+    function updateQuantity(bookId, quantity) {
         url = contextPath + "shop-cart/update/" + bookId + "/" + quantity;
 
         $.ajax({
@@ -101,27 +108,87 @@ var Bookland = function () {
             }
         }).done(function (updatedSubtotal) {
             updateSubtotal(updatedSubtotal, bookId);
-            updateTotal()
+            updateTotal();
+            updateNumberOfCartItems();
         }).fail(function () {
             alert("Error while updating book to shopping cart.");
         });
     }
 
-    function updateSubtotal(updatedSubtotal, bookId){
-        formattedSubtotal = $.number(updatedSubtotal, 2);
-        $("#subtotal" + bookId).text(formattedSubtotal);
+    function updateSubtotal(updatedSubtotal, bookId) {
+        // formattedSubtotal = $.number(updatedSubtotal, 2);
+        formattedSubtotal = updatedSubtotal;
+        $("#subtotal" + bookId).text("$ " + formattedSubtotal);
     }
 
-    function updateTotal(){
+    function updateTotal() {
         total = 0.0;
+        bookCount = 0;
 
-        $(".subtotal").each(function (index, element){
-           total += parseFloat(element.innerHTML.replaceAll(",", ""));
+        $(".subtotal").each(function (index, element) {
+            bookCount++;
+            total += parseFloat(element.innerHTML.replaceAll("$ ", ""));
         });
 
-        formattedTotal = $.number(total, 2);
-        $("#total").text(formattedTotal);
+        if (bookCount < 1) {
+            showEmptyShoppingCart();
+        } else {
+            // formattedTotal = $.number(total, 2);
+            formattedTotal = total;
+            $("#total").text("$ " + formattedTotal);
+        }
     }
+
+    function removeBook(link) {
+        url = link.attr("href");
+
+        $.ajax({
+            type: "DELETE",
+            url: url,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(csrfHeaderName, csrfValue);
+            }
+        }).done(function (response) {
+            rowNumber = link.attr("rowNumber");
+            removeBookHTML(rowNumber);
+            updateTotal();
+            updateCountNumbers();
+            updateNumberOfCartItems();
+            $(".msg").html("Remove Book Successfully.");
+            toastNotification();
+        }).fail(function () {
+            alert("Error while removing book.");
+        });
+    }
+
+    function removeBookHTML(rowNumber) {
+        $("#row" + rowNumber).remove();
+    }
+
+    function updateCountNumbers() {
+        $(".divCount").each(function (index, element) {
+            element.innerHTML = "" + (index + 1);
+        });
+    }
+
+    function showEmptyShoppingCart() {
+        $("#sectionTotal").hide();
+    }
+
+    function updateNumberOfCartItems() {
+        $.ajax({
+            type: "GET",
+            url: contextPath + "shop-cart/total-items",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(csrfHeaderName, csrfValue);
+            }
+        }).done(function (numberOfItems) {
+            $(".numberOfCartItems").text(numberOfItems);
+        }).fail(function () {
+            alert("Error while fetching number of items in the cart.");
+        });
+    }
+
 
     /* Add the "active" class.*/
     function addActiveClass(path) {
