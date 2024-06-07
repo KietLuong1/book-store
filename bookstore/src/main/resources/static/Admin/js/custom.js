@@ -105,6 +105,13 @@ function showImageThumbnail(fileInput) {
             }
         });
 
+
+        jQuery($(".linkOrderDetail")).on("click", function (e) {
+                e.preventDefault();
+                let linkDetailURL;
+                linkDetailURL = $(this).attr("href");
+                $("#orderDetailModal").modal("show").find(".modal-content").load(linkDetailURL);
+        })
         /*---------------------------------------------------------------------
         Magnific Popup
         -----------------------------------------------------------------------*/
