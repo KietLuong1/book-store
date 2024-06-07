@@ -24,27 +24,27 @@ public class OrderRepositoryTest {
 
     @Test
     public void testCreateNewOrderWithSingleProduct() {
-        User user = entityManager.find(User.class, 8);
-        Book book = entityManager.find(Book.class, 1);
+        User user = entityManager.find(User.class, 15);
+        Book book = entityManager.find(Book.class, 7);
 
         Order mainOrder = new Order();
         mainOrder.setUser(user);
         mainOrder.setFirstName(user.getFirstName());
         mainOrder.setLastName(user.getLastName());
         mainOrder.setAddress(String.valueOf(user.getAddress()));
-        mainOrder.setShippingCost(10);
+        mainOrder.setShippingCost(15);
         mainOrder.setProductCost(book.getSalePrice());
         mainOrder.setTotal(book.getPrice());
         mainOrder.setSubtotal(book.getPrice() + 10);
         mainOrder.setPaymentMethod(PaymentMethod.CREDIT_CARD);
-        mainOrder.setOrderStatus(OrderStatus.NEW);
+        mainOrder.setOrderStatus(OrderStatus.CANCELLED);
         mainOrder.setOrder_date(LocalDate.now());
 
         OrderItems orderItems = new OrderItems();
         orderItems.setBook(book);
         orderItems.setOrder(mainOrder);
         orderItems.setProductCost(book.getSalePrice());
-        orderItems.setShippingCost(10);
+        orderItems.setShippingCost(15);
         orderItems.setQuantity(1);
         orderItems.setSubtotal(book.getPrice());
         orderItems.setUnitPrice(book.getPrice());

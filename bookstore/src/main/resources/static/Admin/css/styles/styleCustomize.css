@@ -1,19 +1,26 @@
 .pt-3 {
-  padding-top: 1rem !important;
-  padding-right: 2rem !important;
+    padding-top: 1rem !important;
+    padding-right: 2rem !important;
 }
 
-.changSize{
-  width: 24.5%;
+.changSize {
+    width: 24.5%;
 }
 
 /*.special {*/
 /*  color: var(--iq-primary);;*/
 /*}*/
 
-.iq-sidebar-menu .iq-menu li.active>a {
-  color: var(--iq-primary);
+.iq-sidebar-menu .iq-menu li.active > a {
+    color: var(--iq-primary);
 }
+
+.inline {
+    display: inline-block;
+    vertical-align: middle; /* This aligns the items vertically centered */
+    margin: 0; /* Remove default margins if necessary */
+}
+
 /*#sidebar-scrollbar .iq-sidebar-menu .iq-menu li.active>a {*/
 /*  color: var(--iq-primary);*/
 /*}*/
