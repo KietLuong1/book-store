@@ -67,7 +67,10 @@ public class BookController {
         Book book = bookService.getBookById(id);
         model.addAttribute("book", book);
         model.addAttribute("pageTitle", "Edit Book (ID: " + id + ")");
+        
         model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("authors", authorService.listAll());
+        model.addAttribute("publishers", publisherService.getAllPublisher());
         return "Admin/admin-add-book";
     }
 
