@@ -7,12 +7,15 @@ var Bookland = function () {
     /* CUSTOM JS */
 
     $(document).ready(function () {
+        // add to cart in book detail
         $("#buttonAddToCart").on("click", function (evt) {
             addToCart();
         });
-        // $("#indexAddToCart").submit(function (evt) {
-        //     indexAddToCart();
-        // });
+        // add to cart in other page
+        $(document).on("click", ".otherAddToCart", function (evt) {
+            var bookId = $(this).data("book-id");
+            otherAddToCart(bookId);
+        });
         $(".minus").on("click", function (evt) {
             evt.preventDefault();
             decreaseQuantity($(this));
@@ -48,23 +51,23 @@ var Bookland = function () {
         });
     }
 
-    function indexAddToCart() {
-
-        var form = $(this);
-        url = form.attr('action');
+    function otherAddToCart(bookId) {
+        var quantity = 1;
+        var url = contextPath + "shop-cart/add/" + bookId + "/" + quantity;
 
         $.ajax({
             type: "POST",
             url: url,
-            data: form.serialize(),
-            // beforeSend: function (xhr){
-            //     xhr.setRequestHeader(csrfHeaderName, csrfValue);
-            // }
-        }).done(function (response) {
-            // toastNotification();
-            alert(quantity + " item(s) of this book were added to your shopping cart");
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(csrfHeaderName, csrfValue);
+            }
+        }).done(function () {
+            updateNumberOfCartItems();
+            $(".msg").html("Add Successfully");
+            toastNotification();
         }).fail(function () {
-            alert("You must login to add this book to cart");
+            $(".alert.error .msg").html("You must login before adding");
+            toastNotification();
         });
     }
 

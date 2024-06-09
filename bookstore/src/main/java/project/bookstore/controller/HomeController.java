@@ -42,7 +42,7 @@ public class HomeController {
         List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
-        // Get All Book from DB to Homepage, Book Grid, Book List
+        // Get All Book from DB to Homepage
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
 
@@ -54,11 +54,11 @@ public class HomeController {
 
         if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
             model.addAttribute("message", "Log in successfully");
+
+            // Get Shopping Cart Total Number Of Items
             int numberOfCartItems = cartService.getTotalNumberOfItems(getAuthenticatedUser(userDetails));
             model.addAttribute("numberOfCartItems", numberOfCartItems);
         }
-
-        // Get Shopping Cart Total Number Of Items
 
         return "Client/index";
     }

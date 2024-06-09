@@ -16,19 +16,14 @@ public class AdminController {
         return "Admin/admin-profile";
     }
 
-    @GetMapping("profile-edit")
-    public String editProfile() {
-        return "Admin/profile-edit";
+    @GetMapping("user-edit")
+    public String editUserProfile() {
+        return "Admin/user-edit";
     }
 
-    @GetMapping("add-user")
+    @GetMapping("user-detail")
     public String addUser() {
-        return "Admin/add-user";
-    }
-
-    @GetMapping("user-list")
-    public String getUserList() {
-        return "Admin/user-list";
+        return "Admin/user-detail";
     }
 
     @GetMapping("account-setting")

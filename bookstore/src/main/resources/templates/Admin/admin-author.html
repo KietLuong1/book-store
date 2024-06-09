@@ -32,18 +32,18 @@
                                 <table class="data-tables table table-striped table-bordered" style="width:100%">
                                     <thead>
                                     <tr>
-                                        <th style="width: 5%;">No</th>
-                                        <th style="width: 5%;">Profile</th>
-                                        <th style="width: 20%;">Author Name</th>
+                                        <th class="text-center" style="width: 5%;">No</th>
+                                        <th style="width: 10%;">Profile</th>
+                                        <th style="width: 15%;">Author Name</th>
                                         <th style="width: 20%;">Date Of Birth</th>
-                                        <th style="width: 20%;">Country</th>
-                                        <th style="width: 60%;">Author Description</th>
-                                        <th style="width: 10%;">Action</th>
+                                        <th style="width: 10%;">Country</th>
+                                        <th style="width: 30%;">Author Description</th>
+                                        <th class="text-center" style="width: 10%;">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="author :${authors}">
-                                        <td th:text="${author.id}"></td>
+                                        <td class="text-center" th:text="${author.id}"></td>
                                         <td>
                                             <img th:src="${author.profileImageURL}" class="img-fluid avatar-50 rounded"
                                                  alt="author-profile">
@@ -55,7 +55,7 @@
                                             <p class="mb-0"></p>
                                         </td>
                                         <td>
-                                            <div class="flex align-items-center list-user-action">
+                                            <div class="flex align-items-center list-user-action text-center">
                                                 <a th:href="@{'/admin-author/edit/' + ${author.id}}" class="bg-primary"
                                                    data-toggle="tooltip" data-placement="top" title=""
                                                    data-original-title="Edit"><i class="ri-pencil-line"></i></a>
