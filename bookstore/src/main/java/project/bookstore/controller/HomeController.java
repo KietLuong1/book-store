@@ -12,12 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Cart;
 import project.bookstore.entity.Category;
+import project.bookstore.entity.Slider;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
-import project.bookstore.service.BookService;
-import project.bookstore.service.CartService;
-import project.bookstore.service.CategoryService;
-import project.bookstore.service.UserService;
+import project.bookstore.service.*;
 
 import java.util.List;
 
@@ -35,6 +33,9 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private SliderService sliderService;
+
     @GetMapping("/")
     public String home(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
         // Get All Categories Name from DB to Homepage
@@ -45,16 +46,19 @@ public class HomeController {
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
 
+        List<Slider> sliders = sliderService.getSelectedSlider();
+        model.addAttribute("sliders", sliders);
+
         //notification if user log in or not
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
             model.addAttribute("message", "Log in successfully");
+            int numberOfCartItems = cartService.getTotalNumberOfItems(getAuthenticatedUser(userDetails));
+            model.addAttribute("numberOfCartItems", numberOfCartItems);
         }
 
         // Get Shopping Cart Total Number Of Items
-        int numberOfCartItems = cartService.getTotalNumberOfItems(getAuthenticatedUser(userDetails));
-        model.addAttribute("numberOfCartItems", numberOfCartItems);
 
         return "Client/index";
     }
