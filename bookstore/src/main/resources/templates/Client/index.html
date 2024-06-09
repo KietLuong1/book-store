@@ -11,9 +11,9 @@
     <div class="page-content bg-white">
         <!--Swiper Banner Start -->
         <div class="main-slider style-1 slider-white">
-            <div class="main-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide bg-light"
+            <div class="main-swiper" >
+                <div class="swiper-wrapper" >
+                    <div class="swiper-slide bg-light" th:each="slider: ${sliders}"
                          style=" ">
                         <div class="container">
                             <div class="banner-content">
@@ -23,16 +23,12 @@
                                             <div class="content-info">
                                                 <h6 class="sub-title" data-swiper-parallax="-10">BEST MANAGEMENT
                                                 </h6>
-                                                <h1 class="title mb-0" data-swiper-parallax="-20">Think and Grow
-                                                    Rich</h1>
+                                                <h1 class="title mb-0" data-swiper-parallax="-20" th:text="${slider.title}"></h1>
                                                 <ul class="dz-tags" data-swiper-parallax="-30">
                                                     <li><a href="javascript:void(0);">Napoleon Hill</a></li>
                                                     <li><a href="javascript:void(0);">Business & Strategy</a></li>
                                                 </ul>
-                                                <p class="text mb-0" data-swiper-parallax="-40">It is a long
-                                                    established fact that a reader will be distracted by the
-                                                    readable content of a page when looking at its layout. The point
-                                                    of using Lorem Ipsum is that it has a more-or-less normal.</p>
+                                                <p class="text mb-0" data-swiper-parallax="-40" th:text="${slider.description}"></p>
                                                 <div class="price" data-swiper-parallax="-50">
                                                     <span class="price-num">$17.2</span>
                                                     <del>$15.25</del>
@@ -58,7 +54,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="banner-media" data-swiper-parallax="-100">
-                                            <img src="Client/images/banner/banner-media3.png" alt="media">
+                                            <img th:src="${slider.imageUrl}" alt="media">
                                         </div>
                                         <img class="pattern" src="Client/images/Group.png"
                                              data-swiper-parallax="-100" alt="dots">
@@ -67,174 +63,173 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide bg-light">
-                        <!--							style="background-image: url(Client/images/background/waveelement2-2.png);">-->
-                        <div class="container">
-                            <div class="banner-content">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="swiper-content">
-                                            <div class="content-info">
-                                                <h6 class="sub-title" data-swiper-parallax="-10">BEST SELLER</h6>
-                                                <h1 class="title mb-0" data-swiper-parallax="-20">Pushing Clouds
-                                                </h1>
-                                                <ul class="dz-tags" data-swiper-parallax="-30">
-                                                    <li><a href="javascript:void(0);">Napoleon Hill</a></li>
-                                                    <li><a href="javascript:void(0);">Business & Strategy</a></li>
-                                                </ul>
-                                                <p class="text mb-0" data-swiper-parallax="-40">"Pushing Cloud" is a
-                                                    techno-thriller that questions the boundaries of reality and
-                                                    invites readers to venture into a world where the tangible and
-                                                    virtual converge.</p>
-                                                <div class="price" data-swiper-parallax="-50">
-                                                    <span class="price-num">$9.5</span>
-                                                    <del>$12.0</del>
-                                                    <span class="badge badge-danger">20% OFF</span>
-                                                </div>
-                                                <div class="content-btn" data-swiper-parallax="-60">
-                                                    <a class="btn btn-primary btnhover" href="books-grid-view">Buy
-                                                        Now</a>
-                                                    <a class="btn btn-outline-secondary btnhover ms-4"
-                                                       href="books-detail">See Details</a>
-                                                </div>
-                                            </div>
-                                            <div class="partner">
-                                                <p>Our partner</p>
-                                                <div class="brand-logo">
-                                                    <img src="Client/images/partner/partner-1.png" alt="client">
-                                                    <img class="mid-logo" src="Client/images/partner/partner-2.png"
-                                                         alt="client">
-                                                    <img src="Client/images/partner/partner-3.png" alt="client">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="banner-media" data-swiper-parallax="-100">
-                                            <img src="Client/images/banner/banner-media4.png" alt="media">
-                                        </div>
-                                        <img class="pattern" src="Client/images/Group.png"
-                                             data-swiper-parallax="-100" alt="dots">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="swiper-slide bg-light">-->
+<!--                        <div class="container">-->
+<!--                            <div class="banner-content">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="swiper-content">-->
+<!--                                            <div class="content-info">-->
+<!--                                                <h6 class="sub-title" data-swiper-parallax="-10">BEST SELLER</h6>-->
+<!--                                                <h1 class="title mb-0" data-swiper-parallax="-20">Pushing Clouds-->
+<!--                                                </h1>-->
+<!--                                                <ul class="dz-tags" data-swiper-parallax="-30">-->
+<!--                                                    <li><a href="javascript:void(0);">Napoleon Hill</a></li>-->
+<!--                                                    <li><a href="javascript:void(0);">Business & Strategy</a></li>-->
+<!--                                                </ul>-->
+<!--                                                <p class="text mb-0" data-swiper-parallax="-40">"Pushing Cloud" is a-->
+<!--                                                    techno-thriller that questions the boundaries of reality and-->
+<!--                                                    invites readers to venture into a world where the tangible and-->
+<!--                                                    virtual converge.</p>-->
+<!--                                                <div class="price" data-swiper-parallax="-50">-->
+<!--                                                    <span class="price-num">$9.5</span>-->
+<!--                                                    <del>$12.0</del>-->
+<!--                                                    <span class="badge badge-danger">20% OFF</span>-->
+<!--                                                </div>-->
+<!--                                                <div class="content-btn" data-swiper-parallax="-60">-->
+<!--                                                    <a class="btn btn-primary btnhover" href="books-grid-view">Buy-->
+<!--                                                        Now</a>-->
+<!--                                                    <a class="btn btn-outline-secondary btnhover ms-4"-->
+<!--                                                       href="books-detail">See Details</a>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="partner">-->
+<!--                                                <p>Our partner</p>-->
+<!--                                                <div class="brand-logo">-->
+<!--                                                    <img src="Client/images/partner/partner-1.png" alt="client">-->
+<!--                                                    <img class="mid-logo" src="Client/images/partner/partner-2.png"-->
+<!--                                                         alt="client">-->
+<!--                                                    <img src="Client/images/partner/partner-3.png" alt="client">-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="banner-media" data-swiper-parallax="-100">-->
+<!--                                            <img th:src="${slider.imageUrl}" alt="media">-->
+<!--                                        </div>-->
+<!--                                        <img class="pattern" src="Client/images/Group.png"-->
+<!--                                             data-swiper-parallax="-100" alt="dots">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                 </div>
-                <div class="container swiper-pagination-wrapper">
-                    <div class="swiper-pagination-five"></div>
-                </div>
+<!--                <div class="container swiper-pagination-wrapper">-->
+<!--                    <div class="swiper-pagination-five"></div>-->
+<!--                </div>-->
             </div>
             <div class="swiper main-swiper-thumb">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="books-card">
-                            <div class="dz-media">
-                                <img src="Client/images/books/book16.png" alt="book">
-                            </div>
-                            <div class="dz-content">
-                                <h5 class="title mb-0">Think and Grow Rich</h5>
-                                <div class="dz-meta">
-                                    <ul>
-                                        <li>by Napoleon Hill</li>
-                                    </ul>
-                                </div>
-                                <div class="book-footer">
-                                    <div class="price">
-                                        <span class="price-num">$9.5</span>
-                                    </div>
-                                    <div class="rate">
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="books-card">-->
+<!--                            <div class="dz-media">-->
+<!--                                <img src="Client/images/books/book16.png" alt="book">-->
+<!--                            </div>-->
+<!--                            <div class="dz-content">-->
+<!--                                <h5 class="title mb-0">Think and Grow Rich</h5>-->
+<!--                                <div class="dz-meta">-->
+<!--                                    <ul>-->
+<!--                                        <li>by Napoleon Hill</li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                                <div class="book-footer">-->
+<!--                                    <div class="price">-->
+<!--                                        <span class="price-num">$9.5</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="rate">-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                     <div class="swiper-slide">
-                        <div class="books-card">
-                            <div class="dz-media">
-                                <img src="Client/images/books/grid/book9.jpg" alt="book">
-                            </div>
-                            <div class="dz-content">
-                                <h5 class="title mb-0">Pushing Clouds</h5>
-                                <div class="dz-meta">
-                                    <ul>
-                                        <li>by Jamet Sigh</li>
-                                    </ul>
-                                </div>
-                                <div class="book-footer">
-                                    <div class="price">
-                                        <span class="price-num">$5.7</span>
-                                    </div>
-                                    <div class="rate">
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-muted"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="books-card">-->
+<!--                            <div class="dz-media">-->
+<!--                                <img src="Client/images/books/grid/book9.jpg" alt="book">-->
+<!--                            </div>-->
+<!--                            <div class="dz-content">-->
+<!--                                <h5 class="title mb-0">Pushing Clouds</h5>-->
+<!--                                <div class="dz-meta">-->
+<!--                                    <ul>-->
+<!--                                        <li>by Jamet Sigh</li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                                <div class="book-footer">-->
+<!--                                    <div class="price">-->
+<!--                                        <span class="price-num">$5.7</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="rate">-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-muted"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                     <div class="swiper-slide">
-                        <div class="books-card">
-                            <div class="dz-media">
-                                <img src="Client/images/books/book16.png" alt="book">
-                            </div>
-                            <div class="dz-content">
-                                <h5 class="title mb-0">Think and Grow Rich</h5>
-                                <div class="dz-meta">
-                                    <ul>
-                                        <li>by Napoleon Hill</li>
-                                    </ul>
-                                </div>
-                                <div class="book-footer">
-                                    <div class="price">
-                                        <span class="price-num">$9.5</span>
-                                    </div>
-                                    <div class="rate">
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="books-card">-->
+<!--                            <div class="dz-media">-->
+<!--                                <img src="Client/images/books/book16.png" alt="book">-->
+<!--                            </div>-->
+<!--                            <div class="dz-content">-->
+<!--                                <h5 class="title mb-0">Think and Grow Rich</h5>-->
+<!--                                <div class="dz-meta">-->
+<!--                                    <ul>-->
+<!--                                        <li>by Napoleon Hill</li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                                <div class="book-footer">-->
+<!--                                    <div class="price">-->
+<!--                                        <span class="price-num">$9.5</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="rate">-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                     <div class="swiper-slide">
-                        <div class="books-card">
-                            <div class="dz-media">
-                                <img src="Client/images/books/grid/book9.jpg" alt="book">
-                            </div>
-                            <div class="dz-content">
-                                <h5 class="title mb-0">Pushing Clouds</h5>
-                                <div class="dz-meta">
-                                    <ul>
-                                        <li>by Jamet Sigh</li>
-                                    </ul>
-                                </div>
-                                <div class="book-footer">
-                                    <div class="price">
-                                        <span class="price-num">$5.7</span>
-                                    </div>
-                                    <div class="rate">
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-yellow"></i>
-                                        <i class="flaticon-star text-muted"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="books-card">-->
+<!--                            <div class="dz-media">-->
+<!--                                <img src="Client/images/books/grid/book9.jpg" alt="book">-->
+<!--                            </div>-->
+<!--                            <div class="dz-content">-->
+<!--                                <h5 class="title mb-0">Pushing Clouds</h5>-->
+<!--                                <div class="dz-meta">-->
+<!--                                    <ul>-->
+<!--                                        <li>by Jamet Sigh</li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                                <div class="book-footer">-->
+<!--                                    <div class="price">-->
+<!--                                        <span class="price-num">$5.7</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="rate">-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-yellow"></i>-->
+<!--                                        <i class="flaticon-star text-muted"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -328,9 +323,9 @@
                                     <a th:href="@{'/books-detail/' + ${book.book_id}}">
                                         <span class="price" th:text="'$ ' + ${book.price}"></span>
                                     </a>
-<!--                                    <a class="btn btn-secondary btnhover btnhover2" th:href="@{'/shop-cart/add/' + ${book.book_id} + '/1'}">-->
-<!--                                        <i class="flaticon-shopping-cart-1 m-r10"></i> Add to cart-->
-<!--                                    </a>-->
+                                    <!--                                    <a class="btn btn-secondary btnhover btnhover2" th:href="@{'/shop-cart/add/' + ${book.book_id} + '/1'}">-->
+                                    <!--                                        <i class="flaticon-shopping-cart-1 m-r10"></i> Add to cart-->
+                                    <!--                                    </a>-->
                                     <form th:action="@{'/shop-cart/add/' + ${book.book_id} + '/1'}" method="post">
                                         <button type="submit" class="btn btn-secondary btnhover btnhover2">
                                             <i class="flaticon-shopping-cart-1 m-r10"></i> Add to cart
@@ -655,10 +650,10 @@
                                     </div>
                                     <p class="shortDescription" th:text="${book.description}"></p>
                                     <div class="bookcard-footer">
-<!--                                        <a class="btn btn-primary m-t15 btnhover btnhover2" id="buttonAddToCart2">-->
-<!--                                            <i class="flaticon-shopping-cart-1 m-r10"></i>-->
-<!--                                            Add to cart-->
-<!--                                        </a>-->
+                                        <!--                                        <a class="btn btn-primary m-t15 btnhover btnhover2" id="buttonAddToCart2">-->
+                                        <!--                                            <i class="flaticon-shopping-cart-1 m-r10"></i>-->
+                                        <!--                                            Add to cart-->
+                                        <!--                                        </a>-->
                                         <form th:action="@{'/shop-cart/add/' + ${book.book_id} + '/1'}" method="post">
                                             <button type="submit" class="btn btn-primary m-t15 btnhover btnhover2">
                                                 <i class="flaticon-shopping-cart-1 m-r10"></i> Add to cart
