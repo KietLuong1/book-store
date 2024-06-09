@@ -260,7 +260,7 @@
                         <div class="dz-shop-card style-1 h-100">
                             <div class="dz-media">
                                 <a th:href="@{'/books-detail/' + ${book.book_id}}">
-                                    <img th:src="${book.book_image}" alt="book">
+                                    <img class="bookList" th:src="${book.book_image}" alt="book">
                                 </a>
                             </div>
                             <div class="bookmark-btn style-2">
@@ -274,7 +274,9 @@
                                     <a th:text="${book.name}" th:href="@{'/books-detail/' + ${book.book_id}}"></a>
                                 </h5>
                                 <ul class="dz-tags">
-                                    <li><a th:text="${book.category}"></a></li>
+                                    <th:block th:each="category: ${book.categories}">
+                                        <li><a th:text="${category.name}"></a></li>
+                                    </th:block>
                                 </ul>
                                 <ul class="dz-rating">
                                     <li><i class="flaticon-star text-yellow"></i></li>
@@ -288,7 +290,7 @@
                                         <span class="price-num" th:text="'$ ' + ${book.salePrice}"></span>
                                         <del th:text="'$ ' + ${book.price}"></del>
                                     </div>
-                                    <a class="btn btn-secondary box-btn btnhover btnhover2" id="buttonAddToCart">
+                                    <a class="btn btn-secondary btnhover btnhover2 otherAddToCart" th:data-book-id="${book.book_id}">
                                         <i class="flaticon-shopping-cart-1 m-r10"></i>
                                         Add to cart
                                     </a>
@@ -444,7 +446,6 @@
 </div>
 <script type="text/javascript">
     contextPath = "[[@{/}]]";
-    bookId = "[[${book.book_id}]]"
     var csrfHeaderName = "[[${_csrf.headerName}]]";
     var csrfValue = "[[${_csrf.token}]]";
 </script>

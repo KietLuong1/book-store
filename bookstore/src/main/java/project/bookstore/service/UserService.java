@@ -8,9 +8,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import project.bookstore.entity.user.User;
 import project.bookstore.entity.user.CustomUserDetails;
-import project.bookstore.exception.UserNotFoundException;
 import project.bookstore.repository.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +18,14 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
+
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
+    }
+
+    public void delete(long userId){
+        userRepository.deleteById(userId);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -29,18 +37,17 @@ public class UserService implements UserDetailsService {
 
     public User getUserById(Long id){
        Optional<User> user = userRepository.findById(id);
-
        return user.orElse(null);
     }
 
     public User getUserByEmail(String email){
        Optional<User> user = userRepository.findByEmail(email);
-
        return user.orElse(null);
     }
 
-    public void save(User user){
+    public User save(User user){
         userRepository.save(user);
+        return user;
     }
 
     public void updatePassword(String newPassword, String email){

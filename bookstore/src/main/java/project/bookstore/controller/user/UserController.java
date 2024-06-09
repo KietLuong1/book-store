@@ -9,17 +9,23 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Address;
+import project.bookstore.entity.Book;
 import project.bookstore.entity.Category;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
+import project.bookstore.exception.CategoryNotFoundException;
 import project.bookstore.service.CategoryService;
+import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.UserService;
 
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -29,6 +35,9 @@ public class UserController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private CloudinaryService cloudinaryService;
 
     @GetMapping("/client-login")
     public String getLogin() {
@@ -104,13 +113,44 @@ public class UserController {
         return "Client/shop-checkout";
     }
 
-//    @GetMapping("/shop-cart")
-//    public String getShopCart(Model model) {
-//        // Get All Catagories Name
-//        List<Category> listCategoriesName = categoryService.listAll();
-//        model.addAttribute("listCategoriesName", listCategoriesName);
-//
-//        return "Client/shop-cart";
-//    }
+    // User Management
+    @GetMapping("/user-management")
+    public String getAllUsers(Model model) {
+        List<User> listUsers = userService.getAllUsers();
+        model.addAttribute("listUsers", listUsers);
+        return "Admin/user-management";
+    }
+
+    @RequestMapping("/user-management/user-detail/{id}")
+    public String getUserDetail(@PathVariable("id") Long id, Model model) {
+        User user = userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "Admin/user-detail";
+    }
+
+    @RequestMapping("/user-management/delete/{id}")
+    public String deleteUser(@PathVariable("id") Long id) {
+        userService.delete(id);
+        return "redirect:/user-management";
+    }
+
+    @RequestMapping("/user-management/edit/{id}")
+    public String editUser(@PathVariable("id") Long id, Model model) {
+        User user = userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "Admin/user-edit";
+    }
+
+    @PostMapping("/user-management/update")
+    public String updateUser(@ModelAttribute(name = "user") User user) {
+        try {
+            User updateUser = userService.save(user);
+
+            userService.save(updateUser);
+        }  catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/user-edit";
+    }
 
 }

@@ -26,8 +26,6 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
-    @Autowired
-    private CategoryRepository categoryRepository;
 
     @Autowired
     private PublisherService publisherService;
@@ -39,26 +37,23 @@ public class BookController {
     private AuthorService authorService;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private CloudinaryService cloudinaryService;
 
     @GetMapping("/admin-books")
     public String getAllBook(Model model) {
-//        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        Long userId = userDetails.getUserId();
-
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
-//        model.addAttribute("userId", userId);
         return "Admin/admin-books";
     }
 
     @RequestMapping("/books-detail/{id}")
     public String getBookDetail(@PathVariable("id") Integer id, Model model) {
         Book book = bookService.getBookById(id);
+        List<Book> listBooks = bookService.getAllBook();
+
         model.addAttribute("book", book);
+        model.addAttribute("listBooks", listBooks);
+
         return "Client/books-detail";
     }
 
@@ -92,7 +87,7 @@ public class BookController {
     }
 
     @PostMapping("/admin-add-book/save")
-    public String saveAuthor(@ModelAttribute(name = "book") Book book,
+    public String saveBook(@ModelAttribute(name = "book") Book book,
                              @RequestParam("bookImage") MultipartFile multipartFile,
                              @RequestParam(name = "categories") Set<String> categories ) throws IOException {
         try {

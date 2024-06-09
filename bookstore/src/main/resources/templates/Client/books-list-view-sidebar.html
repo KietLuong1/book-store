@@ -768,15 +768,16 @@
                             <div class="dz-shop-card style-2">
                                 <div class="dz-media">
                                     <a th:href="@{'/books-detail/' + ${book.book_id}}">
-                                        <img th:src="${book.book_image}" alt="book">
+                                        <img class="bookList" th:src="${book.book_image}" alt="book">
                                     </a>
                                 </div>
                                 <div class="dz-content">
                                     <div class="dz-header">
                                         <div>
                                             <ul class="dz-tags">
-                                                <li><a th:text="${book.category}"></a></li>
-                                            </ul>
+                                                <th:block th:each="category: ${book.categories}">
+                                                    <li><a th:text="${category.name}"></a></li>
+                                                </th:block>                                            </ul>
                                             <h4 class="title mb-0 shortTitle">
                                                 <a th:text="${book.name}" th:href="@{'/books-detail/' + ${book.book_id}}"></a>
                                             </h4>
@@ -811,11 +812,11 @@
                                         </div>
                                         <div class="rate">
                                             <ul class="book-info">
-                                                <span>Writen by<li th:text="${book.author}"></li></span>
+                                                <span>Writen by<li th:text="${book.author.name}"></li></span>
                                                 <span>Date Published<li th:text="${book.publication_date}"></li></span>
                                             </ul>
                                             <div class="d-flex">
-                                                <a class="btn btn-secondary btnhover btnhover2" id="buttonAddToCart">
+                                                <a class="btn btn-secondary btnhover btnhover2 otherAddToCart" th:data-book-id="${book.book_id}">
                                                     <i class="flaticon-shopping-cart-1 m-r10"></i>
                                                     Add to cart
                                                 </a>
@@ -983,7 +984,6 @@
 </div>
 <script type="text/javascript">
     contextPath = "[[@{/}]]";
-    bookId = "[[${book.book_id}]]"
     var csrfHeaderName = "[[${_csrf.headerName}]]";
     var csrfValue = "[[${_csrf.token}]]";
 </script>

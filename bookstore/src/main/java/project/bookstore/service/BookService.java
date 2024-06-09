@@ -16,15 +16,12 @@ public class BookService {
     @Autowired
     private BookRepository bookReposiory;
 
-    @Autowired
-    private CategoryRepository categoryRepository;
-
     public Book save(Book book) {
         return bookReposiory.save(book);
     }
 
     public List<Book> getAllBook() {
-        return (List<Book>) bookReposiory.findAll();
+        return bookReposiory.findAll();
     }
 
     public Book getBookById(int id) {

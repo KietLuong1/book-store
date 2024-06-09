@@ -31,7 +31,7 @@ public class CartRestController {
             User user = getAuthenticatedUser(userDetails);
             Integer updatedQuantity = cartService.addBookToCart(bookId, quantity, user);
 
-            return updatedQuantity + "item(s) of this book were added to your shopping cart";
+            return updatedQuantity + " item(s) of this book were added to your shopping cart";
         } catch (UserNotFoundException ex) {
             return "You must login to add this book to cart.";
         }

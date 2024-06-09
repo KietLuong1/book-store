@@ -346,7 +346,7 @@ body {
 }
 
 /* book detail description*/
-.shortBookListDescription {
+.shortBookDetailDescription {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
@@ -361,4 +361,30 @@ body {
     -webkit-line-clamp: 3;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* index book size*/
+.bookSize {
+    width: 210px !important;
+    height: 295px !important;
+}
+
+.bookSpecialSize{
+    width: 370px !important;
+    height: 521px !important;
+}
+
+.bookList{
+    width: 224px !important;
+    height: 316px !important;
+}
+
+.bookDetail{
+    width: 400px !important;
+    height: 555px !important;
+}
+
+.bookRelated{
+    width: 110px !important;
+    height: 154px !important;
 }
