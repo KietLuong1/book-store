@@ -20,7 +20,9 @@
     vertical-align: middle; /* This aligns the items vertically centered */
     margin: 0; /* Remove default margins if necessary */
 }
-
+#quantity {
+    width: 100px;
+}
 /*#sidebar-scrollbar .iq-sidebar-menu .iq-menu li.active>a {*/
 /*  color: var(--iq-primary);*/
 /*}*/
