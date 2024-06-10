@@ -38,6 +38,54 @@ Index Of Script
 ------------------------------------------------
 Index Of Script
 ----------------------------------------------*/
+$(document).ready(
+    function () {
+        $.getJSON('https://esgoo.net/api-tinhthanh/1/0.htm', function (provinceData) {
+            if (provinceData.error == 0) {
+
+                $.each(provinceData.data, function (provinceKey, provinceVal) {
+                    $("#province").append('<option value="' + provinceVal.id + ' '
+                        + provinceVal.full_name_en + '">' + provinceVal.full_name_en + '</option>');
+                });
+
+                $("#province").change(function (e) {
+                    var provinceId = $(this).val().slice(0, 2);
+                    $(".province-text").html($(this).val().slice(2));
+
+                    //fetch Province
+                    $.getJSON('https://esgoo.net/api-tinhthanh/2/' + provinceId + '.htm', function (districtData) {
+                        if (districtData.error == 0) {
+                            $.each(districtData.data, function (districtKey, districtVal) {
+                                $("#district").append('<option value="' + districtVal.id + ' '
+                                    + districtVal.full_name_en + '">' + districtVal.full_name_en + '</option>');
+                            });
+
+                            //fetch Ward
+                            $("#district").change(function (e) {
+                                var districtId = $(this).val().slice(0, 3);
+                                $(".district-text").html($(this).val().slice(3));
+
+                                $.getJSON('https://esgoo.net/api-tinhthanh/3/' + districtId + '.htm', function (wardData) {
+                                    if (wardData.error == 0) {
+                                        $.each(wardData.data, function (wardKey, wardVal) {
+                                            $("#ward").append('<option value="' + wardVal.full_name_en + '">' + wardVal.full_name_en + '</option>');
+                                        });
+                                    }
+
+                                    $("#ward").change(function (e) {
+                                            $(".ward-text").html($(this).val());
+                                        }
+                                    );
+                                });
+                            });
+                        }
+                    });
+                });
+            }
+        });
+    }
+);
+
 function showImageThumbnail(fileInput) {
     let file = fileInput.files[0];
     let reader = new FileReader();
@@ -107,10 +155,10 @@ function showImageThumbnail(fileInput) {
 
 
         jQuery($(".linkOrderDetail")).on("click", function (e) {
-                e.preventDefault();
-                let linkDetailURL;
-                linkDetailURL = $(this).attr("href");
-                $("#orderDetailModal").modal("show").find(".modal-content").load(linkDetailURL);
+            e.preventDefault();
+            let linkDetailURL;
+            linkDetailURL = $(this).attr("href");
+            $("#orderDetailModal").modal("show").find(".modal-content").load(linkDetailURL);
         })
         /*---------------------------------------------------------------------
         Magnific Popup

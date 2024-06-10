@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
 <head th:replace="Admin/admin-template.html :: header('Edit Profile')">
 </head>
 
@@ -80,6 +83,7 @@
                                                 </div>
                                             </div>
                                             <div class="row align-items-center mb-2">
+                                                <input type="hidden" th:field="${user.id}">
                                                 <div class="form-group col-md-6">
                                                     <label for="firstName">First Name</label>
                                                     <input type="text" class="form-control" id="firstName"
