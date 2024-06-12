@@ -15,6 +15,11 @@
     width: 24.5%;
 }
 
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
 /*.special {*/
 /*  color: var(--iq-primary);;*/
 /*}*/
@@ -28,11 +33,6 @@
     vertical-align: middle; /* This aligns the items vertically centered */
     margin: 0; /* Remove default margins if necessary */
 }
-<<<<<<< Updated upstream
-#quantity {
-    width: 100px;
-}
-=======
 
 .form-select {
     display: block;
