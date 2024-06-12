@@ -391,11 +391,11 @@
         </section>
         <!-- Book Sale End -->
 
-        <!-- Best Seller -->
+        <!-- Education -->
         <section class="content-inner-1">
             <div class="container">
                 <div class="section-head book-align">
-                    <h2 class="title mb-0">Best Seller</h2>
+                    <h2 class="title mb-0">Education</h2>
                     <div class="pagination-align style-1">
                         <div class="swiper-button-prev"><i class="fa-solid fa-angle-left"></i></div>
                         <div class="swiper-pagination-two"></div>
@@ -405,6 +405,106 @@
                 <div class="swiper-container books-wrapper-3 swiper-four">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 9 && books.index <= 14}">
+                            <div class="books-card style-3 wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="dz-media">
+                                    <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
+                                        <img class="bookSize" th:src="${listBooks.book_image}" alt="book">
+                                    </a>
+                                </div>
+                                <div class="dz-content">
+                                    <h5 class="title shortTitle">
+                                        <a th:text="${listBooks.name}" th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
+                                    </h5>
+                                    <ul class="dz-tags">
+                                        <li>
+                                            <th:block th:each="category: ${listBooks.categories}">
+                                                <a href="books-grid-view" th:text="${category.name}"
+                                                   th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
+                                            </th:block>
+                                        </li>
+                                    </ul>
+                                    <div class="book-footer">
+                                        <div class="rate">
+                                            <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
+                                                <i class="flaticon-star"></i> 5</a>
+                                        </div>
+                                        <div class="price">
+                                            <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
+                                                <span class="price-num" th:text="'$ ' + ${listBooks.salePrice}"></span></a>
+                                            <del th:text="'$ ' + ${listBooks.price}"></del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Business & Economics -->
+        <section class="content-inner-1">
+            <div class="container">
+                <div class="section-head book-align">
+                    <h2 class="title mb-0">Business & Economics</h2>
+                    <div class="pagination-align style-1">
+                        <div class="swiper-button-prev"><i class="fa-solid fa-angle-left"></i></div>
+                        <div class="swiper-pagination-two"></div>
+                        <div class="swiper-button-next"><i class="fa-solid fa-angle-right"></i></div>
+                    </div>
+                </div>
+                <div class="swiper-container books-wrapper-3 swiper-four">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 0 && books.index <= 4}">
+                            <div class="books-card style-3 wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="dz-media">
+                                    <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
+                                        <img class="bookSize" th:src="${listBooks.book_image}" alt="book">
+                                    </a>
+                                </div>
+                                <div class="dz-content">
+                                    <h5 class="title shortTitle">
+                                        <a th:text="${listBooks.name}" th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
+                                    </h5>
+                                    <ul class="dz-tags">
+                                        <li>
+                                            <th:block th:each="category: ${listBooks.categories}">
+                                                <a href="books-grid-view" th:text="${category.name}"
+                                                   th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
+                                            </th:block>
+                                        </li>
+                                    </ul>
+                                    <div class="book-footer">
+                                        <div class="rate">
+                                            <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
+                                                <i class="flaticon-star"></i> 5</a>
+                                        </div>
+                                        <div class="price">
+                                            <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
+                                                <span class="price-num" th:text="'$ ' + ${listBooks.salePrice}"></span></a>
+                                            <del th:text="'$ ' + ${listBooks.price}"></del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Comics & Graphics -->
+        <section class="content-inner-1">
+            <div class="container">
+                <div class="section-head book-align">
+                    <h2 class="title mb-0">Comics & Graphics</h2>
+                    <div class="pagination-align style-1">
+                        <div class="swiper-button-prev"><i class="fa-solid fa-angle-left"></i></div>
+                        <div class="swiper-pagination-two"></div>
+                        <div class="swiper-button-next"><i class="fa-solid fa-angle-right"></i></div>
+                    </div>
+                </div>
+                <div class="swiper-container books-wrapper-3 swiper-four">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 5 && books.index <= 9}">
                             <div class="books-card style-3 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="dz-media">
                                     <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">

@@ -2124,11 +2124,11 @@ li.checkout-product:last-child {
 
 /*------------------*/
 #quantity {
-  display: inline-block;
-  width: 30px;
-  height: 28px;
-  border: 1px solid var(--iq-border);
-  text-align: center;
+  /*display: inline-block;*/
+  /*width: 30px;*/
+  /*height: 28px;*/
+  /*border: 1px solid var(--iq-border);*/
+  /*text-align: center;*/
 }
 button.qty-btn {
   border: 1px solid var(--iq-border);

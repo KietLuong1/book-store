@@ -37,8 +37,8 @@
                                         <th style="width: 15%;">Last name</th>
                                         <th style="width: 15%;">Order date</th>
                                         <th style="width: 15%;">Order status</th>
-                                        <th style="width: 7%;">Total</th>
-                                        <th style="width: 15%;">Action</th>
+                                        <th style="width: 15%;">Total</th>
+                                        <th style="width: 8%;">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -57,16 +57,6 @@
                                                        data-original-title="Detail"
                                                        th:href="@{'/admin-orders/detail/' + ${order.id}}"><i
                                                             class=" ri-book-read-line"></i></a>
-                                                    <a class="bg-primary" data-toggle="tooltip" data-placement="top"
-                                                       title=""
-                                                       data-original-title="Edit"
-                                                       th:href="@{'/admin-orders/edit/' + ${order.id}}"><i
-                                                            class="ri-pencil-line"></i></a>
-                                                    <a class="bg-primary" data-toggle="tooltip" data-placement="top"
-                                                       title=""
-                                                       data-original-title="Delete"
-                                                       th:href="@{'/admin-orders/delete/' + ${order.id}}"><i
-                                                            class="ri-delete-bin-line"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
