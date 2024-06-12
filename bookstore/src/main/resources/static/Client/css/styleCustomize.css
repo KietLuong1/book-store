@@ -379,6 +379,11 @@ body {
     height: 316px !important;
 }
 
+.bookListSideBar {
+    width: 224px !important;
+    height: 316px !important;
+}
+
 .bookDetail{
     width: 400px !important;
     height: 555px !important;
@@ -388,3 +393,17 @@ body {
     width: 110px !important;
     height: 154px !important;
 }
+
+/* Book Detail Button*/
+.bookListButton {
+    margin-top: 168px !important;
+}
+
+.bookListButtonBlock {
+    margin-left: 50px !important;
+}
+
+.bookListSideBarButtonBlock {
+    margin-left: 20px !important;
+}
+

@@ -766,48 +766,36 @@
                         </div>
                         <div class="col-md-12 col-sm-12" th:each="book: ${listBooks}">
                             <div class="dz-shop-card style-2">
-                                <div class="dz-media">
+                                <div class="col-md-2 dz-media">
                                     <a th:href="@{'/books-detail/' + ${book.book_id}}">
-                                        <img class="bookList" th:src="${book.book_image}" alt="book">
+                                        <img class="bookListSideBar" th:src="${book.book_image}" alt="book">
                                     </a>
                                 </div>
-                                <div class="dz-content">
+                                <div class="col-md-6 dz-content">
                                     <div class="dz-header">
                                         <div>
                                             <ul class="dz-tags">
-                                                <th:block th:each="category: ${book.categories}">
-                                                    <li><a th:text="${category.name}"></a></li>
-                                                </th:block>                                            </ul>
-                                            <h4 class="title mb-0 shortTitle">
-                                                <a th:text="${book.name}" th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                                <li>
+                                                    <p class="badge" th:each="category: ${book.categories}"
+                                                       th:text="${category.name}"></p>
+                                                </li>
+                                            </ul>
+                                            <h4 class="title mb-0 ">
+                                                <a th:text="${book.name}"
+                                                   th:href="@{'/books-detail/' + ${book.book_id}}"></a>
                                             </h4>
                                         </div>
-                                        <div class="price">
-                                            <span class="price-num text-primary" th:text="${book.salePrice}"></span>
-                                            <del th:text="'$ ' + ${book.price}"></del>
-                                        </div>
                                     </div>
-
                                     <div class="dz-body">
                                         <div class="dz-rating-box">
                                             <div>
-                                                <p class="dz-para shortBookListDescription" th:text="${book.description}"></p>
+                                                <p class="dz-para shortBookListDescription"
+                                                   th:text="${book.description}"></p>
                                                 <div>
                                                     <a href="pricing" class="badge">Get 20% Discount for today</a>
                                                     <a href="pricing" class="badge">50% OFF Discount</a>
-                                                    <a href="pricing" class="badge next-badge">See 2+ promos</a>
+                                                    <!--                                                    <a href="pricing" class="badge next-badge">See 2+ promos</a>-->
                                                 </div>
-                                            </div>
-                                            <div class="review-num">
-                                                <h4>4.0</h4>
-                                                <ul class="dz-rating">
-                                                    <li><i class="flaticon-star text-yellow"></i></li>
-                                                    <li><i class="flaticon-star text-yellow"></i></li>
-                                                    <li><i class="flaticon-star text-yellow"></i></li>
-                                                    <li><i class="flaticon-star text-yellow"></i></li>
-                                                    <li><i class="flaticon-star text-muted"></i></li>
-                                                </ul>
-                                                <span><a href="javascript:void(0);"> 235 Reviews</a></span>
                                             </div>
                                         </div>
                                         <div class="rate">
@@ -815,16 +803,26 @@
                                                 <span>Writen by<li th:text="${book.author.name}"></li></span>
                                                 <span>Date Published<li th:text="${book.publication_date}"></li></span>
                                             </ul>
-                                            <div class="d-flex">
-                                                <a class="btn btn-secondary btnhover btnhover2 otherAddToCart" th:data-book-id="${book.book_id}">
-                                                    <i class="flaticon-shopping-cart-1 m-r10"></i>
-                                                    Add to cart
-                                                </a>
-                                                <div class="bookmark-btn style-1"><input class="form-check-input" type="checkbox" id="flexCheckDefault1">
-                                                    <!--														<label class="form-check-label" for="flexCheckDefault1">-->
-                                                    <!--															<i class="flaticon-heart"></i>-->
-                                                    <!--														</label>-->
-                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 dz-content ml-2 bookListSideBarButtonBlock">
+                                    <div class="dz-header">
+                                        <div class="price">
+                                                <span class="price-num text-primary"
+                                                      th:text="'$ ' + ${book.salePrice}"></span>
+                                            <del th:text="'$ ' + ${book.price}"></del>
+                                        </div>
+                                    </div>
+                                    <div class="dz-body bookListButton">
+                                        <div class="d-flex">
+                                            <a class="btn btn-secondary btnhover btnhover2 otherAddToCart"
+                                               th:data-book-id="${book.book_id}">
+                                                <i class="flaticon-shopping-cart-1 m-r10"></i>
+                                                Add to cart
+                                            </a>
+                                            <div class="bookmark-btn style-1">
+                                                <input class="form-check-input" type="checkbox" id="flexCheckDefault1">
                                             </div>
                                         </div>
                                     </div>

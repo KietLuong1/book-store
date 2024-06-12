@@ -134,7 +134,7 @@ public class UserController {
         return "redirect:/user-management";
     }
 
-    @RequestMapping("/user-management/edit/{id}")
+    @GetMapping("/user-management/edit/{id}")
     public String editUser(@PathVariable("id") Long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
@@ -144,13 +144,11 @@ public class UserController {
     @PostMapping("/user-management/update")
     public String updateUser(@ModelAttribute(name = "user") User user) {
         try {
-            User updateUser = userService.save(user);
-
-            userService.save(updateUser);
+            userService.save(user);
         }  catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/user-edit";
+        return "redirect:/user-management";
     }
 
 }
