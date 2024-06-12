@@ -38,6 +38,47 @@ Index Of Script
 ------------------------------------------------
 Index Of Script
 ----------------------------------------------*/
+function addBookValidateForm() {
+    let isValid = true;
+
+    $('.error').text('');
+
+    if ($('#bookName').val().trim() === '') {
+        $('#bookNameError').text('Book Name is required.');
+        isValid = false;
+    }
+
+    if ($('#fileImage').val().trim() === '') {
+        $('#fileImageError').text('Book Image is required.');
+        isValid = false;
+    }
+
+    if ($('#publicationDate').val().trim() === '') {
+        $('#publicationDateError').text('Book Publication Date is required.');
+        isValid = false;
+    }
+
+    if ($('#bookPrice').val().trim() === '' || isNaN($('#bookPrice').val())) {
+        $('#bookPriceError').text('Valid Book Price is required.');
+        isValid = false;
+    }
+
+    if ($('#description').val().trim() === '') {
+        $('#descriptionError').text('Book Description is required.');
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+$(document).ready(function () {
+    $('#bookForm').on('submit', function (e) {
+        if (!addBookValidateForm()) {
+            e.preventDefault();
+        }
+    });
+});
+
 $(document).ready(
     function () {
         $.getJSON('https://esgoo.net/api-tinhthanh/1/0.htm', function (provinceData) {
