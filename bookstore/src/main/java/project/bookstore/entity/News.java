@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "news")
@@ -37,4 +38,12 @@ public class News {
 
     @Column(name = "news_image")
     private String newsImage;
+
+    @ManyToMany
+    @JoinTable(
+            name = "news_category",
+            joinColumns = @JoinColumn(name = "news_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categories;
 }
