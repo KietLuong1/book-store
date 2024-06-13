@@ -9,15 +9,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import project.bookstore.entity.*;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import project.bookstore.entity.Book;
-import project.bookstore.entity.Cart;
-import project.bookstore.entity.Category;
-import project.bookstore.entity.Slider;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
+import project.bookstore.exception.NewsNotFoundException;
 import project.bookstore.service.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -36,6 +36,8 @@ public class HomeController {
 
     @Autowired
     private SliderService sliderService;
+    @Autowired
+    private NewsService newsService;
 
     // Get all needed information from DB and show to all pages
     @ModelAttribute
@@ -74,13 +76,24 @@ public class HomeController {
         return "Client/about-us";
     }
 
-    @GetMapping("/blog-detail")
-    public String getBlogDetail() {
+    @GetMapping("/blog-detail/{id}")
+    public String getBlogDetail(@PathVariable("id") Integer id, Model model) throws NewsNotFoundException {
+        // Get All Catagories Name
+        News news = newsService.get(id);
+        if (news != null) {
+            List<String> paragraphs = Arrays.asList(news.getDescription_news().split("\n"));
+            model.addAttribute("news", news);
+            model.addAttribute("paragraphs", paragraphs);
+        }
+        model.addAttribute("news", news);
         return "Client/blog-detail";
     }
 
     @GetMapping("/blog-list-sidebar")
-    public String getBlogListSidebar() {
+    public String getBlogListSidebar(Model model) {
+        // Get All Catagories Name
+        List<News> listNews = newsService.listAll();
+        model.addAttribute("listNews", listNews);
         return "Client/blog-list-sidebar";
     }
 
