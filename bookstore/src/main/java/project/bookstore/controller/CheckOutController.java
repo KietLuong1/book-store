@@ -43,6 +43,10 @@ public class CheckOutController {
             estimatedTotal += cart.getSubtotal();
         }
 
+        // Get Shopping Cart Total Number Of Items
+        int numberOfCartItems = cartService.getTotalNumberOfItems(userDetails.getUser());
+        model.addAttribute("numberOfCartItems", numberOfCartItems);
+
         model.addAttribute("carts", carts);
         model.addAttribute("estimatedTotal", estimatedTotal);
 
