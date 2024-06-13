@@ -30,7 +30,8 @@ public class News {
     @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate publication;
-
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String shortDescription;
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description_news;
 

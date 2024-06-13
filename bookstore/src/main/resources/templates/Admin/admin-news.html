@@ -34,20 +34,25 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 5%;">No</th>
+                                        <th style="width: 15%">Image</th>
                                         <th style="width: 20%">Title</th>
                                         <th style="width: 20%">Author</th>
                                         <th style="width: 20%">Publication Date</th>
-                                        <th style="width: 15%">Image</th>
                                         <th style="width: 20%">Function</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="news: ${listNews}">
                                         <td th:text="${news.id}"></td>
+                                        <td>
+                                            <img th:src="${news.newsImage}" class="img-fluid"
+                                                 alt="news-profile">
+                                        </td>
                                         <td th:text="${news.title}"></td>
                                         <td th:text="${news.author_news}"></td>
                                         <td th:text="${news.publication}"></td>
                                         <td><img class="img-fluid" alt="Featured Image" th:src="${news.newsImage}"></td>
+
                                         <td>
                                             <div class="flex align-items-center list-user-action">
                                                 <a class="bg-primary" data-toggle="tooltip" data-placement="top"
