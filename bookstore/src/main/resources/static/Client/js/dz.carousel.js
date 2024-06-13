@@ -2,7 +2,6 @@
 jQuery(window).on('load', function() {
     'use strict';
 	
-	
 	// service-silder-swiper
 	if(jQuery('.main-swiper').length > 0){
 		var swiper = new Swiper(".main-swiper-thumb", {

@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Cart;
 import project.bookstore.entity.Category;
@@ -36,213 +37,110 @@ public class HomeController {
     @Autowired
     private SliderService sliderService;
 
-    @GetMapping("/")
-    public String home(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        // Get All Categories Name from DB to Homepage
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        // Get All Book from DB to Homepage
-        List<Book> listBooks = bookService.getAllBook();
-        model.addAttribute("listBooks", listBooks);
-
-        List<Slider> sliders = sliderService.getSelectedSlider();
-        model.addAttribute("sliders", sliders);
-
+    // Get all needed information from DB and show to all pages
+    @ModelAttribute
+    public void showInformation(Model model){
         //notification if user log in or not
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
-            model.addAttribute("message", "Log in successfully");
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 
             // Get Shopping Cart Total Number Of Items
-            int numberOfCartItems = cartService.getTotalNumberOfItems(getAuthenticatedUser(userDetails));
+            int numberOfCartItems = cartService.getTotalNumberOfItems(userDetails.getUser());
             model.addAttribute("numberOfCartItems", numberOfCartItems);
         }
 
-        return "Client/index";
-    }
-
-    private User getAuthenticatedUser(@AuthenticationPrincipal CustomUserDetails userDetails) {
-        String email = userDetails.getUsername();
-        return userService.getUserByEmail(email);
-    }
-
-    @GetMapping("/about-us")
-    public String getAboutUs(Model model) {
-        // Get All Catagories Name
+        // Get All Categories Name from DB to Homepage
         List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
 
+        // Get All Books from DB to Homepage
+        List<Book> listBooks = bookService.getAllBook();
+        model.addAttribute("listBooks", listBooks);
+
+        // Get All Sliders from DB to Homepage
+        List<Slider> sliders = sliderService.getSelectedSlider();
+        model.addAttribute("sliders", sliders);
+    }
+
+    @GetMapping("/")
+    public String home() {
+        return "Client/index";
+    }
+
+    @GetMapping("/about-us")
+    public String getAboutUs() {
         return "Client/about-us";
     }
 
     @GetMapping("/blog-detail")
-    public String getBlogDetail(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getBlogDetail() {
         return "Client/blog-detail";
     }
 
     @GetMapping("/blog-list-sidebar")
-    public String getBlogListSidebar(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getBlogListSidebar() {
         return "Client/blog-list-sidebar";
     }
 
-    @GetMapping("/books-detail")
-    public String getBooksDetail(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/books-detail";
-    }
-
     @GetMapping("/books-grid-view")
-    public String getBooksGridView(Model model) {
-        // Get All Book
-        List<Book> listBooks = bookService.getAllBook();
-        model.addAttribute("listBooks", listBooks);
-
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getBooksGridView() {
         return "Client/books-grid-view";
     }
 
     @GetMapping("/books-grid-view-sidebar")
-    public String getBooksGridViewSidebar(Model model) {
-        // Get All Book
-        List<Book> listBooks = bookService.getAllBook();
-        model.addAttribute("listBooks", listBooks);
-
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getBooksGridViewSidebar() {
         return "Client/books-grid-view-sidebar";
     }
 
-    @GetMapping("/books-list")
-    public String getBooksList(Model model) {
-        // Get All Book
-        List<Book> listBooks = bookService.getAllBook();
-        model.addAttribute("listBooks", listBooks);
-
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/books-list";
-    }
-
     @GetMapping("/books-list-view-sidebar")
-    public String getBooksListViewSidebar(Model model) {
-        // Get All Book
-        List<Book> listBooks = bookService.getAllBook();
-        model.addAttribute("listBooks", listBooks);
-
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getBooksListViewSidebar() {
         return "Client/books-list-view-sidebar";
     }
 
     @GetMapping("/coming-soon")
-    public String getComingSoon(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getComingSoon() {
         return "Client/coming-soon";
     }
 
     @GetMapping("/contact-us")
-    public String getContactUs(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getContactUs() {
         return "Client/contact-us";
     }
 
     @GetMapping("/404")
-    public String get404(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String get404() {
         return "/Client/error-404";
     }
 
     @GetMapping("/faq")
-    public String getFAQ(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getFAQ() {
         return "Client/faq";
     }
 
     @GetMapping("/pricing")
-    public String getPricing(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getPricing() {
         return "Client/pricing";
     }
 
     @GetMapping("/privacy-policy")
-    public String getPrivacyPolicy(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getPrivacyPolicy() {
         return "Client/privacy-policy";
     }
 
     @GetMapping("/services")
-    public String getServices(Model model) {
-        // Get All Catagories Name
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getServices() {
         return "Client/services";
     }
-
-//    @GetMapping("/shop-checkout")
-//    public String getShopCheckout(Model model) {
-//        // Get All Catagories Name
-//        List<Category> listCategoriesName = categoryService.listAll();
-//        model.addAttribute("listCategoriesName", listCategoriesName);
-//
-//        return "Client/shop-checkout";
-//    }
 
     @GetMapping("/shop-login")
     public String getShopLogin() {
         return "Client/shop-login";
     }
 
-    @GetMapping("/shop-registration")
-    public String getShopRegistration() {
-        return "Client/shop-registration";
-    }
-
     @GetMapping("/support")
-    public String getSupport(Model model) {
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
+    public String getSupport() {
         return "Client/support";
     }
 

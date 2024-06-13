@@ -407,3 +407,14 @@ body {
     margin-left: 20px !important;
 }
 
+/*wrapper newsletter*/
+/* Cái này không có lỗi nha, vẫn chạy được*/
+.newsletter-wrapper{
+    background-image: url('/Client/images/background/bg1.jpg');
+    background-size: cover;
+}
+
+.content-inner-1{
+    padding-bottom: 0;
+}
+
