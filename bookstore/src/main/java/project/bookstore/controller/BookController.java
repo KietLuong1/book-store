@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Author;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Category;
+import project.bookstore.entity.Slider;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.exception.CategoryNotFoundException;
@@ -28,6 +30,30 @@ public class BookController {
     @Autowired private CategoryService categoryService;
     @Autowired private AuthorService authorService;
     @Autowired private CloudinaryService cloudinaryService;
+    @Autowired private CartService cartService;
+
+    @ModelAttribute
+    public void showInformation(Model model){
+        //notification if user log in or not
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+            // Get Shopping Cart Total Number Of Items
+            int numberOfCartItems = cartService.getTotalNumberOfItems(userDetails.getUser());
+            model.addAttribute("numberOfCartItems", numberOfCartItems);
+        }
+
+        // Get All Categories Name from DB to Homepage
+        List<Category> listCategoriesName = categoryService.getAllCategories();
+        model.addAttribute("listCategoriesName", listCategoriesName);
+
+        // Get All Books from DB to Homepage
+        List<Book> listBooks = bookService.getAllBook();
+        model.addAttribute("listBooks", listBooks);
+
+    }
 
     @GetMapping("/books-list")
     public String getBooksList() {

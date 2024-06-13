@@ -288,7 +288,7 @@
                     </div>
                 </div>
                 <!--Client Swiper -->
-                <div class="swiper client-swiper mt-5">
+                <div class="swiper client-swiper mt-5 mb-5">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"><img src="/Client/images/client/client1.svg" alt="client"></div>
                         <div class="swiper-slide"><img src="/Client/images/client/client2.svg" alt="client"></div>
@@ -301,7 +301,7 @@
         </section>
 
         <!-- Book Recommend  -->
-        <section class="content-inner-1 bg-grey reccomend ">
+        <section class="content-inner bg-grey reccomend">
             <div class="container">
                 <div class="section-head text-center">
                     <h2 class="title">Recommend For You</h2>
@@ -339,7 +339,7 @@
         <!-- Book Recommend End -->
 
         <!-- Book Sale -->
-        <section class="content-inner-1">
+        <section class="content-inner">
             <div class="container">
                 <div class="section-head book-align">
                     <h2 class="title mb-0">Books on Sale</h2>
@@ -392,7 +392,7 @@
         <!-- Book Sale End -->
 
         <!-- Education -->
-        <section class="content-inner-1">
+        <section class="content-inner bg-grey">
             <div class="container">
                 <div class="section-head book-align">
                     <h2 class="title mb-0">Education</h2>
@@ -404,7 +404,7 @@
                 </div>
                 <div class="swiper-container books-wrapper-3 swiper-four">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 9 && books.index <= 14}">
+                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 8 && books.index <= 14}">
                             <div class="books-card style-3 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="dz-media">
                                     <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
@@ -442,7 +442,7 @@
             </div>
         </section>
         <!-- Business & Economics -->
-        <section class="content-inner-1">
+        <section class="content-inner">
             <div class="container">
                 <div class="section-head book-align">
                     <h2 class="title mb-0">Business & Economics</h2>
@@ -492,7 +492,7 @@
             </div>
         </section>
         <!-- Comics & Graphics -->
-        <section class="content-inner-1">
+        <section class="content-inner bg-grey">
             <div class="container">
                 <div class="section-head book-align">
                     <h2 class="title mb-0">Comics & Graphics</h2>
@@ -542,7 +542,7 @@
             </div>
         </section>
         <!-- Testimonial2 -->
-        <section class="content-inner bg-grey testimonial-wrapper-2">
+        <section class="content-inner testimonial-wrapper-2">
             <div class="container">
                 <div class="testimonial">
                     <div class="section-head text-center">
@@ -714,7 +714,7 @@
         <!-- Testimonial2 End -->
 
         <!-- Special Offer-->
-        <section class="content-inner-1">
+        <section class="content-inner bg-grey">
             <div class="container">
                 <div class="section-head book-align">
                     <h2 class="title mb-0">Special Offers</h2>
@@ -831,7 +831,7 @@
         <!-- icon-box1 End-->
 
         <!--icon-box3 section-->
-        <section class="content-inner-1 bg-light">
+        <section class="content-inner bg-light">
             <div class="container">
                 <div class="section-head text-center">
                     <h2 class="title">Our Mission</h2>

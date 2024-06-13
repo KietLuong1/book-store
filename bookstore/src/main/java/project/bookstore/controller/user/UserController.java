@@ -15,9 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Address;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Category;
+import project.bookstore.entity.Slider;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.exception.CategoryNotFoundException;
+import project.bookstore.service.CartService;
 import project.bookstore.service.CategoryService;
 import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.UserService;
@@ -38,6 +40,28 @@ public class UserController {
 
     @Autowired
     private CloudinaryService cloudinaryService;
+
+    @Autowired
+    private CartService cartService;
+
+    @ModelAttribute
+    public void showInformation(Model model){
+        //notification if user log in or not
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+            // Get Shopping Cart Total Number Of Items
+            int numberOfCartItems = cartService.getTotalNumberOfItems(userDetails.getUser());
+            model.addAttribute("numberOfCartItems", numberOfCartItems);
+        }
+
+        // Get All Categories Name from DB to Homepage
+        List<Category> listCategoriesName = categoryService.getAllCategories();
+        model.addAttribute("listCategoriesName", listCategoriesName);
+
+    }
 
     @GetMapping("/client-login")
     public String getLogin() {
@@ -76,9 +100,20 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String getMyProfile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        User user = userDetails.getUser();
-        model.addAttribute("user", user);
+    public String getMyProfile(Model model) {
+        //notification if user log in or not
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+            User user = userDetails.getUser();
+            model.addAttribute("user", user);
+
+            // Get Shopping Cart Total Number Of Items
+            int numberOfCartItems = cartService.getTotalNumberOfItems(userDetails.getUser());
+            model.addAttribute("numberOfCartItems", numberOfCartItems);
+        }
 
         List<Category> listCategoriesName = categoryService.getAllCategories();
         model.addAttribute("listCategoriesName", listCategoriesName);
