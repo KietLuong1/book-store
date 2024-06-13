@@ -218,3 +218,7 @@
 .iq-colorbox ul li:nth-child(20) {
   margin-right: 0px;
 }
+
+.custom-select{
+  padding-top: 0;
+}

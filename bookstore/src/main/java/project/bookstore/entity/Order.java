@@ -30,7 +30,7 @@ public class Order {
     private String lastName;
     @Column(nullable = false)
     private String address;
-    private String email;
+//    private String email;
 
     private LocalDate order_date = LocalDate.now();
     private float productCost;
