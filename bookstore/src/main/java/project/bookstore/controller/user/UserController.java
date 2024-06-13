@@ -105,14 +105,6 @@ public class UserController {
         return "Client/order-history";
     }
 
-    @GetMapping("/shop-checkout")
-    public String getShopCheckout(Model model) {
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/shop-checkout";
-    }
-
     // User Management
     @GetMapping("/user-management")
     public String getAllUsers(Model model) {

@@ -49,8 +49,7 @@ public class CartService {
     public float updateQuantity(Integer bookId, Integer quantity, User user) {
         cartRepository.updateQuantity(quantity, user.getId(), bookId);
         Book book = bookRepository.findById(bookId).get();
-        float subTotal = book.getSalePrice() * quantity;
-        return subTotal;
+        return book.getSalePrice() * quantity;
     }
 
     public void removeBook(Integer bookId, User user) {
@@ -60,5 +59,9 @@ public class CartService {
     public int getTotalNumberOfItems(User user) {
         List<Cart> carts = listCart(user);
         return carts.stream().mapToInt(Cart::getQuantity).sum();
+    }
+
+    public Cart getCartById(Integer cartId) {
+        return cartRepository.findById(cartId).orElse(null);
     }
 }

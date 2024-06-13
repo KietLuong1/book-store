@@ -30,8 +30,9 @@ public class Order {
     private String lastName;
     @Column(nullable = false)
     private String address;
+    private String email;
 
-    private LocalDate order_date;
+    private LocalDate order_date = LocalDate.now();
     private float productCost;
     private float shippingCost;
     private float total;
@@ -49,6 +50,4 @@ public class Order {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderItems> orderItems= new HashSet<>();
-
-
 }

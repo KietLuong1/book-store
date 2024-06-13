@@ -23,21 +23,24 @@ import project.bookstore.service.*;
 
 @Controller
 public class BookController {
+    @Autowired private BookService bookService;
+    @Autowired private PublisherService publisherService;
+    @Autowired private CategoryService categoryService;
+    @Autowired private AuthorService authorService;
+    @Autowired private CloudinaryService cloudinaryService;
 
-    @Autowired
-    private BookService bookService;
+    @GetMapping("/books-list")
+    public String getBooksList() {
+        return "Client/books-list";
+    }
 
-    @Autowired
-    private PublisherService publisherService;
+    @GetMapping("/books-list/{category}")
+    public String getBookListByCategory(@PathVariable String category,Model model){
+        Set<Book> listBooks = categoryService.findByCategoryName(category).getBooks();
+        model.addAttribute("listBooks", listBooks);
 
-    @Autowired
-    private  CategoryService categoryService;
-
-    @Autowired
-    private AuthorService authorService;
-
-    @Autowired
-    private CloudinaryService cloudinaryService;
+         return "Client/books-list";
+    }
 
     @GetMapping("/admin-books")
     public String getAllBook(Model model) {
