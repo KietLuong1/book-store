@@ -47,8 +47,6 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authenticationProvider(authenticationProvider());
 
-//        http.csrf(AbstractHttpConfigurer::disable)
-//        http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 http.authorizeHttpRequests(auth ->
                         auth.requestMatchers("/profile", "/order-history", "/shop-checkout"
                                         , "/shop-cart/**", "/wishlist").authenticated()

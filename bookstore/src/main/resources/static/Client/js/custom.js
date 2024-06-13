@@ -31,6 +31,20 @@ var Bookland = function () {
         updateNumberOfCartItems();
     });
 
+    function handleSelectedItems() {
+        $('#selectedItems').on('change', function (){
+            if($(this).is(":checked")) {
+                let selectedItems = $(this).val();
+                let price = $('#row'+selectedItems+' .subtotal').html();
+                let total = $('.total').html();
+                let newTotal = Number(price.substring(2)) + Number(total.substring(2));
+                console.log(selectedItems, price , total, newTotal)
+
+                $('.total').html(newTotal);
+            }
+        })
+    }
+
     function addToCart() {
         quantity = $("#quantity" + bookId).val();
         url = contextPath + "shop-cart/add/" + bookId + "/" + quantity;
@@ -978,6 +992,7 @@ var Bookland = function () {
             locationAPI();
             loadData();
             myWidget();
+            handleSelectedItems();
         },
 
         load: function () {

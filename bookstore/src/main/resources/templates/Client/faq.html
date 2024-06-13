@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 
-<head th:replace="Client/client-template.html :: head('Bookland Store')"></head>
+<head th:replace="Client/client-template.html :: head('FAQ')"></head>
 
 <body>
 	<div class="page-wraper">
@@ -18,7 +18,7 @@
 						<h1>FAQ's</h1>
 						<nav aria-label="breadcrumb" class="breadcrumb-row">
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="index"> Home</a></li>
+								<li class="breadcrumb-item"><a th:href="@{/}"> Home</a></li>
 								<li class="breadcrumb-item">FAQ's</li>
 							</ul>
 						</nav>
