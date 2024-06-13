@@ -47,7 +47,7 @@
                                         <td th:text="${news.title}"></td>
                                         <td th:text="${news.author_news}"></td>
                                         <td th:text="${news.publication}"></td>
-                                        <td th:text="${news.newsImage}"></td>
+                                        <td><img class="img-fluid" alt="Featured Image" th:src="${news.newsImage}"></td>
                                         <td>
                                             <div class="flex align-items-center list-user-action">
                                                 <a class="bg-primary" data-toggle="tooltip" data-placement="top"
