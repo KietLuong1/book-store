@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Author;
 import project.bookstore.entity.News;
 import project.bookstore.exception.NewsNotFoundException;
+import project.bookstore.service.CategoryService;
 import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.NewsService;
 
@@ -29,6 +30,8 @@ public class NewsController {
     @Autowired
     private NewsService service;
     @Autowired
+    private CategoryService categoryService;
+    @Autowired
     private CloudinaryService cloudinaryService;
 
     @GetMapping("/admin-news")
@@ -43,6 +46,8 @@ public class NewsController {
     public String showNewsForm(Model model) {
         model.addAttribute("news", new News());
         model.addAttribute("pageTitle", "Add New Article");
+        model.addAttribute("categories", categoryService.getAllCategories());
+
         return "Admin/admin-add-news";
     }
 
@@ -65,6 +70,7 @@ public class NewsController {
         try {
             News news = service.get(id);
             model.addAttribute("news", news);
+            model.addAttribute("categories", categoryService.getAllCategories());
             model.addAttribute("pageTitle", "Edit News (ID: " + id + ")");
 
             return "Admin/admin-add-news";

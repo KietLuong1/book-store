@@ -413,4 +413,17 @@ body {
 .content-inner-1{
     padding-bottom: 0;
 }
+.dz-shop-card .dz-tags span {
+    color: var(--primary);
+    margin-right: 5px;
+    font-size: 17px;
+}
+.page-item.active {
+    color: #ffffff;
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+
+
 

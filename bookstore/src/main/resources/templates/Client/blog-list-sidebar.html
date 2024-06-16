@@ -32,7 +32,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 col-lg-8" >
-                        <div class="dz-blog style-1 bg-white m-b30 blog-half" th:each="news : ${listNews}">
+                        <div class="dz-blog style-1 bg-white m-b30 blog-half" th:each="news : ${newsPage}">
                             <div class="dz-media dz-img-effect zoom">
                                 <a th:href="@{'/blog-detail/' + ${news.id}}"><img th:src="${news.newsImage}" alt=""></a>
                             </div>
@@ -43,7 +43,7 @@
                                 <p class="m-b0" th:utext="${news.shortDescription}"></p>
                                 <div class="dz-meta meta-bottom">
                                     <ul class="border-0 pt-0">
-                                        <li class="post-date" th:date="${news.publication}"><i class="far fa-calendar fa-fw m-r10"></i>
+                                        <li class="post-date" th:text="${news.publication}"><i class="far fa-calendar fa-fw m-r10"></i>
                                         </li>
                                         <li class="post-author"><i class="far fa-user fa-fw m-r10"></i>By <a
                                                 href="javascript:void(0);" th:text="${news.author_news}"></a></li>
@@ -122,13 +122,18 @@
 <!--                        </div>-->
                         <nav aria-label="Blog Pagination">
                             <ul class="pagination text-center p-t20 style-1 m-b30">
-                                <li class="page-item"><a class="page-link prev" href="javascript:void(0);">Prev</a>
+                                <li th:classappend="${newsPage.number == 0} ? 'disabled'" class="page-item">
+                                    <a th:href="@{'/blog-list-sidebar?page=' + ${newsPage.number - 1}}" class="page-link prev" aria-label="Previous">
+                                        Prev
+                                    </a>
                                 </li>
-                                <li class="page-item"><a class="page-link active" href="javascript:void(0);">1</a>
+                                <li th:each="i : ${#numbers.sequence(1, newsPage.totalPages)}"  class="page-item">
+                                    <a th:classappend="${i == newsPage.number + 1} ? 'active'" th:href="@{'/blog-list-sidebar?page=' + ${i - 1}}" th:text="${i}" class="page-link">1</a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                                <li class="page-item"><a class="page-link next" href="javascript:void(0);">Next</a>
+                                <li th:classappend="${newsPage.number + 1 == newsPage.totalPages} ? 'disabled'" class="page-item">
+                                    <a th:href="@{'/blog-list-sidebar?page=' + ${newsPage.number + 1}}" class="page-link next" aria-label="Next">
+                                        Next
+                                    </a>
                                 </li>
                             </ul>
                         </nav>

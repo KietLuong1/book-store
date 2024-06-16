@@ -35,10 +35,12 @@
                                     <tr>
                                         <th style="width: 5%;">No</th>
                                         <th style="width: 15%">Image</th>
-                                        <th style="width: 44%">Title</th>
-                                        <th style="width: 12%">Author</th>
-                                        <th style="width: 12%">Publication Date</th>
-                                        <th style="width: 12%">Function</th>
+                                        <th style="width: 20%">Title</th>
+                                        <th style="width: 20%">Category</th>
+                                        <th style="width: 20%">Author</th>
+                                        <th style="width: 20%">Publication Date</th>
+                                        <th style="width: 20%">Function</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -49,6 +51,12 @@
                                                  alt="news-profile">
                                         </td>
                                         <td th:text="${news.title}"></td>
+                                        <td>
+                                            <th:block th:each="category: ${news.categories}">
+                                                <span class="badge bg-primary" th:text="${category.name}"></span>
+                                            </th:block>
+
+                                        </td>
                                         <td th:text="${news.author_news}"></td>
                                         <td th:text="${news.publication}"></td>
                                         <td>
