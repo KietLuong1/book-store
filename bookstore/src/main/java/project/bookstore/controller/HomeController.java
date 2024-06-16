@@ -1,6 +1,9 @@
 package project.bookstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import project.bookstore.entity.*;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import project.bookstore.entity.user.CustomUserDetails;
@@ -90,26 +94,17 @@ public class HomeController {
     }
 
     @GetMapping("/blog-list-sidebar")
-    public String getBlogListSidebar(Model model) {
+    public String getBlogListSidebar(Model model,  @RequestParam(defaultValue = "0") int page,
+                                     @RequestParam(defaultValue = "5") int size) {
         // Get All Catagories Name
-        List<News> listNews = newsService.listAll();
-        model.addAttribute("listNews", listNews);
+//        List<News> listNews = newsService.listAll();
+//        model.addAttribute("listNews", listNews);
+        Pageable pageable = PageRequest.of(page, size);
+        Page<News> newsPage = newsService.getPaginatedNews(pageable);
+        model.addAttribute("newsPage", newsPage);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", newsPage.getTotalPages());
         return "Client/blog-list-sidebar";
-    }
-
-    @GetMapping("/books-grid-view")
-    public String getBooksGridView() {
-        return "Client/books-grid-view";
-    }
-
-    @GetMapping("/books-grid-view-sidebar")
-    public String getBooksGridViewSidebar() {
-        return "Client/books-grid-view-sidebar";
-    }
-
-    @GetMapping("/books-list-view-sidebar")
-    public String getBooksListViewSidebar() {
-        return "Client/books-list-view-sidebar";
     }
 
     @GetMapping("/coming-soon")

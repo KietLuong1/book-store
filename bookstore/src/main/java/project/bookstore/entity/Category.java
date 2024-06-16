@@ -28,4 +28,7 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     private Set<Book> books;
+
+    @ManyToMany(mappedBy = "categories")
+    private Set<News> news;
 }

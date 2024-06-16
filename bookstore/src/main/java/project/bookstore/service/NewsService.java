@@ -1,6 +1,8 @@
 package project.bookstore.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import project.bookstore.entity.News;
 import project.bookstore.exception.NewsNotFoundException;
@@ -13,7 +15,9 @@ import java.util.Optional;
 public class NewsService {
     @Autowired
     private NewsRepository newsRepository;
-
+    public Page<News> getPaginatedNews(Pageable pageable) {
+        return newsRepository.findAll(pageable);
+    }
     public News save(News news) {
         return newsRepository.save(news);
     }

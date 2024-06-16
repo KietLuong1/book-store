@@ -20,7 +20,7 @@
                         <div class="shop-tab">
                             <ul class="nav text-center product-filter justify-content-end" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/books-list">
+                                    <a class="nav-link active" th:href="@{/books-list}">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -36,7 +36,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/books-list-view-sidebar">
+                                    <a class="nav-link" th:href="@{/books-list-view-sidebar}">
                                         <svg width="24" height="24" viewBox="0 0 17 17"
                                              xmlns="http://www.w3.org/2000/svg" fill="none"
                                              class="bi bi-layout-text-sidebar-reverse">
@@ -48,7 +48,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/books-grid-view">
+                                    <a class="nav-link" th:href="@{/books-grid-view}">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -67,7 +67,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/books-grid-view-sidebar">
+                                    <a class="nav-link" th:href="@{/books-grid-view-sidebar}">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12 col-sm-12" th:each="book: ${listBooks}">
+                    <div class="col-md-12 col-sm-12" th:each="book: ${newsPage}">
                         <div class="dz-shop-card style-2">
                             <div class="col-md-2 dz-media">
                                 <a th:href="@{'/books-detail/' + ${book.book_id}}">
@@ -94,8 +94,8 @@
                                     <div>
                                         <ul class="dz-tags">
                                             <li>
-                                                <p class="badge" th:each="category: ${book.categories}"
-                                                   th:text="${category.name}"></p>
+                                                <span th:each="category: ${book.categories}"
+                                                   th:text="${category.name}"></span>
                                             </li>
                                         </ul>
                                         <h4 class="title mb-0 shortTitle">
@@ -149,28 +149,33 @@
                     </div>
                 </div>
                 <div class="row page mt-0">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search Page Here"
-                                   aria-label="Search Page Here" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">Search</button>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="input-group">-->
+<!--                            <input type="text" class="form-control" placeholder="Search Page Here"-->
+<!--                                   aria-label="Search Page Here" aria-describedby="basic-addon2">-->
+<!--                            <div class="input-group-append">-->
+<!--                                <button class="btn btn-outline-secondary" type="button">Search</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-8 mb-3">
                         <nav aria-label="Blog Pagination">
                             <ul class="pagination style-1">
-                                <li class="page-item"><a class="page-link prev" href="javascript:void(0);">Prev</a>
+                                <!-- Previous button-->
+                                <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+                                    <a class="page-link prev" th:href="@{/books-list(page=${currentPage - 1})}" th:if="${currentPage > 0}">Prev</a>
+                                    <span class="page-link prev disabled" th:unless="${currentPage > 0}">Prev</span>
                                 </li>
-                                <li class="page-item"><a class="page-link active" href="javascript:void(0);">1</a>
+                                <!--  Page numbers, loop from 0 to totalPage - 1-->
+                                <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}" >
+                                    <a class="page-link" th:classappend="${i == currentPage} ? 'active' : ''" th:href="@{/books-list(page=${i})}" th:text="${i + 1}"></a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0);">...</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0);">20</a></li>
-                                <li class="page-item"><a class="page-link next" href="javascript:void(0);">Next</a>
+
+                                <!-- Next button-->
+                                <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+                                    <a class="page-link next" th:href="@{/books-list(page=${currentPage + 1})}" th:if="${currentPage < totalPages - 1}">Next</a>
+                                    <span class="page-link next disabled" th:unless="${currentPage < totalPages - 1}">Next</span>
                                 </li>
                             </ul>
                         </nav>
