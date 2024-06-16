@@ -14693,8 +14693,8 @@ strong,
 }
 
 .content-inner {
-  padding-top: 100px;
-  padding-bottom: 70px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 @media only screen and (max-width: 1480px) {

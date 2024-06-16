@@ -59,11 +59,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label th:field="*{email}" for="email" class="checkOutLabel">Email</label>
-                                        <input type="email" class="form-control" id="email"
-                                               aria-describedby="emailHelp" placeholder="Example: abc@gamil.com">
-                                    </div>
+<!--                                    <div class="form-group col-md-6">-->
+<!--                                        <label th:field="*{email}" for="email" class="checkOutLabel">Email</label>-->
+<!--                                        <input type="email" class="form-control" id="email"-->
+<!--                                               aria-describedby="emailHelp" placeholder="Example: abc@gamil.com">-->
+<!--                                    </div>-->
                                     <div class="form-group col-md-6">
                                         <label th for="phone" class="checkOutLabel">Phone</label>
                                         <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp"
@@ -130,10 +130,10 @@
                                 <table class="table check-tbl">
                                     <thead>
                                     <tr>
-                                        <th>Product</th>
-                                        <th>Product name</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
+                                        <th style="width: 20%;">Product</th>
+                                        <th style="width: 45%;">Product name</th>
+                                        <th style="width: 15%;">Quantity</th>
+                                        <th style="width: 20%;">Total</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -145,7 +145,7 @@
                                             <td class="product-item-name">
                                                 <p th:text="${item.book.name}"></p>
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                                 <p th:text="${item.quantity}"></p>
                                             </td>
 
@@ -158,7 +158,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="shop-form widget">
+                            <div class="shop-form widget mt-5">
                                 <h4 class="widget-title">Order Total</h4>
                                 <table class="table-bordered check-tbl mb-4">
                                     <tbody>

@@ -58,7 +58,7 @@ function addBookValidateForm() {
         isValid = false;
     }
 
-    if ($('#bookPrice').val().trim() === '' || isNaN($('#bookPrice').val())) {
+    if ($('#bookPrice').val().trim() === '' || isNaN($('#bookPrice').val()) || $('#bookPrice').val() === '0.0') {
         $('#bookPriceError').text('Valid Book Price is required.');
         isValid = false;
     }

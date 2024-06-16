@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +17,11 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import project.bookstore.entity.*;
+
+import project.bookstore.entity.Author;
+import project.bookstore.entity.Book;
+import project.bookstore.entity.Category;
+import project.bookstore.entity.Slider;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.exception.CategoryNotFoundException;
@@ -51,6 +56,7 @@ public class BookController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(authentication == null || authentication instanceof AnonymousAuthenticationToken)) {
+
             CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 
             // Get Shopping Cart Total Number Of Items

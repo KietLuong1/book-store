@@ -47,6 +47,7 @@
                                         </svg>
                                     </a>
                                 </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" th:href="@{/books-grid-view}">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -118,7 +119,6 @@
                                     </div>
                                     <div class="rate">
                                         <ul class="book-info">
-                                            <span>Writen by<li th:text="${book.author.name}"></li></span>
                                             <span>Writen by<li th:text="${book.author.name}"></li></span>
                                             <span>Date Published<li th:text="${book.publication_date}"></li></span>
                                         </ul>
