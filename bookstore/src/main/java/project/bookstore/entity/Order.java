@@ -7,10 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import project.bookstore.entity.user.User;
+import project.bookstore.enums.OrderStatus;
+import project.bookstore.enums.PaymentMethod;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -23,31 +23,39 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orders_id")
     private Integer id;
-    @JsonFormat(pattern = "yyyy-MM-dd")
+
     @Column(nullable = false)
     private String firstName;
+
     @Column(nullable = false)
     private String lastName;
-    @Column(nullable = false)
-    private String address;
-//    private String email;
 
-    private LocalDate order_date = LocalDate.now();
-    private float productCost;
+    private String address;
+
+    private String phone;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "order_date")
+    private LocalDate createdDate = LocalDate.now();
+
+    private int deliverDays;
+
     private float shippingCost;
+
     private float total;
-    private float subtotal;
+
+    private String note;
+
+    @Column(name = "total_origin_price")
+    private float totalOriginPrice;
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus orderStatus;
+    private OrderStatus orderStatus = OrderStatus.NEW;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private User user;
-
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private Set<OrderItems> orderItems= new HashSet<>();
 }

@@ -22,6 +22,7 @@ import project.bookstore.entity.Author;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Category;
 import project.bookstore.entity.Slider;
+import project.bookstore.entity.Slider;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.exception.CategoryNotFoundException;
@@ -44,6 +45,7 @@ public class BookController {
     private CartService cartService;
     @Autowired
     private SliderService sliderService;
+
     @ModelAttribute
     public void showInformation(Model model, Integer page, Integer size) {
         if (page == null || page < 0) {
@@ -52,7 +54,7 @@ public class BookController {
         if (size == null || size <= 0) {
             size = 5;
         }
-        //notification if user log in or not
+        // notification if user log in or not
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(authentication == null || authentication instanceof AnonymousAuthenticationToken)) {
@@ -79,6 +81,7 @@ public class BookController {
         List<Slider> sliders = sliderService.getSelectedSlider();
         model.addAttribute("sliders", sliders);
     }
+
     @GetMapping("/books-list")
     public String getBooksList(Model model, @RequestParam(defaultValue = "0") int page) {
         showInformation(model, page, 5);
@@ -160,12 +163,13 @@ public class BookController {
 
     @PostMapping("/admin-add-book/save")
     public String saveBook(@ModelAttribute(name = "book") Book book,
-                           @RequestParam("bookImage") MultipartFile multipartFile,
-                           @RequestParam(name = "categories") Set<String> categories) throws IOException {
+            @RequestParam("bookImage") MultipartFile multipartFile,
+            @RequestParam(name = "categories") Set<String> categories) throws IOException {
         try {
             Book savedBook = bookService.save(book);
 
-            String uploadedImageUrl = cloudinaryService.uploadFile(multipartFile, "Admin/books/" + savedBook.getBook_id());
+            String uploadedImageUrl = cloudinaryService.uploadFile(multipartFile,
+                    "Admin/books/" + savedBook.getBook_id());
             savedBook.setBook_image(uploadedImageUrl);
 
             Set<Category> selectedCategory = new HashSet<>();

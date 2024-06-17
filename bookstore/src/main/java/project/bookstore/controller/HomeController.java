@@ -44,6 +44,7 @@ public class HomeController {
     private NewsService newsService;
 
     // Get all needed information from DB and show to all pages
+    
     @ModelAttribute
     public void showInformation(Model model){
         //notification if user log in or not
