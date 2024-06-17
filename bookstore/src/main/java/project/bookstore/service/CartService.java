@@ -61,7 +61,7 @@ public class CartService {
         return carts.stream().mapToInt(Cart::getQuantity).sum();
     }
 
-    public Cart getCartById(Integer cartId) {
-        return cartRepository.findById(cartId).orElse(null);
+    public void deleteCartItemsByUserId(Long userId) {
+        cartRepository.deleteCartItemByUser(userId);
     }
 }

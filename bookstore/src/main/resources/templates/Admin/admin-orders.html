@@ -45,9 +45,9 @@
                                     <th:block th:each="order : ${listOrders}">
                                         <tr>
                                             <td th:text="${order.id}"></td>
-                                            <td th:text="${order.firstName}"></td>
+                                            <td th:text="${order.getFullName}"></td>
                                             <td th:text="${order.lastName}"></td>
-                                            <td th:text="${order.order_date}"></td>
+                                            <td th:text="${order.getCreatedDate}"></td>
                                             <td th:text="${order.orderStatus}"></td>
                                             <td th:text="${order.total}"></td>
                                             <td>

@@ -5,9 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
-import java.util.Date;
+import project.bookstore.entity.user.User;
 
 @Entity
 @Getter
@@ -16,22 +14,27 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(name = "checkout")
 public class CheckoutInformation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "checkout_id")
     private Integer id;
 
+    @Column(name = "first_name",nullable = false)
     private String firstName;
-    @Column(nullable = false)
+
+    @Column(name = "last_name",nullable = false)
     private String lastName;
+
     @Column(nullable = false)
-    private String address;
     private String phone;
 
-    private float shippingCostTotal;
-    private float total;
-    private float subtotal;
+//    @OneToOne(mappedBy = "checkoutInformation", cascade = CascadeType.ALL)
+//    private Address checkoutAddress;
 
-    private int deliverDays;
-    private LocalDate deliverDate;
+//    @ManyToOne
+//    @JoinColumn(name = "user_checkout_id")
+//    private User checkoutUser;
+
+    private boolean isDefault;
 }

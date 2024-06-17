@@ -2,13 +2,9 @@ package project.bookstore.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import project.bookstore.entity.Author;
 import project.bookstore.entity.Order;
 import project.bookstore.exception.OrderNotFoundException;
-import project.bookstore.repository.BookRepository;
-import project.bookstore.repository.OrderItemsRepository;
 import project.bookstore.repository.OrderRepository;
-import project.bookstore.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +15,8 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public Order save(Order order) {
-        return orderRepository.save(order);
+    public void save(Order order) {
+        orderRepository.save(order);
     }
     public List<Order> getAllOrders() {
         return  orderRepository.findAll();

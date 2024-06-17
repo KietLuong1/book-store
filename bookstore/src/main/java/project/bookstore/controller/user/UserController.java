@@ -1,6 +1,7 @@
 package project.bookstore.controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -8,7 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Address;
@@ -17,7 +17,6 @@ import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.service.CartService;
 import project.bookstore.service.CategoryService;
-import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.UserService;
 
 import java.util.List;
@@ -31,29 +30,9 @@ public class UserController {
     private CategoryService categoryService;
 
     @Autowired
-    private CloudinaryService cloudinaryService;
-
-    @Autowired
     private CartService cartService;
 
-    @ModelAttribute
-    public void showInformation(Model model){
-        //notification if user log in or not
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
-            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-
-            // Get Shopping Cart Total Number Of Items
-            int numberOfCartItems = cartService.getTotalNumberOfItems(userDetails.getUser());
-            model.addAttribute("numberOfCartItems", numberOfCartItems);
-        }
-
-        // Get All Categories Name from DB to Homepage
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-    }
 
     @GetMapping("/client-login")
     public String getLogin() {
@@ -96,7 +75,7 @@ public class UserController {
         //notification if user log in or not
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
+        if (!(authentication == null || authentication instanceof AnonymousAuthenticationToken)) {
             CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 
             User user = userDetails.getUser();
@@ -132,7 +111,7 @@ public class UserController {
         return "Client/order-history";
     }
 
-    // User Management
+    // User Management in Admin pages
     @GetMapping("/user-management")
     public String getAllUsers(Model model) {
         List<User> listUsers = userService.getAllUsers();
@@ -162,7 +141,7 @@ public class UserController {
 
     @PostMapping("/user-detail/update")
     public String updateUserInAdmin(User user) {
-            userService.save(user);
+        userService.save(user);
         return "redirect:/user-management";
     }
 

@@ -1,4 +1,4 @@
-package project.bookstore.controller;
+package project.bookstore.controller.cart;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

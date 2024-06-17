@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import project.bookstore.entity.Address;
 import project.bookstore.entity.Order;
-import project.bookstore.entity.UserStatus;
+import project.bookstore.enums.UserStatus;
 
 import java.util.Set;
 
@@ -56,7 +56,7 @@ public class User {
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Order> orders;
 
 }
