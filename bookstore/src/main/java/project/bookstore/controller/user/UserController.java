@@ -1,7 +1,6 @@
 package project.bookstore.controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -9,26 +8,19 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Address;
-import project.bookstore.entity.Book;
 import project.bookstore.entity.Category;
-import project.bookstore.entity.Slider;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
-import project.bookstore.exception.CategoryNotFoundException;
 import project.bookstore.service.CartService;
 import project.bookstore.service.CategoryService;
 import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.UserService;
 
-import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 
 @Controller
 public class UserController {
@@ -168,13 +160,9 @@ public class UserController {
         return "Admin/user-edit";
     }
 
-    @PostMapping("/user-management/update")
-    public String updateUser(@ModelAttribute(name = "user") User user) {
-        try {
+    @PostMapping("/user-detail/update")
+    public String updateUserInAdmin(User user) {
             userService.save(user);
-        }  catch (Exception e) {
-            e.printStackTrace();
-        }
         return "redirect:/user-management";
     }
 

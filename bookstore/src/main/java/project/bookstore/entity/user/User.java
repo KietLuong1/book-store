@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import project.bookstore.entity.Address;
 import project.bookstore.entity.Order;
+import project.bookstore.entity.UserStatus;
 
 import java.util.Set;
 
@@ -41,7 +42,9 @@ public class User {
 
     private String description;
 
-    private boolean status = true;
+//    private String status;
+    @Enumerated(EnumType.STRING)
+    private UserStatus userStatus;
 
     @Column(name = "image_URL")
     private String avatarURL;

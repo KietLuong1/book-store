@@ -21,7 +21,7 @@
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">User Management</h4>
+                                <h4 class="card-title">Users List</h4>
                             </div>
 <!--                            <div class="iq-card-header-toolbar d-flex align-items-center">-->
 <!--                                <a th:href="@{'/add-user'}" class="btn btn-primary">Add New User</a>-->
@@ -53,7 +53,7 @@
                                             <td th:text="${user.email}"></td>
                                             <td class=" text-center" th:text="${user.age}"></td>
                                             <td th:text="${user.occupation}"></td>
-                                            <td th:text="${user.status}"></td>
+                                            <td th:text="${user.userStatus}"></td>
                                             <td>
                                                 <div class="flex align-items-center list-user-action text-center">
                                                     <a class="bg-primary" data-toggle="tooltip" data-placement="top"
@@ -62,12 +62,12 @@
                                                        th:href="@{'/user-management/user-detail/' + ${user.id}}">
                                                         <i class="las la-calendar-check"></i>
                                                     </a>
-                                                    <a class="bg-primary" data-toggle="tooltip" data-placement="top"
-                                                       title=""
-                                                       data-original-title="Edit"
-                                                       th:href="@{'/user-management/edit/' + ${user.id}}">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
+<!--                                                    <a class="bg-primary" data-toggle="tooltip" data-placement="top"-->
+<!--                                                       title=""-->
+<!--                                                       data-original-title="Edit"-->
+<!--                                                       th:href="@{'/user-management/edit/' + ${user.id}}">-->
+<!--                                                        <i class="ri-pencil-line"></i>-->
+<!--                                                    </a>-->
                                                     <a class="bg-primary" data-toggle="tooltip" data-placement="top"
                                                        title=""
                                                        data-original-title="Delete"

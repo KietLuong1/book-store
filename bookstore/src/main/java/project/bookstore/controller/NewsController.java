@@ -71,7 +71,7 @@ public class NewsController {
             News news = service.get(id);
             model.addAttribute("news", news);
             model.addAttribute("categories", categoryService.getAllCategories());
-            model.addAttribute("pageTitle", "Edit News (ID: " + id + ")");
+            model.addAttribute("pageTitle", "Edit Article (ID: " + id + ")");
 
             return "Admin/admin-add-news";
         } catch (NewsNotFoundException e) {

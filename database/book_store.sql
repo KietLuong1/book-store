@@ -32,7 +32,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`address_id`),
   UNIQUE KEY `UK_s673mhnxcvjr5oevend5biles` (`user_customer_id`),
   CONSTRAINT `FKh2j8eo9wbeawdub7xhaom5j06` FOREIGN KEY (`user_customer_id`) REFERENCES `customers` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,NULL,NULL,NULL,NULL,NULL),(4,NULL,'',NULL,NULL,NULL),(5,NULL,'',NULL,NULL,NULL),(6,NULL,'',NULL,NULL,NULL),(7,'','','Tổ 8, Phú Thọ, Phú Chánh, thị xã Tân Uyên, Bình Dương',NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,NULL,NULL,NULL),(13,'0','0','Tổ 8, khu phố Phú Thọ,',NULL,'0'),(14,NULL,NULL,NULL,NULL,NULL),(15,NULL,NULL,NULL,NULL,NULL),(16,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `address` VALUES (1,NULL,NULL,NULL,NULL,NULL),(4,NULL,'',NULL,NULL,NULL),(5,NULL,'',NULL,NULL,NULL),(7,'','','Tổ 8, Phú Thọ, Phú Chánh, thị xã Tân Uyên, Bình Dương',NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,NULL,NULL,NULL),(14,NULL,NULL,NULL,NULL,NULL),(15,NULL,NULL,NULL,NULL,NULL),(16,NULL,NULL,NULL,NULL,NULL),(17,'Phu Chanh Ward','74 Binh Duong Province','',NULL,'723 Tan Uyen City'),(36,'Phu Chanh Ward','74 Binh Duong Province','',NULL,'723 Tan Uyen City'),(37,'Phu Chanh Ward','74 Binh Duong Province','',NULL,'723 Tan Uyen City'),(39,'Phu Chanh Ward','74 Binh Duong Province','',NULL,'723 Tan Uyen City'),(40,'Phu Chanh Ward','74 Binh Duong Province','',NULL,'723 Tan Uyen City'),(41,'Phu Chanh Ward','74 Binh Duong Province','phu chanh',NULL,'723 Tan Uyen City'),(42,'Phu Chanh Ward','74 Binh Duong Province','phu chanh',NULL,'723 Tan Uyen City'),(44,'Phu Chanh Ward','74 Binh Duong Province','phu chanh',NULL,'723 Tan Uyen City'),(45,'Phu Chanh Ward','74 Binh Duong Province','phu chanh',NULL,'723 Tan Uyen City'),(46,'Phu Chanh Ward','74 Binh Duong Province','phu chanh, tdm',NULL,'723 Tan Uyen City'),(47,'Phu Chanh Ward','74 Binh Duong Province','phu chanh, tdm',NULL,'723 Tan Uyen City'),(48,'','','Tổ 8, Phú Thọ, Phú Chánh, thị xã Tân Uyên, Bình Dương',NULL,''),(49,'','','',NULL,''),(50,'','','',NULL,'');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,6 @@ CREATE TABLE `author` (
   `dob` date DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `profile_image` varchar(255) DEFAULT NULL,
   `profile_image_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`author_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -70,7 +69,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (1,'Đức Trọng','2024-06-03','Việt Nam 2','Quê Quán: Bình Dương\r\n',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717947030/Admin/authors/1/87770c30-cb90-45ae-82af-2d6e7ff6b056.jpg'),(2,'Anh Kiệt','2024-06-13','Việt Nam','Quê Quán: Bình Dương',NULL,NULL),(3,'Hương Duyên','2024-05-23','Việt Nam','Quê Quán: Bình Dương',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169300/Admin/authors/3/f9adbb6b-39a9-42ab-80a1-5ad6e2899f52.jpg'),(4,'Văn A','2024-05-30','Việt Nam','New Author',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717948410/Admin/authors/4/75ebc988-3ae3-4c64-a112-35d7cc8c8722.jpg'),(5,'Peter','2024-05-30','USA','History Author',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169344/Admin/authors/5/03e2b563-3fd8-4bf3-b619-bded490e529b.jpg'),(6,'Tom','2024-06-01','Italy','Author From Italy',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169364/Admin/authors/6/75bef289-f61c-4eb2-b721-010b7d95e3ba.jpg'),(7,'Ben','2024-05-03','Thai Lan','Young Author From Thai Lan',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169383/Admin/authors/7/2f062e90-64ec-418f-929c-9f0d528645ab.jpg');
+INSERT INTO `author` VALUES (1,'Đức Trọng','2024-06-11','Việt Nam','Bình Dương\r\n','http://res.cloudinary.com/dggujnlln/image/upload/v1717169383/Admin/authors/7/2f062e90-64ec-418f-929c-9f0d528645ab.jpg'),(2,'Anh Kiệt','2024-06-12','Việt Nam','Quê Quán: Bình Dương','http://res.cloudinary.com/dggujnlln/image/upload/v1717167830/Admin/authors/2/5da45590-79d9-4f38-a4b2-902e6bf83e5f.jpg'),(3,'Hương Duyên','2024-05-23','Việt Nam','Quê Quán: Bình Dương','http://res.cloudinary.com/dggujnlln/image/upload/v1717169300/Admin/authors/3/f9adbb6b-39a9-42ab-80a1-5ad6e2899f52.jpg'),(4,'Văn A','2024-06-15','Việt Nam','New Author','http://res.cloudinary.com/dggujnlln/image/upload/v1717169326/Admin/authors/4/24690ecd-3bc6-482c-a888-33fb47e551a6.jpg'),(5,'Peter','2024-05-30','USA','History Author','http://res.cloudinary.com/dggujnlln/image/upload/v1717169344/Admin/authors/5/03e2b563-3fd8-4bf3-b619-bded490e529b.jpg'),(6,'Tom','2024-06-01','Italy','Author From Italy','http://res.cloudinary.com/dggujnlln/image/upload/v1717169364/Admin/authors/6/75bef289-f61c-4eb2-b721-010b7d95e3ba.jpg'),(7,'Ben','2024-05-03','Thai Lan','Young Author From Thai Lan','http://res.cloudinary.com/dggujnlln/image/upload/v1717169383/Admin/authors/7/2f062e90-64ec-418f-929c-9f0d528645ab.jpg');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,7 +98,7 @@ CREATE TABLE `book` (
   KEY `FKgtvt7p649s4x80y6f4842pnfq` (`publisher_id`),
   CONSTRAINT `FKgtvt7p649s4x80y6f4842pnfq` FOREIGN KEY (`publisher_id`) REFERENCES `publisher` (`publisher_id`),
   CONSTRAINT `FKklnrv3weler2ftkweewlky958` FOREIGN KEY (`author_id`) REFERENCES `author` (`author_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,7 +107,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (1,'Apprentice to the Villain','Linear algebra now rivals or surpasses calculus in importance for people working in quantitative fields of all kinds: engineers, scientists, economists and business people. Gilbert Strang has taught linear algebra at MIT for more than 50 years and the cou',15.99,210,'English','2024-06-09',352,13.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717946930/Admin/books/1/2dd06afa-af8a-4165-b51c-9072f3d6d6e9.jpg',1,3),(2,'Theory of Macroeconomic Hysteresis','This book deals with the mathematical theory of macroeconomic hysteresis, which is the theory of aggregation of microeconomic hysteresis. Microeconomic sunk cost hysteresis is usually represented by relatively simple hysteresis loops with no discrete memo',88.99,560,'English','June 20, 2022',200,82.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169035/Admin/books/2/97284a8e-772e-4efa-857a-f386075f1b8b.jpg',2,1),(3,'The Trading Game: A Confession','#1 SUNDAY TIMES BESTSELLER • A “vivid” (Financial Times) rags-to-riches memoir that takes readers inside the high-stakes drama and hubris of the trading floor, a “darkly funny” (Guardian) tale of Citibank’s one-time most profitable trader, and why he gave',19.99,320,'English','March 5, 2023',352,15.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169052/Admin/books/3/702a68fd-edfa-4f75-beab-77652a598611.jpg',3,1),(4,'Debugging','The 9 Indispensable Rules for Finding Even the Most Elusive Software and Hardware Problems. When the pressure is on to resolve an elusive software or hardware glitch, what’s needed is a cool head courtesy of a set of rules guaranteed to work on any system',12.99,130,'English','September 23, 2002',202,10.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169071/Admin/books/4/87cf07fc-8a9a-47f8-9fa3-6dc4ddf35c46.png',4,1),(5,'JavaScript from Beginner to Professional','Learn JavaScript quickly by building fun, interactive, and dynamic web apps, games, and pages. Start your journey towards becoming a JavaScript developer with the help of more than 100 fun exercises and projects',37.99,650,'English','December 15, 2021',546,32.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169096/Admin/books/5/84c4c777-261f-461e-9ac8-9c5381e3b674.png',5,1),(6,'Why We Swim','“A fascinating and beautifully written love letter to water. I was enchanted by this book.\" —Rebecca Skloot, bestselling author of The Immortal Life of Henrietta Lacks',11.99,432,'English','April 13, 2021',288,9.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169115/Admin/books/6/39af9500-9b55-47a2-913c-59effebdf53d.png',6,1),(7,'The Inheritance Games','Don\'t miss this New York Times bestselling \"impossible to put down\" (Buzzfeed) novel with deadly stakes, thrilling twists, and juicy secrets—perfect for fans of One of Us is Lying and Knives Out.',10.99,73,'English','September 1, 2020',385,8.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169129/Admin/books/7/6e2aab40-3de9-4e79-9cb7-7463ba436a61.jpg',7,1),(8,'Lost Landmarks of Orange County','Since forming in 1889, Orange County, California has become famous all over the world for being home to such popular attractions as Disneyland, Knott’s Berry Farm, and some of the most beautiful beaches in the world. But there are also many other places t',18.99,86,'English','April 16, 2020',234,16.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169142/Admin/books/8/5df7c24e-70be-4356-a719-bf3b3d96c6f9.jpg',1,1),(9,'Introduction to Linear Algebra','Linear algebra now rivals or surpasses calculus in importance for people working in quantitative fields of all kinds: engineers, scientists, economists and business people. Gilbert Strang has taught linear algebra at MIT for more than 50 years and the cou',83.99,35,'English','April 30, 2023',440,78.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169156/Admin/books/9/d162245d-0201-4323-b1ce-7cb87951c784.jpg',2,1),(10,'Silent Spring','“Rachel Carson is a pivotal figure of the twentieth century…people who thought one way before her essential 1962 book Silent Spring thought another way after it.”—Margaret Atwood',13.99,56,'English','February 1, 2022',400,10.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169178/Admin/books/10/e72f0b5a-eb80-4ceb-9b27-e6e6abedc1a4.jpg',3,1),(11,'The Lost Art of Finding Our Way','Long before GPS, Google Earth, and global transit, humans traveled vast distances using only environmental clues and simple instruments. John Huth asks what is lost when modern technology substitutes for our innate capacity to find our way. Encyclopedic i',22.99,220,'English','November 16, 2015',544,17.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169211/Admin/books/11/659ee99c-f12b-46ce-86d5-28ddbfa9335f.png',4,1),(12,'Who Was Leonardo da Vinci? ','Leonardo da Vinci was a gifted painter, talented musician, and dedicated scientist and inventor, designing flying machines, submarines, and even helicopters.  Yet he had a hard time finishing things, a problem anyone can relate to.  Only thirteen painting',40.99,20,'English','September 8, 2005',112,36.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169231/Admin/books/12/8793933e-4780-4b93-9a58-1f1332bcc36a.jpg',5,1),(13,'Harry Potter and the Sorcerer’s Stone','<div><span style=\"color: rgb(32, 33, 34); font-family: sans-serif; font-size: 14px; font-style: italic;\">This article is about the book.</span></div>',20.99,100,'English','2024-06-12',500,14.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717214616/Admin/books/13/701c0290-7bb0-4ede-b15b-60767717b25d.jpg',6,3),(14,'Programming','The 9 Indispensable Rules for Finding Even the Most Elusive Software and Hardware Problems. When the pressure is on to resolve an elusive software or hardware glitch, what’s needed is a cool head courtesy of a set of rules guaranteed to work on any system',27.99,50,'English','2023-06-12',150,23.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169035/Admin/books/2/97284a8e-772e-4efa-857a-f386075f1b8b.jpg',2,3);
+INSERT INTO `book` VALUES (1,'Apprentice to the Villain','Leonardo da Vinci was a gifted painter, talented musician, and dedicated scientist and inventor, designing flying machines, submarines, and even helicopters.  Yet he had a hard time finishing things, a problem anyone can relate to.  Only thirteen painting',15.99,210,'English','2024-05-28',352,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717946930/Admin/books/1/2dd06afa-af8a-4165-b51c-9072f3d6d6e9.jpg',1,3),(2,'Theory of Macroeconomic Hysteresis','This book deals with the mathematical theory of macroeconomic hysteresis, which is the theory of aggregation of microeconomic hysteresis. Microeconomic sunk cost hysteresis is usually represented by relatively simple hysteresis loops with no discrete memo',88.99,560,'English','2024-06-12',200,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169035/Admin/books/2/97284a8e-772e-4efa-857a-f386075f1b8b.jpg',2,1),(3,'The Trading Game: A Confession','#1 SUNDAY TIMES BESTSELLER • A “vivid” (Financial Times) rags-to-riches memoir that takes readers inside the high-stakes drama and hubris of the trading floor, a “darkly funny” (Guardian) tale of Citibank’s one-time most profitable trader, and why he gave',19.99,320,'English','2024-06-07',352,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169052/Admin/books/3/702a68fd-edfa-4f75-beab-77652a598611.jpg',3,1),(4,'Debugging','Since forming in 1889, Orange County, California has become famous all over the world for being home to such popular attractions as Disneyland, Knott’s Berry Farm, and some of the most beautiful beaches in the world. But there are also many other places t',12.99,130,'English','2024-06-08',202,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169071/Admin/books/4/87cf07fc-8a9a-47f8-9fa3-6dc4ddf35c46.png',4,1),(5,'JavaScript from Beginner to Professional','Learn JavaScript quickly by building fun, interactive, and dynamic web apps, games, and pages. Start your journey towards becoming a JavaScript developer with the help of more than 100 fun exercises and projects',37.99,650,'English','2024-05-31',546,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169096/Admin/books/5/84c4c777-261f-461e-9ac8-9c5381e3b674.png',5,1),(6,'Why We Swim','“A fascinating and beautifully written love letter to water. I was enchanted by this book.\" —Rebecca Skloot, bestselling author of The Immortal Life of Henrietta Lacks',11.99,432,'English','2024-05-29',288,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169115/Admin/books/6/39af9500-9b55-47a2-913c-59effebdf53d.png',6,1),(7,'The Inheritance Games','Don\'t miss this New York Times bestselling \"impossible to put down\" (Buzzfeed) novel with deadly stakes, thrilling twists, and juicy secrets—perfect for fans of One of Us is Lying and Knives Out.',10.99,73,'English','2024-07-06',385,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169129/Admin/books/7/6e2aab40-3de9-4e79-9cb7-7463ba436a61.jpg',7,1),(8,'Lost Landmarks of Orange County','Since forming in 1889, Orange County, California has become famous all over the world for being home to such popular attractions as Disneyland, Knott’s Berry Farm, and some of the most beautiful beaches in the world. But there are also many other places t',18.99,86,'English','2024-06-22',234,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169142/Admin/books/8/5df7c24e-70be-4356-a719-bf3b3d96c6f9.jpg',1,1),(9,'Introduction to Linear Algebra','Linear algebra now rivals or surpasses calculus in importance for people working in quantitative fields of all kinds: engineers, scientists, economists and business people. Gilbert Strang has taught linear algebra at MIT for more than 50 years and the cou',83.99,35,'English','2024-06-10',440,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169156/Admin/books/9/d162245d-0201-4323-b1ce-7cb87951c784.jpg',2,1),(10,'Silent Spring','“Rachel Carson is a pivotal figure of the twentieth century…people who thought one way before her essential 1962 book Silent Spring thought another way after it.”—Margaret Atwood',13.99,56,'English','2024-06-12',400,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169178/Admin/books/10/e72f0b5a-eb80-4ceb-9b27-e6e6abedc1a4.jpg',3,1),(11,'The Lost Art of Finding Our Way','Long before GPS, Google Earth, and global transit, humans traveled vast distances using only environmental clues and simple instruments. John Huth asks what is lost when modern technology substitutes for our innate capacity to find our way. Encyclopedic i',22.99,220,'English','2024-05-28',544,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169211/Admin/books/11/659ee99c-f12b-46ce-86d5-28ddbfa9335f.png',4,1),(12,'Who Was Leonardo da Vinci? ','Leonardo da Vinci was a gifted painter, talented musician, and dedicated scientist and inventor, designing flying machines, submarines, and even helicopters.  Yet he had a hard time finishing things, a problem anyone can relate to.  Only thirteen painting',40.99,20,'English','2024-06-19',112,0,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169231/Admin/books/12/8793933e-4780-4b93-9a58-1f1332bcc36a.jpg',5,1),(13,'Harry Potter and the Sorcerer’s Stone','Since forming in 1889, Orange County, California has become famous all over the world for being home to such popular attractions as Disneyland, Knott’s Berry Farm, and some of the most beautiful beaches in the world. But there are also many other places t',20.99,100,'English','June 12, 2024',500,14.99,'http://res.cloudinary.com/dggujnlln/image/upload/v1717214616/Admin/books/13/701c0290-7bb0-4ede-b15b-60767717b25d.jpg',6,3);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +134,7 @@ CREATE TABLE `book_category` (
 
 LOCK TABLES `book_category` WRITE;
 /*!40000 ALTER TABLE `book_category` DISABLE KEYS */;
-INSERT INTO `book_category` VALUES (1,1),(1,2),(13,2),(13,7);
+INSERT INTO `book_category` VALUES (1,1),(1,2),(2,2),(12,2),(13,2),(6,3),(6,4),(7,5),(2,6),(12,6),(8,7),(13,7),(10,8),(7,9),(9,9),(12,10),(8,11),(10,12),(11,12),(3,14),(9,14),(11,15),(5,16),(4,18),(4,19),(5,19),(5,20);
 /*!40000 ALTER TABLE `book_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,12 +150,13 @@ CREATE TABLE `cart` (
   `book_id` int DEFAULT NULL,
   `customer_id` bigint DEFAULT NULL,
   `quantity` int NOT NULL,
+  `shipping_cost` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK5n0sq8ulj6ykdnrh4dnk0vfmw` (`book_id`),
   KEY `FKioh3c0mo0al2kswtnk5r09y7f` (`customer_id`),
   CONSTRAINT `FK5n0sq8ulj6ykdnrh4dnk0vfmw` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
   CONSTRAINT `FKioh3c0mo0al2kswtnk5r09y7f` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,7 +165,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (1,3,17,21),(2,2,17,12),(3,4,17,4),(4,5,17,2),(5,1,17,12),(6,10,17,3),(7,7,17,1),(8,2,18,1),(9,5,18,4),(10,11,17,2),(11,8,17,1);
+INSERT INTO `cart` VALUES (8,2,18,1,0),(9,5,18,4,0),(11,3,19,17,0),(12,4,19,6,0),(15,1,19,12,0),(16,5,19,4,0),(17,6,19,3,0);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +190,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Architecture','Architecture'),(2,'Art','Art'),(3,'Action','Action'),(4,'Biography','Biography'),(5,'Body, Mind & Spirit','Body, Mind & Spirit'),(6,'Business & Economics','Business & Economics'),(7,'Children Fiction','Children Fiction'),(8,'Children Non-Fiction','Children Non-Fiction'),(9,'Comics & Graphics','Comics & Graphics'),(10,'Cooking','Cooking'),(11,'Crafts & Hobbies','Crafts & Hobbies'),(12,'Design','Design'),(13,'Drama','Drama'),(14,'Education','Education'),(15,'Family & Relationships','Family & Relationships'),(16,'Fiction','Fiction'),(17,'Foreign Language','Foreign Language'),(18,'Games','Games'),(19,'History','History'),(20,'House & Home','House & Home');
+INSERT INTO `category` VALUES (1,'Architecture','Architecture'),(2,'Art','Art aaaa'),(3,'Action','Action dáda'),(4,'Biography','Biography'),(5,'Body, Mind & Spirit','Body, Mind & Spirit'),(6,'Business & Economics','Business & Economics'),(7,'Children Fiction','Children Fiction'),(8,'Children Non-Fiction','Children Non-Fiction'),(9,'Comics & Graphics','Comics & Graphics'),(10,'Cooking','Cooking'),(11,'Crafts & Hobbies','Crafts & Hobbies'),(12,'Design','Design'),(13,'Drama','Drama'),(14,'Education','Education'),(15,'Family & Relationships','Family & Relationships'),(16,'Fiction','Fiction'),(17,'Foreign Language','Foreign Language'),(18,'Games','Games'),(19,'History','History'),(20,'House & Home','House & Home');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,6 +210,8 @@ CREATE TABLE `checkout` (
   `shipping_cost_total` float NOT NULL,
   `subtotal` float NOT NULL,
   `total` float NOT NULL,
+  `deliver_date` date DEFAULT NULL,
+  `deliver_days` int NOT NULL,
   PRIMARY KEY (`checkout_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -271,14 +273,12 @@ CREATE TABLE `customers` (
   `description` varchar(255) DEFAULT NULL,
   `occupation` varchar(50) DEFAULT NULL,
   `reset_password_token` varchar(255) DEFAULT NULL,
-  `status` bit(1) NOT NULL,
   `image_url` varchar(255) DEFAULT NULL,
+  `user_status` enum('ABLE','DISABLED') DEFAULT NULL,
   PRIMARY KEY (`customer_id`),
-  UNIQUE KEY `phone_number_UNIQUE` (`phone`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_customer_address_idx` (`address_id`),
   CONSTRAINT `fk_customer_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +287,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (8,'Duyen','Van','test1@gmail.com','123216978','$2a$10$qC1MM7F22RtlavgPUNFrleCMngR2uO7g7yc/UDQUMC02uJr4eMRzW',6,22,'hihihi','Giao su',NULL,_binary '\0','http://res.cloudinary.com/dggujnlln/image/upload/v1717169326/Admin/authors/4/24690ecd-3bc6-482c-a888-33fb47e551a6.jpg'),(9,'Trong','Nguyen','123123@gmail.com','123123123','$2a$10$QD3sn0YL8DJpOgxyci8XKuxJdgqJg1hk7gBaMHu45XLONKgtUinom',7,22,'hehehehe','gv',NULL,_binary '\0','http://res.cloudinary.com/dggujnlln/image/upload/v1717169383/Admin/authors/7/2f062e90-64ec-418f-929c-9f0d528645ab.jpg'),(15,'Kiet','Luong','kietluong.071002@gmail.com','3134567687','$2a$10$dJBTEzUqoTJXF4bFOcP6FumHGRF/RChCDLgbuWGyUb.85JpiuThKW',13,23,'hahaha','student','6nCmhW',_binary '','http://res.cloudinary.com/dggujnlln/image/upload/v1717167830/Admin/authors/2/5da45590-79d9-4f38-a4b2-902e6bf83e5f.jpg'),(16,'Văn Thị ','Hương Duyên','huongduyenvan3012@gmail.com','2457953243','$2a$10$pGbd6AQkl1zOpT6aRikAQeyQUt8ugrxfkDBCeHq6DbVEKJRyswMxm',14,21,'hohohoho','hiiiiii',NULL,_binary '','http://res.cloudinary.com/dggujnlln/image/upload/v1717169300/Admin/authors/3/f9adbb6b-39a9-42ab-80a1-5ad6e2899f52.jpg'),(17,'Nguyễn Đức','Trọng','trong.nguyen.cit20@eiu.edu.vn','123543632','$2a$10$n46rnXbU0y.NNKx51rYnCu49j9/XZCN5g9dlLZjHnV.1TWHFz7OYO',15,20,'huhuhuhu','heeeeee',NULL,_binary '','http://res.cloudinary.com/dggujnlln/image/upload/v1717947030/Admin/authors/1/87770c30-cb90-45ae-82af-2d6e7ff6b056.jpg'),(18,'Nguyễn Đức','Trọng','ductrong12072002@gmail.com','34534523424','$2a$10$RgeGV0ecvW1LFTfjXSVuAeDJJQ5RXQ.fkSBKPzDRtEv.qltneXZ7O',16,19,'heeee','hoooooo',NULL,_binary '','http://res.cloudinary.com/dggujnlln/image/upload/v1717169364/Admin/authors/6/75bef289-f61c-4eb2-b721-010b7d95e3ba.jpg');
+INSERT INTO `customers` VALUES (9,'Trong','Nguyen','123123@gmail.com','123123123','$2a$10$QD3sn0YL8DJpOgxyci8XKuxJdgqJg1hk7gBaMHu45XLONKgtUinom',48,22,'hehehehe','Giao su',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169383/Admin/authors/7/2f062e90-64ec-418f-929c-9f0d528645ab.jpg','ABLE'),(16,'Văn Thị ','Hương Duyên','huongduyenvan3012@gmail.com','','$2a$10$pGbd6AQkl1zOpT6aRikAQeyQUt8ugrxfkDBCeHq6DbVEKJRyswMxm',50,0,'','',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169300/Admin/authors/3/f9adbb6b-39a9-42ab-80a1-5ad6e2899f52.jpg','ABLE'),(18,'Nguyễn Đức','Trọng','ductrong12072002@gmail.com','','$2a$10$RgeGV0ecvW1LFTfjXSVuAeDJJQ5RXQ.fkSBKPzDRtEv.qltneXZ7O',49,0,'','',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717947030/Admin/authors/1/87770c30-cb90-45ae-82af-2d6e7ff6b056.jpg','ABLE'),(19,'Nguyễn Đức','Trọng','trong.nguyen.cit20@eiu.edu.vn','0988642777','$2a$10$YApKKhCIutykh9AIazMbpeD5hkTNKkqI7qQfAbcvenA8fsuz4/oCe',47,22,'Tall','Student',NULL,'http://res.cloudinary.com/dggujnlln/image/upload/v1717169383/Admin/authors/7/2f062e90-64ec-418f-929c-9f0d528645ab.jpg','ABLE');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -333,8 +333,9 @@ CREATE TABLE `news` (
   `news_image` varchar(255) DEFAULT NULL,
   `publication` date NOT NULL,
   `title` varchar(255) NOT NULL,
+  `short_description` text NOT NULL,
   PRIMARY KEY (`news_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -343,7 +344,34 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
+INSERT INTO `news` VALUES (1,'John Doe','Sed auctor magna lacus, in placerat nisl sollicitudin ut. Morbi feugiat ante velit, eget convallis arcu iaculis vel. Fusce in rhoncus quam. Integer dolor arcu, ullamcorper sed auctor vitae, porttitor quis erat. Donec sit amet semper massa.\r\nUt non nisl et magna molestie tincidunt. Aliquam erat volutpat. Vivamus eget feugiat odio. Vivamus faucibus lorem nec mollis placerat. Nulla et dapibus est. Fusce porttitor arcu ac velit commodo hendrerit. Vestibulum tempor dapibus sapien. Maecenas accumsan rhoncus massa, nec ornare libero faucibus tincidunt. Cras metus tortor, pretium vitae scelerisque id, sollicitudin at est.\r\nFusce sem ligula, imperdiet sed nisi sit amet, euismod posuere dolor. Vestibulum in ante ut tortor eleifend venenatis. Morbi ac hendrerit nisl. Sed auctor magna lacus, in placerat nisl sollicitudin ut. Morbi feugiat ante velit, eget convallis arcu iaculis vel. Fusce in rhoncus quam. Integer dolor arcu, ullamcorper sed auctor vitae, porttitor quis erat.\r\nPellentesque quis molestie lacus. Sed et pellentesque nibh. Pellentesque pretium pretium neque, vel fermentum nisl ornare non. Aliquam interdum rutrum magna quis.\r\nDonec pretium, quam a aliquet pretium, dolor magna malesuada libero, non rhoncus quam lectus at lectus. Mauris id consequat est, ut aliquet lorem. Maecenas mi sem, aliquam et semper et, sagittis non magna. Vivamus et maximus nulla. Morbi tincidunt ex ac diam imperdiet, ut pretium justo porttitor. Class aptent taciti sociosqu ad litora\r\nDonec suscipit porta lorem eget condimentum. Morbi vitae mauris in leo venenatis varius. Aliquam nunc enim, egestas ac dui in, aliquam vulputate erat. Curabitur porttitor ante ut odio vestibulum, et iaculis arcu scelerisque. Sed ornare mi vitae elit molestie malesuada. Curabitur venenatis venenatis elementum.','http://res.cloudinary.com/dggujnlln/image/upload/v1718285648/Admin/authors/1/812b7ead-01b9-4c7d-ac28-edbdd6ae7fae.jpg','2024-06-12','The Time Is Running Out! Think About These 6 Ways To Change Your Library. How To Restore Library?','<div><span style=\"color: rgb(119, 119, 119); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 15px; text-align: justify;\">Explore the extraordinary facets of libraries beyond the shelves, as we unravel unique insights and experiences that go beyond traditional textbooks. Join us on a journey to discover the untold stories, hidden treasures, and unexpected wonders that make libraries more than just repositories of books</span><br></div>'),(2,'John Doe','Sed auctor magna lacus, in placerat nisl sollicitudin ut. Morbi feugiat ante velit, eget convallis arcu iaculis vel. Fusce in rhoncus quam. Integer dolor arcu, ullamcorper sed auctor vitae, porttitor quis erat. Donec sit amet semper massa.\r\nUt non nisl et magna molestie tincidunt. Aliquam erat volutpat. Vivamus eget feugiat odio. Vivamus faucibus lorem nec mollis placerat. Nulla et dapibus est. Fusce porttitor arcu ac velit commodo hendrerit. Vestibulum tempor dapibus sapien. Maecenas accumsan rhoncus massa, nec ornare libero faucibus tincidunt. Cras metus tortor, pretium vitae scelerisque id, sollicitudin at est.\r\n\r\nFusce sem ligula, imperdiet sed nisi sit amet, euismod posuere dolor. Vestibulum in ante ut tortor eleifend venenatis. Morbi ac hendrerit nisl. Sed auctor magna lacus, in placerat nisl sollicitudin ut. Morbi feugiat ante velit, eget convallis arcu iaculis vel. Fusce in rhoncus quam. Integer dolor arcu, ullamcorper sed auctor vitae, porttitor quis erat.\r\n\r\nPellentesque quis molestie lacus. Sed et pellentesque nibh. Pellentesque pretium pretium neque, vel fermentum nisl ornare non. Aliquam interdum rutrum magna quis.\r\n\r\nDonec pretium, quam a aliquet pretium, dolor magna malesuada libero, non rhoncus quam lectus at lectus. Mauris id consequat est, ut aliquet lorem. Maecenas mi sem, aliquam et semper et, sagittis non magna. Vivamus et maximus nulla. Morbi tincidunt ex ac diam imperdiet, ut pretium justo porttitor. Class aptent taciti sociosqu ad litora\r\n\r\nDonec suscipit porta lorem eget condimentum. Morbi vitae mauris in leo venenatis varius. Aliquam nunc enim, egestas ac dui in, aliquam vulputate erat. Curabitur porttitor ante ut odio vestibulum, et iaculis arcu scelerisque. Sed ornare mi vitae elit molestie malesuada. Curabitur venenatis venenatis elementum.','http://res.cloudinary.com/dggujnlln/image/upload/v1718287753/Admin/authors/2/b191630e-a613-421b-ae40-1a9845736dd6.jpg','2024-06-20','You Should Experience Library At Least Once In Your Lifetime','<div><span style=\"color: rgb(119, 119, 119); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 15px; text-align: justify;\">Immerse yourself in the timeless charm and boundless knowledge of libraries, where the scent of books and the quiet embrace of wisdom create an unforgettable experience. Encounter the magic of literary worlds and embark on a journey that transcends time—an essential adventure for every soul seeking the transformative power of words.</span><br></div>'),(3,'Lily James','Sed auctor magna lacus, in placerat nisl sollicitudin ut. Morbi feugiat ante velit, eget convallis arcu iaculis vel. Fusce in rhoncus quam. Integer dolor arcu, ullamcorper sed auctor vitae, porttitor quis erat. Donec sit amet semper massa.\r\n\r\nUt non nisl et magna molestie tincidunt. Aliquam erat volutpat. Vivamus eget feugiat odio. Vivamus faucibus lorem nec mollis placerat. Nulla et dapibus est. Fusce porttitor arcu ac velit commodo hendrerit. Vestibulum tempor dapibus sapien. Maecenas accumsan rhoncus massa, nec ornare libero faucibus tincidunt. Cras metus tortor, pretium vitae scelerisque id, sollicitudin at est.\r\n\r\nFusce sem ligula, imperdiet sed nisi sit amet, euismod posuere dolor. Vestibulum in ante ut tortor eleifend venenatis. Morbi ac hendrerit nisl. Sed auctor magna lacus, in placerat nisl sollicitudin ut. Morbi feugiat ante velit, eget convallis arcu iaculis vel. Fusce in rhoncus quam. Integer dolor arcu, ullamcorper sed auctor vitae, porttitor quis erat.\r\n\r\nPellentesque quis molestie lacus. Sed et pellentesque nibh. Pellentesque pretium pretium neque, vel fermentum nisl ornare non. Aliquam interdum rutrum magna quis.\r\n\r\nDonec pretium, quam a aliquet pretium, dolor magna malesuada libero, non rhoncus quam lectus at lectus. Mauris id consequat est, ut aliquet lorem. Maecenas mi sem, aliquam et semper et, sagittis non magna. Vivamus et maximus nulla. Morbi tincidunt ex ac diam imperdiet, ut pretium justo porttitor. Class aptent taciti sociosqu ad litora\r\n\r\nDonec suscipit porta lorem eget condimentum. Morbi vitae mauris in leo venenatis varius. Aliquam nunc enim, egestas ac dui in, aliquam vulputate erat. Curabitur porttitor ante ut odio vestibulum, et iaculis arcu scelerisque. Sed ornare mi vitae elit molestie malesuada. Curabitur venenatis venenatis elementum.','http://res.cloudinary.com/dggujnlln/image/upload/v1718283521/Admin/authors/3/34ce1278-cb29-469a-9a1e-8f04aa9c61b1.jpg','2024-06-13','The 5 Secrets About Library Only A Handful Of People Know','<div><span style=\"color: rgb(119, 119, 119); font-family: &quot;Open Sans&quot;, sans-serif; font-size: 15px; text-align: justify;\">Uncover the hidden gems and exclusive insights that reveal a world within libraries, known to only a select few. Delve into the mysteries, untold stories, and intriguing facets that set libraries apart in ways that may surprise even the most seasoned bibliophiles.</span><br></div>');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `news_category`
+--
+
+DROP TABLE IF EXISTS `news_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `news_category` (
+  `news_id` int NOT NULL,
+  `category_id` int NOT NULL,
+  PRIMARY KEY (`news_id`,`category_id`),
+  KEY `FKe8kg0ga2881udnvtit2x1diqw` (`category_id`),
+  CONSTRAINT `FKb9a07uy7bnouoxefxynleowm9` FOREIGN KEY (`news_id`) REFERENCES `news` (`news_id`),
+  CONSTRAINT `FKe8kg0ga2881udnvtit2x1diqw` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `news_category`
+--
+
+LOCK TABLES `news_category` WRITE;
+/*!40000 ALTER TABLE `news_category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `news_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -404,7 +432,7 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
-INSERT INTO `order_items` VALUES (1,10.99,1,10,15.99,15.99,1,2),(2,8.99,1,15,10.99,10.99,7,3),(3,10.99,10,15,12.99,12.99,4,4);
+INSERT INTO `order_items` VALUES (3,10.99,10,15,12.99,12.99,4,4);
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,7 +468,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (2,'project.bookstore.entity.Address@31d327b6','Duyen','Van','NEW','2024-05-26','CREDIT_CARD',10.99,10,25.99,15.99,8),(3,'project.bookstore.entity.Address@7cc966a9','Kiet','Luong','CANCELLED','2024-06-07','CREDIT_CARD',8.99,15,20.99,10.99,15),(4,'project.bookstore.entity.Address@440309c5','Trong','Nguyen','NEW','2024-06-07','CREDIT_CARD',10.99,20,22.99,12.99,9);
+INSERT INTO `orders` VALUES (4,'project.bookstore.entity.Address@440309c5','Trong','Nguyen','NEW','2024-06-07','CREDIT_CARD',10.99,20,22.99,12.99,9);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -458,7 +486,7 @@ CREATE TABLE `publisher` (
   `publisher_email` varchar(255) DEFAULT NULL,
   `publisher_name` varchar(255) NOT NULL,
   PRIMARY KEY (`publisher_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -531,4 +559,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-10  2:28:22
+-- Dump completed on 2024-06-18  0:30:50
