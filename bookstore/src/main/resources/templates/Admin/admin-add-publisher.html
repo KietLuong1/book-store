@@ -25,28 +25,35 @@
                      <div class="iq-card-body">
                         <form th:action="@{/admin-add-publisher/save}" method="post" th:object="${publisher}">
                            <input type="hidden" th:field="*{publisher_id}">
-
-                           <div class="form-group">
-                              <label>Publisher Name:</label>
-                              <input class="form-control" maxlength="45" minlength="3" required th:field="*{publisher_name}"
-                                     type="text">
-                           </div>
-                           <div class="form-group">
-                              <label>Country:</label>
-                              <input class="form-control" maxlength="45" minlength="3" required th:field="*{country}"
-                                     type="text">
-                           </div>
-                           <div class="form-group">
-                              <label>Address:</label>
-                              <input class="form-control" maxlength="45" minlength="3" required th:field="*{publisher_address}"
-                                     type="text">
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Publisher Name:</label>
+                                    <input class="form-control" maxlength="45" minlength="3" required th:field="*{publisher_name}"
+                                           type="text">
+                                 </div>
+                              </div>
+                              <div class="col-md-2">
+                                 <div class="form-group">
+                                    <label>Country:</label>
+                                    <input class="form-control" maxlength="45" minlength="3" required th:field="*{country}"
+                                           type="text">
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="form-group">
+                                    <label>Address:</label>
+                                    <input class="form-control" maxlength="45" minlength="3" required th:field="*{publisher_address}"
+                                           type="text">
+                                 </div>
+                              </div>
                            </div>
                            <div class="form-group">
                               <label>Email:</label>
                               <input class="form-control" maxlength="45" minlength="3" required th:field="*{publisher_email}"
                                      type="text">
                            </div>
-                           <button type="submit" class="btn btn-primary">Submit</button>
+                           <button type="submit" class="btn btn-primary mr-3">Submit</button>
                            <button type="reset" class="btn btn-danger">Reset</button>
                         </form>
                      </div>

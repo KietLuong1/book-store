@@ -47,19 +47,31 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authenticationProvider(authenticationProvider());
 
-                http.authorizeHttpRequests(auth ->
+        http.authorizeHttpRequests(auth ->
                         auth.requestMatchers("/profile", "/order-history", "/shop-checkout"
-                                        , "/shop-cart/**", "/wishlist").authenticated()
-                                .anyRequest().permitAll())
-                .formLogin(login ->
-                        login.loginPage("/client-login").usernameParameter("email").loginProcessingUrl("/login").defaultSuccessUrl("/").permitAll())
-                .logout(logout ->
-                        logout.logoutSuccessUrl("/").permitAll().deleteCookies("JSESSIONID"))
-                .rememberMe(rememberMe ->
-                        rememberMe.alwaysRemember(true).key("uniqueAndSecret")
-                                .userDetailsService(userDetailsService()).tokenValiditySeconds(86400))
-                .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
+                                        , "/shop-cart/**", "/wishlist")
+                                .authenticated()
+                                .anyRequest()
+                                .permitAll()
+                )
+                .formLogin(login -> login
+                        .loginPage("/client-login")
+                        .usernameParameter("email")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/")
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/")
+                        .permitAll()
+                        .deleteCookies("JSESSIONID"))
+                .rememberMe(rememberMe -> rememberMe
+                        .alwaysRemember(true)
+                        .key("uniqueAndSecret")
+                        .userDetailsService(userDetailsService())
+                        .tokenValiditySeconds(86400))
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
 
         return http.build();
     }

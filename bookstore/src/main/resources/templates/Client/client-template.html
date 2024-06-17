@@ -339,7 +339,7 @@
                                 <ul>
                                     <li><a href="about-us">About us</a></li>
                                     <li><a href="contact-us">Contact us</a></li>
-                                    <li><a href="privacy-policy">Privacy Policy</a></li>
+<!--                                    <li><a href="privacy-policy">Privacy Policy</a></li>-->
                                     <li><a href="pricing">Pricing Table</a></li>
                                     <li><a href="faq">FAQ</a></li>
                                 </ul>
@@ -347,13 +347,13 @@
                         </div>
                         <div class="col-xl-2 col-lg-3 col-sm-4 col-4 wow fadeInUp" data-wow-delay="0.3s">
                             <div class="widget widget_services">
-                                <h5 class="footer-title">Bookland ?</h5>
+                                <h5 class="footer-title">Bookland</h5>
                                 <ul>
-                                    <li><a href="index">Bookland</a></li>
-                                    <li><a href="services">Services</a></li>
-                                    <li><a href="books-list">Book Details</a></li>
-                                    <li><a href="blog-detail">Blog Details</a></li>
-                                    <li><a href="books-grid-view">Shop</a></li>
+                                    <li><a href="/">Bookland</a></li>
+                                    <li><a th:href="@{/services}">Services</a></li>
+                                    <li><a th:href="@{/books-list}">Book Details</a></li>
+                                    <li><a th:href="@{/blog-list-sidebar}">News Details</a></li>
+<!--                                    <li><a href="books-grid-view">Shop</a></li>-->
                                 </ul>
                             </div>
                         </div>
@@ -362,10 +362,10 @@
                                 <h5 class="footer-title">Resources</h5>
                                 <ul>
                                     <li><a href="services">Download</a></li>
-                                    <li><a href="support">Help Center</a></li>
-                                    <li><a href="shop-cart">Shop Cart</a></li>
-                                    <li><a href="shop-login">Login</a></li>
-                                    <li><a href="about-us">Partner</a></li>
+<!--                                    <li><a href="support">Help Center</a></li>-->
+                                    <li><a th:href="@{/shop-cart}">Shop Cart</a></li>
+                                    <li><a th:href="@{/shop-login}">Login</a></li>
+                                    <li><a th:href="@{/about-us}">Partner</a></li>
                                 </ul>
                             </div>
                         </div>
