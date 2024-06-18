@@ -24,16 +24,16 @@ public class Book {
         this.book_id = book_id;
     }
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false)
     private float salePrice;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false)
     private float price;
 
     @Column(nullable = false)
@@ -42,7 +42,7 @@ public class Book {
     @Column(nullable = false)
     private String language;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false)
     private String publication_date;
 
     @Column(nullable = false)
@@ -65,4 +65,8 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 }

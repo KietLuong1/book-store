@@ -86,7 +86,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <th:block th:each="item:${carts}">
+                                    <th:block th:name="carts" th:each="item:${carts}">
                                         <tr>
                                             <td class="product-item-img">
                                                 <img th:src="${item.book.book_image}" alt="Picture have Error">

@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import project.bookstore.entity.Book;
 import project.bookstore.entity.Cart;
 import project.bookstore.entity.Order;
 import project.bookstore.entity.user.CustomUserDetails;
@@ -19,7 +21,9 @@ import project.bookstore.enums.PaymentMethod;
 import project.bookstore.service.*;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class CheckOutController {
@@ -57,13 +61,26 @@ public class CheckOutController {
     }
 
     @PostMapping("/shop-checkout/processing")
-    public String processingCheckout(@ModelAttribute("order") Order order, @AuthenticationPrincipal CustomUserDetails userDetails) {
+    public String processingCheckout(@ModelAttribute("order") Order order,
+                                     @AuthenticationPrincipal CustomUserDetails userDetails) {
         User user = userDetails.getUser();
-        String email= user.getEmail();
+        String email = user.getEmail();
 
         order.setUser(user);
         order.setPaymentMethod(PaymentMethod.COD);
         order.setDeliverDays(3);
+
+        Set<Order> orderSet = user.getOrders();
+        orderSet.add(order);
+        user.setOrders(orderSet);
+
+        Set<Book> books = new HashSet<>();
+        List<Cart> carts = cartService.listCart(user);
+
+        for (Cart cart : carts) {
+            books.add(cart.getBook());
+        }
+        order.setItems(books);
 
         try {
             sendMail(email);

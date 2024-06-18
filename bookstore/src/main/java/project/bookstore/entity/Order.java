@@ -11,6 +11,8 @@ import project.bookstore.enums.OrderStatus;
 import project.bookstore.enums.PaymentMethod;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -54,6 +56,9 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus = OrderStatus.NEW;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Book> items;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)

@@ -424,6 +424,10 @@ body {
     border-color: var(--secondary);
 }
 
+.dz_error.checkout-success{
+    font-size: 90px;
+    letter-spacing: 0;
+}
 
 
 
