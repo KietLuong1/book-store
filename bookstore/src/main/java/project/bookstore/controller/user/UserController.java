@@ -1,6 +1,7 @@
 package project.bookstore.controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -10,15 +11,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Address;
+import project.bookstore.entity.Book;
 import project.bookstore.entity.Category;
+import project.bookstore.entity.Slider;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
+import project.bookstore.exception.CategoryNotFoundException;
 import project.bookstore.service.CartService;
 import project.bookstore.service.CategoryService;
 import project.bookstore.service.UserService;
 
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -31,8 +38,6 @@ public class UserController {
 
     @Autowired
     private CartService cartService;
-
-
 
     @GetMapping("/client-login")
     public String getLogin() {
@@ -72,7 +77,7 @@ public class UserController {
 
     @GetMapping("/profile")
     public String getMyProfile(Model model) {
-        //notification if user log in or not
+        // notification if user log in or not
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(authentication == null || authentication instanceof AnonymousAuthenticationToken)) {
@@ -93,7 +98,8 @@ public class UserController {
     }
 
     @PostMapping("/profile/update")
-    public String updateUser(Model model, RedirectAttributes ra, User user, @AuthenticationPrincipal CustomUserDetails loggedUser) {
+    public String updateUser(Model model, RedirectAttributes ra, User user,
+            @AuthenticationPrincipal CustomUserDetails loggedUser) {
         model.addAttribute("user", loggedUser);
         loggedUser.setUser(user);
         userService.save(user);
@@ -139,9 +145,13 @@ public class UserController {
         return "Admin/user-edit";
     }
 
-    @PostMapping("/user-detail/update")
-    public String updateUserInAdmin(User user) {
-        userService.save(user);
+    @PostMapping("/user-management/update")
+    public String updateUser(@ModelAttribute(name = "user") User user) {
+        try {
+            userService.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "redirect:/user-management";
     }
 

@@ -2,6 +2,7 @@ package project.bookstore.controller;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -11,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Cart;
 import project.bookstore.entity.Order;
@@ -21,6 +21,7 @@ import project.bookstore.enums.PaymentMethod;
 import project.bookstore.service.*;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -69,18 +70,20 @@ public class CheckOutController {
         order.setUser(user);
         order.setPaymentMethod(PaymentMethod.COD);
         order.setDeliverDays(3);
+        order.setUser(user);
 
         Set<Order> orderSet = user.getOrders();
         orderSet.add(order);
         user.setOrders(orderSet);
 
-        Set<Book> books = new HashSet<>();
+        List<Book> books = order.getBooks();
         List<Cart> carts = cartService.listCart(user);
 
         for (Cart cart : carts) {
             books.add(cart.getBook());
         }
-        order.setItems(books);
+
+        order.setBooks(books);
 
         try {
             sendMail(email);

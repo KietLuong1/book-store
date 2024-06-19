@@ -1,6 +1,7 @@
 package project.bookstore.entity.user;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import lombok.*;
 import project.bookstore.entity.Address;
 import project.bookstore.entity.Order;
@@ -42,9 +43,7 @@ public class User {
 
     private String description;
 
-//    private String status;
-    @Enumerated(EnumType.STRING)
-    private UserStatus userStatus;
+    private boolean status = true;
 
     @Column(name = "image_URL")
     private String avatarURL;
@@ -59,4 +58,13 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Order> orders;
 
+    // @Transactional
+    // public Set<Order> getOrders() {
+    // return orders;
+    // }
+    //
+    // @Transactional
+    // public void setOrders(Set<Order> orders) {
+    // this.orders = orders;
+    // }
 }

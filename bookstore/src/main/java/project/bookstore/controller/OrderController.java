@@ -73,6 +73,7 @@ public class OrderController {
         try {
             Order order = orderService.get(id);
             model.addAttribute("order", order);
+            model.addAttribute("book", order.getBooks());
 
             return "Admin/order_details_modal";
 

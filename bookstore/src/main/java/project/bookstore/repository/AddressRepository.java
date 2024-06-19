@@ -14,7 +14,7 @@ public interface AddressRepository extends JpaRepository<Address, Integer> {
     @Query("select a from  Address  a where  a.id = ?1 and  a.user.id = ?2")
     public Address findByIdAndCustomer(Integer addressId, Integer customerId);
 
-    @Query("delete from  Address  a where  a.id = ?1 and  a.user.id = ?2")
     @Modifying
+    @Query("delete from  Address  a where  a.id = ?1 and  a.user.id = ?2")
     public void deleteByIdAndCustomer(Integer addressId, Integer customerId);
 }
