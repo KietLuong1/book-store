@@ -66,6 +66,4 @@ public class Book {
     @JoinColumn(name = "publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;
 
-    @ManyToMany(mappedBy = "books")
-    private Set<Order> orders;
 }

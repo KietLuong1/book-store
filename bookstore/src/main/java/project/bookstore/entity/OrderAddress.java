@@ -1,13 +1,13 @@
 package project.bookstore.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import project.bookstore.entity.user.User;
-
-import static lombok.AccessLevel.*;
 
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -18,7 +18,7 @@ import static lombok.AccessLevel.*;
 @Getter
 @Setter
 @Table(name = "address")
-public class Address {
+public class OrderAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
@@ -37,7 +37,4 @@ public class Address {
     
     @OneToOne(mappedBy = "address")
     private User user;
-
-    @OneToOne(mappedBy = "orderAddress")
-    private Order order;
 }

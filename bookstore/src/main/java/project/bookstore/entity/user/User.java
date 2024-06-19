@@ -42,9 +42,8 @@ public class User {
 
     private String description;
 
-    //    private String status;
     @Enumerated(EnumType.STRING)
-    private UserStatus userStatus;
+    private UserStatus userStatus = UserStatus.ABLE;
 
     @Column(name = "image_URL")
     private String avatarURL;
@@ -56,7 +55,7 @@ public class User {
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Order> orders;
 
     // @Transactional

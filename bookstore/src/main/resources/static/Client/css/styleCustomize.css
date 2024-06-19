@@ -414,9 +414,13 @@ body {
     padding-bottom: 0;
 }
 .dz-shop-card .dz-tags span {
-    color: var(--primary);
+    color: #fff3cd;
     margin-right: 5px;
-    font-size: 17px;
+    font-size: 15px;
+}
+
+.dz-shop-card .dz-tags li a{
+    color: #f2f2f2;
 }
 .page-item.active {
     color: #ffffff;

@@ -69,11 +69,10 @@ public class OrderController {
     }
     @GetMapping("/admin-orders/detail/{id}")
     public String viewOrderDetails(@PathVariable("id") Integer id, Model model,
-                                   RedirectAttributes ra, HttpServletRequest request) {
+                                   RedirectAttributes ra) {
         try {
             Order order = orderService.get(id);
             model.addAttribute("order", order);
-            model.addAttribute("book", order.getBooks());
 
             return "Admin/order_details_modal";
 
