@@ -17,7 +17,7 @@
                     <h1>Cart</h1>
                     <nav aria-label="breadcrumb" class="breadcrumb-row">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index"> Home</a></li>
+                            <li class="breadcrumb-item"><a href="/"> Home</a></li>
                             <li class="breadcrumb-item">Cart</li>
                         </ul>
                     </nav>
@@ -27,7 +27,7 @@
         <!-- inner page banner End-->
 
         <!-- contact area -->
-        <section class="content-inner shop-account">
+        <section class="content-inner shop-account mt-2">
             <!-- Product -->
             <div class="container">
                 <div class="row mb-5">
@@ -36,7 +36,6 @@
                             <table class="table check-tbl">
                                 <thead>
                                 <tr>
-                                    <th></th>
                                     <th>No.</th>
                                     <th>Product</th>
                                     <th>Product name</th>
@@ -50,11 +49,6 @@
                                 <tbody>
                                 <th:block th:each="carts, status:${carts}">
                                     <tr th:id="'row'+${status.count}">
-                                        <td>
-                                            <div class="form-check">
-                                                <input name="selectedItems" id = "selectedItems" th:value="${carts}" class="form-check-input" type="checkbox">
-                                            </div>
-                                        </td>
                                         <td class="divCount" th:text="${status.count} + '.'"></td>
                                         <td class="product-item-img">
                                             <a th:href="@{'/books-detail/' + ${carts.book.book_id}}">

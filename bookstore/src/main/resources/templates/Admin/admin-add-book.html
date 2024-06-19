@@ -25,6 +25,7 @@
                         <div class="iq-card-body">
                             <form th:action="@{/admin-add-book/save}" method="post" th:object="${book}" enctype="multipart/form-data" id="bookForm">
                                 <input type="hidden" th:field="*{book_id}">
+                                <input type="hidden" th:field="*{book_image}">
                                 <div class="form-group mb-4">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -63,8 +64,7 @@
                                                 <input type="file" class="custom-file-input" id="fileImage" name="bookImage" accept="image/*">
                                                 <label class="custom-file-label" for="fileImage">Choose file</label>
                                             </div>
-                                            <img class="img-fluid avatar-100 rounded mt-3" id="thumbnail" alt="Preview">
-                                            <div class="error" id="fileImageError"></div>
+                                            <img class="img-fluid avatar-100 rounded mt-3" id="thumbnail" alt="Preview" th:src="*{book_image}">
                                         </div>
                                         <div class="col-md-9">
                                             <label>Book Category:</label>

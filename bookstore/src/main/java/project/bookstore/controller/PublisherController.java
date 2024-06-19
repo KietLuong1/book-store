@@ -3,26 +3,13 @@ package project.bookstore.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import project.bookstore.entity.Author;
-import project.bookstore.entity.Category;
 import project.bookstore.entity.Publisher;
-import project.bookstore.exception.AuthorNotFoundException;
 import project.bookstore.exception.PublisherNotFoundException;
-import project.bookstore.service.AuthorService;
 import project.bookstore.service.PublisherService;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 public class PublisherController {
@@ -40,6 +27,7 @@ public class PublisherController {
     @GetMapping("/admin-add-publisher")
     public String showNewForm(Model model) {
         model.addAttribute("publisher", new Publisher());
+        model.addAttribute("pageTitle", "Add New Publisher");
 
         return "Admin/admin-add-publisher";
     }
@@ -56,7 +44,7 @@ public class PublisherController {
         try {
             Publisher publisher = service.get(id);
             model.addAttribute("publisher", publisher);
-            model.addAttribute("Edit", "Edit publisher (ID: " + id + ")");
+            model.addAttribute("pageTitle", "Edit publisher (ID: " + id + ")");
 
             return "Admin/admin-add-publisher";
         } catch (PublisherNotFoundException e) {

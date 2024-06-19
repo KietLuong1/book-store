@@ -1,14 +1,11 @@
 package project.bookstore.controller;
 
-import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import project.bookstore.entity.Author;
 import project.bookstore.entity.News;
 import project.bookstore.exception.NewsNotFoundException;
 import project.bookstore.service.CategoryService;
@@ -16,14 +13,7 @@ import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.NewsService;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
-import java.util.Objects;
-import org.jsoup.Jsoup;
 
 @Controller
 public class NewsController {
@@ -71,7 +61,7 @@ public class NewsController {
             News news = service.get(id);
             model.addAttribute("news", news);
             model.addAttribute("categories", categoryService.getAllCategories());
-            model.addAttribute("pageTitle", "Edit News (ID: " + id + ")");
+            model.addAttribute("pageTitle", "Edit Article (ID: " + id + ")");
 
             return "Admin/admin-add-news";
         } catch (NewsNotFoundException e) {
