@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-sm-6">
             <form th:action="@{/admin-add-order/save}" th:object="${order}" method="post">
-                <input type="hidden" th:field="*{address}" th:value="${order.address}"/>
+                <input type="hidden" th:field="*{orderAddress}" th:value="${order.orderAddress}"/>
                 <input type="hidden" th:field="*{user}" th:value="${order.user}"/>
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Order ID:</label>
@@ -61,13 +61,13 @@
         </div>
 
         <div class="col-sm-6">
-            <th:block th:each=" orderItem, status: ${order.books}">
-                <div class="row mb-3" th:with="book = ${orderItem}">
+            <th:block th:each=" orderItem, status: ${order.orderItems}">
+                <div class="row mb-3" th:with="book = ${orderItem.book}">
                     <div class="col-sm-1">
                         <div class="div-count" th:text="${status.count}"></div>
                     </div>
                     <div class="col-sm-3 d-flex justify-content-center align-items-center"><img
-                            th:src="@{${book.book_image}}" class="img-fluid"/></div>
+                            th:src="${book.book_image}" class="img-fluid" alt="book"/></div>
                     <div class="col-sm-8">
                         <div class="text-wrap">
                             <p class="inline" style="font-weight: bold; color: #0b0b0b; font-size: 20px"
@@ -78,18 +78,18 @@
                             <div class="inline" th:text="${book.salePrice}"/>
                         </div>
 
-<!--                        <div class="text-wrap">-->
-<!--                            <p class="inline">Subtotal: </p>-->
-<!--                            <div class="inline" th:text="${order.quantity}"/>-->
-<!--                            x-->
-<!--                            <div class="inline" th:text="${order.}"/>-->
-<!--                            =-->
-<!--                            <div class="inline" th:text="${orderItem.subtotal}"/>-->
-<!--                        </div>-->
+                        <div class="text-wrap">
+                            <p class="inline">Subtotal: </p>
+                            <div class="inline" th:text="${orderItem.quantity}"/>
+                            x
+                            <div class="inline" th:text="${orderItem.productCost}"/>
+                            =
+                            <div class="inline" th:text="${orderItem.subtotal}"/>
+                        </div>
 
                         <div class="text-wrap">
-<!--                            <p class="inline">Shipping Cost: </p>-->
-<!--                            <div class="inline" th:text="${orderItem.shippingCost}"/>-->
+                            <p class="inline">Shipping Cost: </p>
+                            <div class="inline" th:text="${orderItem.shippingCost}"/>
                         </div>
                     </div>
                 </div>

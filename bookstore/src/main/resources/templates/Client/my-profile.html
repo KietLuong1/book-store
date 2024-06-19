@@ -64,7 +64,7 @@
                                 <form th:action="@{'/profile/update'}" method="post">
                                     <input type="hidden" name="id" th:field="*{id}">
                                     <input type="hidden" name="email" th:field="*{email}">
-                                    <input type="hidden" name="email" th:field="*{password}">
+                                    <input type="hidden" name="password" th:field="*{password}">
                                     <input type="hidden" name="email" th:field="*{address.id}">
                                     <div class="row m-b30">
                                         <div class="col-lg-6 col-md-6">
@@ -78,21 +78,21 @@
                                             <div class="mb-3">
                                                 <label for="job" class="form-label">Last Name</label>
                                                 <input type="text" class="form-control" id="job"
-                                                       th:placeholder="${user.lastName}" th:field="*{lastName}">
+                                                       th:value="${user.lastName}" th:field="*{lastName}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
                                                 <label for="occupation" class="form-label">Occupation</label>
                                                 <input type="text" class="form-control" id="occupation"
-                                                       th:placeholder="${user.occupation}" th:field="*{occupation}">
+                                                       th:value="${user.occupation}" th:field="*{occupation}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
                                                 <label for="age" class="form-label">Age</label>
                                                 <input type="text" class="form-control" id="age"
-                                                       th:field="*{age}">
+                                                       th:field="*{age}" th:value="${user.age}">
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12">
@@ -100,7 +100,7 @@
                                                 <label for="description"
                                                        class="form-label">Short Description</label>
                                                 <textarea class="form-control" id="description" rows="5" maxlength="255"
-                                                          th:placeholder="${#strings.isEmpty(user.description)}?'Nothing here': ${user.description}"
+                                                          th:value="${#strings.isEmpty(user.description)}?'Nothing here': ${user.description}"
                                                           th:field="*{description}">
 													</textarea>
                                             </div>
@@ -114,7 +114,7 @@
                                             <div class="mb-3">
                                                 <label for="phone" class="form-label">Contact Number</label>
                                                 <input type="text" class="form-control" id="phone"
-                                                       th:placeholder="${user.phone}" th:field="*{phone}"
+                                                       th:value="${user.phone}" th:field="*{phone}"
                                                        maxlength="10">
                                             </div>
                                         </div>
@@ -161,7 +161,7 @@
                                             <div class="mb-4">
                                                 <label for="full-address" class="form-label">Address description</label>
                                                 <input type="text" class="form-control" id="full-address"
-                                                       th:placeholder="${#strings.isEmpty(user.address.description)}
+                                                       th:value="${#strings.isEmpty(user.address.description)}
                                                        ?'Example: No.X, Apartment Y, Street Z...':${user.address.description}"
                                                        th:field="*{address.description}">
                                             </div>

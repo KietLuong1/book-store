@@ -94,8 +94,8 @@
                                     <div>
                                         <ul class="dz-tags">
                                             <li>
-                                                <span th:each="category: ${book.categories}"
-                                                   th:text="${category.name}"></span>
+                                                <a class="badge" th:each="category: ${book.categories}"
+                                                   th:text="${category.name}"></a>
                                             </li>
                                         </ul>
                                         <h4 class="title mb-0 shortTitle">

@@ -12,9 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Cart;
 import project.bookstore.entity.Order;
+import project.bookstore.entity.OrderItems;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.enums.PaymentMethod;
@@ -66,24 +68,14 @@ public class CheckOutController {
                                      @AuthenticationPrincipal CustomUserDetails userDetails) {
         User user = userDetails.getUser();
         String email = user.getEmail();
+        Set<OrderItems> orderItems = getBookFromUser(user, order);
 
         order.setUser(user);
         order.setPaymentMethod(PaymentMethod.COD);
         order.setDeliverDays(3);
-        order.setUser(user);
-
-        Set<Order> orderSet = user.getOrders();
-        orderSet.add(order);
-        user.setOrders(orderSet);
-
-        List<Book> books = order.getBooks();
-        List<Cart> carts = cartService.listCart(user);
-
-        for (Cart cart : carts) {
-            books.add(cart.getBook());
-        }
-
-        order.setBooks(books);
+        order.setOrderItems(orderItems);
+        order.setTotalProductCost(calTotalProductCost(orderItems));
+        order.setTotal(calTotalProductCost(orderItems));
 
         try {
             sendMail(email);
@@ -100,7 +92,7 @@ public class CheckOutController {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        String subject = "[Bookland] Reset Your Password";
+        String subject = "[Bookland] Checkout Successfully";
         String content = "<p>Hello,</p>"
                 + "<br>"
                 + "<p>Thank you so much for your order! We truly appreciate your support and are excited for you to receive your items. " +
@@ -114,5 +106,34 @@ public class CheckOutController {
         helper.setText(content, true);
 
         mailSender.send(message);
+    }
+
+    private Set<OrderItems> getBookFromUser(User user, Order order) {
+        Set<OrderItems> books = new HashSet<>();
+        List<Cart> carts = cartService.listCart(user);
+
+        for (Cart cart : carts) {
+            Book book = cart.getBook();
+            OrderItems orderItems = new OrderItems();
+
+            orderItems.setBook(book);
+            orderItems.setQuantity(cart.getQuantity());
+            orderItems.setUnitPrice(book.getPrice());
+            orderItems.setSubtotal(book.getPrice() * cart.getQuantity());
+            orderItems.setProductCost(book.getPrice() * cart.getQuantity() - 0);
+            orderItems.setOrder(order);
+
+            books.add(orderItems);
+        }
+        return books;
+    }
+
+    private float calTotalProductCost(Set<OrderItems> books) {
+        float totalProductCost = 0;
+
+        for (OrderItems orderItems : books) {
+            totalProductCost += orderItems.getProductCost();
+        }
+        return totalProductCost;
     }
 }

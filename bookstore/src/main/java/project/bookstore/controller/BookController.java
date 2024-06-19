@@ -114,6 +114,15 @@ public class BookController {
         return "Client/books-list";
     }
 
+    @GetMapping("/books-grid-view/{category}")
+    public String getBookViewListByCategory(@PathVariable String category, Model model) {
+        Set<Book> listBooks = categoryService.findByCategoryName(category).getBooks();
+        listBooks.stream().sorted();
+        model.addAttribute("listBooks", listBooks);
+
+        return "Client/books-list";
+    }
+
     @GetMapping("/admin-books")
     public String getAllBook(Model model) {
         List<Book> listBooks = bookService.getAllBook();
