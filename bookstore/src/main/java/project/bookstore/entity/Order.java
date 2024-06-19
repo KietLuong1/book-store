@@ -2,10 +2,8 @@ package project.bookstore.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.transaction.Transactional;
+import lombok.*;
 import project.bookstore.entity.user.User;
 import project.bookstore.enums.OrderStatus;
 import project.bookstore.enums.PaymentMethod;
@@ -44,12 +42,11 @@ public class Order {
 
     private float shippingCost;
 
+    private float productCost;
+
     private float total;
 
     private String note;
-
-    @Column(name = "total_origin_price")
-    private float totalOriginPrice;
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
@@ -57,10 +54,27 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus = OrderStatus.NEW;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Book> items;
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @ManyToMany
+    @JoinTable(
+            name = "order_books",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
+    private List<Book> books;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private User user;
+
+    @Transactional
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    @Transactional
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
 }

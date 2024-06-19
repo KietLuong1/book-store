@@ -41,7 +41,6 @@ public class AuthorController {
     @GetMapping("/admin-add-author")
     public String showNewForm(Model model) {
         model.addAttribute("author", new Author());
-        model.addAttribute("pageTitle", "Add New Author");
 
         return "Admin/admin-add-author";
     }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head th:replace="Admin/admin-template.html :: header('Order Management')">
+<head th:replace="Admin/admin-template.html :: header('Books')">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">Orders List</h4>
+                                <h4 class="card-title">List Orders</h4>
                             </div>
 <!--                            <div class="iq-card-header-toolbar d-flex align-items-center">-->
 <!--                                <a th:href="@{'/admin-add-order'}" class="btn btn-primary">Add New Order</a>-->
@@ -45,7 +45,7 @@
                                     <th:block th:each="order : ${listOrders}">
                                         <tr>
                                             <td th:text="${order.id}"></td>
-                                            <td th:text="${order.getFullName}"></td>
+                                            <td th:text="${order.firstName}"></td>
                                             <td th:text="${order.lastName}"></td>
                                             <td th:text="${order.getCreatedDate}"></td>
                                             <td th:text="${order.orderStatus}"></td>

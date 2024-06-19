@@ -31,8 +31,8 @@
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Order date:</label>
                     <div class="col-sm-8">
-                        <input type="text" th:field="*{order_date}" readonly class="form-control"
-                               th:value="${order.order_date}">
+                        <input type="text" th:field="*{createdDate}" readonly class="form-control"
+                               th:value="${order.createdDate}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -61,8 +61,8 @@
         </div>
 
         <div class="col-sm-6">
-            <th:block th:each=" orderItem, status: ${order.orderItems}">
-                <div class="row" th:with="book = ${orderItem.book}">
+            <th:block th:each=" orderItem, status: ${order.books}">
+                <div class="row mb-3" th:with="book = ${orderItem}">
                     <div class="col-sm-1">
                         <div class="div-count" th:text="${status.count}"></div>
                     </div>
@@ -75,21 +75,21 @@
                         </div>
                         <div class="text-wrap">
                             <p class="inline">Product Cost: </p>
-                            <div class="inline" th:text="${orderItem.productCost}"/>
+                            <div class="inline" th:text="${book.salePrice}"/>
                         </div>
 
-                        <div class="text-wrap">
-                            <p class="inline">Subtotal: </p>
-                            <div class="inline" th:text="${orderItem.quantity}"/>
-                            x
-                            <div class="inline" th:text="${orderItem.unitPrice}"/>
-                            =
-                            <div class="inline" th:text="${orderItem.subtotal}"/>
-                        </div>
+<!--                        <div class="text-wrap">-->
+<!--                            <p class="inline">Subtotal: </p>-->
+<!--                            <div class="inline" th:text="${order.quantity}"/>-->
+<!--                            x-->
+<!--                            <div class="inline" th:text="${order.}"/>-->
+<!--                            =-->
+<!--                            <div class="inline" th:text="${orderItem.subtotal}"/>-->
+<!--                        </div>-->
 
                         <div class="text-wrap">
-                            <p class="inline">Shipping Cost: </p>
-                            <div class="inline" th:text="${orderItem.shippingCost}"/>
+<!--                            <p class="inline">Shipping Cost: </p>-->
+<!--                            <div class="inline" th:text="${orderItem.shippingCost}"/>-->
                         </div>
                     </div>
                 </div>

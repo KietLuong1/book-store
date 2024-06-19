@@ -48,6 +48,11 @@ function addBookValidateForm() {
         isValid = false;
     }
 
+    if ($('#fileImage').val().trim() === '') {
+        $('#fileImageError').text('Book Image is required.');
+        isValid = false;
+    }
+
     if ($('#publicationDate').val().trim() === '') {
         $('#publicationDateError').text('Book Publication Date is required.');
         isValid = false;

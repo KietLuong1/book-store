@@ -40,7 +40,6 @@ public class PublisherController {
     @GetMapping("/admin-add-publisher")
     public String showNewForm(Model model) {
         model.addAttribute("publisher", new Publisher());
-        model.addAttribute("pageTitle", "Add New Publisher");
 
         return "Admin/admin-add-publisher";
     }
@@ -57,7 +56,7 @@ public class PublisherController {
         try {
             Publisher publisher = service.get(id);
             model.addAttribute("publisher", publisher);
-            model.addAttribute("pageTitle", "Edit publisher (ID: " + id + ")");
+            model.addAttribute("Edit", "Edit publisher (ID: " + id + ")");
 
             return "Admin/admin-add-publisher";
         } catch (PublisherNotFoundException e) {

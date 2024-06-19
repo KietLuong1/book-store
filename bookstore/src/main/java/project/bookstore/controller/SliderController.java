@@ -35,7 +35,6 @@ public class SliderController {
     @GetMapping("/admin-add-slider")
     public String showNewForm(Model model) {
         model.addAttribute("slider", new Slider());
-        model.addAttribute("pageTitle", "Add New Slider");
 
         return "Admin/admin-add-slider";
     }

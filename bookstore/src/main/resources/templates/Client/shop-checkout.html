@@ -99,12 +99,12 @@
                                             </td>
 
                                             <td class="product-item-totle subtotal"
-                                                th:id="'subtotal' + ${item.book.book_id}"
-                                                th:text="'$ ' + ${item.subtotal}">
-                                                <input type="hidden" th:field="*{totalOriginPrice}" th:value="${item.subtotal}">
+                                                th:id="'subtotal' + ${item.book.book_id}">
+                                                <p th:text="'$ ' + ${item.subtotal}"></p>
                                             </td>
                                         </tr>
                                     </th:block>
+                                    <input type="hidden" th:field="*{books}" th:value="${carts}">
                                     </tbody>
                                 </table>
                             </div>
@@ -117,7 +117,14 @@
                                         <td>Free Shipping</td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td>Subtotal</td>
+                                        <td class="product-price-total" th:id="total"
+                                            th:text="'$ ' + ${estimatedTotal}">
+                                            <input type="hidden" th:field="*{productCost}" th:value="${estimatedTotal}">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Subtotal</td>
                                         <td class="product-price-total" th:id="total"
                                             th:text="'$ ' + ${estimatedTotal}">
                                             <input type="hidden" th:field="*{total}" th:value="${estimatedTotal}">
