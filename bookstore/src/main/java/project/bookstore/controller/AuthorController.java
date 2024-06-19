@@ -1,19 +1,11 @@
 package project.bookstore.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
-import java.util.Objects;
 
-import com.cloudinary.Cloudinary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,6 +33,7 @@ public class AuthorController {
     @GetMapping("/admin-add-author")
     public String showNewForm(Model model) {
         model.addAttribute("author", new Author());
+        model.addAttribute("pageTitle", "Add New Author");
 
         return "Admin/admin-add-author";
     }

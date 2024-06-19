@@ -23,56 +23,70 @@
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">Add New Article</h4>
+                                <h4 class="card-title">[[${pageTitle}]]</h4>
                             </div>
                         </div>
                         <div class="iq-card-body">
                             <form th:action="@{/admin-add-news/save}" method="post" th:object="${news}"
                                   enctype="multipart/form-data">
                                 <input type="hidden" th:field="*{id}">
-                                <div class="form-group">
-                                    <label>News Image:</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="fileImage" name="fileImage"
-                                               accept="image/*">
-                                        <label class="custom-file-label" for="fileImage">Choose file</label>
+                                <input type="hidden" th:field="*{newsImage}">
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>News Title: </label>
+                                            <input class="form-control" minlength="3" required
+                                                   type="text" th:field="*{title}">
+                                        </div>
                                     </div>
-                                    <img class="img-fluid avatar-100 rounded mt-3" id="thumbnail" alt="Preview">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Author: </label>
+                                            <input class="form-control" minlength="3" required
+                                                   type="text" th:field="*{author_news}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Publication date: </label>
+                                            <input type="date" class="form-control" required th:field="*{publication}">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Category:</label>
-                                    <div class="row">
-                                        <div class="col-md-3" th:each="category: ${categories}">
-                                            <input name="categories" type="checkbox" th:field="${news.categories}" th:value="${category.id}">
-                                            <label th:text="${category.name}"></label>
+                                <div class="row mb-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>News Image:</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="fileImage"
+                                                       name="fileImage"
+                                                       accept="image/*">
+                                                <label class="custom-file-label" for="fileImage">Choose file</label>
+                                            </div>
+                                            <img class="img-fluid avatar-100 rounded mt-3" id="thumbnail" alt="Preview"
+                                                 th:src="*{newsImage}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <label>Book Category:</label>
+                                        <div class="row">
+                                            <div class="col-md-3" th:each="category: ${categories}">
+                                                <input name="categories" type="checkbox" th:field="${news.categories}"
+                                                       th:value="${category.id}">
+                                                <label th:text="${category.name}"></label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Title: </label>
-                                    <input class="form-control" minlength="3" required
-                                           type="text" th:field="*{title}">
-                                </div>
-                                <div class="form-group">
-                                    <label>Author: </label>
-                                    <input class="form-control" minlength="3" required
-                                           type="text" th:field="*{author_news}">
-                                </div>
-                                <div class="form-group">
-                                    <label>Publication date: </label>
-                                    <input type="date" class="form-control" required th:field="*{publication}">
-                                </div>
-                                <div class="form-group">
                                     <label>Short Description:</label>
-                                    <textarea th:field="*{shortDescription}" class="form-control" id="description"
-                                         type="text"></textarea>
+                                    <textarea th:field="*{shortDescription}" class="form-control" id="description" type="text"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Full Description:</label>
-                                    <textarea th:field="*{description_news}" class="form-control"
-                                          id="fullDescription" type="text"></textarea>
+                                    <textarea th:field="*{description_news}" class="form-control" id="fullDescription" type="text"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary mr-3">Submit</button>
                                 <button type="reset" class="btn btn-danger">Reset</button>
                             </form>
                         </div>

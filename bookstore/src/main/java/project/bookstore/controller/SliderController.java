@@ -7,9 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import project.bookstore.entity.Author;
 import project.bookstore.entity.Slider;
-import project.bookstore.exception.AuthorNotFoundException;
 import project.bookstore.exception.SliderNotFoundException;
 import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.SliderService;
@@ -35,6 +33,7 @@ public class SliderController {
     @GetMapping("/admin-add-slider")
     public String showNewForm(Model model) {
         model.addAttribute("slider", new Slider());
+        model.addAttribute("pageTitle", "Add New Slider");
 
         return "Admin/admin-add-slider";
     }
