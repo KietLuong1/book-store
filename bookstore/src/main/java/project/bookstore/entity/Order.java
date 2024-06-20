@@ -63,4 +63,12 @@ public class Order {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address orderAddress = new Address();
+
+    public int getTotalQuantity() {
+        return orderItems.stream().mapToInt(OrderItems::getQuantity).sum();
+    }
+
+    public String getFirstBookImage() {
+        return orderItems.stream().findFirst().map(OrderItems::getFirstBookImage).orElse(null);
+    }
 }
