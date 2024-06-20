@@ -26,6 +26,7 @@ public class AuthorController {
     public String showBookCategory(Model model) {
         List<Author> authors = service.listAll();
         model.addAttribute("authors", authors);
+        model.addAttribute("pageTitle","Author List");
 
         return "Admin/admin-author";
     }

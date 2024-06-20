@@ -20,7 +20,7 @@ public class PublisherController {
     public String showPublishers(Model model) {
         List<Publisher> listPublishers = service.getAllPublisher();
         model.addAttribute("listPublisher", listPublishers);
-
+        model.addAttribute("pageTitle", "Publisher List");
         return "Admin/admin-publisher";
     }
 

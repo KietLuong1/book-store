@@ -127,6 +127,7 @@ public class BookController {
     public String getAllBook(Model model) {
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
+        model.addAttribute("pageTitle", "Book List");
         return "Admin/admin-books";
     }
 

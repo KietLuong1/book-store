@@ -225,6 +225,9 @@ function showImageThumbnail(fileInput) {
             fixedContentPos: false
         });
 
+        // jQuery(document).ready(function () {
+        //     $('#scrollspy-container').scrollspy({ target: '#list-example', offset: 0 });
+        // });
 
         /*---------------------------------------------------------------------
         Ripple Effect

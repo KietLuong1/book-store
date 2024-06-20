@@ -21,11 +21,11 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-
     @GetMapping("/admin-orders")
     public String getAllBook(Model model) {
         List<Order> listOrders = orderService.getAllOrders();
         model.addAttribute("listOrders", listOrders);
+        model.addAttribute("pageTitle", "Order List");
         return "Admin/admin-orders";
     }
 
