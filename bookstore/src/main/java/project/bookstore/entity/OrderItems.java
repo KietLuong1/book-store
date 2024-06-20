@@ -33,4 +33,8 @@ public class OrderItems {
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
+
+    public String getFirstBookImage() {
+        return book.getBook_image();
+    }
 }

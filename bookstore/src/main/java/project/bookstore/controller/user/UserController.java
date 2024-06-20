@@ -101,14 +101,6 @@ public class UserController {
         return "redirect:/profile";
     }
 
-    @GetMapping("/order-history")
-    public String getOrderHistory(Model model) {
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
-
-        return "Client/order-history";
-    }
-
     // User Management in Admin pages
     @GetMapping("/user-management")
     public String getAllUsers(Model model ) {

@@ -44,7 +44,7 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider());
 
                 http.authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/profile", "/order-history", "/shop-checkout"
+                        auth.requestMatchers("/profile", "/order-history**", "/shop-checkout"
                                         , "/shop-cart/**", "/wishlist").authenticated()
                                 .anyRequest().permitAll())
                 .formLogin(login ->

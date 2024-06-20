@@ -82,13 +82,13 @@
                                 </div>
                                 <div class="text-wrap">
                                     <p class="inline">Product Cost: </p>
-                                    <div class="inline" th:text="${book.salePrice}"/>
+                                    <div class="inline" th:text="${orderItem.unitPrice}"/>
                                 </div>
                                 <div class="text-wrap">
                                     <p class="inline">Subtotal: </p>
                                     <div class="inline" th:text="${orderItem.quantity}"/>
                                     x
-                                    <div class="inline" th:text="${orderItem.productCost}"/>
+                                    <div class="inline" th:text="${orderItem.unitPrice}"/>
                                     =
                                     <div class="inline" th:text="${orderItem.subtotal}"/>
                                 </div>
