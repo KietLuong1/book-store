@@ -20,9 +20,6 @@
                 <div class="col-sm-12">
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
-                            <div class="iq-header-title">
-                                <h4 class="card-title">List Sliders</h4>
-                            </div>
                             <div class="iq-card-header-toolbar d-flex align-items-center">
                                 <a th:href="@{'/admin-add-slider'}" class="btn btn-primary">Add New Slider</a>
                             </div>
@@ -34,9 +31,9 @@
                                     <tr>
                                         <th style="width: 5%;">No</th>
                                         <th style="width: 15%;">Image URL</th>
-                                        <th style="width: 15%;">Title</th>
+                                        <th style="width: 20%;">Title</th>
                                         <th style="width: 50%;">Description</th>
-                                        <th style="width: 15%;">Action</th>
+                                        <th style="width: 10%;">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -49,7 +46,7 @@
                                             <td th:text="${slider.title}"></td>
                                             <td th:text="${slider.description}"></td>
                                             <td>
-                                                <div class="flex align-items-center list-user-action">
+                                                <div class="flex align-items-center list-user-action text-center">
                                                     <a class="bg-primary" data-toggle="tooltip" data-placement="top"
                                                        title=""
                                                        data-original-title="Edit"

@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import project.bookstore.entity.user.User;
 import project.bookstore.entity.user.CustomUserDetails;
+import project.bookstore.enums.UserStatus;
 import project.bookstore.repository.UserRepository;
 
 import java.util.List;
@@ -25,6 +26,17 @@ public class UserService implements UserDetailsService {
 
     public void delete(long userId){
         userRepository.deleteById(userId);
+    }
+
+    public void changeUserStatus(Long userId, UserStatus userStatus) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setUserStatus(userStatus);
+            userRepository.save(user);
+        } else {
+            throw new IllegalArgumentException("Invalid user ID");
+        }
     }
 
     @Override

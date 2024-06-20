@@ -27,6 +27,7 @@ public class SliderController {
     public String showSliderAdmin(Model model) {
         List<Slider> sliders = sliderService.getAllSlides();
         model.addAttribute("sliders", sliders);
+        model.addAttribute("pageTitle","Sliders");
         return "Admin/admin-sliders";
     }
 

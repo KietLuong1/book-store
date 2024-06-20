@@ -54,6 +54,16 @@
     appearance: none;
 }
 
+.order-books {
+    height: 40vh;
+    overflow-y: scroll;
+}
+
+/*.scrollspy-example {*/
+/*    position: relative;*/
+/*    height: 500px;*/
+/*    overflow: auto;*/
+/*}*/
 @media (prefers-reduced-motion: reduce) {
     .form-select {
         transition: none;

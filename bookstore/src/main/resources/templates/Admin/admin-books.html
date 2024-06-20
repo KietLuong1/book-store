@@ -20,9 +20,6 @@
                 <div class="col-sm-12">
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
-                            <div class="iq-header-title">
-                                <h4 class="card-title">Books List</h4>
-                            </div>
                             <div class="iq-card-header-toolbar d-flex align-items-center">
                                 <a th:href="@{'/admin-add-book'}" class="btn btn-primary">Add New Book</a>
                             </div>
@@ -35,13 +32,12 @@
                                         <th style="width: 3%;">No</th>
                                         <th style="width: 25%;">Name</th>
                                         <th style="width: 10%;">Image</th>
-                                        <th style="width: 12%;">Category</th>
+                                        <th style="width: 10%;">Category</th>
                                         <th style="width: 12%;">Author</th>
-                                        <th style="width: 7%;">Price</th>
+                                        <th style="width: 5%;">Price</th>
                                         <th style="width: 5%;">Quantity</th>
-                                        <th style="width: 7%;">Language</th>
-                                        <th style="width: 12%;">Publication Date</th>
-                                        <th style="width: 23%;">Action</th>
+                                        <th style="width: 15%;">Publication Date</th>
+                                        <th style="width: 15%;">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -61,10 +57,9 @@
                                             <td th:text="${book.author.name}"></td>
                                             <td th:text="'$ ' + ${book.price}"></td>
                                             <td th:text="${book.quantity}"></td>
-                                            <td th:text="${book.language}"></td>
                                             <td th:text="${book.publication_date}"></td>
                                             <td>
-                                                <div class="flex align-items-center list-user-action">
+                                                <div class="flex align-items-center list-user-action text-center">
                                                     <a class="bg-primary" data-toggle="tooltip" data-placement="top"
                                                        title=""
                                                        data-original-title="Edit"

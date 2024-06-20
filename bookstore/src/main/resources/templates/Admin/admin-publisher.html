@@ -18,9 +18,6 @@
                 <div class="col-sm-12">
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
-                            <div class="iq-header-title">
-                                <h4 class="card-title">List Publishers</h4>
-                            </div>
                             <div class="iq-card-header-toolbar d-flex align-items-center">
                                 <a th:href="@{'/admin-add-publisher'}" class="btn btn-primary">Add New Publisher</a>
                             </div>
@@ -32,9 +29,9 @@
                                     <tr>
                                         <th style="width: 5%;">No</th>
                                         <th style="width: 20%">Publisher Name</th>
-                                        <th style="width: 15%">Country</th>
+                                        <th style="width: 10%">Country</th>
                                         <th style="width: 25%">Address</th>
-                                        <th style="width: 20%">Email</th>
+                                        <th style="width: 25%">Email</th>
                                         <th style="width: 15%">Action</th>
                                     </tr>
                                     </thead>
@@ -47,7 +44,7 @@
                                             <td th:text="${publisher.publisher_address}"></td>
                                             <td th:text="${publisher.publisher_email}"></td>
                                             <td>
-                                                <div class="flex align-items-center list-user-action">
+                                                <div class="flex align-items-center list-user-action text-center">
                                                     <a class="bg-primary" data-toggle="tooltip" data-placement="top"
                                                        title=""
                                                        data-original-title="Edit"

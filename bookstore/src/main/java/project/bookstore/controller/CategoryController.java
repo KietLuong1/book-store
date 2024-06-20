@@ -25,7 +25,7 @@ public class CategoryController {
     public String showBookCategory(Model model) {
         List<Category> listCategories = service.getAllCategories();
         model.addAttribute("listCategories", listCategories);
-
+        model.addAttribute("pageTitle", "Category List");
         return "Admin/admin-category";
     }
 

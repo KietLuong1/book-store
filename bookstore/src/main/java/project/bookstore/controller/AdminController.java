@@ -1,13 +1,15 @@
 package project.bookstore.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AdminController {
 
     @GetMapping("/admin-dashboard")
-    public String getDashboard() {
+    public String getDashboard(Model model) {
+        model.addAttribute("pageTitle", "Dashboard");
         return "Admin/admin-dashboard";
     }
 

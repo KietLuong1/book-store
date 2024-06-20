@@ -111,9 +111,10 @@ public class UserController {
 
     // User Management in Admin pages
     @GetMapping("/user-management")
-    public String getAllUsers(Model model) {
+    public String getAllUsers(Model model ) {
         List<User> listUsers = userService.getAllUsers();
         model.addAttribute("listUsers", listUsers);
+        model.addAttribute("pageTitle","User List");
         return "Admin/user-management";
     }
 

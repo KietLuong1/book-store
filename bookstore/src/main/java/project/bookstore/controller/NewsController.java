@@ -28,7 +28,7 @@ public class NewsController {
     public String showNews(Model model) {
         List<News> listNews = service.listAll();
         model.addAttribute("listNews", listNews);
-
+model.addAttribute("pageTitle","Article List");
         return "Admin/admin-news";
     }
 
