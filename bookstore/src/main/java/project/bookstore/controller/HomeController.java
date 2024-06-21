@@ -43,6 +43,34 @@ public class HomeController {
     @Autowired
     private NewsService newsService;
 
+    // Get all needed information from DB and show to all pages
+    
+    @ModelAttribute
+    public void showInformation(Model model){
+        //notification if user log in or not
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+            // Get Shopping Cart Total Number Of Items
+            int numberOfCartItems = cartService.getTotalNumberOfItems(userDetails.getUser());
+            model.addAttribute("numberOfCartItems", numberOfCartItems);
+        }
+
+        // Get All Categories Name from DB to Homepage
+        List<Category> listCategoriesName = categoryService.getAllCategories();
+        model.addAttribute("listCategoriesName", listCategoriesName);
+
+        // Get All Books from DB to Homepage
+        List<Book> listBooks = bookService.getAllBook();
+        model.addAttribute("listBooks", listBooks);
+
+        // Get All Sliders from DB to Homepage
+        List<Slider> sliders = sliderService.getSelectedSlider();
+        model.addAttribute("sliders", sliders);
+    }
+
     @GetMapping("/")
     public String home() {
         return "Client/index";

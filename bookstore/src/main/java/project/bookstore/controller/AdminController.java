@@ -7,18 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminController {
 
-    @GetMapping("admin/login")
-    public String getLogin(){
-        return "Admin/admin-login";
-    }
-
-    @GetMapping("/admin/dashboard")
+    @GetMapping("/admin-dashboard")
     public String getDashboard(Model model) {
         model.addAttribute("pageTitle", "Dashboard");
         return "Admin/admin-dashboard";
     }
 
-    @GetMapping("/admin/profile")
+    @GetMapping("/admin-profile")
     public String getProfile() {
         return "Admin/admin-profile";
     }

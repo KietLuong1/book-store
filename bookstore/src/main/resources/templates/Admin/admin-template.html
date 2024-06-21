@@ -28,29 +28,31 @@
     <!-- Sidebar  -->
     <div th:fragment="sidebar" class="iq-sidebar">
         <div class="iq-sidebar-logo d-flex justify-content-between">
-            <a href="/admin/dashboard" class="header-logo">
+            <a href="/admin-dashboard" class="header-logo">
                 <img src="/Admin/images/logo.png" class="img-fluid rounded-normal" alt="">
             </a>
 
-<!--            <div class="iq-menu-bt-sidebar">-->
-<!--                <div class="iq-menu-bt align-self-center">-->
-<!--                    <div class="wrapper-menu">-->
-<!--                        <div class="main-circle"><i class="las la-bars"></i></div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div class="iq-menu-bt-sidebar">
+                <div class="iq-menu-bt align-self-center">
+                    <div class="wrapper-menu">
+                        <div class="main-circle"><i class="las la-bars"></i></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="sidebar-scrollbar">
             <nav class="iq-sidebar-menu">
                 <ul id="iq-sidebar-toggle" class="iq-menu">
-                    <li><a href="/admin/dashboard"> <i class="las la-house-damage"></i>Dashboard</a></li>
-                    <li><a href="/admin/books"><i class="ri-file-pdf-line"></i>Books</a></li>
-                    <li><a href="/admin/category"><i class="ri-function-line"></i>Books Category</a></li>
-                    <li><a href="/admin/orders"><i class="ri-file-text-line"></i>Order Management</a></li>
-                    <li><a href="/admin/user-management"><i class="lar la-address-book"></i>User Management</a></li>
-                    <li><a href="/admin/news"><i class="ri-article-line"></i>News</a></li>
-                    <li><a href="/admin/sliders"><i class="ri-file-list-3-line"></i>Sliders</a></li>
+                    <li><a href="/admin-dashboard"> <i class="las la-house-damage"></i>Dashboard</a></li>
+                    <li><a href="/admin-author"><i class="ri-book-line"></i>Author</a></li>
+                    <li><a href="/admin-publisher"><i class="ri-product-hunt-line"></i>Publisher</a></li>
+                    <li><a href="/admin-books"><i class="ri-file-pdf-line"></i>Books</a></li>
+                    <li><a href="/admin-category"><i class="ri-function-line"></i>Books Category</a></li>
+                    <li><a href="/admin-orders"><i class="ri-file-text-line"></i>Order Management</a></li>
+                    <li><a href="/user-management"><i class="lar la-address-book"></i>User Management</a></li>
+                    <li><a href="/admin-news"><i class="ri-article-line"></i>News</a></li>
+                    <li><a href="/admin-sliders"><i class="ri-file-list-3-line"></i>Sliders</a></li>
                 </ul>
             </nav>
         </div>
@@ -66,7 +68,7 @@
                         <div class="main-circle"><i class="las la-bars"></i></div>
                     </div>
                     <div class="iq-navbar-logo d-flex justify-content-between">
-                        <a href="/admin/dashboard" class="header-logo">
+                        <a href="/admin-dashboard" class="header-logo">
                             <img src="/Admin/images/logo.png" class="img-fluid rounded-normal" alt="">
                         </a>
                     </div>
@@ -175,13 +177,13 @@
 
 <!-- Footer -->
 <div th:fragment="footer">
-    <footer class="iq-footer ml-0">
+    <footer class="iq-footer">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 text-right">Copyright <span id="copyright">
                      <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
-                  </span> <a href="/admin/dashboard">Bookland Store</a> All Rights Reserved
+                  </span> <a href="/admin-dashboard">Bookland Store</a> All Rights Reserved
                 </div>
             </div>
         </div>
@@ -243,7 +245,7 @@
     <script src="/Admin/js/chart-custom.js"></script>
     <!-- Custom JavaScript -->
     <script src="/Admin/js/custom.js"></script>
-<!--    <script src="../../static/Client/js/custom.js"></script>-->
+    <!--    <script src="../../static/Client/js/custom.js"></script>-->
     <!--Rich text editor JS-->
     <script src="/Admin/richtext/jquery.richtext.min.js"></script>
     <script src="/Admin/richtext/jquery.richtext.js"></script>

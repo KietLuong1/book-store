@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,18 +68,9 @@ public class ForgotPasswordController {
 
     @PostMapping("/reset-password")
     public String processForgetPassword(HttpServletRequest request, RedirectAttributes ra) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String token = request.getParameter("token");
         String password = request.getParameter("password");
 
-        if(!(authentication == null || authentication instanceof AnonymousAuthenticationToken)){
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            String newPassword = encoder.encode(password);
-            CustomUserDetails userDetails = (CustomUserDetails)  authentication.getPrincipal();
-            User user  = userDetails.getUser();
-
-            userService.updatePassword(newPassword, user.getEmail());
-        }
-        String token = request.getParameter("token");
         User user = userService.getUserByResetPasswordToken(token);
 
         if (user == null){
@@ -91,10 +79,16 @@ public class ForgotPasswordController {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             String newPassword = encoder.encode(password);
 
+            System.out.println(password);
             userService.updatePassword(newPassword, user.getEmail());
 
             ra.addFlashAttribute("message","Change password successfully");
         }
+
+        if (request.getRequestURI().equals("/profile")){
+            return "redirect:/profile";
+        }
+
         return "redirect:/client-login";
     }
 

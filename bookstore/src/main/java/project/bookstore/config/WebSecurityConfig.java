@@ -2,7 +2,6 @@ package project.bookstore.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -15,9 +14,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import project.bookstore.service.UserService;
 
 @Configuration
-@Order(2)
 @EnableWebSecurity
-public class ClientSecurityConfig {
+public class WebSecurityConfig {
 
 
     @Bean
@@ -45,9 +43,8 @@ public class ClientSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authenticationProvider(authenticationProvider());
 
-                http.securityMatcher("/**").
-                        authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/profile", "/order-history", "/shop-checkout"
+                http.authorizeHttpRequests(auth ->
+                        auth.requestMatchers("/profile", "/order-history**", "/shop-checkout"
                                         , "/shop-cart/**", "/wishlist").authenticated()
                                 .anyRequest().permitAll())
                 .formLogin(login ->

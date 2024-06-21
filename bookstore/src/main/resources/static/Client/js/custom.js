@@ -246,19 +246,6 @@ var Bookland = function () {
         });
     }
 
-    /* Show Change Password Form */
-    var showChangePasswordForm = () =>{
-        var triggerTabList = [].slice.call(document.querySelectorAll('#profile-functions li a'))
-        triggerTabList.forEach(function (triggerEl) {
-            var tabTrigger = new bootstrap.Tab(triggerEl)
-
-            triggerEl.addEventListener('click', function (event) {
-                event.preventDefault()
-                tabTrigger.show()
-            })
-        })
-    }
-
     /* check Password Match */
     var checkPassword = () => $('#confirm-password').on("input", function () {
         console.log($(this).val());
@@ -1006,7 +993,6 @@ var Bookland = function () {
             loadData();
             myWidget();
             handleSelectedItems();
-            showChangePasswordForm();
         },
 
         load: function () {

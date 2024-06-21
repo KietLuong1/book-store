@@ -37,10 +37,4 @@ public class BookService {
         bookReposiory.deleteById(id);
     }
 
-    public List<Book> searchByBookNameAndCategory(String bookName, String categoryName){
-        if (categoryName.equalsIgnoreCase("All")){
-            return bookReposiory.findByNameContainingIgnoreCase(bookName);
-        }
-        return bookReposiory.findByNameAndCategory(bookName, categoryName);
-    }
 }

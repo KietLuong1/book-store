@@ -23,7 +23,7 @@ public class SliderController {
     @Autowired
     private CloudinaryService cloudinaryService;
 
-    @GetMapping("/admin/sliders")
+    @GetMapping("/admin-sliders")
     public String showSliderAdmin(Model model) {
         List<Slider> sliders = sliderService.getAllSlides();
         model.addAttribute("sliders", sliders);
@@ -31,7 +31,7 @@ public class SliderController {
         return "Admin/admin-sliders";
     }
 
-    @GetMapping("/admin/add-slider")
+    @GetMapping("/admin-add-slider")
     public String showNewForm(Model model) {
         model.addAttribute("slider", new Slider());
         model.addAttribute("pageTitle", "Add New Slider");
@@ -39,7 +39,7 @@ public class SliderController {
         return "Admin/admin-add-slider";
     }
 
-    @PostMapping("admin/add-slider/save")
+    @PostMapping("admin-add-slider/save")
     public String saveAuthor(@ModelAttribute(name = "slider") Slider slider, RedirectAttributes ra,
                              @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
         Slider saveSlider = sliderService.save(slider);
@@ -52,7 +52,7 @@ public class SliderController {
         return "redirect:/admin-sliders";
     }
 
-    @GetMapping("/admin/sliders/edit/{id}")
+    @GetMapping("/admin-sliders/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
             Slider slider = sliderService.get(id);
@@ -66,7 +66,7 @@ public class SliderController {
         }
     }
 
-    @GetMapping("/admin/sliders/delete/{id}")
+    @GetMapping("/admin-sliders/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             sliderService.delete(id);

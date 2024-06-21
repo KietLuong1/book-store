@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import project.bookstore.entity.user.User;
 import project.bookstore.entity.user.CustomUserDetails;
-import project.bookstore.enums.Role;
 import project.bookstore.enums.UserStatus;
 import project.bookstore.repository.UserRepository;
 
@@ -22,7 +21,7 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepository;
 
     public List<User> getAllUsers(){
-        return userRepository.getAllUsers(Role.USER);
+        return userRepository.findAll();
     }
 
     public void delete(long userId){

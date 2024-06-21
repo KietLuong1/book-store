@@ -102,7 +102,7 @@ public class UserController {
     }
 
     // User Management in Admin pages
-    @GetMapping("/admin/user-management")
+    @GetMapping("/user-management")
     public String getAllUsers(Model model ) {
         List<User> listUsers = userService.getAllUsers();
         model.addAttribute("listUsers", listUsers);
@@ -110,27 +110,27 @@ public class UserController {
         return "Admin/user-management";
     }
 
-    @RequestMapping("/admin/user-management/user-detail/{id}")
+    @RequestMapping("/user-management/user-detail/{id}")
     public String getUserDetail(@PathVariable("id") Long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "Admin/user-detail";
     }
 
-    @RequestMapping("/admin/user-management/delete/{id}")
+    @RequestMapping("/user-management/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.delete(id);
         return "redirect:/user-management";
     }
 
-    @GetMapping("/admin/user-management/edit/{id}")
+    @GetMapping("/user-management/edit/{id}")
     public String editUser(@PathVariable("id") Long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "Admin/user-edit";
     }
 
-    @PostMapping("/admin/user-management/update")
+    @PostMapping("/user-management/update")
     public String updateUser(@ModelAttribute(name = "user") User user) {
             userService.save(user);
         return "redirect:/user-management";

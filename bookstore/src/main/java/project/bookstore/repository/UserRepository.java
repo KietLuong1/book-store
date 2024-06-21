@@ -6,9 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import project.bookstore.entity.user.User;
-import project.bookstore.enums.Role;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -26,6 +24,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("update User u set  u.password =?1, u.resetPasswordToken = null where u.email =?2")
     void updatePassword(String password, String email);
 
-    @Query("select u from User  u where u.role = ?1")
-    List<User> getAllUsers(Role role);
+    @Query("select u from User u join fetch u.orders where u.id=(:id)")
+    void fetchLazy();
 }
