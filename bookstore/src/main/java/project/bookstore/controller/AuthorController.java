@@ -22,7 +22,7 @@ public class AuthorController {
     @Autowired
     private CloudinaryService cloudinaryService;
 
-    @GetMapping("/admin-author")
+    @GetMapping("/admin/author")
     public String showBookCategory(Model model) {
         List<Author> authors = service.listAll();
         model.addAttribute("authors", authors);
@@ -31,7 +31,7 @@ public class AuthorController {
         return "Admin/admin-author";
     }
 
-    @GetMapping("/admin-add-author")
+    @GetMapping("/admin/add-author")
     public String showNewForm(Model model) {
         model.addAttribute("author", new Author());
         model.addAttribute("pageTitle", "Add New Author");
@@ -39,7 +39,7 @@ public class AuthorController {
         return "Admin/admin-add-author";
     }
 
-    @PostMapping("admin-add-author/save")
+    @PostMapping("admin/add-author/save")
     public String saveAuthor(@ModelAttribute(name = "author") Author author, RedirectAttributes ra,
                              @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
         Author savedAuthor = service.save(author);
@@ -52,7 +52,7 @@ public class AuthorController {
         return "redirect:/admin-author";
     }
 
-    @GetMapping("/admin-author/edit/{id}")
+    @GetMapping("/admin/author/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
             Author author = service.get(id);
@@ -66,7 +66,7 @@ public class AuthorController {
         }
     }
 
-    @GetMapping("/admin-author/delete/{id}")
+    @GetMapping("/admin/author/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             service.delete(id);

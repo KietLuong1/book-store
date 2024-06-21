@@ -8,25 +8,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import project.bookstore.entity.Author;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Category;
-import project.bookstore.entity.Slider;
-import project.bookstore.entity.Slider;
-import project.bookstore.entity.user.CustomUserDetails;
-import project.bookstore.entity.user.User;
 import project.bookstore.exception.CategoryNotFoundException;
-import project.bookstore.repository.CategoryRepository;
 import project.bookstore.service.*;
 
 @Controller
@@ -41,10 +31,6 @@ public class BookController {
     private AuthorService authorService;
     @Autowired
     private CloudinaryService cloudinaryService;
-    @Autowired
-    private CartService cartService;
-    @Autowired
-    private SliderService sliderService;
 
     @ModelAttribute
     public void showInformation(Model model, Integer page, Integer size) {
@@ -54,21 +40,6 @@ public class BookController {
         if (size == null || size <= 0) {
             size = 5;
         }
-        // notification if user log in or not
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (!(authentication == null || authentication instanceof AnonymousAuthenticationToken)) {
-
-            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-
-            // Get Shopping Cart Total Number Of Items
-            int numberOfCartItems = cartService.getTotalNumberOfItems(userDetails.getUser());
-            model.addAttribute("numberOfCartItems", numberOfCartItems);
-        }
-
-        // Get All Categories Name from DB to Homepage
-        List<Category> listCategoriesName = categoryService.getAllCategories();
-        model.addAttribute("listCategoriesName", listCategoriesName);
 
         // Get All Books from DB to Homepage
         Pageable pageable = PageRequest.of(page, size);
@@ -76,10 +47,15 @@ public class BookController {
         model.addAttribute("newsPage", newsPage.getContent());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", newsPage.getTotalPages());
+    }
 
-        // Get All Sliders from DB to Homepage
-        List<Slider> sliders = sliderService.getSelectedSlider();
-        model.addAttribute("sliders", sliders);
+    @GetMapping("/book-search")
+    public String searchBook(@RequestParam("search") String bookName,
+                             @RequestParam("categoryName") String categoryName,
+                             Model model){
+        model.addAttribute("listCategoriesName",
+                bookService.searchByBookNameAndCategory(bookName, categoryName));
+        return "Client/books-list";
     }
 
     @GetMapping("/books-list")
@@ -118,12 +94,13 @@ public class BookController {
     public String getBookViewListByCategory(@PathVariable String category, Model model) {
         Set<Book> listBooks = categoryService.findByCategoryName(category).getBooks();
         listBooks.stream().sorted();
+
         model.addAttribute("listBooks", listBooks);
 
         return "Client/books-list";
     }
 
-    @GetMapping("/admin-books")
+    @GetMapping("/admin/books")
     public String getAllBook(Model model) {
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
@@ -142,7 +119,7 @@ public class BookController {
         return "Client/books-detail";
     }
 
-    @RequestMapping("/admin-books/edit/{id}")
+    @RequestMapping("/admin/books/edit/{id}")
     public String editBook(@PathVariable("id") Integer id, Model model) {
         Book book = bookService.getBookById(id);
         model.addAttribute("book", book);
@@ -154,13 +131,13 @@ public class BookController {
         return "Admin/admin-add-book";
     }
 
-    @RequestMapping("/admin-books/delete/{id}")
+    @RequestMapping("/admin/books/delete/{id}")
     public String deleteBook(@PathVariable("id") Integer id) {
         bookService.deleteById(id);
         return "redirect:/admin-books";
     }
 
-    @GetMapping("/admin-add-book")
+    @GetMapping("/admin/add-book")
     public String showNewTitle(Model model) {
         model.addAttribute("book", new Book());
         model.addAttribute("pageTitle", "Add New Book");
@@ -171,7 +148,7 @@ public class BookController {
         return "Admin/admin-add-book";
     }
 
-    @PostMapping("/admin-add-book/save")
+    @PostMapping("/admin/add-book/save")
     public String saveBook(@ModelAttribute(name = "book") Book book,
             @RequestParam("bookImage") MultipartFile multipartFile,
             @RequestParam(name = "categories") Set<String> categories) throws IOException {
