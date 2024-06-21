@@ -1,23 +1,19 @@
 package project.bookstore.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.*;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
-import project.bookstore.exception.AuthorNotFoundException;
 import project.bookstore.exception.OrderNotFoundException;
 import project.bookstore.service.CategoryService;
 import project.bookstore.service.OrderService;
 import project.bookstore.service.UserService;
 
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -33,7 +29,7 @@ public class OrderController {
     CategoryService categoryService;
 
     // Order Controller In Admin
-    @GetMapping("/admin-orders")
+    @GetMapping("/admin/orders")
     public String getAllBook(Model model) {
         List<Order> listOrders = orderService.getAllOrders();
         model.addAttribute("listOrders", listOrders);
@@ -41,21 +37,21 @@ public class OrderController {
         return "Admin/admin-orders";
     }
 
-    @GetMapping("/admin-add-order")
+    @GetMapping("/admin/add-order")
     public String showNewForm(Model model) {
         model.addAttribute("order", new Order());
 
         return "Admin/admin-add-order";
     }
 
-    @PostMapping("/admin-add-order/save")
+    @PostMapping("/admin/add-order/save")
     public String saveOrder(Order order, RedirectAttributes ra) {
         orderService.save(order);
         ra.addFlashAttribute("message", "The order has been saved successfully");
         return "redirect:/admin-orders";
     }
 
-    @GetMapping("/admin-orders/edit/{id}")
+    @GetMapping("/admin/orders/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
             Order order = orderService.get(id);
@@ -69,7 +65,7 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/admin-orders/delete/{id}")
+    @GetMapping("/admin/orders/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             orderService.delete(id);
@@ -80,7 +76,7 @@ public class OrderController {
         return "redirect:/admin-orders";
     }
 
-    @GetMapping("/admin-orders/detail/{id}")
+    @GetMapping("/admin/orders/detail/{id}")
     public String viewOrderDetails(@PathVariable("id") Integer id, Model model,
                                    RedirectAttributes ra) {
         try {

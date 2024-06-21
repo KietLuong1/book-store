@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Category;
+import project.bookstore.entity.Slider;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.service.*;
 
@@ -19,6 +20,7 @@ public class GlobalModelAttributes {
     @Autowired private BookService bookService;
     @Autowired private CategoryService categoryService;
     @Autowired private CartService cartService;
+    @Autowired private SliderService sliderService;
 
     @ModelAttribute
     public void showInformation(Model model){
@@ -40,5 +42,9 @@ public class GlobalModelAttributes {
         // Get All Books from DB to Homepage
         List<Book> listBooks = bookService.getAllBook();
         model.addAttribute("listBooks", listBooks);
+
+        // Get All Sliders from DB to Homepage
+        List<Slider> sliders = sliderService.getSelectedSlider();
+        model.addAttribute("sliders", sliders);
     }
 }

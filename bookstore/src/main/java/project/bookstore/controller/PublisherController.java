@@ -16,7 +16,7 @@ public class PublisherController {
     @Autowired
     private PublisherService service;
 
-    @GetMapping("/admin-publisher")
+    @GetMapping("/admin/publisher")
     public String showPublishers(Model model) {
         List<Publisher> listPublishers = service.getAllPublisher();
         model.addAttribute("listPublisher", listPublishers);
@@ -24,7 +24,7 @@ public class PublisherController {
         return "Admin/admin-publisher";
     }
 
-    @GetMapping("/admin-add-publisher")
+    @GetMapping("/admin/add-publisher")
     public String showNewForm(Model model) {
         model.addAttribute("publisher", new Publisher());
         model.addAttribute("pageTitle", "Add New Publisher");
@@ -32,14 +32,14 @@ public class PublisherController {
         return "Admin/admin-add-publisher";
     }
 
-    @PostMapping("/admin-add-publisher/save")
+    @PostMapping("/admin/add-publisher/save")
     public String savePublisher(Publisher publisher, RedirectAttributes ra) {
         service.save(publisher);
         ra.addFlashAttribute("message", "Publisher has been saved successfully");
         return "redirect:/admin-publisher";
     }
 
-    @GetMapping("/admin-publisher/edit/{id}")
+    @GetMapping("/admin/publisher/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
             Publisher publisher = service.get(id);
@@ -53,7 +53,7 @@ public class PublisherController {
         }
     }
 
-    @GetMapping("/admin-publisher/delete/{id}")
+    @GetMapping("/admin/publisher/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
         service.deleteById(id);
         ra.addFlashAttribute("message", "The publisher ID " + id + " has been deleted");

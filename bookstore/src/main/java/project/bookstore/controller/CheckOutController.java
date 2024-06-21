@@ -2,7 +2,6 @@ package project.bookstore.controller;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import project.bookstore.entity.Book;
 import project.bookstore.entity.Cart;
 import project.bookstore.entity.Order;
@@ -20,10 +18,10 @@ import project.bookstore.entity.OrderItems;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
 import project.bookstore.enums.PaymentMethod;
+import project.bookstore.exception.OrderNotFoundException;
 import project.bookstore.service.*;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -85,6 +83,13 @@ public class CheckOutController {
         orderService.save(order);
         cartService.deleteCartItemsByUserId(user.getId());
 
+        try {
+            if (orderService.get(order.getId()) == null){
+                return "Client/error-404";
+            }
+        } catch (OrderNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         return "Client/checkout-success";
     }
 

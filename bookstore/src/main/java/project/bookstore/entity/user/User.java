@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import project.bookstore.entity.Address;
 import project.bookstore.entity.Order;
+import project.bookstore.enums.Role;
 import project.bookstore.enums.UserStatus;
 
 import java.util.Set;
@@ -44,6 +45,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserStatus userStatus = UserStatus.ABLE;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Column(name = "image_URL")
     private String avatarURL;

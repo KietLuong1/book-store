@@ -24,7 +24,7 @@ public class NewsController {
     @Autowired
     private CloudinaryService cloudinaryService;
 
-    @GetMapping("/admin-news")
+    @GetMapping("/admin/news")
     public String showNews(Model model) {
         List<News> listNews = service.listAll();
         model.addAttribute("listNews", listNews);
@@ -32,7 +32,7 @@ model.addAttribute("pageTitle","Article List");
         return "Admin/admin-news";
     }
 
-    @GetMapping("/admin-add-news")
+    @GetMapping("/admin/add-news")
     public String showNewsForm(Model model) {
         model.addAttribute("news", new News());
         model.addAttribute("pageTitle", "Add New Article");
@@ -41,7 +41,7 @@ model.addAttribute("pageTitle","Article List");
         return "Admin/admin-add-news";
     }
 
-    @PostMapping("/admin-add-news/save")
+    @PostMapping("/admin/add-news/save")
     public String saveNews(@ModelAttribute(name = "news") News news, RedirectAttributes ra,
                              @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
 
@@ -55,7 +55,7 @@ model.addAttribute("pageTitle","Article List");
         return "redirect:/admin-news";
     }
 
-    @GetMapping("/admin-news/edit/{id}")
+    @GetMapping("/admin/news/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
         try {
             News news = service.get(id);
@@ -70,7 +70,7 @@ model.addAttribute("pageTitle","Article List");
         }
     }
 
-    @GetMapping("/admin-news/delete/{id}")
+    @GetMapping("/admin/news/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
         try {
             service.delete(id);
