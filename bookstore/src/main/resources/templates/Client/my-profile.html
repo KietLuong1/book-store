@@ -27,37 +27,43 @@
                                         </div>
                                         <div class="account-title">
                                             <h4 class="m-b5">
-                                                <a href="javascript:void(0);" sec:authentication="principal.fullName"></a>
+                                                <a href="javascript:void(0);"
+                                                   sec:authentication="principal.fullName"></a>
                                             </h4>
                                             <p class="m-b0">
-                                                <a href="javascript:void(0);" sec:authentication="principal.username"></a>
+                                                <a href="javascript:void(0);"
+                                                   sec:authentication="principal.username"></a>
                                             </p>
                                         </div>
                                     </div>
-                                    <ul class="account-list">
+                                    <ul class="account-list list-group" id="profile-functions" role="tablist">
                                         <li>
-                                            <a th:href="@{'/my-profile'}" class="active"><i class="far fa-user" aria-hidden="true"></i>
+                                            <a class="user-info list-group-item list-group-item-action active"
+                                               data-bs-toggle="list" href="#user-info" role="tab"
+                                               aria-controls="user-info">
+                                                <i class="far fa-user" aria-hidden="true"></i>
                                                 <span>My Profile</span></a>
                                         </li>
-<!--                                        <li>-->
-<!--                                            <a th:href="@{'/order-history'}"><i class="flaticon-shopping-cart-1"></i>-->
-<!--                                                <span>Order History</span></a>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <a th:href="@{'/wishlist'}"><i class="far fa-heart" aria-hidden="true"></i>-->
-<!--                                                <span>Wishlist</span></a>-->
-<!--                                        </li>-->
+                                        <!--                                        <li>-->
+                                        <!--                                            <a th:href="@{'/order-history'}"><i class="flaticon-shopping-cart-1"></i>-->
+                                        <!--                                                <span>Order History</span></a>-->
+                                        <!--                                        </li>-->
+                                        <!--                                        <li>-->
+                                        <!--                                            <a th:href="@{'/wishlist'}"><i class="far fa-heart" aria-hidden="true"></i>-->
+                                        <!--                                                <span>Wishlist</span></a>-->
+                                        <!--                                        </li>-->
                                         <li>
-                                            <a href="" class="change-password">
-                                                <i class="fa-solid fa-lock-open"></i>
+                                            <a class="change-password list-group-item list-group-item-action"
+                                               data-bs-toggle="list" href="#change-password" role="tab"
+                                               aria-controls="change-password">
                                                 <span>Change password</span></a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-9 col-lg-8 m-b30">
-                            <div class="shop-bx shop-profile">
+                        <div class="col-xl-9 col-lg-8 m-b30 active tab-content" id="nav-tabContent">
+                            <div class="shop-bx shop-profile tab-pane fade show active" id="user-info" role="tabpanel">
                                 <div class="shop-bx-title clearfix">
                                     <h5 class="text-uppercase">Basic Information</h5>
                                 </div>
@@ -168,6 +174,30 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary btnhover">Save Setting</button>
+                                </form>
+                            </div>
+                            <div class="shop-bx  tab-pane fade" id="change-password" role="tabpanel">
+                                <div class="shop-bx-title clearfix">
+                                    <h5 class="text-uppercase">Reset Password</h5>
+                                </div>
+                                <form th:action="@{/reset-password}" class="col-12"
+                                      method="post">
+                                    <label for="reset-password" class="label-title">Password</label>
+                                    <input id="reset-password" name="password" inputmode="text" type="password"
+                                           class="form-control"
+                                           placeholder="Your New Password">
+                                    <span toggle="#reset-password"
+                                          class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                    <label for="confirm-password" class="label-title mt-3">Confirm Password</label>
+                                    <input id="confirm-password" name="repeatPassword" type="password"
+                                           class="form-control"
+                                           placeholder="Your New Password again" required>
+                                    <span toggle="#confirm-password"
+                                          class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                    <span class="text-danger warning-text"></span>
+                                    <div id="confirm-change-password" class="text-left mt-3">
+                                        <button type="submit" class="btn btn-primary btnhover">Confirm</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
