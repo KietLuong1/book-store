@@ -14,6 +14,7 @@ import project.bookstore.entity.Address;
 import project.bookstore.entity.Category;
 import project.bookstore.entity.user.CustomUserDetails;
 import project.bookstore.entity.user.User;
+import project.bookstore.enums.Role;
 import project.bookstore.service.CartService;
 import project.bookstore.service.CategoryService;
 import project.bookstore.service.UserService;
@@ -55,6 +56,7 @@ public class UserController {
 
         user.setPassword(encodedPassword);
         user.setAddress(address);
+        user.setRole(Role.USER);
 
         if (userService.getUserByEmail(user.getEmail()) != null) {
             ra.addFlashAttribute("error", "User has been registered");
