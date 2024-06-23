@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Address;
 import project.bookstore.entity.Category;
@@ -20,6 +21,7 @@ import project.bookstore.service.CategoryService;
 import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.UserService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -97,7 +99,7 @@ public class UserController {
 
     @PostMapping("/profile/update")
     public String updateUser(Model model, RedirectAttributes ra, User user,
-            @AuthenticationPrincipal CustomUserDetails loggedUser) {
+                             @AuthenticationPrincipal CustomUserDetails loggedUser) {
         model.addAttribute("user", loggedUser);
         loggedUser.setUser(user);
         userService.save(user);
@@ -109,10 +111,10 @@ public class UserController {
 
     // User Management in Admin pages
     @GetMapping("/user-management")
-    public String getAllUsers(Model model ) {
+    public String getAllUsers(Model model) {
         List<User> listUsers = userService.getAllUsers();
         model.addAttribute("listUsers", listUsers);
-        model.addAttribute("pageTitle","User List");
+        model.addAttribute("pageTitle", "User List");
         return "Admin/user-management";
     }
 
@@ -138,7 +140,7 @@ public class UserController {
 
     @PostMapping("/user-management/update")
     public String updateUser(@ModelAttribute(name = "user") User user) {
-            userService.save(user);
+        userService.save(user);
         return "redirect:/user-management";
     }
 

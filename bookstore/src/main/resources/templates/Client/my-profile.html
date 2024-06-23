@@ -22,7 +22,7 @@
                                     <div class="account-detail text-center">
                                         <div class="my-image">
                                             <a href="javascript:void(0);">
-                                                <img alt="user image" th:src="${user.avatarURL}">
+                                                <img alt="user image" src="http://res.cloudinary.com/dggujnlln/image/upload/v1717169383/Admin/authors/7/2f062e90-64ec-418f-929c-9f0d528645ab.jpg">
                                             </a>
                                         </div>
                                         <div class="account-title">
@@ -72,6 +72,8 @@
                                     <input type="hidden" name="email" th:field="*{email}">
                                     <input type="hidden" name="password" th:field="*{password}">
                                     <input type="hidden" name="email" th:field="*{address.id}">
+                                    <input type="hidden" name="email" th:field="*{avatarURL}">
+                                    <input type="hidden" name="email" th:field="*{role}">
                                     <div class="row m-b30">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="mb-3">
