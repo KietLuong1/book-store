@@ -27,9 +27,6 @@ public class NewsService {
         if (news.getPublication().isAfter(LocalDate.now())) {
             throw new InvalidNewsException("Publication date cannot be in the future");
         }
-        if (newsRepository.existsByTitle(news.getTitle())) {
-            throw new InvalidNewsException("A news article with this title already exists");
-        }
         return newsRepository.save(news);
     }
 
@@ -53,4 +50,7 @@ public class NewsService {
         newsRepository.deleteById(id);
     }
 
+    public boolean existsByTitle(String title) {
+        return newsRepository.existsByTitle(title);
+    }
 }
