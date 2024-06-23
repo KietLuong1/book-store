@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:replace="Admin/admin-template.html :: header('Add Author')">
 </head>
 
@@ -38,7 +40,7 @@
                                         <div class="form-group">
                                             <label>Date Of Birth:</label>
                                             <input type="date" class="form-control" name="dob"
-                                                   th:value="${#dates.format(author.dob, 'yyyy-MM-dd')}"
+                                                   th:value="${author.dob != null ? #temporals.format(author.dob, 'yyyy-MM-dd') : ''}"
                                                    th:field="*{dob}">
                                         </div>
                                     </div>
