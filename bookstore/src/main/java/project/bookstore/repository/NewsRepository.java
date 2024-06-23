@@ -9,4 +9,7 @@ import project.bookstore.entity.News;
 public interface NewsRepository extends JpaRepository<News, Integer> {
 
    public Long countById(Integer id);
+
+   boolean existsByTitle(String title);
+
 }

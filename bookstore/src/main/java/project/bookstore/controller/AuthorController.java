@@ -26,7 +26,7 @@ public class AuthorController {
     public String showBookCategory(Model model) {
         List<Author> authors = service.listAll();
         model.addAttribute("authors", authors);
-        model.addAttribute("pageTitle","Author List");
+        model.addAttribute("pageTitle", "Author List");
 
         return "Admin/admin-author";
     }
@@ -41,11 +41,18 @@ public class AuthorController {
 
     @PostMapping("admin-add-author/save")
     public String saveAuthor(@ModelAttribute(name = "author") Author author, RedirectAttributes ra,
-                             @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
-        Author savedAuthor = service.save(author);
+                             @RequestParam("fileImage") MultipartFile multipartFile,
+                             @RequestParam("existingImageURL") String existingImageURL) throws IOException {
+        if (!multipartFile.isEmpty()) {
+            if (existingImageURL != null && !existingImageURL.isEmpty()) {
+                cloudinaryService.deleteImage(existingImageURL);
+            }
 
-        savedAuthor.setProfileImageURL(cloudinaryService.uploadFile(multipartFile, "Admin/authors/" + savedAuthor.getId()));
-        service.save(savedAuthor);
+            author.setProfileImageURL(cloudinaryService.uploadFile(multipartFile, "Admin/authors/" + author.getId()));
+        } else {
+            author.setProfileImageURL(existingImageURL);
+        }
+        service.save(author);
 
         ra.addFlashAttribute("message", "Author has been saved successfully");
 

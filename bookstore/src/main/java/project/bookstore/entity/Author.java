@@ -21,12 +21,17 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id")
     private Integer id;
+
     @Column(nullable = false)
     private String name;
+
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
+
     private String country;
+
     private String description;
+
     @Column(name = "profile_image_url")
     private String profileImageURL;
 

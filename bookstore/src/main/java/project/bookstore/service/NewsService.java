@@ -5,9 +5,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import project.bookstore.entity.News;
+import project.bookstore.exception.InvalidNewsException;
 import project.bookstore.exception.NewsNotFoundException;
 import project.bookstore.repository.NewsRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +20,16 @@ public class NewsService {
     public Page<News> getPaginatedNews(Pageable pageable) {
         return newsRepository.findAll(pageable);
     }
-    public News save(News news) {
+    public News save(News news) throws InvalidNewsException {
+        if (news.getTitle() == null || news.getTitle().length() < 3) {
+            throw new InvalidNewsException("News title must be at least 3 characters long");
+        }
+        if (news.getPublication().isAfter(LocalDate.now())) {
+            throw new InvalidNewsException("Publication date cannot be in the future");
+        }
+        if (newsRepository.existsByTitle(news.getTitle())) {
+            throw new InvalidNewsException("A news article with this title already exists");
+        }
         return newsRepository.save(news);
     }
 

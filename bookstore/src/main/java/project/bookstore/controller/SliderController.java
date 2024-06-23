@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.Slider;
 import project.bookstore.exception.SliderNotFoundException;
+import project.bookstore.exception.TooManySelectedSlidersException;
 import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.SliderService;
 
@@ -27,7 +28,7 @@ public class SliderController {
     public String showSliderAdmin(Model model) {
         List<Slider> sliders = sliderService.getAllSlides();
         model.addAttribute("sliders", sliders);
-        model.addAttribute("pageTitle","Sliders");
+        model.addAttribute("pageTitle", "Sliders");
         return "Admin/admin-sliders";
     }
 
@@ -42,13 +43,26 @@ public class SliderController {
     @PostMapping("admin-add-slider/save")
     public String saveAuthor(@ModelAttribute(name = "slider") Slider slider, RedirectAttributes ra,
                              @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
-        Slider saveSlider = sliderService.save(slider);
+        boolean isNewSlider = (slider.getId() == null);
+        Slider savedSlider = null;
+        try {
+            savedSlider = sliderService.save(slider);
 
-        saveSlider.setImageUrl(cloudinaryService.uploadFile(multipartFile, "Admin/authors/" + saveSlider.getId()));
-        sliderService.save(saveSlider);
+            if (isNewSlider || !multipartFile.isEmpty()) {
+                String imageUrl = cloudinaryService.uploadFile(multipartFile, "Admin/sliders/" + savedSlider.getId());
+                savedSlider.setImageUrl(imageUrl);
+                sliderService.save(savedSlider);
+            }
+
+            if (isNewSlider && multipartFile.isEmpty()) {
+                ra.addFlashAttribute("error", "Please select an image for the new slider.");
+                return "redirect:/404";
+            }
+        } catch (TooManySelectedSlidersException e) {
+            throw new RuntimeException(e);
+        }
 
         ra.addFlashAttribute("message", "Slider has been saved successfully");
-
         return "redirect:/admin-sliders";
     }
 
@@ -61,7 +75,7 @@ public class SliderController {
 
             return "Admin/admin-add-slider";
         } catch (SliderNotFoundException e) {
-            ra.addFlashAttribute("message", e.getMessage());
+            ra.addFlashAttribute("error", e.getMessage());
             return "redirect:/admin-sliders";
         }
     }
@@ -72,7 +86,7 @@ public class SliderController {
             sliderService.delete(id);
             ra.addFlashAttribute("message", "The slider ID " + id + " has been deleted");
         } catch (SliderNotFoundException e) {
-            ra.addFlashAttribute("message", e.getMessage());
+            ra.addFlashAttribute("error", e.getMessage());
         }
         return "redirect:/admin-sliders";
     }
