@@ -33,6 +33,8 @@
             <div class="container">
                 <div class="checkout-space"></div>
                 <form th:action="@{/shop-checkout/processing}" class="shop-form" method="post" th:object="${order}">
+                    <input th:field="*{firstName}" type="hidden">
+                    <input th:field="*{lastName}" type="hidden">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="widget">
@@ -40,7 +42,7 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <label for="firstName" class="checkOutLabel">First Name</label>
-                                        <input th:field="*{firstName}" th:value="${user.firstName}" required type="text"
+                                        <input th:text="*{firstName}" th:value="${user.firstName}" required type="text"
                                                class="form-control" id="firstName"
                                                aria-describedby="firstNameHelp" placeholder="Example: Trong">
                                     </div>
@@ -48,7 +50,7 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <label for="lastName" class="checkOutLabel">Last Name</label>
-                                        <input th:field="*{lastName}" th:value="${user.lastName}" required type="text"
+                                        <input th:text="*{lastName}" th:value="${user.lastName}" required type="text"
                                                class="form-control" id="lastName"
                                                aria-describedby="lastNameHelp" placeholder="Example: Nguyen">
                                     </div>

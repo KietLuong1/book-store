@@ -27,10 +27,11 @@
                             <!--                            </div>-->
                         </div>
                         <div class="iq-card-body">
-                            <form th:action="@{/user-detail/update}" th:object="${user}" method="post">
+                            <form th:action="@{/user-management/update}" th:object="${user}" method="post">
                                 <input type="hidden" name="id" th:field="*{id}">
                                 <input type="hidden" name="password" th:field="*{password}">
                                 <input type="hidden" name="avatarURL" th:field="*{avatarURL}">
+                                <input type="hidden" name="avatarURL" th:field="*{role}">
                                 <div class="row mb-3">
                                     <div class="col-lg-3 text-center">
                                         <div class="row">
