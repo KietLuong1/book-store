@@ -1,4 +1,4 @@
-package project.bookstore.controller;
+package project.bookstore.controller.global;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;

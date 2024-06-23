@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.bookstore.entity.News;
+import project.bookstore.exception.InvalidNewsException;
 import project.bookstore.exception.NewsNotFoundException;
 import project.bookstore.service.CategoryService;
 import project.bookstore.service.CloudinaryService;
@@ -43,14 +44,22 @@ model.addAttribute("pageTitle","Article List");
 
     @PostMapping("/admin-add-news/save")
     public String saveNews(@ModelAttribute(name = "news") News news, RedirectAttributes ra,
-                             @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+                           @RequestParam("fileImage") MultipartFile multipartFile) {
+        try {
+            News savedNews = service.save(news);
 
-        News savedNews = service.save(news);
+            if (!multipartFile.isEmpty()) {
+                String imageUrl = cloudinaryService.uploadFile(multipartFile, "Admin/news/" + savedNews.getId());
+                savedNews.setNewsImage(imageUrl);
+                service.save(savedNews);
+            }
 
-        savedNews.setNewsImage(cloudinaryService.uploadFile(multipartFile, "Admin/authors/" + savedNews.getId()));
-        service.save(savedNews);
-
-        ra.addFlashAttribute("message", "News has been saved successfully");
+            ra.addFlashAttribute("message", "News has been saved successfully");
+        } catch (InvalidNewsException e) {
+            ra.addFlashAttribute("error", e.getMessage());
+        } catch (IOException e) {
+            ra.addFlashAttribute("error", "Failed to upload image. Please try again.");
+        }
 
         return "redirect:/admin-news";
     }
