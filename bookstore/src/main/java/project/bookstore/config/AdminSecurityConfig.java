@@ -72,7 +72,7 @@ public class AdminSecurityConfig {
                         .authenticationEntryPoint((request, response, authException) -> response.sendRedirect("/admin/login"))
                 )
                 .rememberMe(rememberMe -> rememberMe
-                        .alwaysRemember(true)
+                        .alwaysRemember(false)
                         .key("uniqueAndSecret")
                         .userDetailsService(userDetailsService())
                         .tokenValiditySeconds(86400)

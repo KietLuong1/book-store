@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import project.bookstore.entity.Category;
 import project.bookstore.entity.News;
+import project.bookstore.exception.CategoryNotFoundException;
 import project.bookstore.exception.InvalidNewsException;
 import project.bookstore.exception.NewsNotFoundException;
 import project.bookstore.service.CategoryService;
@@ -14,7 +16,11 @@ import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.NewsService;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class NewsController {
@@ -44,20 +50,34 @@ model.addAttribute("pageTitle","Article List");
 
     @PostMapping("/admin-add-news/save")
     public String saveNews(@ModelAttribute(name = "news") News news, RedirectAttributes ra,
-                           @RequestParam("fileImage") MultipartFile multipartFile) {
+                           @RequestParam("fileImage") MultipartFile multipartFile,
+                           @RequestParam(value = "categories", required = false) List<Integer> categoryIds) {
         try {
-            News savedNews = service.save(news);
-
-            if (!multipartFile.isEmpty()) {
-                String imageUrl = cloudinaryService.uploadFile(multipartFile, "Admin/news/" + savedNews.getId());
-                savedNews.setNewsImage(imageUrl);
-                service.save(savedNews);
+            if (!categoryIds.isEmpty()) {
+                Set<Category> selectedCategories = categoryIds.stream()
+                        .map(id -> {
+                            try {
+                                return categoryService.get(id);
+                            } catch (CategoryNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                        })
+                        .filter(Objects::nonNull)
+                        .collect(Collectors.toSet());
+                news.setCategories(selectedCategories);
+            } else {
+                news.setCategories(new HashSet<>());
             }
 
+            if (!multipartFile.isEmpty()) {
+                String imageUrl = cloudinaryService.uploadFile(multipartFile, "Admin/news/" + news.getId());
+                news.setNewsImage(imageUrl);
+            }
+            service.save(news);
+
+
             ra.addFlashAttribute("message", "News has been saved successfully");
-        } catch (InvalidNewsException e) {
-            ra.addFlashAttribute("error", e.getMessage());
-        } catch (IOException e) {
+        } catch (IOException | InvalidNewsException e) {
             ra.addFlashAttribute("error", "Failed to upload image. Please try again.");
         }
 
@@ -70,12 +90,12 @@ model.addAttribute("pageTitle","Article List");
             News news = service.get(id);
             model.addAttribute("news", news);
             model.addAttribute("categories", categoryService.getAllCategories());
-            model.addAttribute("pageTitle", "Edit Article (ID: " + id + ")");
+            model.addAttribute("pageTitle", "Edit Article");
 
             return "Admin/admin-add-news";
         } catch (NewsNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
-            return "redirect:/admin-news";
+            return "redirect:/404";
         }
     }
 
