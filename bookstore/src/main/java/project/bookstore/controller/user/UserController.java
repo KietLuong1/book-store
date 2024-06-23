@@ -17,6 +17,7 @@ import project.bookstore.entity.user.User;
 import project.bookstore.enums.Role;
 import project.bookstore.service.CartService;
 import project.bookstore.service.CategoryService;
+import project.bookstore.service.CloudinaryService;
 import project.bookstore.service.UserService;
 
 import java.util.List;
@@ -31,6 +32,9 @@ public class UserController {
 
     @Autowired
     private CartService cartService;
+
+    @Autowired
+    private CloudinaryService cloudinaryService;
 
     @GetMapping("/client-login")
     public String getLogin() {
