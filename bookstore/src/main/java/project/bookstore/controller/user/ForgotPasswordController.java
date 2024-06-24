@@ -82,7 +82,7 @@ public class ForgotPasswordController {
 
             userService.updatePassword(newPassword, user.getEmail());
 
-            return "Client/my-profile";
+            return "redirect:/profile";
         }
         String token = request.getParameter("token");
         User user = userService.getUserByResetPasswordToken(token);
