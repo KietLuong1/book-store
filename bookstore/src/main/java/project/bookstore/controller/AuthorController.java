@@ -1,6 +1,7 @@
 package project.bookstore.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,19 @@ public class AuthorController {
     @Autowired
     private CloudinaryService cloudinaryService;
 
-    @GetMapping("/admin-author")
-    public String showBookCategory(Model model) {
-        List<Author> authors = service.listAll();
-        model.addAttribute("authors", authors);
-        model.addAttribute("pageTitle", "Author List");
-
-        return "Admin/admin-author";
-    }
+//    @GetMapping("/admin-author")
+//    public String showBookCategory(Model model) {
+//        List<Author> authors = service.listAll();
+//        model.addAttribute("authors", authors);
+//        model.addAttribute("pageTitle", "Author List");
+//
+//        return "Admin/admin-author";
+//    }
 
     @GetMapping("/admin-add-author")
     public String showNewForm(Model model) {
+        Author author = new Author();
+
         model.addAttribute("author", new Author());
         model.addAttribute("pageTitle", "Add New Author");
 
@@ -56,7 +59,7 @@ public class AuthorController {
 
         ra.addFlashAttribute("message", "Author has been saved successfully");
 
-        return "redirect:/admin-author";
+        return "redirect:/admin-add-book";
     }
 
     @GetMapping("/admin-author/edit/{id}")
@@ -65,11 +68,10 @@ public class AuthorController {
             Author author = service.get(id);
             model.addAttribute("author", author);
             model.addAttribute("pageTitle", "Edit Author (ID: " + id + ")");
-
             return "Admin/admin-add-author";
         } catch (AuthorNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
-            return "redirect:/admin-author";
+            return "redirect:/admin-book";
         }
     }
 

@@ -44,7 +44,10 @@
                                                     </select>
                                                 </div>
                                                 <div class="col">
-                                                    <label for="author">Book Author:</label>
+                                                    <div class="iq-card-header-toolbar ">
+                                                        <label for="author">Book Author:</label>
+                                                        <a th:href="@{'/admin-add-author'}" class="btn btn-primary">Add New Author</a>
+                                                    </div>
                                                     <select th:field="*{author}" id="author" name="author" class="form-control">
                                                         <th:block th:each="author : ${authors}">
                                                             <option th:value="${author.id}" th:text="${author.name}"></option>
