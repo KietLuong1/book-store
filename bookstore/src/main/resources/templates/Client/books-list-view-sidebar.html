@@ -817,7 +817,8 @@
                                     <div class="dz-body bookListButton">
                                         <div class="d-flex">
                                             <a class="btn btn-secondary btnhover btnhover2 otherAddToCart"
-                                               th:data-book-id="${book.book_id}">
+                                               th:data-book-id="${book.book_id}"
+                                               th:href="@{'/shop-cart/add/' + ${book.book_id}+ '/1'}">
                                                 <i class="flaticon-shopping-cart-1 m-r10"></i>
                                                 Add to cart
                                             </a>
@@ -835,18 +836,26 @@
                                     <ul class="pagination style-1">
                                         <!-- Previous button-->
                                         <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
-                                            <a class="page-link prev" th:href="@{/books-list-view-sidebar(page=${currentPage - 1})}" th:if="${currentPage > 0}">Prev</a>
-                                            <span class="page-link prev disabled" th:unless="${currentPage > 0}">Prev</span>
+                                            <a class="page-link prev"
+                                               th:href="@{/books-list-view-sidebar(page=${currentPage - 1})}"
+                                               th:if="${currentPage > 0}">Prev</a>
+                                            <span class="page-link prev disabled"
+                                                  th:unless="${currentPage > 0}">Prev</span>
                                         </li>
                                         <!--  Page numbers, loop from 0 to totalPage - 1-->
-                                        <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}" >
-                                            <a class="page-link" th:classappend="${i == currentPage} ? 'active' : ''" th:href="@{/books-list-view-sidebar(page=${i})}" th:text="${i + 1}"></a>
+                                        <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                                            <a class="page-link" th:classappend="${i == currentPage} ? 'active' : ''"
+                                               th:href="@{/books-list-view-sidebar(page=${i})}" th:text="${i + 1}"></a>
                                         </li>
 
                                         <!-- Next button-->
-                                        <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
-                                            <a class="page-link next" th:href="@{/books-list-view-sidebar(page=${currentPage + 1})}" th:if="${currentPage < totalPages - 1}">Next</a>
-                                            <span class="page-link next disabled" th:unless="${currentPage < totalPages - 1}">Next</span>
+                                        <li class="page-item"
+                                            th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+                                            <a class="page-link next"
+                                               th:href="@{/books-list-view-sidebar(page=${currentPage + 1})}"
+                                               th:if="${currentPage < totalPages - 1}">Next</a>
+                                            <span class="page-link next disabled"
+                                                  th:unless="${currentPage < totalPages - 1}">Next</span>
                                         </li>
                                     </ul>
                                 </nav>
