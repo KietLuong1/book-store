@@ -58,7 +58,7 @@ public class CartService {
 
     public int getTotalNumberOfItems(User user) {
         List<Cart> carts = listCart(user);
-        return carts.stream().mapToInt(Cart::getQuantity).sum();
+        return carts.size();
     }
 
     public void deleteCartItemsByUserId(Long userId) {

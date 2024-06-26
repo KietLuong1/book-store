@@ -75,7 +75,7 @@
                                                        th:id="'quantity' + ${book.book_id}" onkeydown="return false;"
                                                        name="demo_vertical2"/>
                                             </div>
-                                            <a class="btn btn-primary btnhover btnhover2" id="buttonAddToCart">
+                                            <a class="btn btn-primary btnhover btnhover2" id="buttonAddToCart" th:href="@{'/shop-cart/add/' + ${book.book_id}+ '/1'}">
                                                 <i class="flaticon-shopping-cart-1"></i>
                                                 <span>Add to cart</span>
                                             </a>

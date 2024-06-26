@@ -311,7 +311,8 @@
                 <!-- Swiper -->
                 <div class="swiper-container swiper-two">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 0 && books.index <= 4}">
+                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}"
+                             th:if="${books.index >= 0 && books.index <= 4}">
                             <div class="books-card style-1 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="dz-media">
                                     <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
@@ -320,12 +321,15 @@
                                 </div>
                                 <div class="dz-content">
                                     <h4 class="title shortTitle">
-                                        <a th:text="${listBooks.name}" th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
+                                        <a th:text="${listBooks.name}"
+                                           th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
                                     </h4>
                                     <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
                                         <span class="price" th:text="'$ ' + ${listBooks.salePrice}"></span>
                                     </a>
-                                    <a class="btn btn-secondary btnhover btnhover2 otherAddToCart" th:data-book-id="${listBooks.book_id}">
+                                    <a class="btn btn-secondary btnhover btnhover2 otherAddToCart"
+                                       th:data-book-id="${listBooks.book_id}"
+                                       th:href="@{'/shop-cart/add/' + ${listBooks.book_id}+ '/1'}">
                                         <i class="flaticon-shopping-cart-1 m-r10"></i>
                                         Add to cart
                                     </a>
@@ -351,7 +355,8 @@
                 </div>
                 <div class="swiper-container books-wrapper-3 swiper-four">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 5 && books.index <= 9}">
+                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}"
+                             th:if="${books.index >= 5 && books.index <= 9}">
                             <div class="books-card style-3 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="dz-media">
                                     <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
@@ -360,7 +365,8 @@
                                 </div>
                                 <div class="dz-content">
                                     <h5 class="title shortTitle">
-                                        <a th:text="${listBooks.name}" th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
+                                        <a th:text="${listBooks.name}"
+                                           th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
                                     </h5>
                                     <ul class="dz-tags">
                                         <li>
@@ -404,7 +410,8 @@
                 </div>
                 <div class="swiper-container books-wrapper-3 swiper-four">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 8 && books.index <= 14}">
+                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}"
+                             th:if="${books.index >= 8 && books.index <= 14}">
                             <div class="books-card style-3 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="dz-media">
                                     <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
@@ -413,7 +420,8 @@
                                 </div>
                                 <div class="dz-content">
                                     <h5 class="title shortTitle">
-                                        <a th:text="${listBooks.name}" th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
+                                        <a th:text="${listBooks.name}"
+                                           th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
                                     </h5>
                                     <ul class="dz-tags">
                                         <li>
@@ -454,7 +462,8 @@
                 </div>
                 <div class="swiper-container books-wrapper-3 swiper-four">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 0 && books.index <= 4}">
+                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}"
+                             th:if="${books.index >= 0 && books.index <= 4}">
                             <div class="books-card style-3 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="dz-media">
                                     <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
@@ -463,7 +472,8 @@
                                 </div>
                                 <div class="dz-content">
                                     <h5 class="title shortTitle">
-                                        <a th:text="${listBooks.name}" th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
+                                        <a th:text="${listBooks.name}"
+                                           th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
                                     </h5>
                                     <ul class="dz-tags">
                                         <li>
@@ -504,7 +514,8 @@
                 </div>
                 <div class="swiper-container books-wrapper-3 swiper-four">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 5 && books.index <= 9}">
+                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}"
+                             th:if="${books.index >= 5 && books.index <= 9}">
                             <div class="books-card style-3 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="dz-media">
                                     <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
@@ -513,7 +524,8 @@
                                 </div>
                                 <div class="dz-content">
                                     <h5 class="title shortTitle">
-                                        <a th:text="${listBooks.name}" th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
+                                        <a th:text="${listBooks.name}"
+                                           th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
                                     </h5>
                                     <ul class="dz-tags">
                                         <li>
@@ -727,7 +739,8 @@
                 </div>
                 <div class="swiper-container book-swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}" th:if="${books.index >= 4 && books.index <= 9}">
+                        <div class="swiper-slide" th:each="listBooks, books: ${listBooks}"
+                             th:if="${books.index >= 4 && books.index <= 9}">
                             <div class="dz-card style-2 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="dz-media">
                                     <a th:href="@{'/books-detail/' + ${listBooks.book_id}}">
@@ -736,7 +749,8 @@
                                 </div>
                                 <div class="dz-info">
                                     <h4 class="dz-title shortTitle">
-                                        <a th:text="${listBooks.name}" th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
+                                        <a th:text="${listBooks.name}"
+                                           th:href="@{'/books-detail/' + ${listBooks.book_id}}"></a>
                                     </h4>
                                     <div class="dz-meta">
                                         <ul class="dz-tags">
@@ -751,7 +765,9 @@
                                     </div>
                                     <p class="shortDescription" th:text="${listBooks.description}"></p>
                                     <div class="bookcard-footer">
-                                        <a class="btn btn-primary btnhover btnhover2 otherAddToCart" th:data-book-id="${listBooks.book_id}">
+                                        <a class="btn btn-primary btnhover btnhover2 otherAddToCart"
+                                           th:data-book-id="${listBooks.book_id}"
+                                           th:href="@{'/shop-cart/add/' + ${listBooks.book_id}+ '/1'}">
                                             <i class="flaticon-shopping-cart-1 m-r10"></i>
                                             Add to cart
                                         </a>
@@ -887,138 +903,138 @@
         </section>
 
         <!-- Pricing Table -->
-<!--        <section class="content-inner bg-light">-->
-<!--            <div class="container">-->
-<!--                <div class="section-head text-center">-->
-<!--                    <h2 class="title">Our Pricing</h2>-->
-<!--                    <p>Becoming a member of a Bookland Store with several advantages that will enhance your overall-->
-<!--                        shopping experience and provide various perks</p>-->
-<!--                </div>-->
-<!--                <div class="row pricingtable-wraper">-->
-<!--                    <div class="col-lg-4 col-md-6">-->
-<!--                        <div class="pricingtable-wrapper style-1 m-b30">-->
-<!--                            <div class="pricingtable-inner">-->
-<!--                                <div class="pricingtable-title">-->
-<!--                                    <h3 class="title">Basic Membership</h3>-->
-<!--                                </div>-->
-<!--                                <div class="pricingtable-price">-->
-<!--                                    <h2 class="pricingtable-bx">$19<small class="pricingtable-type">/Month</small>-->
-<!--                                    </h2>-->
-<!--                                </div>-->
-<!--                                <ul class="pricingtable-features">-->
-<!--                                    <li>10% discount on all purchase</li>-->
-<!--                                    <li>Access to monthly book club meetings</li>-->
-<!--                                    <li>Notification of regular store-wide sales and promotions</li>-->
-<!--                                    <li>Birthday discounts and special offers</li>-->
-<!--                                </ul>-->
-<!--                                <div class="pricingtable-footer">-->
-<!--                                    <a href="pricing" class="btn btn-primary btnhover3">Start Now <i-->
-<!--                                            class="fa fa-angle-right m-l10"></i></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-4 col-md-6">-->
-<!--                        <div class="pricingtable-wrapper style-1 m-b30">-->
-<!--                            <div class="pricingtable-inner">-->
-<!--                                <div class="pricingtable-title">-->
-<!--                                    <h3 class="title">Standart Membership</h3>-->
-<!--                                </div>-->
-<!--                                <div class="pricingtable-price">-->
-<!--                                    <h2 class="pricingtable-bx">$49<small class="pricingtable-type">/Month</small>-->
-<!--                                    </h2>-->
-<!--                                </div>-->
-<!--                                <ul class="pricingtable-features">-->
-<!--                                    <li>15% discount on books and merchandise</li>-->
-<!--                                    <li>Earn points for a loyalty program</li>-->
-<!--                                    <li>Early access to select book releases</li>-->
-<!--                                    <li>Exclusive access to members-only online book</li>-->
-<!--                                </ul>-->
-<!--                                <div class="pricingtable-footer">-->
-<!--                                    <a href="pricing" class="btn btn-primary btnhover3">Start Now <i-->
-<!--                                            class="fa fa-angle-right m-l10"></i></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-4 col-md-6">-->
-<!--                        <div class="pricingtable-wrapper style-1 m-b30">-->
-<!--                            <div class="pricingtable-inner">-->
-<!--                                <div class="pricingtable-title">-->
-<!--                                    <h3 class="title">Premium Membership</h3>-->
-<!--                                </div>-->
-<!--                                <div class="pricingtable-price">-->
-<!--                                    <h2 class="pricingtable-bx">$99<small class="pricingtable-type">/Month</small>-->
-<!--                                    </h2>-->
-<!--                                </div>-->
-<!--                                <ul class="pricingtable-features">-->
-<!--                                    <li>20% discount on books, merchandise</li>-->
-<!--                                    <li>Free shipping on all online orders</li>-->
-<!--                                    <li>Concierge service for book reservations and special orders</li>-->
-<!--                                    <li>Access to virtual author meet-and-greets</li>-->
-<!--                                </ul>-->
-<!--                                <div class="pricingtable-footer">-->
-<!--                                    <a href="pricing" class="btn btn-primary btnhover3">Start Now <i-->
-<!--                                            class="fa fa-angle-right m-l10"></i></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
+        <!--        <section class="content-inner bg-light">-->
+        <!--            <div class="container">-->
+        <!--                <div class="section-head text-center">-->
+        <!--                    <h2 class="title">Our Pricing</h2>-->
+        <!--                    <p>Becoming a member of a Bookland Store with several advantages that will enhance your overall-->
+        <!--                        shopping experience and provide various perks</p>-->
+        <!--                </div>-->
+        <!--                <div class="row pricingtable-wraper">-->
+        <!--                    <div class="col-lg-4 col-md-6">-->
+        <!--                        <div class="pricingtable-wrapper style-1 m-b30">-->
+        <!--                            <div class="pricingtable-inner">-->
+        <!--                                <div class="pricingtable-title">-->
+        <!--                                    <h3 class="title">Basic Membership</h3>-->
+        <!--                                </div>-->
+        <!--                                <div class="pricingtable-price">-->
+        <!--                                    <h2 class="pricingtable-bx">$19<small class="pricingtable-type">/Month</small>-->
+        <!--                                    </h2>-->
+        <!--                                </div>-->
+        <!--                                <ul class="pricingtable-features">-->
+        <!--                                    <li>10% discount on all purchase</li>-->
+        <!--                                    <li>Access to monthly book club meetings</li>-->
+        <!--                                    <li>Notification of regular store-wide sales and promotions</li>-->
+        <!--                                    <li>Birthday discounts and special offers</li>-->
+        <!--                                </ul>-->
+        <!--                                <div class="pricingtable-footer">-->
+        <!--                                    <a href="pricing" class="btn btn-primary btnhover3">Start Now <i-->
+        <!--                                            class="fa fa-angle-right m-l10"></i></a>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="col-lg-4 col-md-6">-->
+        <!--                        <div class="pricingtable-wrapper style-1 m-b30">-->
+        <!--                            <div class="pricingtable-inner">-->
+        <!--                                <div class="pricingtable-title">-->
+        <!--                                    <h3 class="title">Standart Membership</h3>-->
+        <!--                                </div>-->
+        <!--                                <div class="pricingtable-price">-->
+        <!--                                    <h2 class="pricingtable-bx">$49<small class="pricingtable-type">/Month</small>-->
+        <!--                                    </h2>-->
+        <!--                                </div>-->
+        <!--                                <ul class="pricingtable-features">-->
+        <!--                                    <li>15% discount on books and merchandise</li>-->
+        <!--                                    <li>Earn points for a loyalty program</li>-->
+        <!--                                    <li>Early access to select book releases</li>-->
+        <!--                                    <li>Exclusive access to members-only online book</li>-->
+        <!--                                </ul>-->
+        <!--                                <div class="pricingtable-footer">-->
+        <!--                                    <a href="pricing" class="btn btn-primary btnhover3">Start Now <i-->
+        <!--                                            class="fa fa-angle-right m-l10"></i></a>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="col-lg-4 col-md-6">-->
+        <!--                        <div class="pricingtable-wrapper style-1 m-b30">-->
+        <!--                            <div class="pricingtable-inner">-->
+        <!--                                <div class="pricingtable-title">-->
+        <!--                                    <h3 class="title">Premium Membership</h3>-->
+        <!--                                </div>-->
+        <!--                                <div class="pricingtable-price">-->
+        <!--                                    <h2 class="pricingtable-bx">$99<small class="pricingtable-type">/Month</small>-->
+        <!--                                    </h2>-->
+        <!--                                </div>-->
+        <!--                                <ul class="pricingtable-features">-->
+        <!--                                    <li>20% discount on books, merchandise</li>-->
+        <!--                                    <li>Free shipping on all online orders</li>-->
+        <!--                                    <li>Concierge service for book reservations and special orders</li>-->
+        <!--                                    <li>Access to virtual author meet-and-greets</li>-->
+        <!--                                </ul>-->
+        <!--                                <div class="pricingtable-footer">-->
+        <!--                                    <a href="pricing" class="btn btn-primary btnhover3">Start Now <i-->
+        <!--                                            class="fa fa-angle-right m-l10"></i></a>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </section>-->
 
         <!-- Feature Box -->
-<!--        <section class="content-inner">-->
-<!--            <div class="container">-->
-<!--                <div class="row sp15">-->
-<!--                    <div class="col-lg-3 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.1s">-->
-<!--                        <div class="icon-bx-wraper style-2 m-b30 text-center">-->
-<!--                            <div class="icon-bx-lg">-->
-<!--                                <i class="fa-solid fa-users icon-cell"></i>-->
-<!--                            </div>-->
-<!--                            <div class="icon-content">-->
-<!--                                <h2 class="dz-title counter m-b0">125,663</h2>-->
-<!--                                <p class="font-20">Happy Customers</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class=" col-lg-3 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.2s">-->
-<!--                        <div class="icon-bx-wraper style-2 m-b30 text-center">-->
-<!--                            <div class="icon-bx-lg">-->
-<!--                                <i class="fa-solid fa-book icon-cell"></i>-->
-<!--                            </div>-->
-<!--                            <div class="icon-content">-->
-<!--                                <h2 class="dz-title counter m-b0">50,672</h2>-->
-<!--                                <p class="font-20">Book Collections</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-3 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.3s">-->
-<!--                        <div class="icon-bx-wraper style-2 m-b30 text-center">-->
-<!--                            <div class="icon-bx-lg">-->
-<!--                                <i class="fa-solid fa-store icon-cell"></i>-->
-<!--                            </div>-->
-<!--                            <div class="icon-content">-->
-<!--                                <h2 class="dz-title counter m-b0">1,562</h2>-->
-<!--                                <p class="font-20">Our Stores</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-3 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.4s">-->
-<!--                        <div class="icon-bx-wraper style-2 m-b30 text-center">-->
-<!--                            <div class="icon-bx-lg">-->
-<!--                                <i class="fa-solid fa-leaf icon-cell"></i>-->
-<!--                            </div>-->
-<!--                            <div class="icon-content">-->
-<!--                                <h2 class="dz-title counter m-b0">457</h2>-->
-<!--                                <p class="font-20">Famous Writers</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
+        <!--        <section class="content-inner">-->
+        <!--            <div class="container">-->
+        <!--                <div class="row sp15">-->
+        <!--                    <div class="col-lg-3 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.1s">-->
+        <!--                        <div class="icon-bx-wraper style-2 m-b30 text-center">-->
+        <!--                            <div class="icon-bx-lg">-->
+        <!--                                <i class="fa-solid fa-users icon-cell"></i>-->
+        <!--                            </div>-->
+        <!--                            <div class="icon-content">-->
+        <!--                                <h2 class="dz-title counter m-b0">125,663</h2>-->
+        <!--                                <p class="font-20">Happy Customers</p>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class=" col-lg-3 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.2s">-->
+        <!--                        <div class="icon-bx-wraper style-2 m-b30 text-center">-->
+        <!--                            <div class="icon-bx-lg">-->
+        <!--                                <i class="fa-solid fa-book icon-cell"></i>-->
+        <!--                            </div>-->
+        <!--                            <div class="icon-content">-->
+        <!--                                <h2 class="dz-title counter m-b0">50,672</h2>-->
+        <!--                                <p class="font-20">Book Collections</p>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="col-lg-3 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.3s">-->
+        <!--                        <div class="icon-bx-wraper style-2 m-b30 text-center">-->
+        <!--                            <div class="icon-bx-lg">-->
+        <!--                                <i class="fa-solid fa-store icon-cell"></i>-->
+        <!--                            </div>-->
+        <!--                            <div class="icon-content">-->
+        <!--                                <h2 class="dz-title counter m-b0">1,562</h2>-->
+        <!--                                <p class="font-20">Our Stores</p>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="col-lg-3 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.4s">-->
+        <!--                        <div class="icon-bx-wraper style-2 m-b30 text-center">-->
+        <!--                            <div class="icon-bx-lg">-->
+        <!--                                <i class="fa-solid fa-leaf icon-cell"></i>-->
+        <!--                            </div>-->
+        <!--                            <div class="icon-content">-->
+        <!--                                <h2 class="dz-title counter m-b0">457</h2>-->
+        <!--                                <p class="font-20">Famous Writers</p>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </section>-->
         <!-- Feature Box End -->
 
         <!-- Newsletter -->

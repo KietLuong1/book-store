@@ -21,19 +21,19 @@
                                         class="flaticon-close"></i></a>
                             </div>
                             <div class="accordion accordion-filter" id="accordionExample">
-<!--                                <div class="accordion-item">-->
-<!--                                    <button class="accordion-button" id="headingFive" type="button"-->
-<!--                                            data-bs-toggle="collapse" data-bs-target="#collapseFive"-->
-<!--                                            aria-expanded="false" aria-controls="collapseFive">-->
-<!--                                        Price Range-->
-<!--                                    </button>-->
-<!--                                    <div id="collapseFive" class="accordion-collapse collapse accordion-body show"-->
-<!--                                         aria-labelledby="headingFive" data-bs-parent="#accordionExample">-->
-<!--                                        <div class="range-slider style-1">-->
-<!--                                            <div id="slider-tooltips"></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+                                <!--                                <div class="accordion-item">-->
+                                <!--                                    <button class="accordion-button" id="headingFive" type="button"-->
+                                <!--                                            data-bs-toggle="collapse" data-bs-target="#collapseFive"-->
+                                <!--                                            aria-expanded="false" aria-controls="collapseFive">-->
+                                <!--                                        Price Range-->
+                                <!--                                    </button>-->
+                                <!--                                    <div id="collapseFive" class="accordion-collapse collapse accordion-body show"-->
+                                <!--                                         aria-labelledby="headingFive" data-bs-parent="#accordionExample">-->
+                                <!--                                        <div class="range-slider style-1">-->
+                                <!--                                            <div id="slider-tooltips"></div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
                                 <div class="accordion-item">
                                     <button class="accordion-button" id="headingOne" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
@@ -769,13 +769,14 @@
                                     </div>
                                     <div class="bookmark-btn style-2">
                                         <input class="form-check-input" type="checkbox" id="flexCheckDefault1">
-<!--                                        <label class="form-check-label" for="flexCheckDefault1">-->
-<!--                                            <i class="flaticon-heart"></i>-->
-<!--                                        </label>-->
+                                        <!--                                        <label class="form-check-label" for="flexCheckDefault1">-->
+                                        <!--                                            <i class="flaticon-heart"></i>-->
+                                        <!--                                        </label>-->
                                     </div>
                                     <div class="dz-content">
                                         <h5 class="title shortTitle">
-                                            <a th:text="${book.name}" th:href="@{'/books-detail/' + ${book.book_id}}"></a>
+                                            <a th:text="${book.name}"
+                                               th:href="@{'/books-detail/' + ${book.book_id}}"></a>
                                         </h5>
                                         <ul class="dz-tags">
                                             <th:block th:each="category: ${book.categories}">
@@ -794,7 +795,9 @@
                                                 <span class="price-num" th:text="'$ ' + ${book.salePrice}"></span>
                                                 <del th:text="'$ ' + ${book.price}"></del>
                                             </div>
-                                            <a class="btn btn-secondary btnhover btnhover2 otherAddToCart" th:data-book-id="${book.book_id}">
+                                            <a class="btn btn-secondary btnhover btnhover2 otherAddToCart"
+                                               th:data-book-id="${book.book_id}"
+                                               th:href="@{'/shop-cart/add/' + ${book.book_id}+ '/1'}">
                                                 <i class="flaticon-shopping-cart-1 m-r10"></i>
                                                 Add to cart
                                             </a>
@@ -810,18 +813,26 @@
                                     <ul class="pagination style-1">
                                         <!-- Previous button-->
                                         <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
-                                            <a class="page-link prev" th:href="@{/books-grid-view-sidebar(page=${currentPage - 1})}" th:if="${currentPage > 0}">Prev</a>
-                                            <span class="page-link prev disabled" th:unless="${currentPage > 0}">Prev</span>
+                                            <a class="page-link prev"
+                                               th:href="@{/books-grid-view-sidebar(page=${currentPage - 1})}"
+                                               th:if="${currentPage > 0}">Prev</a>
+                                            <span class="page-link prev disabled"
+                                                  th:unless="${currentPage > 0}">Prev</span>
                                         </li>
                                         <!--  Page numbers, loop from 0 to totalPage - 1-->
-                                        <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}" >
-                                            <a class="page-link" th:classappend="${i == currentPage} ? 'active' : ''" th:href="@{/books-grid-view-sidebar(page=${i})}" th:text="${i + 1}"></a>
+                                        <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                                            <a class="page-link" th:classappend="${i == currentPage} ? 'active' : ''"
+                                               th:href="@{/books-grid-view-sidebar(page=${i})}" th:text="${i + 1}"></a>
                                         </li>
 
                                         <!-- Next button-->
-                                        <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
-                                            <a class="page-link next" th:href="@{/books-grid-view-sidebar(page=${currentPage + 1})}" th:if="${currentPage < totalPages - 1}">Next</a>
-                                            <span class="page-link next disabled" th:unless="${currentPage < totalPages - 1}">Next</span>
+                                        <li class="page-item"
+                                            th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+                                            <a class="page-link next"
+                                               th:href="@{/books-grid-view-sidebar(page=${currentPage + 1})}"
+                                               th:if="${currentPage < totalPages - 1}">Next</a>
+                                            <span class="page-link next disabled"
+                                                  th:unless="${currentPage < totalPages - 1}">Next</span>
                                         </li>
                                     </ul>
                                 </nav>
